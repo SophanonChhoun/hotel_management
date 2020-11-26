@@ -14,7 +14,12 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            @yield("content")
+{{--            @yield("content")--}}
+            <form action="/foo/bar" method="post" class="form-control">
+                @csrf
+                <input type="text" class="form-control" name="test">
+                <input type="submit" class="btn btn-primary">
+            </form>
             <!-- /.row -->
 
         </div>
