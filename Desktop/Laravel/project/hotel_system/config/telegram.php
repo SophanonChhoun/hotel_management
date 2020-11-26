@@ -34,7 +34,7 @@ return [
     'bots'                         => [
         'mybot' => [
             'username'            => 'King Bot',
-            'token'               => '1407361141:AAGGzkoDaybPHszwhjQYeSSBRxZAZwoXHy0',
+            'token'               => env("TELEGRAM_TOKEN"),
             'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
             'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
             'commands'            => [
