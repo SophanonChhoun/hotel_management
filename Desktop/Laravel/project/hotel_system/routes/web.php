@@ -27,6 +27,7 @@ use App\Http\Controllers\PaymentTypeController;
 Route::get('/', function () {
     return view('layout.default');
 });
+//Route::post("foo/bar",[TestController::class,"index"]);
 
 Route::group(["middleware" => "web"],function() {
     Route::group(["prefix" => "hotel"],function () {
