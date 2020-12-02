@@ -18,7 +18,7 @@ class CreateCustomersTable extends Migration
             $table->string("first_name");
             $table->string("last_name");
             $table->date("dob");
-            $table->enum("gender",["male","female","other"]);
+            $table->enum("gender",["m","f"]);
             $table->integer("identification_id");
             $table->string("street_address");
             $table->string("city");

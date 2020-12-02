@@ -17,6 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->bigIncrements("id");
             $table->integer("amount");
             $table->boolean("is_enable");
+            $table->integer("payment_type_id");
             $table->timestamps();
         });
     }
