@@ -24,7 +24,6 @@ class RoomTypeController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**

@@ -16,9 +16,6 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->integer("customer_id");
-            $table->integer("room_id");
-            $table->date("date");
-            $table->date("expected_check_in_date");
             $table->date("check_in_date");
             $table->date("check_out_date");
             $table->integer("booking_type_id");
