@@ -14,7 +14,7 @@ class BookingTypeController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
