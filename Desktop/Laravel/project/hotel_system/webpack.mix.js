@@ -13,4 +13,6 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/axios.js', 'public/dist/js')
     .js('resources/js/app.js','public/dist/js')
+    .js('resources/js/hotel/create.js','public/dist/js/hotel')
+    .js('resources/js/hotel/edit.js','public/dist/js/hotel')
     .sass('resources/sass/app.scss', 'public/css');

@@ -14,6 +14,9 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
@@ -134,7 +137,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layout" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -142,24 +145,31 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/js" />
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/resources/views/layout" />
       <recent name="$PROJECT_DIR$/resources/views" />
-      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/resources/js" />
-      <recent name="$PROJECT_DIR$/resources/js/components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/admin" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="XML" />
+      <TestRunner />
       <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="964d3bbc-dd66-4f5f-8347-3c91af8e6484" name="Default Changelist" comment="" />
@@ -169,7 +179,28 @@
       <updated>1606228069948</updated>
       <workItem from="1606228071040" duration="3667000" />
       <workItem from="1606311698654" duration="2645000" />
-      <workItem from="1606362434989" duration="2928000" />
+      <workItem from="1606362434989" duration="4276000" />
+      <workItem from="1606394447477" duration="748000" />
+      <workItem from="1606796383939" duration="135000" />
+      <workItem from="1606804138067" duration="561000" />
+      <workItem from="1606890850011" duration="427000" />
+      <workItem from="1606891547321" duration="90000" />
+      <workItem from="1606891933007" duration="90000" />
+      <workItem from="1606892335134" duration="297000" />
+      <workItem from="1606895405588" duration="52000" />
+      <workItem from="1606898865971" duration="478000" />
+      <workItem from="1606899503909" duration="40000" />
+      <workItem from="1606899554831" duration="26000" />
+      <workItem from="1606899592109" duration="52000" />
+      <workItem from="1606908086706" duration="3670000" />
+      <workItem from="1606913992063" duration="6482000" />
+      <workItem from="1606953989357" duration="809000" />
+      <workItem from="1606977381914" duration="2422000" />
+      <workItem from="1606980022507" duration="498000" />
+      <workItem from="1606980624409" duration="4734000" />
+      <workItem from="1606989228138" duration="9000" />
+      <workItem from="1607055567076" duration="837000" />
+      <workItem from="1607089758615" duration="324000" />
     </task>
     <servers />
   </component>
@@ -177,17 +208,42 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="104" y="59" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606363059454">
+    <state x="373" y="228" key="#Notifications" timestamp="1606899610547">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="104" y="59" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1606363059454" />
+    <state x="373" y="228" key="#Notifications/0.0.1280.800@0.0.1280.800" timestamp="1606899610547" />
+    <state x="313" y="68" key="#PHP" timestamp="1606892630749">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="313" y="68" key="#PHP/0.0.1280.800@0.0.1280.800" timestamp="1606892630749" />
+    <state x="104" y="42" width="1071" height="758" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606892631946">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="104" y="42" width="1071" height="758" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1606892631946" />
+    <state x="377" y="206" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606908234467">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="377" y="206" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1606908234467" />
+    <state x="453" y="120" key="#com.intellij.ide.util.MemberChooser" timestamp="1606913479295">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="453" y="120" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1606913479295" />
     <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606229532122">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800@0.0.1280.800" timestamp="1606229532122" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1606314654826">
+    <state x="149" y="25" key="SettingsEditor" timestamp="1607056313073">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1606314654826" />
+    <state x="149" y="25" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1607056313073" />
+    <state x="305" y="185" key="run.anything.popup" timestamp="1606916395471">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="305" y="185" key="run.anything.popup/0.0.1280.800@0.0.1280.800" timestamp="1606916395471" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1607089878300">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1607089878300" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.25.1280.719@0.25.1280.719" timestamp="1606920236022" />
   </component>
 </project>

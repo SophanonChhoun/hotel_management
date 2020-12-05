@@ -27,10 +27,11 @@ use App\Http\Controllers\PaymentTypeController;
 Route::get('/', function () {
     return view('layout.default');
 });
-//Route::post("foo/bar",[TestController::class,"index"]);
+Route::post("foo/bar",[TestController::class,"index"]);
 
-Route::group(["middleware" => "web"],function() {
+Route::group(["prefix" => "admin"],function() {
     Route::group(["prefix" => "hotel"],function () {
+        Route::get("/list",[HotelController::class,'index']);
         Route::get("/create",[HotelController::class,"create"]);
         Route::post("/create",[HotelController::class,"store"]);
         Route::get("/show/{id}",[HotelController::class,"show"]);

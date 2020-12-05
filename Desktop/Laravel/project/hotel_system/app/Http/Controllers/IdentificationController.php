@@ -14,7 +14,7 @@ class IdentificationController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
