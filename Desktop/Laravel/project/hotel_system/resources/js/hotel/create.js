@@ -1,5 +1,9 @@
+import SingleImageUploader from "../components/SingleImageUploader";
 new Vue({
     el: '#createHotel',
+    components: {
+        SingleImageUploader
+    },
     data: {
         data: {
             name: '',
@@ -8,6 +12,7 @@ new Vue({
             city: '',
             zip: '',
             is_enable: '',
+            image: '',
         },
         test: 'Testing',
         is_submit: false,
@@ -35,6 +40,29 @@ new Vue({
                     window.scrollTo(0, 0)
                 }
             })
-        }
+        },
+
+        uploadImage(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                var img = new Image();
+                img.onload = function() {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            this.image = e.target.result
+                        }
+                        reader.readAsDataURL(input.files[0])
+                }
+            }
+        },
+
+        uploadAddingImage(event) {
+            let image = event.target.files[0];
+            let reader = new FileReader();
+            reader.readAsDataURL(image);
+            reader.onload = event => {
+                Vue.set(this.data, 'image', event.target.result)
+            }
+        },
     }
 });
