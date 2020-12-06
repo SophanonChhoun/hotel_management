@@ -111,6 +111,7 @@ new Vue({
       this.$validator.validateAll().then(function (result) {
         _this.is_submit = true;
         var save = true;
+        console.log(_this.data);
 
         if (result && save) {
           axios.post('/admin/hotel/update/' + _this.id, _this.data).then(function (response) {
@@ -126,6 +127,17 @@ new Vue({
           window.scrollTo(0, 0);
         }
       });
+    },
+    uploadAddingImage: function uploadAddingImage(event) {
+      var _this2 = this;
+
+      var image = event.target.files[0];
+      var reader = new FileReader();
+      reader.readAsDataURL(image);
+
+      reader.onload = function (event) {
+        Vue.set(_this2.data, 'image', event.target.result);
+      };
     }
   }
 });
