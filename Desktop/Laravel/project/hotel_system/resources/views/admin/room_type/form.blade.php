@@ -14,64 +14,31 @@
     <span class="help-block">@{{ errors.first('name') }}</span>
 </div>
 
-<div class="form-group" :class="{'has-error' : errors.first('street_address')}">
+<div class="form-group" >
     <label class="control-label">
-        Street Address
-        <span style="color: red">*</span>
+        Description
     </label>
-    <input type="text"
-           name="street_address"
-           v-model="data.street_address"
-           data-vv-as="Street Address"
-           v-validate="'required'"
-           class="form-control"
-           placeholder="Street Address">
-    <span class="help-block">@{{ errors.first('street_address') }}</span>
+    <vue-ckeditor
+        v-model="data.description"
+        v-validate="'required'"
+        name="description"
+        data-vv-as="Description"
+        :config="config"/>
 </div>
 
-<div class="form-group" :class="{'has-error' : errors.first('city')}">
+<div class="form-group" :class="{'has-error' : errors.first('price')}">
     <label class="control-label">
-        City
+        Price
         <span style="color: red">*</span>
     </label>
     <input type="text"
-           name="city"
-           v-model="data.city"
-           data-vv-as="City"
+           name="price"
+           v-model="data.price"
+           data-vv-as="Price"
            v-validate="'required'"
            class="form-control"
-           placeholder="City">
-    <span class="help-block">@{{ errors.first('city') }}</span>
-</div>
-
-<div class="form-group" :class="{'has-error' : errors.first('country')}">
-    <label class="control-label">
-        Country
-        <span style="color: red">*</span>
-    </label>
-    <input type="text"
-           name="country"
-           v-model="data.country"
-           data-vv-as="country"
-           v-validate="'required'"
-           class="form-control"
-           placeholder="Country">
-    <span class="help-block">@{{ errors.first('country') }}</span>
-</div>
-
-<div class="form-group" :class="{'has-error' : errors.first('zip')}">
-    <label class="control-label">
-        Zip
-        <span style="color: red">*</span>
-    </label>
-    <input type="text"
-           name="zip"
-           v-model="data.zip"
-           data-vv-as="Zip"
-           v-validate="'required'"
-           class="form-control"
-           placeholder="Zip">
-    <span class="help-block">@{{ errors.first('zip') }}</span>
+           placeholder="Price">
+    <span class="help-block">@{{ errors.first('price') }}</span>
 </div>
 
 <div class="form-group" :class="{'has-error' : error_image}">
@@ -85,7 +52,7 @@
            v-model="data.image"
            placeholder="Image" data-vv-as="Image"
            @change="uploadAddingImage" accept=".png, .jpg">
-    <span class="help-block">@{{ error_image }}</span>
+    <span class="help-block" style="color: darkred">@{{ error_image }}</span>
 
 </div>
 

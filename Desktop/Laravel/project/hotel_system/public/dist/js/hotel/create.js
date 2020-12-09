@@ -468,6 +468,7 @@ new Vue({
     test: 'Testing',
     is_submit: false,
     error: '',
+    error_image: '',
     image: ''
   },
   mounted: function mounted() {},
@@ -478,6 +479,11 @@ new Vue({
       this.$validator.validateAll().then(function (result) {
         _this.is_submit = true;
         var save = true;
+
+        if (!_this.data.image) {
+          _this.error_image = "The Image field is required";
+          save = false;
+        }
 
         if (result && save) {
           axios.post('/admin/hotel/create', _this.data).then(function (response) {

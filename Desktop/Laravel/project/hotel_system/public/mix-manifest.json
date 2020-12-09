@@ -3,5 +3,7 @@
     "/dist/js/axios.js": "/dist/js/axios.js",
     "/css/app.css": "/css/app.css",
     "/dist/js/hotel/create.js": "/dist/js/hotel/create.js",
-    "/dist/js/hotel/edit.js": "/dist/js/hotel/edit.js"
+    "/dist/js/hotel/edit.js": "/dist/js/hotel/edit.js",
+    "/dist/js/room_type/create.js": "/dist/js/room_type/create.js",
+    "/dist/js/room_type/edit.js": "/dist/js/room_type/edit.js"
 }

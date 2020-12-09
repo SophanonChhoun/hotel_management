@@ -15,4 +15,6 @@ mix.js('resources/js/axios.js', 'public/dist/js')
     .js('resources/js/app.js','public/dist/js')
     .js('resources/js/hotel/create.js','public/dist/js/hotel')
     .js('resources/js/hotel/edit.js','public/dist/js/hotel')
+    .js('resources/js/room_type/create.js','public/dist/js/room_type')
+    .js('resources/js/room_type/edit.js','public/dist/js/room_type')
     .sass('resources/sass/app.scss', 'public/css');

@@ -91,6 +91,7 @@ class HotelController extends Controller
      */
     public function update(Request $request, $id)
     {
+        DB::beginTransaction();
         try {
 
             $hotel = Hotel::find($id);
@@ -116,9 +117,24 @@ class HotelController extends Controller
             {
                 return $this->fail("Fail cannot update");
             }
+
+            DB::commit();
             return $this->success($hotel);
         }catch (Exception $exception){
+            DB::rollBack();
             return $this->fail($exception);
+        }
+    }
+
+    public function updateStatus($id,Request $request)
+    {
+        try {
+            Hotel::find($id)->update([
+                "is_enable" => $request->is_enable
+            ]);
+            return back();
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
         }
     }
 
@@ -133,7 +149,7 @@ class HotelController extends Controller
         try {
             Hotel::findOrFail($id)->delete();
 
-            return redirect('/admin/hotel/list');
+            return back();
         }catch (Exception $e){
             return $this->fail($e->getMessage());
         }
