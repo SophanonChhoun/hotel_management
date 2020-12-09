@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Core\MediaLib;
 use App\Models\admin\RoomType;
 use Illuminate\Http\Request;
+use Exception;
+use DB;
 
 class RoomTypeController extends Controller
 {
@@ -14,7 +17,9 @@ class RoomTypeController extends Controller
      */
     public function index()
     {
-        //
+        $room_types = RoomType::with("media")->get();
+
+        return view('admin.room_type.list',compact('room_types'));
     }
 
     /**
@@ -24,6 +29,8 @@ class RoomTypeController extends Controller
      */
     public function create()
     {
+        return view('admin.room_type.create');
+
     }
 
     /**
@@ -34,7 +41,26 @@ class RoomTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $room_type = [
+                "name" => $request->name,
+                "description" => $request->description,
+                "price" => $request->price,
+                "is_enable" => $request->is_enable
+            ];
+            if(isset($request->image))
+            {
+                $room_type['media_id'] = MediaLib::generateImageBase64($request['image']);
+            }
+            $data = RoomType::create($room_type);
+
+            DB::commit();
+            return $this->success($data);
+        }catch (Exception $exception){
+            DB::rollBack();
+            return $this->fail($exception->getMessage());
+        }
     }
 
     /**
@@ -43,21 +69,17 @@ class RoomTypeController extends Controller
      * @param  \App\Models\admin\RoomType  $roomType
      * @return \Illuminate\Http\Response
      */
-    public function show(RoomType $roomType)
+    public function show($id)
     {
-        //
+        try {
+            $room_type = RoomType::with("media")->find($id);
+
+            return view("admin.room_type.edit",compact("room_type"));
+        }catch (Exception $exception){
+            return $this->fail($exception);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\admin\RoomType  $roomType
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(RoomType $roomType)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -66,9 +88,50 @@ class RoomTypeController extends Controller
      * @param  \App\Models\admin\RoomType  $roomType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RoomType $roomType)
+    public function update(Request $request, $id)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $roomType = RoomType::find($id);
+            if(!$roomType)
+            {
+                return $this->fail("Cannot find this room type");
+            }
+            $room_type = [
+                "name" => $request->name,
+                "description" => $request->description,
+                "price" => $request->price,
+                "is_enable" => $request->is_enable
+            ];
+            if(isset($request->image))
+            {
+                $room_type['media_id'] = MediaLib::generateImageBase64($request['image']);
+            }
+            $data = $roomType->update($room_type);
+            if(!$data)
+            {
+                return $this->fail("Cannot update this room type");
+            }
+
+            DB::commit();
+            return $this->success($data);
+        }catch (Exception $exception){
+            DB::rollBack();
+            return $this->fail($exception->getMessage());
+        }
+    }
+
+    public function updateStatus(Request $request,$id)
+    {
+        try {
+            RoomType::find($id)->update([
+                "is_enable" => $request->is_enable
+            ]);
+
+            return back();
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
     }
 
     /**
@@ -77,8 +140,14 @@ class RoomTypeController extends Controller
      * @param  \App\Models\admin\RoomType  $roomType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RoomType $roomType)
+    public function destroy($id)
     {
-        //
+        try {
+            RoomType::findOrFail($id)->delete();
+
+            return back();
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
     }
 }

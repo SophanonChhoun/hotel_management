@@ -18,7 +18,10 @@
                 <td>{{ $hotel->country }}</td>
                 <td>{{ $hotel->zip }}</td>
                 <td><img src="{{ $hotel->media->file_url ?? asset('image/noimage.png') }}" class="img-responsive" style="max-height: 200px;max-width: 200px"></td>
-                <td>{{ $hotel->is_enable ? 'Active' : 'Deactivate' }}</td>
+                <td>
+                    <input type="checkbox" data-toggle="modal" data-target="#status{{ $hotel->id }}" @if($hotel->is_enable) checked @endif>
+                    @include("admin.hotel.status")
+                </td>
                 <td><a href="/admin/hotel/show/{{ $hotel->id }}" class="btn btn-warning">Edit</a></td>
                 <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ $hotel->id }}">Delete</button>

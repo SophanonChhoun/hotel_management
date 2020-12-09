@@ -14,7 +14,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.layout.default');
     }
 
     /**
@@ -24,7 +24,6 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**

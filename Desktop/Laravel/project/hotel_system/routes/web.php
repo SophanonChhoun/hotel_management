@@ -25,7 +25,7 @@ use App\Http\Controllers\PaymentTypeController;
 */
 
 Route::get('/', function () {
-    return view('layout.default');
+    return view('admin.layout.default');
 });
 Route::post("foo/bar",[TestController::class,"index"]);
 
@@ -36,23 +36,28 @@ Route::group(["prefix" => "admin"],function() {
         Route::post("/create",[HotelController::class,"store"]);
         Route::get("/show/{id}",[HotelController::class,"show"]);
         Route::post("/update/{id}",[HotelController::class,"update"]);
+        Route::post("/update/status/{id}",[HotelController::class,"updateStatus"]);
         Route::post("/delete/{id}",[HotelController::class,"destroy"]);
     });
 
-    Route::group(["prefix" => "room"],function () {
+    Route::group(['prefix' => 'rooms'],function(){
+        Route::get('/list',[RoomController::class,'index']);
         Route::get("/create",[RoomController::class,"create"]);
         Route::post("/create",[RoomController::class,"store"]);
         Route::get("/show/{id}",[RoomController::class,"show"]);
         Route::post("/update/{id}",[RoomController::class,"update"]);
+        Route::post("/update/status/{id}",[RoomController::class,"updateStatus"]);
         Route::post("/delete/{id}",[RoomController::class,"destroy"]);
+    });
 
-        Route::group(["prefix" => "type"],function () {
-            Route::get("/create",[RoomTypeController::class,"create"]);
-            Route::post("/create",[RoomTypeController::class,"store"]);
-            Route::get("/show/{id}",[RoomTypeController::class,"show"]);
-            Route::post("/update/{id}",[RoomTypeController::class,"update"]);
-            Route::post("/delete/{id}",[RoomTypeController::class,"destroy"]);
-        });
+    Route::group(["prefix" => "room_type"],function () {
+        Route::get('/list',[RoomTypeController::class,'index']);
+        Route::get("/create",[RoomTypeController::class,"create"]);
+        Route::post("/create",[RoomTypeController::class,"store"]);
+        Route::get("/show/{id}",[RoomTypeController::class,"show"]);
+        Route::post("/update/{id}",[RoomTypeController::class,"update"]);
+        Route::post("/update/status/{id}",[RoomTypeController::class,"updateStatus"]);
+        Route::post("/delete/{id}",[RoomTypeController::class,"destroy"]);
     });
 
 

@@ -4,21 +4,20 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Hotels
+                Room Types
             </h1>
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i>  <a href="#">Dashboard</a>
                 </li>
-                <li class="active">
-                    <i class="fa fa-file"></i>Hotels
+                <li >
+                    <i class="fa fa-file"></i>Room Types
                 </li>
             </ol>
         </div>
         <div class="col-lg-12">
-            <a href="/admin/hotel/create" class="btn btn-primary" style="margin-bottom: 30px">Create a hotel</a>
-            @include("admin.hotel.table")
-
+            <a href="/admin/room_type/create" class="btn btn-primary" style="margin-bottom: 30px">Create a room type</a>
+            @include("admin.room_type.table")
         </div>
         </div>
     </div>
