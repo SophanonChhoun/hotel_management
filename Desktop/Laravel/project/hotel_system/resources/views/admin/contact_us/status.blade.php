@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModal{{ $hotel->id }}" role="dialog">
+<div class="modal fade" id="status{{ $contact_us->id }}" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -8,15 +8,16 @@
                 <h4 class="modal-title">Are you sure?</h4>
             </div>
             <div class="modal-body">
-                <p>Do you want to delete this hotel?</p>
+                <p>Do you want to update this status?</p>
             </div>
             <div class="modal-footer">
                 <div>
 
                 </div>
-                <form action="{{ url('admin/hotel/delete/'.$hotel->id) }}" method="post">
+                <form action="{{ url('admin/contact_us/update/status/'.$contact_us->id) }}" method="post">
                     @csrf
-                    <button class="btn btn-danger">Delete it</button>
+                    <input type="hidden" name="is_enable" value="{{ $contact_us->is_enable ? 0 : 1 }}">
+                    <button class="btn btn-danger">Update it</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </form>
             </div>

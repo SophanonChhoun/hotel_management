@@ -12,7 +12,8 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BookingTypeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentTypeController;
-
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ContactUsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,12 @@ Route::get('/', function () {
 Route::post("foo/bar",[TestController::class,"index"]);
 
 Route::group(["prefix" => "admin"],function() {
+
+    Route::group(['prefix' => 'about_us'],function(){
+        Route::get("/{id}",[AboutUsController::class,"show"]);
+        Route::post("/{id}",[AboutUsController::class,"update"]);
+    });
+
     Route::group(["prefix" => "hotel"],function () {
         Route::get("/list",[HotelController::class,'index']);
         Route::get("/create",[HotelController::class,"create"]);
@@ -58,6 +65,17 @@ Route::group(["prefix" => "admin"],function() {
         Route::post("/update/{id}",[RoomTypeController::class,"update"]);
         Route::post("/update/status/{id}",[RoomTypeController::class,"updateStatus"]);
         Route::post("/delete/{id}",[RoomTypeController::class,"destroy"]);
+    });
+
+
+    Route::group(["prefix" => "contact_us"],function () {
+        Route::get('/list',[ContactUsController::class,'index']);
+        Route::get("/create",[ContactUsController::class,"create"]);
+        Route::post("/create",[ContactUsController::class,"store"]);
+        Route::get("/show/{id}",[ContactUsController::class,"show"]);
+        Route::post("/update/{id}",[ContactUsController::class,"update"]);
+        Route::post("/update/status/{id}",[ContactUsController::class,"updateStatus"]);
+        Route::post("/delete/{id}",[ContactUsController::class,"destroy"]);
     });
 
 

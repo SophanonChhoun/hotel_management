@@ -19,6 +19,18 @@
                 </ul>
             </li>
 
+            <li class="{{ request()->is('admin/room*') ? 'active' : '' }}">
+                <a href="javascript:;" data-toggle="collapse" data-target="#page"><i class="fa fa-fw fa-arrows-v"></i> Pages <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul class="collapse" id="page">
+                    <li {{ request()->is('admin/about_us*') ? "class=active" : null }}>
+                        <a href="/admin/about_us/1"><i class="fa fa-fw fa-bar-chart-o"></i>About Us</a>
+                    </li>
+                    <li class="{{ request()->is('admin/rooms*') ? 'active' : '' }}">
+                        <a href="/admin/contact_us/list"><i class="fa fa-fw fa-bar-chart-o"></i>Contact Us</a>
+                    </li>
+                </ul>
+            </li>
+
         </ul>
     </div>
     <!-- /.navbar-collapse -->

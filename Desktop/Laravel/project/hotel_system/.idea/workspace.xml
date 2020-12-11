@@ -137,7 +137,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/room_type" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/contact_us" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -149,15 +149,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/js/contact_us" />
+      <recent name="$PROJECT_DIR$/resources/views/admin/contact_us" />
+      <recent name="$PROJECT_DIR$/resources/js/about_us" />
+      <recent name="$PROJECT_DIR$/resources/views/admin/about_us" />
+      <recent name="$PROJECT_DIR$/resources/views/admin/room_type" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/admin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/admin/room_type" />
-      <recent name="$PROJECT_DIR$/resources/js/room_type" />
-      <recent name="$PROJECT_DIR$/public/image" />
-      <recent name="$PROJECT_DIR$/resources/js/components" />
-      <recent name="$PROJECT_DIR$/public/js" />
     </key>
   </component>
   <component name="RunManager">
@@ -209,6 +209,8 @@
       <workItem from="1607401166654" duration="651000" />
       <workItem from="1607411630353" duration="6904000" />
       <workItem from="1607434297437" duration="6817000" />
+      <workItem from="1607483266525" duration="486000" />
+      <workItem from="1607675554792" duration="4591000" />
     </task>
     <servers />
   </component>
@@ -252,10 +254,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="305" y="185" key="run.anything.popup/0.0.1280.800@0.0.1280.800" timestamp="1606916395471" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1607441700641">
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1607676119244">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1607441700641" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1607676119244" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.25.1280.719@0.25.1280.719" timestamp="1607207655610" />
   </component>
 </project>

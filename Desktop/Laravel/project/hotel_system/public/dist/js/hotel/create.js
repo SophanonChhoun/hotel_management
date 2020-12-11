@@ -465,7 +465,6 @@ new Vue({
       is_enable: '',
       image: ''
     },
-    test: 'Testing',
     is_submit: false,
     error: '',
     error_image: '',

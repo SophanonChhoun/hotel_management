@@ -81,27 +81,25 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/hotel/edit.js":
-/*!************************************!*\
-  !*** ./resources/js/hotel/edit.js ***!
-  \************************************/
+/***/ "./resources/js/contact_us/edit.js":
+/*!*****************************************!*\
+  !*** ./resources/js/contact_us/edit.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 new Vue({
-  el: '#createHotel',
+  el: '#editContactUs',
   data: {
     data: data,
     id: data.id,
     is_submit: false,
-    error: '',
-    error_image: '',
-    image: ''
+    error: ''
   },
   mounted: function mounted() {},
   methods: {
@@ -113,9 +111,9 @@ new Vue({
         var save = true;
 
         if (result && save) {
-          axios.post('/admin/hotel/update/' + _this.id, _this.data).then(function (response) {
+          axios.post('/admin/contact_us/update/' + _this.id, _this.data).then(function (response) {
             if (response.data.success) {
-              window.location.href = '/admin/hotel/list';
+              window.location.href = '/admin/contact_us/list';
             } else {
               console.log(response.data.message);
               _this.error = response.data.message;
@@ -126,31 +124,20 @@ new Vue({
           window.scrollTo(0, 0);
         }
       });
-    },
-    uploadAddingImage: function uploadAddingImage(event) {
-      var _this2 = this;
-
-      var image = event.target.files[0];
-      var reader = new FileReader();
-      reader.readAsDataURL(image);
-
-      reader.onload = function (event) {
-        Vue.set(_this2.data, 'image', event.target.result);
-      };
     }
   }
 });
 
 /***/ }),
 
-/***/ 3:
-/*!******************************************!*\
-  !*** multi ./resources/js/hotel/edit.js ***!
-  \******************************************/
+/***/ 7:
+/*!***********************************************!*\
+  !*** multi ./resources/js/contact_us/edit.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/hotel/edit.js */"./resources/js/hotel/edit.js");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/contact_us/edit.js */"./resources/js/contact_us/edit.js");
 
 
 /***/ })
