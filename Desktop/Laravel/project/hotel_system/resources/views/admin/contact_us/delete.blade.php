@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModal{{ $hotel->id }}" role="dialog">
+<div class="modal fade" id="delete{{ $contact_us->id }}" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -8,13 +8,13 @@
                 <h4 class="modal-title">Are you sure?</h4>
             </div>
             <div class="modal-body">
-                <p>Do you want to delete this hotel?</p>
+                <p>Do you want to delete this?</p>
             </div>
             <div class="modal-footer">
                 <div>
 
                 </div>
-                <form action="{{ url('admin/hotel/delete/'.$hotel->id) }}" method="post">
+                <form action="{{ url('admin/contact_us/delete/'.$contact_us->id) }}" method="post">
                     @csrf
                     <button class="btn btn-danger">Delete it</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

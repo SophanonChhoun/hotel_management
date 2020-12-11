@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -100,10 +100,10 @@ var t=(new Date).getTime();/* harmony default export */ __webpack_exports__["def
 
 /***/ }),
 
-/***/ "./resources/js/room_type/edit.js":
-/*!****************************************!*\
-  !*** ./resources/js/room_type/edit.js ***!
-  \****************************************/
+/***/ "./resources/js/about_us/edit.js":
+/*!***************************************!*\
+  !*** ./resources/js/about_us/edit.js ***!
+  \***************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -112,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_ckeditor2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-ckeditor2 */ "./node_modules/vue-ckeditor2/dist/vue-ckeditor2.esm.js");
 
 new Vue({
-  el: '#editRoomType',
+  el: '#editAboutUs',
   components: {
     VueCkeditor: vue_ckeditor2__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -138,9 +138,9 @@ new Vue({
         var save = true;
 
         if (result && save) {
-          axios.post('/admin/room_type/update/' + _this.id, _this.data).then(function (response) {
+          axios.post('/admin/about_us/' + _this.id, _this.data).then(function (response) {
             if (response.data.success) {
-              window.location.href = '/admin/room_type/list';
+              window.location.href = '/admin/about_us/' + _this.id;
             } else {
               console.log(response.data.message);
               _this.error = response.data.message;
@@ -168,14 +168,14 @@ new Vue({
 
 /***/ }),
 
-/***/ 5:
-/*!**********************************************!*\
-  !*** multi ./resources/js/room_type/edit.js ***!
-  \**********************************************/
+/***/ 6:
+/*!*********************************************!*\
+  !*** multi ./resources/js/about_us/edit.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/room_type/edit.js */"./resources/js/room_type/edit.js");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/about_us/edit.js */"./resources/js/about_us/edit.js");
 
 
 /***/ })

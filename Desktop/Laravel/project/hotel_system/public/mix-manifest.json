@@ -1,7 +1,10 @@
 {
+    "/dist/js/about_us/edit.js": "/dist/js/about_us/edit.js",
     "/dist/js/app.js": "/dist/js/app.js",
     "/dist/js/axios.js": "/dist/js/axios.js",
     "/css/app.css": "/css/app.css",
+    "/dist/js/contact_us/create.js": "/dist/js/contact_us/create.js",
+    "/dist/js/contact_us/edit.js": "/dist/js/contact_us/edit.js",
     "/dist/js/hotel/create.js": "/dist/js/hotel/create.js",
     "/dist/js/hotel/edit.js": "/dist/js/hotel/edit.js",
     "/dist/js/room_type/create.js": "/dist/js/room_type/create.js",
