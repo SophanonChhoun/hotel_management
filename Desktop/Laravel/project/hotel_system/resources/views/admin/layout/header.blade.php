@@ -26,4 +26,10 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- BEGIN select2 -->
+    <link href="{{ asset('plugins/css/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/css/select2.min.css') }}" rel="stylesheet" />
+    <!-- END select2 -->
+
 </head>
