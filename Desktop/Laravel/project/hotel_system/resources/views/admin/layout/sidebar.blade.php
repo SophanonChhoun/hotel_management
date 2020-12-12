@@ -8,7 +8,7 @@
 
 
             <li class="{{ request()->is('admin/room*') ? 'active' : '' }}">
-                <a href="javascript:;" data-toggle="collapse" data-target="#room"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#room"><i class="fa fa-fw fa-arrows-v"></i> Rooms <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul class="collapse" id="room">
                     <li {{ request()->is('admin/room_type*') ? "class=active" : null }}>
                         <a href="/admin/room_type/list"><i class="fa fa-fw fa-bar-chart-o"></i>Room Type</a>
@@ -19,7 +19,7 @@
                 </ul>
             </li>
 
-            <li class="{{ request()->is('admin/room*') ? 'active' : '' }}">
+            <li class="{{ request()->is('admin/pages*') ? 'active' : '' }}">
                 <a href="javascript:;" data-toggle="collapse" data-target="#page"><i class="fa fa-fw fa-arrows-v"></i> Pages <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul class="collapse" id="page">
                     <li {{ request()->is('admin/about_us*') ? "class=active" : null }}>
