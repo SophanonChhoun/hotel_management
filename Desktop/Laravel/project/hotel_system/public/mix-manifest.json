@@ -8,6 +8,7 @@
     "/dist/js/hotel/create.js": "/dist/js/hotel/create.js",
     "/dist/js/hotel/edit.js": "/dist/js/hotel/edit.js",
     "/dist/js/identification_type/edit.js": "/dist/js/identification_type/edit.js",
+    "/dist/js/payment_type/edit.js": "/dist/js/payment_type/edit.js",
     "/dist/js/room_type/create.js": "/dist/js/room_type/create.js",
     "/dist/js/room_type/edit.js": "/dist/js/room_type/edit.js",
     "/dist/js/rooms/create.js": "/dist/js/rooms/create.js",

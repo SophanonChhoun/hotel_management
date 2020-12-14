@@ -93,6 +93,11 @@ Route::group(["prefix" => "admin"],function() {
         Route::post("/update",[IdentificationTypeController::class,"update"]);
     });
 
+    Route::group(["prefix" => "payment_type"],function () {
+        Route::get("/list",[PaymentTypeController::class,"index"]);
+        Route::post("/update",[PaymentTypeController::class,"update"]);
+    });
+
     Route::group(["prefix" => "booking"],function () {
         Route::get("/create",[BookingController::class,"create"]);
         Route::post("/create",[BookingController::class,"store"]);
@@ -116,12 +121,5 @@ Route::group(["prefix" => "admin"],function() {
         Route::post("/update/{id}",[PaymentController::class,"update"]);
         Route::post("/delete/{id}",[PaymentController::class,"destroy"]);
 
-        Route::group(["prefix" => "type"],function () {
-            Route::get("/create",[PaymentTypeController::class,"create"]);
-            Route::post("/create",[PaymentTypeController::class,"store"]);
-            Route::get("/show/{id}",[PaymentTypeController::class,"show"]);
-            Route::post("/update/{id}",[PaymentTypeController::class,"update"]);
-            Route::post("/delete/{id}",[PaymentTypeController::class,"destroy"]);
-        });
     });
 });
