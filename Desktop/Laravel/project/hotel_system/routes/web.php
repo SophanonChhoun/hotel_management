@@ -85,14 +85,12 @@ Route::group(["prefix" => "admin"],function() {
         Route::get("/show/{id}",[IdentificationController::class,"show"]);
         Route::post("/update/{id}",[IdentificationController::class,"update"]);
         Route::post("/delete/{id}",[IdentificationController::class,"destroy"]);
+    });
 
-        Route::group(["prefix" => "type"],function () {
-            Route::get("/create",[IdentificationTypeController::class,"create"]);
-            Route::post("/create",[IdentificationTypeController::class,"store"]);
-            Route::get("/show/{id}",[IdentificationTypeController::class,"show"]);
-            Route::post("/update/{id}",[IdentificationTypeController::class,"update"]);
-            Route::post("/delete/{id}",[IdentificationTypeController::class,"destroy"]);
-        });
+
+    Route::group(["prefix" => "identification_type"],function () {
+        Route::get("/list",[IdentificationTypeController::class,"index"]);
+        Route::post("/update",[IdentificationTypeController::class,"update"]);
     });
 
     Route::group(["prefix" => "booking"],function () {

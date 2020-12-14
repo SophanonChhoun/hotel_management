@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\admin\IdentificationType;
 use Illuminate\Http\Request;
+use Exception;
 
 class IdentificationTypeController extends Controller
 {
@@ -14,72 +15,34 @@ class IdentificationTypeController extends Controller
      */
     public function index()
     {
-        //
+        $identification_type = IdentificationType::all();
+        return view("admin.identification_type.edit",compact("identification_type"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function update(Request $request)
     {
-        //
+        try {
+            $idS = array_column($request->data,"id");
+            IdentificationType::whereNotIn("id",$idS)->delete();
+            $i = 0;
+            foreach ($request->data as $identification_type)
+            {
+                $i++;
+                $data = [
+                  'name' => $identification_type['name'],
+                  'is_enable' => $identification_type['is_enable']
+                ];
+
+                $data = IdentificationType::updateOrCreate([
+                    "id" => $identification_type['id'] ?? null
+                ],$data);
+            }
+
+            return $this->success("Success");
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\admin\IdentificationType  $identificationType
-     * @return \Illuminate\Http\Response
-     */
-    public function show(IdentificationType $identificationType)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\admin\IdentificationType  $identificationType
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(IdentificationType $identificationType)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\admin\IdentificationType  $identificationType
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, IdentificationType $identificationType)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\admin\IdentificationType  $identificationType
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(IdentificationType $identificationType)
-    {
-        //
-    }
 }
