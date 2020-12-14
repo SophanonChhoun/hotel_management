@@ -7,79 +7,33 @@ use Illuminate\Http\Request;
 
 class PaymentTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $payment_type = PaymentType::all();
+        return view("admin.payment_type.edit",compact("payment_type"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update(Request $request)
     {
-        //
-    }
+        try {
+            $idS = array_column($request->data,"id");
+            PaymentType::whereNotIn("id",$idS)->delete();
+            foreach ($request->data as $payment_type)
+            {
+                $data = [
+                    'name' => $payment_type['name'],
+                    'is_enable' => $payment_type['is_enable']
+                ];
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\admin\PaymentType  $paymentType
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PaymentType $paymentType)
-    {
-        //
-    }
+                $data = PaymentType::updateOrCreate([
+                    "id" => $payment_type['id'] ?? null
+                ],$data);
+            }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\admin\PaymentType  $paymentType
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PaymentType $paymentType)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\admin\PaymentType  $paymentType
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PaymentType $paymentType)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\admin\PaymentType  $paymentType
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PaymentType $paymentType)
-    {
-        //
+            return $this->success("Success");
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
     }
 }

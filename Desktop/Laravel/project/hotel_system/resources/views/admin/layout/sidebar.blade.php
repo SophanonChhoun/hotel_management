@@ -6,11 +6,13 @@
                 <a href="/admin/hotel/list"><i class="fa fa-fw fa-home"></i>Hotel</a>
             </li>
 
-
             <li class="{{ request()->is('admin/identification_type*') ? 'active' : '' }}">
                 <a href="/admin/identification_type/list"><i class="fa fa-fw fa-info"></i>Identification Type</a>
             </li>
 
+            <li class="{{ request()->is('admin/payment_type*') ? 'active' : '' }}">
+                <a href="/admin/payment_type/list"><i class="fa fa-fw fa-file"></i>Payment Type</a>
+            </li>
 
             <li class="{{ request()->is('admin/room*') ? 'active' : '' }}">
                 <a href="javascript:;" data-toggle="collapse" data-target="#room"><i class="fa fa-fw fa-arrows-v"></i> Rooms <i class="fa fa-fw fa-caret-down"></i></a>

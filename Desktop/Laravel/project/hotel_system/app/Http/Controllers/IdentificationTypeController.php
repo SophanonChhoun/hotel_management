@@ -8,11 +8,6 @@ use Exception;
 
 class IdentificationTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $identification_type = IdentificationType::all();
@@ -25,10 +20,8 @@ class IdentificationTypeController extends Controller
         try {
             $idS = array_column($request->data,"id");
             IdentificationType::whereNotIn("id",$idS)->delete();
-            $i = 0;
             foreach ($request->data as $identification_type)
             {
-                $i++;
                 $data = [
                   'name' => $identification_type['name'],
                   'is_enable' => $identification_type['is_enable']
