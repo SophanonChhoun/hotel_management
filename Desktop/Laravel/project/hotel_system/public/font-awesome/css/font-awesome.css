@@ -793,6 +793,11 @@
 .fa-gavel:before {
   content: "\f0e3";
 }
+
+.fa-hotel:before{
+    content: "\f594";
+}
+
 .fa-dashboard:before,
 .fa-tachometer:before {
   content: "\f0e4";

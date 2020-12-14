@@ -22,4 +22,5 @@ mix.js('resources/js/axios.js', 'public/dist/js')
     .js('resources/js/about_us/edit.js','public/dist/js/about_us')
     .js('resources/js/contact_us/edit.js','public/dist/js/contact_us')
     .js('resources/js/contact_us/create.js','public/dist/js/contact_us')
+    .js('resources/js/identification_type/edit.js','public/dist/js/identification_type')
     .sass('resources/sass/app.scss', 'public/css');
