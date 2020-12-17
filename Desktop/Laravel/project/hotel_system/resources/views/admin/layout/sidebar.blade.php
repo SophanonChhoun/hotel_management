@@ -35,9 +35,13 @@
                     <li class="{{ request()->is('admin/rooms*') ? 'active' : '' }}">
                         <a href="/admin/contact_us/list"><i class="fa fa-fw fa-file-text"></i>Contact Us</a>
                     </li>
+
                 </ul>
             </li>
 
+            <li class="{{ request()->is('admin/slider*') ? 'active' : '' }}">
+                <a href="/admin/slider/list"><i class="fa fa-fw fa-sliders"></i>Slider</a>
+            </li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

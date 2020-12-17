@@ -15,9 +15,18 @@ class RoomTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $room_types = RoomType::with("media")->get();
+        $room_types = RoomType::with("media");
+        if(isset($request->search))
+        {
+            $room_types = $room_types->where("name","LIKE","%".$request->search."%");
+        }
+        if(isset($request->is_enable))
+        {
+            $room_types = $room_types->where("is_enable",$request->is_enable);
+        }
+        $room_types = $room_types->get();
 
         return view('admin.room_type.list',compact('room_types'));
     }

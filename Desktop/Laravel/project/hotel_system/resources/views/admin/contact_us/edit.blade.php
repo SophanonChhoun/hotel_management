@@ -17,7 +17,7 @@
                 </li>
             </ol>
         </div>
-        <div id="editContactUs">
+        <div id="editContactUs" v-cloak>
             <form action="#" @submit.prevent="submit">
                 <div class="portlet-body m-20">
                     @include('admin.contact_us.form')

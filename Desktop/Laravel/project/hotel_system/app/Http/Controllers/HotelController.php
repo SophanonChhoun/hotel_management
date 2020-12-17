@@ -15,9 +15,19 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $hotels = Hotel::with("media")->get();
+        $hotels = Hotel::with("media");
+        if(isset($request->search))
+        {
+            $hotels = $hotels->where("name","LIKE","%".$request->search."%");
+        }
+        if(isset($request->is_enable))
+        {
+            $hotels = $hotels->where("is_enable",$request->is_enable);
+        }
+
+        $hotels = $hotels->get();
         return view("admin.hotel.list",compact("hotels"));
     }
 

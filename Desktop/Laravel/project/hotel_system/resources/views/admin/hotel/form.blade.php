@@ -1,12 +1,12 @@
 <div class="form-group" :class="{'has-error' : errors.first('name')}">
     <label class="control-label">
-        Name
+        @lang('general.name')
         <span style="color: red">*</span>
     </label>
     <input type="text"
            name="name"
            v-model="data.name"
-           data-vv-as="Name"
+           data-vv-as="@lang('general.name')"
            v-validate="'required'"
            class="form-control"
            placeholder="Name">
@@ -16,13 +16,13 @@
 
 <div class="form-group" :class="{'has-error' : errors.first('street_address')}">
     <label class="control-label">
-        Street Address
+        @lang('general.street_address')
         <span style="color: red">*</span>
     </label>
     <input type="text"
            name="street_address"
            v-model="data.street_address"
-           data-vv-as="Street Address"
+           data-vv-as="@lang('general.street_address')"
            v-validate="'required'"
            class="form-control"
            placeholder="Street Address">
@@ -31,13 +31,13 @@
 
 <div class="form-group" :class="{'has-error' : errors.first('city')}">
     <label class="control-label">
-        City
+        @lang('general.city')
         <span style="color: red">*</span>
     </label>
     <input type="text"
            name="city"
            v-model="data.city"
-           data-vv-as="City"
+           data-vv-as="@lang('general.city')"
            v-validate="'required'"
            class="form-control"
            placeholder="City">
@@ -46,13 +46,13 @@
 
 <div class="form-group" :class="{'has-error' : errors.first('country')}">
     <label class="control-label">
-        Country
+        @lang('general.country')
         <span style="color: red">*</span>
     </label>
     <input type="text"
            name="country"
            v-model="data.country"
-           data-vv-as="country"
+           data-vv-as="@lang('general.country')"
            v-validate="'required'"
            class="form-control"
            placeholder="Country">
@@ -61,13 +61,13 @@
 
 <div class="form-group" :class="{'has-error' : errors.first('zip')}">
     <label class="control-label">
-        Zip
+        @lang('general.zip')
         <span style="color: red">*</span>
     </label>
     <input type="text"
            name="zip"
            v-model="data.zip"
-           data-vv-as="Zip"
+           data-vv-as="@lang('general.zip')"
            v-validate="'required'"
            class="form-control"
            placeholder="Zip">
@@ -76,7 +76,7 @@
 
 <div class="form-group" :class="{'has-error' : error_image}">
     <label class="control-label">
-        Image
+        @lang('general.image')
         <span style="color: red">*</span>
     </label>
     <img :src="data.image ? data.image : (data.media ? data.media.file_url : '{{asset('image/noimage.png')}}' )"
@@ -91,14 +91,14 @@
 
 <div class="form-group" :class="{'has-error' : errors.first('is_enable')}">
     <label class="control-label">
-        Status
+        @lang('general.status')
         <span style="color: red">*</span>
     </label>
     <input type="checkbox"
            style="margin-left: 2%"
            name="is_enable"
            v-model="data.is_enable"
-           data-vv-as="Status"
+           data-vv-as="@lang('general.status')"
            v-validate="'required'"
            >
     <span class="help-block">@{{ errors.first('is_enable') }}</span>
