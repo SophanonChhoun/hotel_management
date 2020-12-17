@@ -17,7 +17,7 @@
                 </li>
             </ol>
         </div>
-        <div id="createRoom">
+        <div id="createRoom" v-cloak>
             <form action="#" @submit.prevent="submit">
 
                 <div class="m-20">

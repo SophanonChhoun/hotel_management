@@ -14,6 +14,9 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ContactUsController;
+use \Illuminate\Support\Facades\App;
+use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\SlidersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +31,9 @@ use App\Http\Controllers\ContactUsController;
 Route::get('/', function () {
     return view('admin.layout.default');
 });
+
+Route::get('/lang/{locale}', [LocalizationController::class,"lang"]);
+
 Route::post("foo/bar",[TestController::class,"index"]);
 
 Route::group(["prefix" => "admin"],function() {
@@ -96,6 +102,12 @@ Route::group(["prefix" => "admin"],function() {
     Route::group(["prefix" => "payment_type"],function () {
         Route::get("/list",[PaymentTypeController::class,"index"]);
         Route::post("/update",[PaymentTypeController::class,"update"]);
+    });
+
+
+    Route::group(["prefix" => "slider"],function () {
+        Route::get("/list",[SlidersController::class,"index"]);
+        Route::post("/update",[SlidersController::class,"update"]);
     });
 
     Route::group(["prefix" => "booking"],function () {
