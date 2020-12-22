@@ -2,7 +2,7 @@
 <div v-for="(identification_type,index) in data">
     <div class="portlet blue box" >
         <div class="portlet-title">
-            <div class="caption"><i class="icon-picture"></i>identification_type</div>
+            <div class="caption"><i class="icon-picture"></i>Identification Type</div>
 
             <div class="tools">
                 <a href="javascript:;" @click="removeRoom(index)">

@@ -52,6 +52,7 @@
 
         <div class="col-lg-12">
             @include("admin.contact_us.table")
+            @include("admin.layout.pagination")
 
         </div>
         </div>

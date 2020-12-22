@@ -23,5 +23,5 @@ return [
     'street_address' => 'Street Address',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'total' => 'Total',
 ];

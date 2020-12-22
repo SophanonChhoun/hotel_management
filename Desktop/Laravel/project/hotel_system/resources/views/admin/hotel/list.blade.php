@@ -52,6 +52,7 @@
         </div>
         <div class="col-lg-12">
             @include("admin.hotel.table")
+            @include("admin.layout.pagination")
         </div>
     </div>
 @endsection

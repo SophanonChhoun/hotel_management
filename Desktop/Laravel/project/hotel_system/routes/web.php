@@ -17,6 +17,7 @@ use App\Http\Controllers\ContactUsController;
 use \Illuminate\Support\Facades\App;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\SlidersController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +33,7 @@ Route::get('/', function () {
     return view('admin.layout.default');
 });
 
+
 Route::get('/lang/{locale}', [LocalizationController::class,"lang"]);
 
 Route::post("foo/bar",[TestController::class,"index"]);
@@ -41,6 +43,16 @@ Route::group(["prefix" => "admin"],function() {
     Route::group(['prefix' => 'about_us'],function(){
         Route::get("/{id}",[AboutUsController::class,"show"]);
         Route::post("/{id}",[AboutUsController::class,"update"]);
+    });
+
+    Route::group(['prefix' => 'user'],function(){
+       Route::get("/list",[UserController::class,'index']);
+        Route::get("/create",[UserController::class,"create"]);
+        Route::post("/create",[UserController::class,"store"]);
+        Route::get("/show/{id}",[UserController::class,"show"]);
+        Route::post("/update/{id}",[UserController::class,"update"]);
+        Route::post("/update/status/{id}",[UserController::class,"updateStatus"]);
+        Route::post("/delete/{id}",[UserController::class,"destroy"]);
     });
 
     Route::group(["prefix" => "hotel"],function () {
@@ -135,3 +147,7 @@ Route::group(["prefix" => "admin"],function() {
 
     });
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return Inertia\Inertia::render('Dashboard');
+})->name('dashboard');

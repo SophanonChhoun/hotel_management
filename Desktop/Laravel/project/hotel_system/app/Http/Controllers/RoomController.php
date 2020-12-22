@@ -26,9 +26,9 @@ class RoomController extends Controller
         {
             $rooms = $rooms->where("is_enable",$request->is_enable);
         }
-        $rooms = $rooms->get();
+        $data = $rooms->paginate(10);
 
-        return view("admin.rooms.list",compact("rooms"));
+        return view("admin.rooms.list",compact("data"));
     }
 
     /**
