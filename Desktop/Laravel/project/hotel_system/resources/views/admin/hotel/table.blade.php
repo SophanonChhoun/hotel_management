@@ -10,7 +10,7 @@
             <th>@lang('general.status')</th>
             <th colspan="2">@lang('general.action')</th>
         </tr>
-        @forelse($hotels as $hotel)
+        @forelse($data as $hotel)
             <tr>
                 <td>{{ $hotel->name }}</td>
                 <td>{{ $hotel->street_address }}</td>

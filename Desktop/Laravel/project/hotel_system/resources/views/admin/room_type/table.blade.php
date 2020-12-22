@@ -8,7 +8,7 @@
             <th>Status</th>
             <th colspan="2">Action</th>
         </tr>
-        @forelse($room_types as $room_type)
+        @forelse($data as $room_type)
             <tr>
                 <td>{{ $room_type->name }}</td>
                 <td><?php

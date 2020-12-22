@@ -13,5 +13,7 @@
     "/dist/js/room_type/edit.js": "/dist/js/room_type/edit.js",
     "/dist/js/rooms/create.js": "/dist/js/rooms/create.js",
     "/dist/js/rooms/edit.js": "/dist/js/rooms/edit.js",
-    "/dist/js/sliders/edit.js": "/dist/js/sliders/edit.js"
+    "/dist/js/sliders/edit.js": "/dist/js/sliders/edit.js",
+    "/dist/js/user/create.js": "/dist/js/user/create.js",
+    "/dist/js/user/edit.js": "/dist/js/user/edit.js"
 }

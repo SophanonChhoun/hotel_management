@@ -25,4 +25,6 @@ mix.js('resources/js/axios.js', 'public/dist/js')
     .js('resources/js/identification_type/edit.js','public/dist/js/identification_type')
     .js('resources/js/payment_type/edit.js','public/dist/js/payment_type')
     .js('resources/js/sliders/edit.js','public/dist/js/sliders')
+    .js('resources/js/user/create.js','public/dist/js/user')
+    .js('resources/js/user/edit.js','public/dist/js/user')
     .sass('resources/sass/app.scss', 'public/css');

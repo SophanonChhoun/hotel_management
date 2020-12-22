@@ -127,6 +127,18 @@
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/irazasyed/telegram-bot-sdk" />
       <path value="$PROJECT_DIR$/vendor/league/event" />
+      <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/vendor/mobiledetect/mobiledetectlib" />
+      <path value="$PROJECT_DIR$/vendor/jaybizzle/crawler-detect" />
+      <path value="$PROJECT_DIR$/vendor/jenssegers/agent" />
+      <path value="$PROJECT_DIR$/vendor/pragmarx/google2fa" />
+      <path value="$PROJECT_DIR$/vendor/laravel/jetstream" />
+      <path value="$PROJECT_DIR$/vendor/laravel/fortify" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
+      <path value="$PROJECT_DIR$/vendor/inertiajs/inertia-laravel" />
+      <path value="$PROJECT_DIR$/vendor/tightenco/ziggy" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kjy086cc68W8HW2CCKHGrSi3xt" />
@@ -137,7 +149,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/sliders" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/user" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -149,14 +161,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/js/user" />
+      <recent name="$PROJECT_DIR$/resources/views/admin/user" />
       <recent name="$PROJECT_DIR$/resources/js/sliders" />
       <recent name="$PROJECT_DIR$/resources/views/admin/slider" />
       <recent name="$PROJECT_DIR$/resources/lang/km" />
-      <recent name="$PROJECT_DIR$/resources/js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/admin" />
     </key>
   </component>
@@ -222,7 +234,14 @@
       <workItem from="1608006345122" duration="566000" />
       <workItem from="1608018789963" duration="3881000" />
       <workItem from="1608201406616" duration="3250000" />
-      <workItem from="1608210283651" duration="7185000" />
+      <workItem from="1608210283651" duration="8067000" />
+      <workItem from="1608263028799" duration="139000" />
+      <workItem from="1608266413345" duration="290000" />
+      <workItem from="1608267292187" duration="931000" />
+      <workItem from="1608268498732" duration="45000" />
+      <workItem from="1608608867250" duration="6300000" />
+      <workItem from="1608621812461" duration="289000" />
+      <workItem from="1608624122143" duration="2264000" />
     </task>
     <servers />
   </component>
@@ -242,22 +261,22 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="104" y="42" width="1071" height="758" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1606892631946" />
-    <state x="377" y="206" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608211213264">
+    <state x="377" y="206" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608643934900">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="377" y="206" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1608211213264" />
+    <state x="377" y="206" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1608643934900" />
     <state x="453" y="120" key="#com.intellij.ide.util.MemberChooser" timestamp="1606913479295">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="453" y="120" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1606913479295" />
-    <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607092784308">
+    <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608643689338">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800@0.0.1280.800" timestamp="1607092784308" />
-    <state x="378" y="159" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608214271338">
+    <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800@0.0.1280.800" timestamp="1608643689338" />
+    <state x="378" y="159" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608620045082">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="378" y="159" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1608214271338" />
+    <state x="378" y="159" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1608620045082" />
     <state x="149" y="25" key="SettingsEditor" timestamp="1607247425920">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -266,10 +285,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="305" y="185" key="run.anything.popup/0.0.1280.800@0.0.1280.800" timestamp="1606916395471" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1608214198826">
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1608624384379">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1608214198826" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1608624384379" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.25.1280.719@0.25.1280.719" timestamp="1607207655610" />
   </component>
 </project>

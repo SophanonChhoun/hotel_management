@@ -27,8 +27,8 @@ class HotelController extends Controller
             $hotels = $hotels->where("is_enable",$request->is_enable);
         }
 
-        $hotels = $hotels->get();
-        return view("admin.hotel.list",compact("hotels"));
+        $data = $hotels->paginate(10);
+        return view("admin.hotel.list",compact("data"));
     }
 
     /**

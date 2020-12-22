@@ -26,9 +26,9 @@ class RoomTypeController extends Controller
         {
             $room_types = $room_types->where("is_enable",$request->is_enable);
         }
-        $room_types = $room_types->get();
+        $data = $room_types->paginate(10);
 
-        return view('admin.room_type.list',compact('room_types'));
+        return view('admin.room_type.list',compact('data'));
     }
 
     /**

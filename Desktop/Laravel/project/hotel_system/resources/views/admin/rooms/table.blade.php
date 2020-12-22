@@ -7,7 +7,7 @@
             <th>Status</th>
             <th colspan="2">Action</th>
         </tr>
-        @forelse($rooms as $room)
+        @forelse($data as $room)
             <tr>
                 <td>{{ $room->name }}</td>
                 <td>{{ $room->roomType->name }}</td>
