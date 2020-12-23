@@ -20,8 +20,8 @@ class Hotel extends Model
       'media_id'
     ];
 
-    public function media()
+    public function medias()
     {
-        return $this->belongsTo(MediaFile::class,"media_id","media_id");
+        return $this->belongsToMany(MediaFile::class, HotelMediaMap::class, 'hotel_id', 'media_id');
     }
 }

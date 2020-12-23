@@ -12,7 +12,7 @@ new Vue({
             city: '',
             zip: '',
             is_enable: '',
-            image: '',
+            medias: [],
         },
         is_submit: false,
         error: '',
@@ -26,7 +26,7 @@ new Vue({
             this.$validator.validateAll().then((result) => {
                 this.is_submit = true
                 let save = true;
-                if(!this.data.image)
+                if(this.data.medias.length <= 0)
                 {
                     this.error_image = "The Image field is required";
                     save = false;
@@ -48,27 +48,33 @@ new Vue({
             })
         },
 
-        uploadImage(event) {
-            const input = event.target;
-            if (input.files && input.files[0]) {
-                var img = new Image();
-                img.onload = function() {
-                        const reader = new FileReader();
-                        reader.onload = (e) => {
-                            this.image = e.target.result
-                        }
-                        reader.readAsDataURL(input.files[0])
-                }
-            }
-        },
-
-        uploadAddingImage(event) {
+        uploadAddingImage(index,event) {
             let image = event.target.files[0];
+            console.log(event.target.files[0].size)
             let reader = new FileReader();
             reader.readAsDataURL(image);
-            reader.onload = event => {
-                Vue.set(this.data, 'image', event.target.result)
+            reader.onload = event =>{
+                Vue.set(this.data.medias[index], 'image', event.target.result)
+                this.data[index].error = {
+                    image: ''
+                };
             }
+        },
+        addMedias() {
+            this.data.medias.push({
+                image: '',
+                error: {
+                    image: ''
+                },
+                sort: this.data.medias.length + 1,
+            });
+        },
+
+        removeSlider(index) {
+            this.data.medias.splice(index, 1)
+            this.data.medias.forEach(function (item, i) {
+                item.sort = i + 1
+            })
         },
     }
 });

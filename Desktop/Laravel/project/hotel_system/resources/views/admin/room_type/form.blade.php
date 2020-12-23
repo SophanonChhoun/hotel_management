@@ -41,20 +41,46 @@
     <span class="help-block">@{{ errors.first('price') }}</span>
 </div>
 
-<div class="form-group" :class="{'has-error' : error_image}">
-    <label class="control-label">
-        Image
-        <span style="color: red">*</span>
-    </label>
-    <img :src="data.image ? data.image : (data.media ? data.media.file_url : '{{asset('image/noimage.png')}}' )"
-         style='width: 300px;height: 300px;' class="img-responsive">
-    <input type="file" :value="null"  name="adding_image" id="adding_image"
-           v-model="data.image"
-           placeholder="Image" data-vv-as="Image"
-           @change="uploadAddingImage" accept=".png, .jpg">
-    <span class="help-block" style="color: darkred">@{{ error_image }}</span>
+<div v-for="(image,index) in data.medias">
+    <div class="portlet blue box" >
+        <div class="portlet-title">
+            <div class="caption"><i class="icon-picture"></i>Slider</div>
 
+            <div class="tools">
+                <a href="javascript:;" @click="removeSlider(index)">
+                    <i class="fa fa-remove fa-lg" style="color: #ffff"></i>
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="form-group" >
+                <label class="control-label col-md-2">Image
+                    <span style="color: red">*</span></label>
+                <input type="file"
+                       class="form-control"
+                       placeholder="Image"
+                       data-vv-as="Image"
+                       :value="null"
+                       :name="'image-' + index" data-vv-as="Image"
+                       @change="uploadAddingImage(index, $event)"
+                >
+{{--                <span class="help-block">@{{ image.error.image }}</span>--}}
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10 col-md-offset-2">
+                    <img :src="image.image ? image.image : (image.file_url ? image.file_url : '{{asset('image/noimage.png')}}' )" style='max-width: 300px;max-height: 300px;' class="img-thumbnail">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div>
+
+    <button type="button" class="btn btn-primary" @click="addMedias()">Add Image</button>
+    <span class="help-block" style="color: red" >@{{ error_image }}</span>
+</div>
+
 
 <div class="form-group" :class="{'has-error' : errors.first('is_enable')}">
     <label class="control-label">

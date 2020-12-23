@@ -17,19 +17,15 @@ new Vue({
             this.$validator.validateAll().then((result) => {
                 this.is_submit = true
                 let save = true;
-                if(!this.data.image)
-                {
-                    this.error_image = "The Image field is required";
-                    save = false;
-                }
 
                 if(result && save) {
-                    axios.post('/admin/user/create',this.data).then(response => {
+                    console.log('111')
+                    axios.post('/admin/login',this.data).then(response => {
                         if(response.data.success){
-                            window.location.href = '/admin/user/list';
+                            window.location.href = '/admin/test';
                         }else{
                             console.log(response.data.message);
-                            this.error = response.data.message;
+                            this.error = 'Wrong email/password';
                         }
                     });
                 } else {
@@ -39,27 +35,5 @@ new Vue({
             })
         },
 
-        uploadImage(event) {
-            const input = event.target;
-            if (input.files && input.files[0]) {
-                var img = new Image();
-                img.onload = function() {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        this.image = e.target.result
-                    }
-                    reader.readAsDataURL(input.files[0])
-                }
-            }
-        },
-
-        uploadAddingImage(event) {
-            let image = event.target.files[0];
-            let reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onload = event => {
-                Vue.set(this.data, 'image', event.target.result)
-            }
-        },
     }
 });

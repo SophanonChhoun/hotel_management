@@ -122,7 +122,8 @@ new Vue({
       description: '',
       price: '',
       is_enable: '',
-      image: ''
+      image: '',
+      medias: []
     },
     is_submit: false,
     error: '',
@@ -142,7 +143,7 @@ new Vue({
         _this.is_submit = true;
         var save = true;
 
-        if (!_this.data.image) {
+        if (_this.data.medias.length <= 0) {
           _this.error_image = 'The Image field is required';
           save = false;
         }
@@ -180,16 +181,35 @@ new Vue({
         };
       }
     },
-    uploadAddingImage: function uploadAddingImage(event) {
+    uploadAddingImage: function uploadAddingImage(index, event) {
       var _this3 = this;
 
       var image = event.target.files[0];
+      console.log(event.target.files[0].size);
       var reader = new FileReader();
       reader.readAsDataURL(image);
 
       reader.onload = function (event) {
-        Vue.set(_this3.data, 'image', event.target.result);
+        Vue.set(_this3.data.medias[index], 'image', event.target.result);
+        _this3.data[index].error = {
+          image: ''
+        };
       };
+    },
+    addMedias: function addMedias() {
+      this.data.medias.push({
+        image: '',
+        error: {
+          image: ''
+        },
+        sort: this.data.medias.length + 1
+      });
+    },
+    removeSlider: function removeSlider(index) {
+      this.data.medias.splice(index, 1);
+      this.data.medias.forEach(function (item, i) {
+        item.sort = i + 1;
+      });
     }
   }
 });

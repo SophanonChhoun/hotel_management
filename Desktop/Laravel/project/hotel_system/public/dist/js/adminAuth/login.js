@@ -94,7 +94,7 @@
 /***/ (function(module, exports) {
 
 new Vue({
-  el: '#login',
+  el: '#login-box',
   data: {
     data: {
       email: '',
@@ -114,18 +114,14 @@ new Vue({
         _this.is_submit = true;
         var save = true;
 
-        if (!_this.data.image) {
-          _this.error_image = "The Image field is required";
-          save = false;
-        }
-
         if (result && save) {
-          axios.post('/admin/user/create', _this.data).then(function (response) {
+          console.log('111');
+          axios.post('/admin/login', _this.data).then(function (response) {
             if (response.data.success) {
-              window.location.href = '/admin/user/list';
+              window.location.href = '/admin/test';
             } else {
               console.log(response.data.message);
-              _this.error = response.data.message;
+              _this.error = 'Wrong email/password';
             }
           });
         } else {
@@ -133,36 +129,6 @@ new Vue({
           window.scrollTo(0, 0);
         }
       });
-    },
-    uploadImage: function uploadImage(event) {
-      var input = event.target;
-
-      if (input.files && input.files[0]) {
-        var img = new Image();
-
-        img.onload = function () {
-          var _this2 = this;
-
-          var reader = new FileReader();
-
-          reader.onload = function (e) {
-            _this2.image = e.target.result;
-          };
-
-          reader.readAsDataURL(input.files[0]);
-        };
-      }
-    },
-    uploadAddingImage: function uploadAddingImage(event) {
-      var _this3 = this;
-
-      var image = event.target.files[0];
-      var reader = new FileReader();
-      reader.readAsDataURL(image);
-
-      reader.onload = function (event) {
-        Vue.set(_this3.data, 'image', event.target.result);
-      };
     }
   }
 });
