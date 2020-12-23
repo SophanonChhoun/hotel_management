@@ -17,7 +17,7 @@
                 <td>{{ $hotel->city }}</td>
                 <td>{{ $hotel->country }}</td>
                 <td>{{ $hotel->zip }}</td>
-                <td><img src="{{ $hotel->media->file_url ?? asset('image/noimage.png') }}" class="img-responsive" style="max-height: 200px;max-width: 200px"></td>
+                <td><img src="{{ $hotel->medias->first()->file_url ?? asset('image/noimage.png') }}" class="img-responsive" style="max-height: 200px;max-width: 200px"></td>
                 <td>
                     <input type="checkbox" data-toggle="modal" data-target="#status{{ $hotel->id }}" @if($hotel->is_enable) checked @endif>
                     @include("admin.hotel.status")

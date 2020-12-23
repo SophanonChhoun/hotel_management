@@ -17,10 +17,10 @@
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
                 <div id="login-box" class="col-md-12">
+{{--                    <form id="login-form" class="form" action="{{ url('admin/login') }}" method="post">--}}
                     <form id="login-form" class="form" action="{{ url('admin/login') }}" method="post">
                         @csrf
                         <h3 class="text-center text-info">Login</h3>
-                        <h4 class="alert alert-danger">{{ \Illuminate\Support\Facades\Session::get("message") ?? null }}</h4>
                         <div class="form-group" :class="{'has-error' : errors.first('email')}">
                             <label for="username" class="text-info">Email:</label><br>
                             <input type="text"
@@ -47,6 +47,10 @@
                             <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
                             <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                         </div>
+                        @if(isset($errorMessageDuration))
+                            <h3 class="alert alert-danger">{{ $errorMessageDuration }}</h3>
+                        @endif
+
                     </form>
                 </div>
             </div>

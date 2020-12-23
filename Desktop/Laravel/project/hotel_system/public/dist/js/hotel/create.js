@@ -463,7 +463,7 @@ new Vue({
       city: '',
       zip: '',
       is_enable: '',
-      image: ''
+      medias: []
     },
     is_submit: false,
     error: '',
@@ -479,7 +479,7 @@ new Vue({
         _this.is_submit = true;
         var save = true;
 
-        if (!_this.data.image) {
+        if (_this.data.medias.length <= 0) {
           _this.error_image = "The Image field is required";
           save = false;
         }
@@ -499,35 +499,35 @@ new Vue({
         }
       });
     },
-    uploadImage: function uploadImage(event) {
-      var input = event.target;
-
-      if (input.files && input.files[0]) {
-        var img = new Image();
-
-        img.onload = function () {
-          var _this2 = this;
-
-          var reader = new FileReader();
-
-          reader.onload = function (e) {
-            _this2.image = e.target.result;
-          };
-
-          reader.readAsDataURL(input.files[0]);
-        };
-      }
-    },
-    uploadAddingImage: function uploadAddingImage(event) {
-      var _this3 = this;
+    uploadAddingImage: function uploadAddingImage(index, event) {
+      var _this2 = this;
 
       var image = event.target.files[0];
+      console.log(event.target.files[0].size);
       var reader = new FileReader();
       reader.readAsDataURL(image);
 
       reader.onload = function (event) {
-        Vue.set(_this3.data, 'image', event.target.result);
+        Vue.set(_this2.data.medias[index], 'image', event.target.result);
+        _this2.data[index].error = {
+          image: ''
+        };
       };
+    },
+    addMedias: function addMedias() {
+      this.data.medias.push({
+        image: '',
+        error: {
+          image: ''
+        },
+        sort: this.data.medias.length + 1
+      });
+    },
+    removeSlider: function removeSlider(index) {
+      this.data.medias.splice(index, 1);
+      this.data.medias.forEach(function (item, i) {
+        item.sort = i + 1;
+      });
     }
   }
 });

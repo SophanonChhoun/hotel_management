@@ -18,7 +18,7 @@
                     ?>
                 </td>
                 <td>{{ $room_type->price }}</td>
-                <td><img src="{{ $room_type->media->file_url ?? asset('image/noimage.png') }}" class="img-responsive" style="max-height: 200px;max-width: 200px"></td>
+                <td><img src="{{ $room_type->medias->first()->file_url ?? asset('image/noimage.png') }}" class="img-responsive" style="max-height: 200px;max-width: 200px"></td>
                 <td>
                     <input type="checkbox" data-toggle="modal" data-target="#status{{ $room_type->id }}" @if($room_type->is_enable) checked @endif>
                     @include("admin.room_type.status")

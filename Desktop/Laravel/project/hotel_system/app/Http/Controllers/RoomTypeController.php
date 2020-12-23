@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Core\MediaLib;
 use App\Models\admin\RoomType;
+use App\Models\admin\RoomTypeMediaMap;
 use Illuminate\Http\Request;
 use Exception;
 use DB;
@@ -17,7 +18,7 @@ class RoomTypeController extends Controller
      */
     public function index(Request $request)
     {
-        $room_types = RoomType::with("media");
+        $room_types = RoomType::with("medias");
         if(isset($request->search))
         {
             $room_types = $room_types->where("name","LIKE","%".$request->search."%");
@@ -26,7 +27,7 @@ class RoomTypeController extends Controller
         {
             $room_types = $room_types->where("is_enable",$request->is_enable);
         }
-        $data = $room_types->paginate(10);
+        $data = $room_types->simplePaginate(10);
 
         return view('admin.room_type.list',compact('data'));
     }
@@ -58,11 +59,11 @@ class RoomTypeController extends Controller
                 "price" => $request->price,
                 "is_enable" => $request->is_enable
             ];
-            if(isset($request->image))
-            {
-                $room_type['media_id'] = MediaLib::generateImageBase64($request['image']);
-            }
             $data = RoomType::create($room_type);
+            if(filled($request->medias))
+            {
+                RoomTypeMediaMap::store($request->medias,$data->id);
+            }
 
             DB::commit();
             return $this->success($data);
@@ -81,8 +82,7 @@ class RoomTypeController extends Controller
     public function show($id)
     {
         try {
-            $room_type = RoomType::with("media")->find($id);
-
+            $room_type = RoomType::with("medias")->find($id);
             return view("admin.room_type.edit",compact("room_type"));
         }catch (Exception $exception){
             return $this->fail($exception);
@@ -112,11 +112,11 @@ class RoomTypeController extends Controller
                 "price" => $request->price,
                 "is_enable" => $request->is_enable
             ];
-            if(isset($request->image))
-            {
-                $room_type['media_id'] = MediaLib::generateImageBase64($request['image']);
-            }
             $data = $roomType->update($room_type);
+            if(filled($request->medias))
+            {
+                RoomTypeMediaMap::store($request->medias,$id);
+            }
             if(!$data)
             {
                 return $this->fail("Cannot update this room type");

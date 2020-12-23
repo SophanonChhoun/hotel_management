@@ -11,12 +11,19 @@ use Exception;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\AdminAuthRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminAuthController extends Controller
 {
     public function signin()
     {
-        return view('layouts.login');
+        if(Session::get('auth'))
+        {
+            return \redirect('/test');
+        }else{
+            return view('layouts.login');
+
+        }
     }
 
     public function getLoginAccess(Request $request,$credential_id)
@@ -62,10 +69,13 @@ class AdminAuthController extends Controller
                 );
                 Session::put('auth', $auth);
                 DB::commit();
+                return redirect('/test');
 
-                return redirect("/test");
             }else{
-                return redirect('')->with(["message" => "There is wrong email or password"]);
+                return view('layouts.login', [
+                    'errorMessageDuration' => 'Wrong login details',
+                ]);
+                return redirect()->back()->withErrors(['error','Wrong Login Details']);
             }
         }catch (Exception $exception){
             DB::rollback();

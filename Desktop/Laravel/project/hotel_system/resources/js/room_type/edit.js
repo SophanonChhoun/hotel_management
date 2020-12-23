@@ -40,13 +40,34 @@ new Vue({
                 }
             })
         },
-        uploadAddingImage(event) {
+
+        uploadAddingImage(index,event) {
             let image = event.target.files[0];
+            console.log(event.target.files[0].size)
             let reader = new FileReader();
             reader.readAsDataURL(image);
-            reader.onload = event => {
-                Vue.set(this.data, 'image', event.target.result)
+            reader.onload = event =>{
+                Vue.set(this.data.medias[index], 'image', event.target.result)
+                this.data[index].error = {
+                    image: ''
+                };
             }
+        },
+        addMedias() {
+            this.data.medias.push({
+                image: '',
+                error: {
+                    image: ''
+                },
+                sort: this.data.medias.length + 1,
+            });
+        },
+
+        removeSlider(index) {
+            this.data.medias.splice(index, 1)
+            this.data.medias.forEach(function (item, i) {
+                item.sort = i + 1
+            })
         },
 
     }
