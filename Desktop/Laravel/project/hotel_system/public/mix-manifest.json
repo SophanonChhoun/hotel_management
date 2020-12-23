@@ -1,5 +1,6 @@
 {
     "/dist/js/about_us/edit.js": "/dist/js/about_us/edit.js",
+    "/dist/js/adminAuth/login.js": "/dist/js/adminAuth/login.js",
     "/dist/js/app.js": "/dist/js/app.js",
     "/dist/js/axios.js": "/dist/js/axios.js",
     "/css/app.css": "/css/app.css",

@@ -15,7 +15,6 @@ class CreateUserLoginAccessesTable extends Migration
     {
         Schema::create('user_login_accesses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('authorization_token');
             $table->text('access_token');
             $table->datetime('expired_at');
             $table->integer('user_id');
