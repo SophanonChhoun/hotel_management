@@ -149,7 +149,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/user" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Core" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -161,15 +161,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/admin" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Core" />
       <recent name="$PROJECT_DIR$/resources/js/user" />
       <recent name="$PROJECT_DIR$/resources/views/admin/user" />
       <recent name="$PROJECT_DIR$/resources/js/sliders" />
       <recent name="$PROJECT_DIR$/resources/views/admin/slider" />
-      <recent name="$PROJECT_DIR$/resources/lang/km" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -241,7 +241,12 @@
       <workItem from="1608268498732" duration="45000" />
       <workItem from="1608608867250" duration="6300000" />
       <workItem from="1608621812461" duration="289000" />
-      <workItem from="1608624122143" duration="2264000" />
+      <workItem from="1608624122143" duration="3544000" />
+      <workItem from="1608645306185" duration="6110000" />
+      <workItem from="1608692025859" duration="1622000" />
+      <workItem from="1608695551929" duration="124000" />
+      <workItem from="1608698231028" duration="174000" />
+      <workItem from="1608699751447" duration="30000" />
     </task>
     <servers />
   </component>
@@ -273,10 +278,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800@0.0.1280.800" timestamp="1608643689338" />
-    <state x="378" y="159" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608620045082">
+    <state x="378" y="159" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608650512320">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="378" y="159" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1608620045082" />
+    <state x="378" y="159" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1608650512320" />
     <state x="149" y="25" key="SettingsEditor" timestamp="1607247425920">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -285,10 +290,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="305" y="185" key="run.anything.popup/0.0.1280.800@0.0.1280.800" timestamp="1606916395471" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1608624384379">
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1608649304862">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1608624384379" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1608649304862" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.25.1280.719@0.25.1280.719" timestamp="1607207655610" />
   </component>
 </project>
