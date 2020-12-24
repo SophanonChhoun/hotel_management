@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1240,14 +1240,14 @@ new Vue({
 
 /***/ }),
 
-/***/ 11:
+/***/ 13:
 /*!********************************************************!*\
   !*** multi ./resources/js/identification_type/edit.js ***!
   \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/identification_type/edit.js */"./resources/js/identification_type/edit.js");
+module.exports = __webpack_require__(/*! D:\NIPTICT\Term 4\Web Application\hotel_management\Desktop\Laravel\project\hotel_system\resources\js\identification_type\edit.js */"./resources/js/identification_type/edit.js");
 
 
 /***/ })

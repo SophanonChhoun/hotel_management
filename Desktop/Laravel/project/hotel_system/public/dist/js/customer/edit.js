@@ -81,20 +81,20 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/contact_us/edit.js":
-/*!*****************************************!*\
-  !*** ./resources/js/contact_us/edit.js ***!
-  \*****************************************/
+/***/ "./resources/js/customer/edit.js":
+/*!***************************************!*\
+  !*** ./resources/js/customer/edit.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 new Vue({
-  el: '#editContactUs',
+  el: '#CreateCustomer',
   data: {
     data: data,
     id: data.id,
@@ -111,9 +111,9 @@ new Vue({
         var save = true;
 
         if (result && save) {
-          axios.post('/admin/contact_us/update/' + _this.id, _this.data).then(function (response) {
+          axios.post('/admin/customer/update/' + _this.id, _this.data).then(function (response) {
             if (response.data.success) {
-              window.location.href = '/admin/contact_us/list';
+              window.location.href = '/admin/customer/list';
             } else {
               console.log(response.data.message);
               _this.error = response.data.message;
@@ -130,14 +130,14 @@ new Vue({
 
 /***/ }),
 
-/***/ 11:
-/*!***********************************************!*\
-  !*** multi ./resources/js/contact_us/edit.js ***!
-  \***********************************************/
+/***/ 5:
+/*!*********************************************!*\
+  !*** multi ./resources/js/customer/edit.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\NIPTICT\Term 4\Web Application\hotel_management\Desktop\Laravel\project\hotel_system\resources\js\contact_us\edit.js */"./resources/js/contact_us/edit.js");
+module.exports = __webpack_require__(/*! D:\NIPTICT\Term 4\Web Application\hotel_management\Desktop\Laravel\project\hotel_system\resources\js\customer\edit.js */"./resources/js/customer/edit.js");
 
 
 /***/ })

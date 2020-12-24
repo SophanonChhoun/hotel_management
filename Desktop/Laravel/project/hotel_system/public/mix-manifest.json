@@ -6,6 +6,8 @@
     "/css/app.css": "/css/app.css",
     "/dist/js/contact_us/create.js": "/dist/js/contact_us/create.js",
     "/dist/js/contact_us/edit.js": "/dist/js/contact_us/edit.js",
+    "/dist/js/customer/create.js": "/dist/js/customer/create.js",
+    "/dist/js/customer/edit.js": "/dist/js/customer/edit.js",
     "/dist/js/hotel/create.js": "/dist/js/hotel/create.js",
     "/dist/js/hotel/edit.js": "/dist/js/hotel/edit.js",
     "/dist/js/identification_type/edit.js": "/dist/js/identification_type/edit.js",
