@@ -8,11 +8,19 @@ use Exception;
 
 class ContactUsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $contacts_us = ContactUs::all();
-
-        return view("admin.contact_us.list",compact("contacts_us"));
+        $contacts_us = ContactUs::latest();
+        if(isset($request->search))
+        {
+            $contacts_us = $contacts_us->where("title","LIKE","%".$request->search."%");
+        }
+        if(isset($request->is_enable))
+        {
+            $contacts_us = $contacts_us->where("is_enable",$request->is_enable);
+        }
+        $data = $contacts_us->paginate(10);
+        return view("admin.contact_us.list",compact("data"));
     }
 
     public function create()

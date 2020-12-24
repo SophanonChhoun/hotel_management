@@ -28,4 +28,5 @@
 </div>
 <!-- /#wrapper -->
 @include("admin.layout.footer")
+@include("admin.layout.alert")
 

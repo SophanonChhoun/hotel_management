@@ -9,7 +9,7 @@
             <th>Status</th>
             <th colspan="2">Action</th>
         </tr>
-        @forelse($contacts_us as $contact_us)
+        @forelse($data as $contact_us)
             <tr>
                 <td>{{ $contact_us->title }}</td>
                 <td>{{ $contact_us->address }}</td>

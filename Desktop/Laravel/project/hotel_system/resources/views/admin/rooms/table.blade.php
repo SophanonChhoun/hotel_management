@@ -7,11 +7,11 @@
             <th>Status</th>
             <th colspan="2">Action</th>
         </tr>
-        @forelse($rooms as $room)
+        @forelse($data as $room)
             <tr>
                 <td>{{ $room->name }}</td>
-                <td>{{ $room->roomType->name }}</td>
-                <td>{{ $room->hotel->name }}</td>
+                <td>{{ $room->roomType->name ?? null }}</td>
+                <td>{{ $room->hotel->name ?? null }}</td>
                 <td>
                     <input type="checkbox" data-toggle="modal" data-target="#status{{ $room->id }}" @if($room->is_enable) checked @endif>
                     @include("admin.rooms.status")

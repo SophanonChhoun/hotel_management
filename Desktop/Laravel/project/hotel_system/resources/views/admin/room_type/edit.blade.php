@@ -17,7 +17,7 @@
                 </li>
             </ol>
         </div>
-        <div id="editRoomType">
+        <div id="editRoomType" v-cloak>
             <form action="#" @submit.prevent="submit">
                 <div class="portlet-body m-20">
                     @include('admin.room_type.form')

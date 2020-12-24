@@ -17,7 +17,7 @@
                 </li>
             </ol>
         </div>
-        <div id="editRoom">
+        <div id="editRoom" v-cloak>
             <form action="#" @submit.prevent="submit">
                 <div class="portlet-body m-20">
 

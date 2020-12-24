@@ -2,8 +2,13 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
 
+
+            <li class="{{ request()->is('admin/user*') ? 'active' : '' }}">
+                <a href="/admin/user/list"><i class="fa fa-fw fa-user"></i>@lang('user.users')</a>
+            </li>
+
             <li class="{{ request()->is('admin/hotel*') ? 'active' : '' }}">
-                <a href="/admin/hotel/list"><i class="fa fa-fw fa-home"></i>Hotel</a>
+                <a href="/admin/hotel/list"><i class="fa fa-fw fa-home"></i>@lang('hotel.hotels')</a>
             </li>
 
             <li class="{{ request()->is('admin/customers*') ? 'active' : '' }}">
@@ -47,9 +52,13 @@
                     <li class="{{ request()->is('admin/rooms*') ? 'active' : '' }}">
                         <a href="/admin/contact_us/list"><i class="fa fa-fw fa-file-text"></i>Contact Us</a>
                     </li>
+
                 </ul>
             </li>
 
+            <li class="{{ request()->is('admin/slider*') ? 'active' : '' }}">
+                <a href="/admin/slider/list"><i class="fa fa-fw fa-sliders"></i>Slider</a>
+            </li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

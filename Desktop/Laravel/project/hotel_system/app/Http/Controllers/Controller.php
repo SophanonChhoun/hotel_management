@@ -22,8 +22,12 @@ class Controller extends BaseController
         return response()->json(['success' => true, 'data' => $data]);
     }
 
-    public function fail($message)
+    public function fail($message,$code = 403)
     {
+        if($code == 500)
+        {
+            return response()->json(['success' => false, 'data' => "There is something wrong"]);
+        }
         return response()->json(['success' => false, 'data' => $message]);
     }
   

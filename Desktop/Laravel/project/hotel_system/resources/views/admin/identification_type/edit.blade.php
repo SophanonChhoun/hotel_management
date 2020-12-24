@@ -14,7 +14,7 @@
                 </li>
             </ol>
         </div>
-        <div id="editIdentificationType">
+        <div id="editIdentificationType" v-cloak>
             <form action="#" @submit.prevent="submit">
                 <div class="portlet-body m-20">
                     @include('admin.identification_type.form')

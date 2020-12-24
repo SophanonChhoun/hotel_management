@@ -15,11 +15,20 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rooms = Room::with("hotel","roomType")->get();
+        $rooms = Room::with("hotel","roomType");
+        if(isset($request->search))
+        {
+            $rooms = $rooms->where("name","LIKE","%".$request->search."%");
+        }
+        if(isset($request->is_enable))
+        {
+            $rooms = $rooms->where("is_enable",$request->is_enable);
+        }
+        $data = $rooms->paginate(10);
 
-        return view("admin.rooms.list",compact("rooms"));
+        return view("admin.rooms.list",compact("data"));
     }
 
     /**
