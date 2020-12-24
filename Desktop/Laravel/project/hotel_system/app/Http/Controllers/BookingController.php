@@ -3,81 +3,58 @@
 namespace App\Http\Controllers;
 
 use App\Models\admin\Booking;
+use App\Models\admin\BookingType;
+use App\Models\admin\Hotel;
+use App\Models\admin\PaymentType;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $bookings = Booking::with("hotel","booking_type");
+        if(isset($request->search))
+        {
+            $bookings = $bookings->where("name","LIKE","%".$request->search."%");
+        }
+        if(isset($request->is_enable))
+        {
+            $bookings = $bookings->where("is_enable",$request->is_enable);
+        }
+        $data = $bookings->simplePaginate(10);
+
+        return view('admin.booking.list',compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $hotels = Hotel::where("is_enable",1)->get();
+        $payment_types = PaymentType::where("is_enable",1)->get();
+        $booking_types = BookingType::where("is_enable",1)->get();
+
+        return view("admin.booking.create",compact("payment_types","hotels","booking_types"));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\admin\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
     public function show(Booking $booking)
     {
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\admin\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Booking $booking)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\admin\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Booking $booking)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\admin\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Booking $booking)
     {
         //

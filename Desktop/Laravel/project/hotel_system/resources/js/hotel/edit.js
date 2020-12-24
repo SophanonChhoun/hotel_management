@@ -1,3 +1,4 @@
+import VueCkeditor from "vue-ckeditor2";
 new Vue({
     el: '#createHotel',
     data: {
@@ -7,7 +8,16 @@ new Vue({
         error: '',
         error_image: '',
         image: '',
+        error_description: '',
+        config: {
+            toolbar: [
+                ['Bold', 'Italic', 'Underline', 'Strike', 'NumberedList',
+                    'BulletedList', 'Indent', 'Outdent', 'Format', 'BGColor', 'TextColor']
+            ],
+            height: 300
+        }
     },
+    components: {VueCkeditor},
     mounted() {
     },
     methods: {

@@ -4,6 +4,7 @@
     "/dist/js/app.js": "/dist/js/app.js",
     "/dist/js/axios.js": "/dist/js/axios.js",
     "/css/app.css": "/css/app.css",
+    "/dist/js/booking_type/edit.js": "/dist/js/booking_type/edit.js",
     "/dist/js/contact_us/create.js": "/dist/js/contact_us/create.js",
     "/dist/js/contact_us/edit.js": "/dist/js/contact_us/edit.js",
     "/dist/js/hotel/create.js": "/dist/js/hotel/create.js",

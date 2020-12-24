@@ -81,31 +81,27 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/adminAuth/login.js":
-/*!*****************************************!*\
-  !*** ./resources/js/adminAuth/login.js ***!
-  \*****************************************/
+/***/ "./resources/js/booking_type/edit.js":
+/*!*******************************************!*\
+  !*** ./resources/js/booking_type/edit.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 new Vue({
-  el: '#login-box',
+  el: '#editBookingType',
   data: {
-    data: {
-      email: '',
-      password: ''
-    },
+    data: data,
+    test: [],
     is_submit: false,
-    error: '',
-    error_image: '',
-    image: ''
+    error: ''
   },
-  mounted: function mounted() {},
+  computed: {},
   methods: {
     submit: function submit() {
       var _this = this;
@@ -115,19 +111,31 @@ new Vue({
         var save = true;
 
         if (result && save) {
-          console.log('111');
-          axios.post('/admin/login', _this.data).then(function (response) {
+          axios.post('/admin/booking_type/update', {
+            "data": _this.data
+          }).then(function (response) {
             if (response.data.success) {
-              window.location.href = '/admin/test';
+              window.location.href = '/admin/booking_type/list';
             } else {
-              console.log(response.data.message);
-              _this.error = 'Wrong email/password';
+              _this.error = response.data.message;
             }
           });
         } else {
-          //set Window location to top
           window.scrollTo(0, 0);
         }
+      });
+    },
+    addRoom: function addRoom() {
+      this.data.push({
+        name: '',
+        is_enable: '',
+        sort: this.data.length + 1
+      });
+    },
+    removeRoom: function removeRoom(index) {
+      this.data.splice(index, 1);
+      this.data.forEach(function (item, i) {
+        item.sort = i + 1;
       });
     }
   }
@@ -135,14 +143,14 @@ new Vue({
 
 /***/ }),
 
-/***/ 18:
-/*!***********************************************!*\
-  !*** multi ./resources/js/adminAuth/login.js ***!
-  \***********************************************/
+/***/ 13:
+/*!*************************************************!*\
+  !*** multi ./resources/js/booking_type/edit.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/adminAuth/login.js */"./resources/js/adminAuth/login.js");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/booking_type/edit.js */"./resources/js/booking_type/edit.js");
 
 
 /***/ })

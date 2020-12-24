@@ -4,29 +4,42 @@
 
 
             <li class="{{ request()->is('admin/user*') ? 'active' : '' }}">
-                <a href="/admin/user/list"><i class="fa fa-fw fa-user"></i>@lang('user.users')</a>
+                <a href="/admin/user/list"><i class="fa fa-fw fa-user"></i> @lang('user.users')</a>
             </li>
 
             <li class="{{ request()->is('admin/hotel*') ? 'active' : '' }}">
-                <a href="/admin/hotel/list"><i class="fa fa-fw fa-home"></i>@lang('hotel.hotels')</a>
+                <a href="/admin/hotel/list"><i class="fa fa-fw fa-home"></i> @lang('hotel.hotels')</a>
             </li>
 
             <li class="{{ request()->is('admin/identification_type*') ? 'active' : '' }}">
-                <a href="/admin/identification_type/list"><i class="fa fa-fw fa-info"></i>Identification Type</a>
+                <a href="/admin/identification_type/list"><i class="fa fa-fw fa-info"></i> Identification Type</a>
             </li>
 
+            <li class="{{ request()->is('admin/booking*') ? 'active' : '' }}">
+                <a href="javascript:;" data-toggle="collapse" data-target="#booking"><i class="fa fa-fw fa-arrows-v"></i> Booking <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul class="collapse" id="booking">
+                    <li {{ request()->is('admin/booking_type*') ? "class=active" : null }}>
+                        <a href="/admin/booking_type/list"><i class="fa fa-fw fa-star"></i> Booking Type</a>
+                    </li>
+                    <li class="{{ request()->is('admin/booking*') ? 'active' : '' }}">
+                        <a href="/admin/booking/list"><i class="fa fa-fw fa-suitcase"></i> Booking</a>
+                    </li>
+                </ul>
+            </li>
+
+
             <li class="{{ request()->is('admin/payment_type*') ? 'active' : '' }}">
-                <a href="/admin/payment_type/list"><i class="fa fa-fw fa-file"></i>Payment Type</a>
+                <a href="/admin/payment_type/list"><i class="fa fa-fw fa-file"></i> Payment Type</a>
             </li>
 
             <li class="{{ request()->is('admin/room*') ? 'active' : '' }}">
                 <a href="javascript:;" data-toggle="collapse" data-target="#room"><i class="fa fa-fw fa-arrows-v"></i> Rooms <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul class="collapse" id="room">
                     <li {{ request()->is('admin/room_type*') ? "class=active" : null }}>
-                        <a href="/admin/room_type/list"><i class="fa fa-fw fa-star"></i>Room Type</a>
+                        <a href="/admin/room_type/list"><i class="fa fa-fw fa-star"></i> Room Type</a>
                     </li>
                     <li class="{{ request()->is('admin/rooms*') ? 'active' : '' }}">
-                        <a href="/admin/rooms/list"><i class="fa fa-fw fa-suitcase"></i>Room</a>
+                        <a href="/admin/rooms/list"><i class="fa fa-fw fa-suitcase"></i> Room</a>
                     </li>
                 </ul>
             </li>
@@ -45,7 +58,7 @@
             </li>
 
             <li class="{{ request()->is('admin/slider*') ? 'active' : '' }}">
-                <a href="/admin/slider/list"><i class="fa fa-fw fa-sliders"></i>Slider</a>
+                <a href="/admin/slider/list"><i class="fa fa-fw fa-sliders"></i> Slider</a>
             </li>
         </ul>
     </div>

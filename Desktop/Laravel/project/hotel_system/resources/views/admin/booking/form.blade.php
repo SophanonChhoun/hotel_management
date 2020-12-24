@@ -1,12 +1,12 @@
 <div class="form-group" :class="{'has-error' : errors.first('name')}">
     <label class="control-label">
-        @lang('general.name')
+        Name
         <span style="color: red">*</span>
     </label>
     <input type="text"
            name="name"
            v-model="data.name"
-           data-vv-as="@lang('general.name')"
+           data-vv-as="Name"
            v-validate="'required'"
            class="form-control"
            placeholder="Name">
@@ -14,80 +14,32 @@
     <span class="help-block">@{{ errors.first('name') }}</span>
 </div>
 
-<div class="form-group" :class="{'has-error' : errors.first('street_address')}">
-    <label class="control-label">
-        @lang('general.street_address')
-        <span style="color: red">*</span>
-    </label>
-    <input type="text"
-           name="street_address"
-           v-model="data.street_address"
-           data-vv-as="@lang('general.street_address')"
-           v-validate="'required'"
-           class="form-control"
-           placeholder="Street Address">
-    <span class="help-block">@{{ errors.first('street_address') }}</span>
-</div>
-
-<div class="form-group" :class="{'has-error' : errors.first('city')}">
-    <label class="control-label">
-        @lang('general.city')
-        <span style="color: red">*</span>
-    </label>
-    <input type="text"
-           name="city"
-           v-model="data.city"
-           data-vv-as="@lang('general.city')"
-           v-validate="'required'"
-           class="form-control"
-           placeholder="City">
-    <span class="help-block">@{{ errors.first('city') }}</span>
-</div>
-
-<div class="form-group" :class="{'has-error' : errors.first('country')}">
-    <label class="control-label">
-        @lang('general.country')
-        <span style="color: red">*</span>
-    </label>
-    <input type="text"
-           name="country"
-           v-model="data.country"
-           data-vv-as="@lang('general.country')"
-           v-validate="'required'"
-           class="form-control"
-           placeholder="Country">
-    <span class="help-block">@{{ errors.first('country') }}</span>
-</div>
-
-<div class="form-group" :class="{'has-error' : errors.first('zip')}">
-    <label class="control-label">
-        @lang('general.zip')
-        <span style="color: red">*</span>
-    </label>
-    <input type="text"
-           name="zip"
-           v-model="data.zip"
-           data-vv-as="@lang('general.zip')"
-           v-validate="'required'"
-           class="form-control"
-           placeholder="Zip">
-    <span class="help-block">@{{ errors.first('zip') }}</span>
-</div>
-<div class="form-group" :class="{'has-error' : error_description}">
+<div class="form-group" >
     <label class="control-label">
         Description
-        <span style="color: red">*</span>
     </label>
-
     <vue-ckeditor
         v-model="data.description"
         v-validate="'required'"
         name="description"
         data-vv-as="Description"
         :config="config"/>
-    <br>
 </div>
-<span class="help-block" style="color: #a94442">@{{ error_description }}</span>
+
+<div class="form-group" :class="{'has-error' : errors.first('price')}">
+    <label class="control-label">
+        Price
+        <span style="color: red">*</span>
+    </label>
+    <input type="text"
+           name="price"
+           v-model="data.price"
+           data-vv-as="Price"
+           v-validate="'required'"
+           class="form-control"
+           placeholder="Price">
+    <span class="help-block">@{{ errors.first('price') }}</span>
+</div>
 
 <div v-for="(image,index) in data.medias">
     <div class="portlet blue box" >
@@ -112,7 +64,7 @@
                        :name="'image-' + index" data-vv-as="Image"
                        @change="uploadAddingImage(index, $event)"
                 >
-                {{--                <span class="help-block">@{{ image.error.image }}</span>--}}
+{{--                <span class="help-block">@{{ image.error.image }}</span>--}}
             </div>
             <div class="form-group row">
                 <div class="col-md-10 col-md-offset-2">
@@ -124,6 +76,7 @@
 </div>
 
 <div>
+
     <button type="button" class="btn btn-primary" @click="addMedias()">Add Image</button>
     <span class="help-block" style="color: red" >@{{ error_image }}</span>
 </div>
@@ -131,14 +84,14 @@
 
 <div class="form-group" :class="{'has-error' : errors.first('is_enable')}">
     <label class="control-label">
-        @lang('general.status')
+        Status
         <span style="color: red">*</span>
     </label>
     <input type="checkbox"
            style="margin-left: 2%"
            name="is_enable"
            v-model="data.is_enable"
-           data-vv-as="@lang('general.status')"
+           data-vv-as="Status"
            v-validate="'required'"
            >
     <span class="help-block">@{{ errors.first('is_enable') }}</span>

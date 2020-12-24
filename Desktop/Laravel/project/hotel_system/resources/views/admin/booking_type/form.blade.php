@@ -2,7 +2,7 @@
 <div v-for="(identification_type,index) in data">
     <div class="portlet blue box" >
         <div class="portlet-title">
-            <div class="caption"><i class="icon-picture"></i>Payment Type</div>
+            <div class="caption"><i class="icon-picture"></i>Booking Type</div>
 
             <div class="tools">
                 <a href="javascript:;" @click="removeRoom(index)">
@@ -45,7 +45,7 @@
 </div>
 
 <div>
-    <button type="button" class="btn btn-primary" @click="addRoom()">Add Payment Type</button>
+    <button type="button" class="btn btn-primary" @click="addRoom()">Add Booking Type</button>
 </div>
 
 <br>
