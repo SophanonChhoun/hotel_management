@@ -35,6 +35,12 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $user = User::where("email",$request->email)->first();
+        if ($user)
+        {
+            return $this->fail("Please input another email",403);
+        }
+
         DB::beginTransaction();
         try {
             $user = [
@@ -58,7 +64,7 @@ class UserController extends Controller
             return $this->success($data);
         }catch (Exception $exception){
             DB::rollBack();
-            return $this->fail($exception);
+            return $this->fail($exception,500);
         }
     }
 
@@ -77,11 +83,15 @@ class UserController extends Controller
     {
         DB::beginTransaction();
         try {
-
+            $user = User::where("email",$request->email)->first();
+            if($user)
+            {
+                return $this->fail("Please input another email");
+            }
             $user = User::find($id);
             if(!$user)
             {
-                return $this->fail("Cannot find this hotel");
+                return $this->fail("Cannot find this user");
             }
             $data = [
                 "name" => $request->name,
