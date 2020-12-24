@@ -172,11 +172,19 @@
       <recent name="$PROJECT_DIR$/resources/views/admin" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.index.blade.php">
+    <configuration name="index.blade.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/hotel_system/resources/views/admin/profile/index.blade.php" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.blade.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -255,7 +263,7 @@
       <workItem from="1608777207900" duration="3139000" />
       <workItem from="1608781918923" duration="329000" />
       <workItem from="1608782964171" duration="58000" />
-      <workItem from="1608790524247" duration="21844000" />
+      <workItem from="1608790524247" duration="26919000" />
     </task>
     <servers />
   </component>
@@ -299,10 +307,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="305" y="185" key="run.anything.popup/0.0.1280.800@0.0.1280.800" timestamp="1606916395471" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1608813744460">
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1608820275185">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1608813744460" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1608820275185" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.25.1280.719@0.25.1280.719" timestamp="1607207655610" />
   </component>
 </project>

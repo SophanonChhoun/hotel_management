@@ -44,10 +44,10 @@
                 <ul class="collapse" id="payment">
 
                     <li class="{{ request()->is('admin/payment_type*') ? 'active' : '' }}">
-                        <a href="/admin/payment_type/list"> Payment Type</a>
+                        <a href="/admin/payment_type/list"><i class="fa fa-fw fa-paypal"></i> Payment Type</a>
                     </li>
                     <li class="{{ request()->is('admin/payment*') ? 'active' : '' }}">
-                        <a href="/admin/payment/list"> Payment</a>
+                        <a href="/admin/payment/list"><i class="fa fa-fw fa-money"></i> Payment</a>
                     </li>
                 </ul>
             </li>

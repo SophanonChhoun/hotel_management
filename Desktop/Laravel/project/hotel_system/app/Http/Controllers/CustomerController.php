@@ -44,7 +44,11 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-
+        $customer = Customer::where("email",$request->email)->first();
+        if($customer)
+        {
+            return $this->fail("Please input another email");
+        }
         Customer::create([
             'first_name'=>$request['first_name'],
             'last_name'=>$request['last_name'],
