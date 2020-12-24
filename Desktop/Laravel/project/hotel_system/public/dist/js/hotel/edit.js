@@ -150,7 +150,7 @@ new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/hotel/edit.js */"./resources/js/hotel/edit.js");
+module.exports = __webpack_require__(/*! D:\NIPTICT\Term 4\Web Application\hotel_management\Desktop\Laravel\project\hotel_system\resources\js\hotel\edit.js */"./resources/js/hotel/edit.js");
 
 
 /***/ })

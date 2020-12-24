@@ -6,6 +6,18 @@
                 <a href="/admin/hotel/list"><i class="fa fa-fw fa-home"></i>Hotel</a>
             </li>
 
+            <li class="{{ request()->is('admin/customers*') ? 'active' : '' }}">
+                <a href="javascript:;" data-toggle="collapse" data-target="#customer"><i class="fa fa-fw fa-users"></i> Customers <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul class="collapse" id="customer">
+                    <li {{ request()->is('admin/customers*') ? "class=active" : null }}>
+                        <a href="/admin/customer/list"><i class="fa fa-fw fa-star"></i>Customer List</a>
+                    </li>
+                    <li class="{{ request()->is('admin/customers*') ? 'active' : '' }}">
+                        <a href="/admin/customer/list"><i class="fa fa-fw fa-suitcase"></i>Add Customer</a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="{{ request()->is('admin/identification_type*') ? 'active' : '' }}">
                 <a href="/admin/identification_type/list"><i class="fa fa-fw fa-info"></i>Identification Type</a>
             </li>

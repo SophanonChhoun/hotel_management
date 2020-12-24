@@ -47,6 +47,16 @@ Route::group(["prefix" => "admin"],function() {
         Route::post("/delete/{id}",[HotelController::class,"destroy"]);
     });
 
+    Route::group(["prefix" => "customer"],function () {
+        Route::get("/list",[CustomerController::class,"index"]);
+        Route::get("/create",[CustomerController::class,"create"]);
+        Route::post("/create",[CustomerController::class,"store"]);
+        Route::get("/show/{id}",[CustomerController::class,"show"]);
+        Route::post("/update/{id}",[CustomerController::class,"update"]);
+        Route::post("/delete/{id}",[CustomerController::class,"destroy"]);
+
+    });
+
     Route::group(['prefix' => 'rooms'],function(){
         Route::get('/list',[RoomController::class,'index']);
         Route::get("/create",[RoomController::class,"create"]);
@@ -122,4 +132,8 @@ Route::group(["prefix" => "admin"],function() {
         Route::post("/delete/{id}",[PaymentController::class,"destroy"]);
 
     });
+
+ 
+
+
 });

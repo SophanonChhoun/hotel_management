@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -136,14 +136,14 @@ new Vue({
 
 /***/ }),
 
-/***/ 10:
+/***/ 12:
 /*!*************************************************!*\
   !*** multi ./resources/js/contact_us/create.js ***!
   \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/contact_us/create.js */"./resources/js/contact_us/create.js");
+module.exports = __webpack_require__(/*! D:\NIPTICT\Term 4\Web Application\hotel_management\Desktop\Laravel\project\hotel_system\resources\js\contact_us\create.js */"./resources/js/contact_us/create.js");
 
 
 /***/ })
