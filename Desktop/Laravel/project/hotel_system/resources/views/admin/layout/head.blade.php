@@ -101,9 +101,9 @@
 {{--            <li>--}}
 {{--                <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>--}}
 {{--            </li>--}}
-{{--            <li>--}}
-{{--                <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>--}}
-{{--            </li>--}}
+            <li>
+                <a href="{{ url('admin/user/show/'.auth()->user()->id) }}"><i class="fa fa-fw fa-gear"></i> Settings</a>
+            </li>
             <li class="divider"></li>
             <li>
                 <a href="/admin/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
