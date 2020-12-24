@@ -17,7 +17,8 @@ class Hotel extends Model
       'country',
       'zip',
       'is_enable',
-      'media_id'
+      'media_id',
+      'description'
     ];
 
     public function medias()

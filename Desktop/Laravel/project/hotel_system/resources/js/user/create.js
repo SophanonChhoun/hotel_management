@@ -1,4 +1,5 @@
 import SingleImageUploader from "../components/SingleImageUploader";
+import {error} from "vue-infinite-loading/src/utils";
 new Vue({
     el: '#createUser',
     components: {
@@ -33,6 +34,8 @@ new Vue({
                 {
                     this.error_image = "The Image field is required";
                     save = false;
+                }else{
+                    this.error_image = "";
                 }
 
                 if(result && save) {
@@ -40,9 +43,12 @@ new Vue({
                        if(response.data.success){
                            window.location.href = '/admin/user/list';
                        }else{
-                           console.log(response.data.message);
-                           this.error = response.data.message;
+                           alert(response.data.data)
+                           hideLoading()
                        }
+                    }).catch(error => {
+                        showAlertError(error.response.data.message)
+                        hideLoading()
                     });
                 } else {
                     //set Window location to top

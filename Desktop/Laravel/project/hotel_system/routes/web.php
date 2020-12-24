@@ -127,7 +127,12 @@ Route::middleware(AdminMiddleware::class)->group(function (){
 
         Route::group(["prefix" => "slider"],function () {
             Route::get("/list",[SlidersController::class,"index"]);
-            Route::post("/update",[SlidersController::class,"update"]);
+            Route::get("/create",[SlidersController::class,"create"]);
+            Route::get("/show/{id}",[SlidersController::class,"show"]);
+            Route::post("/create",[SlidersController::class,"store"]);
+            Route::post("/update/status/{id}",[SlidersController::class,"updateStatus"]);
+            Route::post("/update/{id}",[SlidersController::class,"update"]);
+            Route::post("/delete/{id}",[SlidersController::class,"destroy"]);
         });
 
         Route::group(["prefix" => "booking"],function () {

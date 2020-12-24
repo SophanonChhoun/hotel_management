@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -181,6 +181,323 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/vue-infinite-loading/src/config.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/vue-infinite-loading/src/config.js ***!
+  \*********************************************************/
+/*! exports provided: evt3rdArg, WARNINGS, ERRORS, STATUS, SLOT_STYLES, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "evt3rdArg", function() { return evt3rdArg; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WARNINGS", function() { return WARNINGS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ERRORS", function() { return ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STATUS", function() { return STATUS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SLOT_STYLES", function() { return SLOT_STYLES; });
+/*
+ * default property values
+ */
+
+const props = {
+  // the default spinner type
+  spinner: 'default',
+
+  // the default critical distance
+  distance: 100,
+
+  // the default force use infinite wrapper flag
+  forceUseInfiniteWrapper: false,
+};
+
+/**
+ * default system settings
+ */
+
+const system = {
+  // the default throttle space of time
+  throttleLimit: 50,
+
+  // the timeout for check infinite loop, unit: ms
+  loopCheckTimeout: 1000,
+
+  // the max allowed number of continuous calls, unit: ms
+  loopCheckMaxCalls: 10,
+};
+
+/**
+ * default slot messages
+ */
+const slots = {
+  noResults: 'No results :(',
+  noMore: 'No more data :)',
+  error: 'Opps, something went wrong :(',
+  errorBtnText: 'Retry',
+  spinner: '',
+};
+
+/**
+ * the 3rd argument for event bundler
+ * @see https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
+ */
+
+const evt3rdArg = (() => {
+  let result = false;
+
+  try {
+    const arg = Object.defineProperty({}, 'passive', {
+      get() {
+        result = { passive: true };
+        return true;
+      },
+    });
+
+    window.addEventListener('testpassive', arg, arg);
+    window.remove('testpassive', arg, arg);
+  } catch (e) { /* */ }
+
+  return result;
+})();
+
+/**
+ * warning messages
+ */
+
+const WARNINGS = {
+  STATE_CHANGER: [
+    'emit `loaded` and `complete` event through component instance of `$refs` may cause error, so it will be deprecated soon, please use the `$state` argument instead (`$state` just the special `$event` variable):',
+    '\ntemplate:',
+    '<infinite-loading @infinite="infiniteHandler"></infinite-loading>',
+    `
+script:
+...
+infiniteHandler($state) {
+  ajax('https://www.example.com/api/news')
+    .then((res) => {
+      if (res.data.length) {
+        $state.loaded();
+      } else {
+        $state.complete();
+      }
+    });
+}
+...`,
+    '',
+    'more details: https://github.com/PeachScript/vue-infinite-loading/issues/57#issuecomment-324370549',
+  ].join('\n'),
+  INFINITE_EVENT: '`:on-infinite` property will be deprecated soon, please use `@infinite` event instead.',
+  IDENTIFIER: 'the `reset` event will be deprecated soon, please reset this component by change the `identifier` property.',
+};
+
+/**
+ * error messages
+ */
+
+const ERRORS = {
+  INFINITE_LOOP: [
+    `executed the callback function more than ${system.loopCheckMaxCalls} times for a short time, it looks like searched a wrong scroll wrapper that doest not has fixed height or maximum height, please check it. If you want to force to set a element as scroll wrapper ranther than automatic searching, you can do this:`,
+    `
+<!-- add a special attribute for the real scroll wrapper -->
+<div infinite-wrapper>
+  ...
+  <!-- set force-use-infinite-wrapper -->
+  <infinite-loading force-use-infinite-wrapper></infinite-loading>
+</div>
+or
+<div class="infinite-wrapper">
+  ...
+  <!-- set force-use-infinite-wrapper as css selector of the real scroll wrapper -->
+  <infinite-loading force-use-infinite-wrapper=".infinite-wrapper"></infinite-loading>
+</div>
+    `,
+    'more details: https://github.com/PeachScript/vue-infinite-loading/issues/55#issuecomment-316934169',
+  ].join('\n'),
+};
+
+/**
+ * plugin status constants
+ */
+const STATUS = {
+  READY: 0,
+  LOADING: 1,
+  COMPLETE: 2,
+  ERROR: 3,
+};
+
+/**
+ * default slot styles
+ */
+const SLOT_STYLES = {
+  color: '#666',
+  fontSize: '14px',
+  padding: '10px 0',
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mode: 'development',
+  props,
+  system,
+  slots,
+  WARNINGS,
+  ERRORS,
+  STATUS,
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-infinite-loading/src/utils.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vue-infinite-loading/src/utils.js ***!
+  \********************************************************/
+/*! exports provided: warn, error, throttleer, loopTracker, scrollBarStorage, kebabCase, isVisible, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "warn", function() { return warn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "error", function() { return error; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "throttleer", function() { return throttleer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loopTracker", function() { return loopTracker; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scrollBarStorage", function() { return scrollBarStorage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kebabCase", function() { return kebabCase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isVisible", function() { return isVisible; });
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./config */ "./node_modules/vue-infinite-loading/src/config.js");
+/* eslint-disable no-console */
+
+
+
+/**
+ * console warning in production
+ * @param {String} msg console content
+ */
+function warn(msg) {
+  /* istanbul ignore else */
+  if (_config__WEBPACK_IMPORTED_MODULE_0__["default"].mode !== 'production') {
+    console.warn(`[Vue-infinite-loading warn]: ${msg}`);
+  }
+}
+
+/**
+ * console error
+ * @param {String} msg console content
+ */
+function error(msg) {
+  console.error(`[Vue-infinite-loading error]: ${msg}`);
+}
+
+const throttleer = {
+  timers: [],
+  caches: [],
+  throttle(fn) {
+    if (this.caches.indexOf(fn) === -1) {
+      // cache current handler
+      this.caches.push(fn);
+
+      // save timer for current handler
+      this.timers.push(setTimeout(() => {
+        fn();
+
+        // empty cache and timer
+        this.caches.splice(this.caches.indexOf(fn), 1);
+        this.timers.shift();
+      }, _config__WEBPACK_IMPORTED_MODULE_0__["default"].system.throttleLimit));
+    }
+  },
+  reset() {
+    // reset all timers
+    this.timers.forEach((timer) => {
+      clearTimeout(timer);
+    });
+    this.timers.length = 0;
+
+    // empty caches
+    this.caches = [];
+  },
+};
+
+const loopTracker = {
+  isChecked: false,
+  timer: null,
+  times: 0,
+  track() {
+    // record track times
+    this.times += 1;
+
+    // try to mark check status
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.isChecked = true;
+    }, _config__WEBPACK_IMPORTED_MODULE_0__["default"].system.loopCheckTimeout);
+
+    // throw warning if the times of continuous calls large than the maximum times
+    if (this.times > _config__WEBPACK_IMPORTED_MODULE_0__["default"].system.loopCheckMaxCalls) {
+      error(_config__WEBPACK_IMPORTED_MODULE_0__["ERRORS"].INFINITE_LOOP);
+      this.isChecked = true;
+    }
+  },
+};
+
+const scrollBarStorage = {
+  key: '_infiniteScrollHeight',
+  getScrollElm(elm) {
+    return elm === window ? document.documentElement : elm;
+  },
+  save(elm) {
+    const target = this.getScrollElm(elm);
+
+    // save scroll height on the scroll parent
+    target[this.key] = target.scrollHeight;
+  },
+  restore(elm) {
+    const target = this.getScrollElm(elm);
+
+    /* istanbul ignore else */
+    if (typeof target[this.key] === 'number') {
+      target.scrollTop = target.scrollHeight - target[this.key] + target.scrollTop;
+    }
+
+    this.remove(target);
+  },
+  remove(elm) {
+    if (elm[this.key] !== undefined) {
+      // remove scroll height
+      delete elm[this.key]; // eslint-disable-line no-param-reassign
+    }
+  },
+};
+
+/**
+ * kebab-case a camel-case string
+ * @param   {String}    str  source string
+ * @return  {String}
+ */
+function kebabCase(str) {
+  return str.replace(/[A-Z]/g, s => `-${s.toLowerCase()}`);
+}
+
+/**
+ * get visibility for element
+ * @param   {DOM}     elm
+ * @return  {Boolean}
+ */
+function isVisible(elm) {
+  return (elm.offsetWidth + elm.offsetHeight) > 0;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  warn,
+  error,
+  throttleer,
+  loopTracker,
+  kebabCase,
+  scrollBarStorage,
+  isVisible,
+});
+
 
 /***/ }),
 
@@ -449,6 +766,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SingleImageUploader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/SingleImageUploader */ "./resources/js/components/SingleImageUploader.vue");
+/* harmony import */ var vue_infinite_loading_src_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-infinite-loading/src/utils */ "./node_modules/vue-infinite-loading/src/utils.js");
+
 
 new Vue({
   el: '#createUser',
@@ -485,6 +804,8 @@ new Vue({
         if (!_this.data.image) {
           _this.error_image = "The Image field is required";
           save = false;
+        } else {
+          _this.error_image = "";
         }
 
         if (result && save) {
@@ -492,9 +813,12 @@ new Vue({
             if (response.data.success) {
               window.location.href = '/admin/user/list';
             } else {
-              console.log(response.data.message);
-              _this.error = response.data.message;
+              alert(response.data.data);
+              hideLoading();
             }
+          })["catch"](function (error) {
+            showAlertError(error.response.data.message);
+            hideLoading();
           });
         } else {
           //set Window location to top
@@ -537,7 +861,7 @@ new Vue({
 
 /***/ }),
 
-/***/ 14:
+/***/ 15:
 /*!*******************************************!*\
   !*** multi ./resources/js/user/create.js ***!
   \*******************************************/

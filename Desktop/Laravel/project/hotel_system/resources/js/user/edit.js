@@ -21,7 +21,7 @@ new Vue({
                         if(response.data.success){
                             window.location.href = '/admin/user/list';
                         }else{
-                            console.log(response.data.message);
+                            alert(response.data.data)
                             this.error = response.data.message;
                         }
                     });

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1186,41 +1186,49 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/sliders/edit.js":
-/*!**************************************!*\
-  !*** ./resources/js/sliders/edit.js ***!
-  \**************************************/
+/***/ "./resources/js/sliders/create.js":
+/*!****************************************!*\
+  !*** ./resources/js/sliders/create.js ***!
+  \****************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_SingleSelect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/SingleSelect */ "./resources/js/components/SingleSelect.vue");
+/* harmony import */ var _components_SingleSelect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/SingleSelect */ "./resources/js/components/SingleSelect.vue");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vue_ckeditor2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-ckeditor2 */ "./node_modules/vue-ckeditor2/dist/vue-ckeditor2.esm.js");
 
 
 
 new Vue({
-  el: '#editSliders',
+  el: '#createSlider',
+  components: {
+    SingleSelect: _components_SingleSelect__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default.a,
+    VueCkeditor: vue_ckeditor2__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
   data: {
-    data: data,
-    test: "test",
-    is_submit: false,
-    error: '',
-    id: data.id,
-    hotels: hotels,
-    error_image: '',
-    error_description: '',
+    data: {
+      "title": "",
+      "caption": "",
+      "description": "",
+      "hotel": "",
+      "hotel_id": "",
+      "is_enable": "",
+      "image": ""
+    },
     config: {
       toolbar: [['Bold', 'Italic', 'Underline', 'Strike', 'NumberedList', 'BulletedList', 'Indent', 'Outdent', 'Format', 'BGColor', 'TextColor']],
       height: 300
-    }
-  },
-  components: {
-    Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a,
-    VueCkeditor: vue_ckeditor2__WEBPACK_IMPORTED_MODULE_2__["default"]
+    },
+    test: [],
+    is_submit: false,
+    error: '',
+    error_image: '',
+    error_description: '',
+    hotels: hotels
   },
   computed: {},
   methods: {
@@ -1231,7 +1239,7 @@ new Vue({
         _this.is_submit = true;
         var save = true;
 
-        if (!_this.data.image && !_this.data.media) {
+        if (!_this.data.image) {
           _this.error_image = "The Image field is required";
           save = false;
         } else {
@@ -1241,7 +1249,7 @@ new Vue({
         _this.data.hotel_id = _this.data.hotel.id;
 
         if (result && save) {
-          axios.post('/admin/slider/update/' + _this.id, _this.data).then(function (response) {
+          axios.post('/admin/slider/create', _this.data).then(function (response) {
             if (response.data.success) {
               window.location.href = '/admin/slider/list';
             } else {
@@ -1269,14 +1277,14 @@ new Vue({
 
 /***/ }),
 
-/***/ 13:
-/*!********************************************!*\
-  !*** multi ./resources/js/sliders/edit.js ***!
-  \********************************************/
+/***/ 14:
+/*!**********************************************!*\
+  !*** multi ./resources/js/sliders/create.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/sliders/edit.js */"./resources/js/sliders/edit.js");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/sliders/create.js */"./resources/js/sliders/create.js");
 
 
 /***/ })
