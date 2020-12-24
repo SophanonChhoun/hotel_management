@@ -32,7 +32,11 @@
         </div>
     </div>
 @endsection
+
 @section("script")
+    <script>
+        const identification_type = @json($identification_type);
+    </script>
     <script src="{{ mix('/dist/js/app.js') }}"></script>
     <script src="{{ mix('/dist/js/customer/create.js') }}"></script>
 @endsection

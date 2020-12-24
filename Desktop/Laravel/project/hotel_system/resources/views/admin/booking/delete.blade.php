@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModal{{ $room_type->id }}" role="dialog">
+<div class="modal fade" id="myModal{{ $booking->id }}" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -14,7 +14,7 @@
                 <div>
 
                 </div>
-                <form action="{{ url('admin/room_type/delete/'.$room_type->id) }}" method="post">
+                <form action="{{ url('admin/booking/delete/'.$booking->id) }}" method="post">
                     @csrf
                     <button class="btn btn-danger">Delete it</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

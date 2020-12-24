@@ -3,7 +3,7 @@
 <div class="col-md-12">
 
 <div class="row">
-    <div class="form-group col-md-4" :class="{'has-error' : errors.first('fname')}">
+    <div class="form-group col-lg-12" :class="{'has-error' : errors.first('fname')}">
         <label class="control-label">
             First Name
             <span style="color: red">*</span>
@@ -15,12 +15,12 @@
                v-validate="'required|alpha'"
                class="form-control"
                placeholder="First Name">
-    
+
         <span class="help-block">@{{ errors.first('fname') }}</span>
-     
+
     </div>
 
-    <div class="form-group col-md-4" :class="{'has-error' : errors.first('lname')}">
+    <div class="form-group col-lg-12" :class="{'has-error' : errors.first('lname')}">
         <label class="control-label">
             Last Name
             <span style="color: red">*</span>
@@ -32,11 +32,11 @@
                v-validate="'required|alpha'"
                class="form-control"
                placeholder="Last Name">
-    
+
         <span class="help-block">@{{ errors.first('lname') }}</span>
     </div>
 
-    <div class="form-group col-md-4" :class="{'has-error' : errors.first('email')}">
+    <div class="form-group col-lg-12" :class="{'has-error' : errors.first('email')}">
         <label class="control-label">
             Email
             <span style="color: red">*</span>
@@ -48,19 +48,13 @@
                v-validate="'required|email'"
                class="form-control"
                placeholder="Email">
-    
+
                <span style="color:red"  class="help-block">@{{ errors.first('email') }} </span>
-
-        @error('email')
-                        <div style="color:red" class="alert alert-danger">{{ $message }}</div>
-        @enderror
-
-
 </div>
 </div>
 <div class="row">
- 
-    <div class="form-group col-md-4" :class="{'has-error' : errors.first('password')}">
+
+    <div class="form-group col-lg-12" :class="{'has-error' : errors.first('password')}">
         <label class="control-label">
             Password
             <span style="color: red">*</span>
@@ -74,11 +68,11 @@
                placeholder="password"
                ref="password"
                >
-    
+
         <span class="help-block">@{{ errors.first('password') }}</span>
     </div>
 
-    <div class="form-group col-md-4" :class="{'has-error' : errors.first('confirm_password')}">
+    <div class="form-group col-lg-12" :class="{'has-error' : errors.first('confirm_password')}">
         <label class="control-label">
             Confirm Password
             <span style="color: red">*</span>
@@ -90,12 +84,12 @@
                v-validate="'required|confirmed:password'"
                class="form-control"
                placeholder="Confirm Password">
-    
+
         <span class="help-block">@{{ errors.first('confirm_password') }}</span>
     </div>
 
 
-    <div class="form-group col-md-2" :class="{'has-error' : errors.first('dob')}">
+    <div class="form-group col-lg-12" :class="{'has-error' : errors.first('dob')}">
         <label class="control-label">
             Date Of Birth
             <span style="color: red">*</span>
@@ -107,20 +101,19 @@
                v-validate="'required'"
                class="form-control"
                value="2000-01-01"
-               min="1950-01-01" 
-               max="2020-01-01"      
+               min="1950-01-01"
+               max="2020-01-01"
          >
 
-    
+
         <span class="help-block">@{{ errors.first('dob') }}</span>
     </div>
 
-      <div class="form-group form-check  col-md-2">
+      <div class="form-group form-check col-lg-12">
     <label class="control-label">
         Gender
         <span style="color: red">*</span>
     </label>
-    <br>
     <label class="form-check-label" for="male">Male</label>
         <input
           class="form-check-input"
@@ -136,18 +129,18 @@
         class="form-check-input"
         type="radio"
         name="gender"
-        v-model="data.gender"  
+        v-model="data.gender"
         id="female"
         value="f"
         required
       />
-   
+          <br>
       </div>
-    
+
 </div>
 
 <div class="row">
-    <div class="form-group col-md-2" :class="{'has-error' : errors.first('identification_id')}">
+    <div class="form-group col-lg-12" :class="{'has-error' : errors.first('identification_id')}">
         <label class="control-label">
             Identification ID
             <span style="color: red">*</span>
@@ -161,7 +154,26 @@
                placeholder="Identification ID">
         <span class="help-block">@{{ errors.first('identification_id') }}</span>
     </div>
-    <div class="form-group col-md-3" :class="{'has-error' : errors.first('phone_number')}">
+    <div class="form-group col-lg-12" :class="{'has-error' : errors.first('identification_type')}">
+        <label class="control-label">
+            Identification Type
+            <span style="color: red">*</span>
+        </label>
+        <multiselect :name="'identification_type'"
+                     v-model="data.identification_type"
+                     deselect-label="Can't remove this value"
+                     track-by="name"
+                     label="name"
+                     placeholder="Select one"
+                     :options="identification_type"
+                     data-vv-as="Identification Type"
+                     v-validate="'required'"
+                     :allow-empty="false">
+        </multiselect>
+        <span class="help-block">@{{ errors.first('identification_type') }}</span>
+    </div>
+
+    <div class="form-group col-lg-12" :class="{'has-error' : errors.first('phone_number')}">
         <label class="control-label">
             Phone Number
             <span style="color: red">*</span>
@@ -175,7 +187,7 @@
                placeholder="phone number">
         <span class="help-block">@{{ errors.first('phone_number') }}</span>
     </div>
-<div class="form-group col-md-7" :class="{'has-error' : errors.first('street_address')}">
+<div class="form-group col-lg-12" :class="{'has-error' : errors.first('street_address')}">
     <label class="control-label">
         Street Address
         <span style="color: red">*</span>
@@ -194,7 +206,7 @@
 
 
 <div class="row">
-<div class="form-group col-md-5" :class="{'has-error' : errors.first('city')}">
+<div class="form-group col-lg-12" :class="{'has-error' : errors.first('city')}">
     <label class="control-label">
         City
         <span style="color: red">*</span>
@@ -209,7 +221,7 @@
     <span class="help-block">@{{ errors.first('city') }}</span>
 </div>
 
-<div class="form-group col-md-5" :class="{'has-error' : errors.first('country')}">
+<div class="form-group col-lg-12" :class="{'has-error' : errors.first('country')}">
     <label class="control-label">
         Country
         <span style="color: red">*</span>
@@ -224,7 +236,7 @@
     <span class="help-block">@{{ errors.first('country') }}</span>
 </div>
 
-<div class="form-group col-md-2" :class="{'has-error' : errors.first('zip')}">
+<div class="form-group col-lg-12" :class="{'has-error' : errors.first('zip')}">
     <label class="control-label">
         Zip
         <span style="color: red">*</span>

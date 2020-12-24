@@ -38,6 +38,7 @@
 @section("script")
     <script>
         const data = @json($customer);
+        const identification_type = @json($identification_type);
     </script>
     <script src="{{ mix('/dist/js/app.js') }}"></script>
     <script src="{{ mix('/dist/js/customer/edit.js') }}"></script>

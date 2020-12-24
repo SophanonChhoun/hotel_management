@@ -17,10 +17,9 @@
                 </li>
             </ol>
         </div>
-        <div id="createRoomType" v-cloak>
+        <div id="createBooking">
             <form action="#" @submit.prevent="submit">
 
-                <div class="portlet-body m-20">
                         @include('admin.booking.form')
                     <div class="breadcrumb bg-danger" v-if="error">
                         <p>@{{ error }}</p>
@@ -28,16 +27,24 @@
                     <div class="text-right">
                         <button type="submit" id="submit"
                                 class="btn btn-success save-cancel">Save</button>
-                        <a href="{{ url('admin/room_type/list') }}"
+                        <a href="{{ url('admin/booking/list') }}"
                            class="btn btn-default save-cancel">Cancel</a>
                     </div>
-                </div>
             </form>
         </div>
     </div>
 @endsection
 @section("script")
+    <script>
+        const hotels = @json($hotels);
+        const customers = @json($customers);
+        const booking_types = @json($booking_types);
+        const payment_types = @json($payment_types);
+        const room_types = @json($room_types);
+        const rooms = @json($rooms);
+        const currentDate = @json($current_date);
+    </script>
     <script src="{{ mix('/dist/js/app.js') }}"></script>
-    <script src="{{ mix('/dist/js/room_type/create.js') }}"></script>
+    <script src="{{ mix('/dist/js/booking/create.js') }}"></script>
 
 @endsection

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1083,6 +1083,106 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/booking/create.js":
+/*!****************************************!*\
+  !*** ./resources/js/booking/create.js ***!
+  \****************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_SingleSelect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/SingleSelect */ "./resources/js/components/SingleSelect.vue");
+
+
+new Vue({
+  el: '#createBooking',
+  components: {
+    Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a,
+    SingleSelect: _components_SingleSelect__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: {
+    data: {
+      check_in_date: '',
+      check_out_date: '',
+      customer: '',
+      customer_id: '',
+      hotel: '',
+      hotel_id: '',
+      room_types: [],
+      room_type_id: [],
+      room_id: [],
+      is_enable: '',
+      payment_type: '',
+      payment_type_id: '',
+      booking_type: '',
+      booking_type_id: ''
+    },
+    is_submit: false,
+    error: '',
+    rooms: rooms,
+    hotels: hotels,
+    customers: customers,
+    room_types: room_types,
+    payment_types: payment_types,
+    booking_types: booking_types,
+    currentDate: currentDate
+  },
+  mounted: function mounted() {},
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      this.$validator.validateAll().then(function (result) {
+        _this.is_submit = true;
+        var save = true;
+        _this.data.customer_id = _this.data.customer.id;
+        _this.data.booking_type_id = _this.data.booking_type.id;
+        _this.data.hotel_id = _this.data.hotel.id;
+        _this.data.room_type_id = _this.data.room_types.map(function (roomType) {
+          return roomType.id;
+        });
+        console.log(_this.data.room_type_id);
+
+        if (result && save) {
+          axios.post('/admin/booking/create', {
+            "check_in_date": _this.data.check_in_date,
+            "check_out_date": _this.data.check_out_date,
+            "customer_id": _this.data.customer.id,
+            "booking_type_id": _this.data.booking_type.id,
+            "hotel_id": _this.data.hotel.id,
+            "payment_type_id": _this.data.payment_type.id,
+            "rooms": _this.data.room_id,
+            "is_enable": _this.data.is_enable,
+            "room_type_id": _this.data.room_type_id
+          }).then(function (response) {
+            if (response.data.success) {
+              window.location.href = '/admin/booking/list';
+            } else {
+              console.log(response.data.message);
+              _this.error = response.data.message;
+            }
+          });
+        } else {
+          //set Window location to top
+          window.scrollTo(0, 0);
+        }
+      });
+    },
+    getRoomById: function getRoomById(roomType) {
+      var id = roomType.id;
+
+      var room = _.filter(this.rooms, ['roomType_id', id]);
+
+      return _.filter(room, ['hotel_id', this.data.hotel.id]);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/SingleSelect.vue":
 /*!**************************************************!*\
   !*** ./resources/js/components/SingleSelect.vue ***!
@@ -1172,91 +1272,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/rooms/edit.js":
-/*!************************************!*\
-  !*** ./resources/js/rooms/edit.js ***!
-  \************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_SingleSelect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/SingleSelect */ "./resources/js/components/SingleSelect.vue");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_1__);
-
-
-new Vue({
-  el: '#editRoom',
-  components: {
-    SingleSelect: _components_SingleSelect__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default.a
-  },
-  data: {
-    data: data,
-    id: data.id,
-    test: [],
-    is_submit: false,
-    error: '',
-    hotels: hotels,
-    room_types: room_types
-  },
-  computed: {},
-  methods: {
-    submit: function submit() {
-      var _this = this;
-
-      this.$validator.validateAll().then(function (result) {
-        _this.is_submit = true;
-        var save = true;
-
-        if (result && save) {
-          axios.post('/admin/rooms/update/' + _this.id, {
-            "name": _this.data.name,
-            "is_enable": _this.data.is_enable,
-            "hotel_id": _this.data.hotel.id,
-            "roomType_id": _this.data.room_type.id
-          }).then(function (response) {
-            if (response.data.success) {
-              window.location.href = '/admin/rooms/list';
-            } else {
-              _this.error = response.data.message;
-            }
-          });
-        } else {
-          window.scrollTo(0, 0);
-        }
-      });
-    },
-    addRoom: function addRoom() {
-      this.data.push({
-        name: '',
-        is_enable: '',
-        hotel: '',
-        roomType: '',
-        test: [],
-        sort: this.data.length + 1
-      });
-    },
-    removeRoom: function removeRoom(index) {
-      this.data.splice(index, 1);
-      this.data.forEach(function (item, i) {
-        item.sort = i + 1;
-      });
-    }
-  }
-});
-
-/***/ }),
-
-/***/ 8:
-/*!******************************************!*\
-  !*** multi ./resources/js/rooms/edit.js ***!
-  \******************************************/
+/***/ 16:
+/*!**********************************************!*\
+  !*** multi ./resources/js/booking/create.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/rooms/edit.js */"./resources/js/rooms/edit.js");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/booking/create.js */"./resources/js/booking/create.js");
 
 
 /***/ })
