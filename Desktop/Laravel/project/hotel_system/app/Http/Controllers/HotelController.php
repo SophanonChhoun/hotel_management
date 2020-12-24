@@ -55,6 +55,7 @@ class HotelController extends Controller
             $hotel = [
               "name" => $request->name,
               "street_address" => $request->street_address,
+              "description" => $request->description,
               "city" => $request->city,
               "country" => $request->country,
               "zip" => $request->zip,
@@ -67,6 +68,7 @@ class HotelController extends Controller
                 "country" => $hotel['country'],
                 "zip" => $hotel['zip'],
                 "is_enable" => $hotel['is_enable'],
+                "description" => $hotel['description']
             ]);
             if(filled($request->medias))
             {
@@ -111,6 +113,7 @@ class HotelController extends Controller
             }
             $data = [
                 "name" => $request->name,
+                "description" => $request->description,
                 "street_address" => $request->street_address,
                 "city" => $request->city,
                 "country" => $request->country,

@@ -1,8 +1,10 @@
 import SingleImageUploader from "../components/SingleImageUploader";
+import VueCkeditor from "vue-ckeditor2";
 new Vue({
     el: '#createHotel',
     components: {
-        SingleImageUploader
+        SingleImageUploader,
+        VueCkeditor
     },
     data: {
         data: {
@@ -12,12 +14,21 @@ new Vue({
             city: '',
             zip: '',
             is_enable: '',
+            description: '',
             medias: [],
         },
         is_submit: false,
         error: '',
+        error_description: '',
         error_image: '',
         image: '',
+        config: {
+            toolbar: [
+                ['Bold', 'Italic', 'Underline', 'Strike', 'NumberedList',
+                    'BulletedList', 'Indent', 'Outdent', 'Format', 'BGColor', 'TextColor']
+            ],
+            height: 300
+        }
     },
     mounted() {
     },
@@ -30,6 +41,13 @@ new Vue({
                 {
                     this.error_image = "The Image field is required";
                     save = false;
+                }
+                if(!this.data.description)
+                {
+                    this.error_description = "The Description is required";
+                    save = false;
+                }else{
+                    this.error_description = "";
                 }
 
                 if(result && save) {
