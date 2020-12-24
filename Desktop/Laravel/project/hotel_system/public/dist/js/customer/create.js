@@ -1230,7 +1230,7 @@ new Vue({
             if (response.data.success) {
               window.location.href = '/admin/customer/list';
             } else {
-              console.log(response.data.message);
+              alert(response.data.data);
               _this.error = response.data.message;
             }
           });

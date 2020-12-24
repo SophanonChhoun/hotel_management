@@ -83,11 +83,6 @@ class UserController extends Controller
     {
         DB::beginTransaction();
         try {
-            $user = User::where("email",$request->email)->first();
-            if($user)
-            {
-                return $this->fail("Please input another email");
-            }
             $user = User::find($id);
             if(!$user)
             {

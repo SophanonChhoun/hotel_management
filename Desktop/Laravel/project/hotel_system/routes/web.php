@@ -20,6 +20,7 @@ use App\Http\Controllers\SlidersController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -149,6 +150,11 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::post("/update/{id}",[BookingController::class,"update"]);
             Route::post("/update/status/{id}",[BookingController::class,"updateStatus"]);
             Route::post("/delete/{id}",[BookingController::class,"destroy"]);
+        });
+
+        Route::group(['prefix' => "profile"],function (){
+            Route::get("/show",[ProfileController::class,"show"]);
+
         });
 
         Route::group(["prefix" => "payment"],function () {

@@ -17,17 +17,6 @@
         </div>
 
         <div class="col-lg-12">
-            <div class="row">
-                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
-                    <div class="form-group has-search">
-                        <form action="/admin/booking/list" method="get">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search.." name="search" value="{{ request()->get('search') }}">
-                                <button type="submit" class="btn-success"><i class="fa fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
                 <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
                     <form action="/admin/booking/list" method="get">
                         <label for="">Status: </label>
