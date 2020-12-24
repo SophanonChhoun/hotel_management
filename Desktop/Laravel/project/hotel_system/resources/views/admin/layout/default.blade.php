@@ -13,7 +13,7 @@
 
         <div class="container-fluid">
             <!-- Page Heading -->
-            <div id="app">
+            <div id="app" style="margin-left: 10px;">
                 @yield("content")
 
             </div>

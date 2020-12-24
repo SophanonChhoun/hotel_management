@@ -39,10 +39,19 @@
                 </ul>
             </li>
 
+            <li class="{{ request()->is('admin/payment*') ? 'active' : '' }}">
+                <a href="javascript:;" data-toggle="collapse" data-target="#payment"><i class="fa fa-fw fa-arrows-v"></i> Payment <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul class="collapse" id="payment">
 
-            <li class="{{ request()->is('admin/payment_type*') ? 'active' : '' }}">
-                <a href="/admin/payment_type/list"><i class="fa fa-fw fa-file"></i> Payment Type</a>
+                    <li class="{{ request()->is('admin/payment_type*') ? 'active' : '' }}">
+                        <a href="/admin/payment_type/list"> Payment Type</a>
+                    </li>
+                    <li class="{{ request()->is('admin/payment*') ? 'active' : '' }}">
+                        <a href="/admin/payment/list"> Payment</a>
+                    </li>
+                </ul>
             </li>
+
 
             <li class="{{ request()->is('admin/room*') ? 'active' : '' }}">
                 <a href="javascript:;" data-toggle="collapse" data-target="#room"><i class="fa fa-fw fa-arrows-v"></i> Rooms <i class="fa fa-fw fa-caret-down"></i></a>

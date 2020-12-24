@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Input;
 use App\Models\admin\Customer;
+use App\Models\admin\IdentificationType;
 use Illuminate\Http\Request;
 use Exception;
 use DB;
@@ -20,7 +21,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customer = Customer::all();
+        $customer = Customer::with("identification_type")->get();
         return view("admin.customer.list",compact("customer"));
     }
 
@@ -31,7 +32,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('admin.customer.create');
+        $identification_type = IdentificationType::where("is_enable",1)->get();
+        return view('admin.customer.create',compact("identification_type"));
     }
 
     /**
@@ -42,28 +44,16 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-    //     if (Customer::where('email', '=', Input::get('email'))->exists()) {
-    //         return $this->success('fail');
-    //      }
-    //  $messages = ['email.unqiue'=>'email already taken'];
-    //     $this->validate($request, [
-    //         'email' => 'required|unique:customers',
-    //     ],$messages);
 
-    $request->validate([
-        'email' => 'required|unique:customers',
-       
-    ]);
         Customer::create([
             'first_name'=>$request['first_name'],
             'last_name'=>$request['last_name'],
             'email'=>$request['email'],
             'password'=>$request['password'],
-            // 'confirm_password'=>$request['confirm_password'],
             'phone_number'=>$request['phone_number'],
             'dob'=>$request['dob'],
             'gender'=>$request['gender'],
+            'identification_type_id'=>$request['identification_type_id'],
             'identification_id'=>$request['identification_id'],
             'street_address'=>$request['street_address'],
             'city'=>$request['city'],
@@ -71,7 +61,7 @@ class CustomerController extends Controller
             'zip'=>$request['zip'],
             'is_enable'=>$request['is_enable'],
         ]);
-     
+
         return $this->success('success');
 
     }
@@ -85,10 +75,11 @@ class CustomerController extends Controller
     public function show($id)
     {
         try {
-            
+
             // return view('admin.customer.edit');
-            $customer = Customer::find($id);
-            return view('admin.customer.edit',compact('customer'));
+            $customer = Customer::with("identification_type")->find($id);
+            $identification_type = IdentificationType::where("is_enable",1)->get();
+            return view('admin.customer.edit',compact('customer','identification_type'));
         }catch (Exception $exception){
             return redirect('/admin/customer/list');
         }
@@ -102,7 +93,7 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customer = Customer::find($id);
+        $customer = Customer::with("identification_type")->find($id);
         return view("admin.customer.edit")->with('customer',$customer);
 
     }
@@ -116,9 +107,6 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'email' => 'required|unique:customers',   
-        ]);
 
         DB::beginTransaction();
         try {
@@ -129,7 +117,7 @@ class CustomerController extends Controller
                 return $this->fail("Cannot find this customer");
             }
             $data = [
-           
+
                 "first_name" => $request->first_name,
                 "last_name" => $request->last_name,
                 "email" => $request->email,
@@ -137,15 +125,15 @@ class CustomerController extends Controller
                 "phone_number" => $request->phone_number,
                 "dob" => $request->dob,
                 "gender" => $request->gender,
+                "identification_type_id" => $request->identification_type_id,
                 "identification_id" => $request->identification_id,
                 "street_address" => $request->street_address,
                 "city" => $request->city,
                 "country" => $request->country,
                 "zip" => $request->zip,
                 "is_enable" => $request->is_enable,
-
             ];
-            
+
             $customer = $customer->update($data);
 
             if(!$customer)
@@ -174,25 +162,6 @@ class CustomerController extends Controller
         }
     }
 
-    
-    // public function updateStatus(Request $request, $id)
-    // {
-    //     try {
-    //         $customer = Customer::find($id)->update([
-    //             "is_enable" => $request->is_enable
-    //         ]);
-    //         return back();
-    //     }catch (Exception $exception){
-    //         return $this->fail($exception->getMessage());
-    //     }
-    // }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\admin\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         try {
