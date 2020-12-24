@@ -4,82 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Models\admin\BookingType;
 use Illuminate\Http\Request;
+use DB;
+use Exception;
 
 class BookingTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        
+        $booking_type = BookingType::all();
+        return view("admin.booking_type.edit",compact("booking_type"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update(Request $request)
     {
-        //
-    }
+        try {
+            $idS = array_column($request->data,"id");
+            BookingType::whereNotIn("id",$idS)->delete();
+            foreach ($request->data as $booking_type)
+            {
+                $data = [
+                    'name' => $booking_type['name'],
+                    'is_enable' => $booking_type['is_enable']
+                ];
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\admin\BookingType  $bookingType
-     * @return \Illuminate\Http\Response
-     */
-    public function show(BookingType $bookingType)
-    {
-        //
-    }
+                $data = BookingType::updateOrCreate([
+                    "id" => $booking_type['id'] ?? null
+                ],$data);
+            }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\admin\BookingType  $bookingType
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(BookingType $bookingType)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\admin\BookingType  $bookingType
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, BookingType $bookingType)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\admin\BookingType  $bookingType
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(BookingType $bookingType)
-    {
-        //
+            return $this->success("Success");
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
     }
 }

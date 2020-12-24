@@ -3,21 +3,21 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Payment Type
+                Booking Type
             </h1>
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i>  <a href="#">Dashboard</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-edit"></i>Payment Type
+                    <i class="fa fa-edit"></i>Booking Type
                 </li>
             </ol>
         </div>
-        <div id="editPaymentType" v-cloak>
+        <div id="editBookingType" v-cloak>
             <form action="#" @submit.prevent="submit">
                 <div class="portlet-body m-20">
-                    @include('admin.payment_type.form')
+                    @include('admin.booking_type.form')
                     <div class="breadcrumb bg-danger" v-if="error">
                         <p>@{{ error }}</p>
                     </div>
@@ -32,8 +32,8 @@
 @endsection
 @section("script")
     <script>
-        const data = @json($payment_type);
+        const data = @json($booking_type);
     </script>
     <script src="{{ mix('/dist/js/app.js') }}"></script>
-    <script src="{{ mix('/dist/js/payment_type/edit.js') }}"></script>
+    <script src="{{ mix('/dist/js/booking_type/edit.js') }}"></script>
 @endsection
