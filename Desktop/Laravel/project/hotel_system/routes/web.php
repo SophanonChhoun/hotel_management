@@ -147,15 +147,22 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::post("/create",[BookingController::class,"store"]);
             Route::get("/show/{id}",[BookingController::class,"show"]);
             Route::post("/update/{id}",[BookingController::class,"update"]);
+            Route::post("/update/status/{id}",[BookingController::class,"updateStatus"]);
             Route::post("/delete/{id}",[BookingController::class,"destroy"]);
         });
 
         Route::group(["prefix" => "payment"],function () {
-            Route::get("/create",[PaymentController::class,"create"]);
-            Route::post("/create",[PaymentController::class,"store"]);
             Route::get("/show/{id}",[PaymentController::class,"show"]);
-            Route::post("/update/{id}",[PaymentController::class,"update"]);
-            Route::post("/delete/{id}",[PaymentController::class,"destroy"]);
+            Route::get("/list",[PaymentController::class,"index"]);
+        });
+
+        Route::group(['prefix' => "customer"],function(){
+            Route::get("/list",[CustomerController::class,"index"]);
+            Route::get("/create",[CustomerController::class,"create"]);
+            Route::post("/create",[CustomerController::class,"store"]);
+            Route::get("/show/{id}",[CustomerController::class,"show"]);
+            Route::post("/update/{id}",[CustomerController::class,"update"]);
+            Route::post("/delete/{id}",[CustomerController::class,"destroy"]);
 
         });
     });

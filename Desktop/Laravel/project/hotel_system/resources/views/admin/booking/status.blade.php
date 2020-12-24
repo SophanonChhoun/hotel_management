@@ -1,4 +1,4 @@
-<div class="modal fade" id="status{{ $room_type->id }}" role="dialog">
+<div class="modal fade" id="status{{ $booking->id }}" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -14,9 +14,9 @@
                 <div>
 
                 </div>
-                <form action="{{ url('admin/room_type/update/status/'.$room_type->id) }}" method="post">
+                <form action="{{ url('admin/booking/update/status/'.$booking->id) }}" method="post">
                     @csrf
-                    <input type="hidden" name="is_enable" value="{{ $room_type->is_enable ? 0 : 1 }}">
+                    <input type="hidden" name="is_enable" value="{{ $booking->is_enable ? 0 : 1 }}">
                     <button class="btn btn-danger">Update it</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </form>
