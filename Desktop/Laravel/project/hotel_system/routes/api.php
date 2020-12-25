@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SlidersController;
+use App\Http\Controllers\CustomerAuthController;
+use App\Http\Middleware\CustomerMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,14 @@ use App\Http\Controllers\SlidersController;
 */
 
 Route::get('/spotlights',[SlidersController::class,'indexCustomer']);
+
+Route::post('/login',[CustomerAuthController::class,'login']);
+Route::post('/register',[CustomerAuthController::class,'register']);
+
+Route::middleware(CustomerMiddleware::class)->group(function (){
+    Route::post('/logout',[CustomerAuthController::class,'logout']);
+    Route::get('/test',[CustomerAuthController::class,'test']);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
