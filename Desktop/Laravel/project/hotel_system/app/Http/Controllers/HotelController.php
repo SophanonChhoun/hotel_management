@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Core\MediaLib;
+use App\Http\Resources\HotelListResource;
+use App\Http\Resources\HotelShowResource;
+use App\Http\Resources\MediasResource;
 use App\Models\admin\Hotel;
 use App\Models\admin\HotelMediaMap;
 use Illuminate\Http\Request;
@@ -32,22 +35,22 @@ class HotelController extends Controller
         return view("admin.hotel.list",compact("data"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function indexCustomer()
+    {
+        try {
+            $hotels = Hotel::with("medias")->where("is_enable",1)->get();
+
+            return $this->success(HotelListResource::collection($hotels));
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
+    }
+
     public function create()
     {
         return view('admin.hotel.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         DB::beginTransaction();
@@ -93,14 +96,29 @@ class HotelController extends Controller
         }
     }
 
+    public function showCustomer($id)
+    {
+        try {
+            $hotel = Hotel::with("medias")->find($id);
+            $is_enable = $hotel->is_enable ?? null;
+            if(!$hotel || !$is_enable)
+            {
+                return $this->fail("Hotel not found");
+            }
+            return $this->success([
+                'id' => $hotel->id,
+                'title' => $hotel->name,
+                'street_address' => $hotel->street_address,
+                'city' => $hotel->city,
+                'country' => $hotel->country,
+                'description' => $hotel->description,
+                'medias' => MediasResource::collection($hotel->medias),
+            ]);
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
+    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\admin\Hotel  $hotel
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         DB::beginTransaction();

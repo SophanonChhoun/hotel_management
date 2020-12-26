@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Core\MediaLib;
+use App\Http\Resources\MediasResource;
+use App\Http\Resources\RoomTypeListResource;
 use App\Models\admin\RoomType;
 use App\Models\admin\RoomTypeMediaMap;
 use Illuminate\Http\Request;
@@ -32,23 +34,22 @@ class RoomTypeController extends Controller
         return view('admin.room_type.list',compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function indexCustomer()
+    {
+        try {
+            $room_types = RoomType::with("medias")->where('is_enable',1)->get();
+            return $this->success(RoomTypeListResource::collection($room_types));
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
+    }
+
     public function create()
     {
         return view('admin.room_type.create');
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         DB::beginTransaction();
@@ -73,12 +74,6 @@ class RoomTypeController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\admin\RoomType  $roomType
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         try {
@@ -89,14 +84,27 @@ class RoomTypeController extends Controller
         }
     }
 
+    public function showCustomer($id)
+    {
+        try {
+            $roomType = RoomType::with("medias")->find($id);
+            $is_enable = $roomType->is_enable ?? null;
+            if(!$roomType || !$is_enable)
+            {
+                return $this->fail('Room type is not found');
+            }
+            return $this->success([
+                'id' => $roomType->id,
+                'title' => $roomType->name,
+                'description' => $roomType->description,
+                'price' => $roomType->price,
+                'medias' => MediasResource::collection($roomType->medias)
+            ]);
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
+    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\admin\RoomType  $roomType
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         DB::beginTransaction();

@@ -1,6 +1,7 @@
 @extends('admin.layout.default')
+
 @section("content")
-    <div class="row">
+    <div class="row" id="createHotel" v-cloak>
         <div class="col-lg-12">
             <h1 class="page-header">
                 @lang('hotel.hotels')
@@ -14,7 +15,7 @@
                 </li>
             </ol>
         </div>
-        <div id="createHotel" v-cloak>
+        <div>
             <form action="#" @submit.prevent="submit">
                 <div class="portlet-body m-20">
                         @include('admin.hotel.form')

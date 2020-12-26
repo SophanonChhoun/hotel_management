@@ -17,7 +17,7 @@
                 </li>
             </ol>
         </div>
-        <div id="createBooking">
+        <div id="createBooking" v-cloak>
             <form action="#" @submit.prevent="submit">
 
                         @include('admin.booking.form')
