@@ -84,7 +84,7 @@ class CustomerAuthController extends Controller
     }
 
 
-    public function register(Request $request)
+    public function register(CustomerRegisterRequest $request)
     {
 
         DB::beginTransaction();
@@ -111,14 +111,11 @@ class CustomerAuthController extends Controller
             return $this->success($auth);
 
         } catch (\Exception $e) {
+            dd(22);
+            report($e);
             DB::rollback();
             return $this->fail($e->getMessage(), $e->getCode());
         }
-    }
-
-    public function test()
-    {
-        dd(443);
     }
 
 }

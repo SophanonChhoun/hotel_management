@@ -7,6 +7,11 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,7 +21,7 @@
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
-                <div id="login-box" class="col-md-12">
+                <div id="login-box" class="col-md-12" v-cloak>
 {{--                    <form id="login-form" class="form" action="{{ url('admin/login') }}" method="post">--}}
                     <form id="login-form" class="form" action="{{ url('admin/login') }}" method="post">
                         @csrf

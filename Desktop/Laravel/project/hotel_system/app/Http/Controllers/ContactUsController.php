@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ContactUsResource;
 use App\Models\admin\ContactUs;
 use Illuminate\Http\Request;
 use Exception;
@@ -21,6 +22,16 @@ class ContactUsController extends Controller
         }
         $data = $contacts_us->paginate(10);
         return view("admin.contact_us.list",compact("data"));
+    }
+
+    public function indexCustomer()
+    {
+        try {
+            $contact_us = ContactUs::where("is_enable",1)->get();
+            return $this->success(ContactUsResource::collection($contact_us));
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
     }
 
     public function create()

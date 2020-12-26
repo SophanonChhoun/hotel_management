@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SlidersController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Middleware\CustomerMiddleware;
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\HotelController;
+use App\Http\Controllers\RoomTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +22,12 @@ use App\Http\Middleware\CustomerMiddleware;
 */
 
 Route::get('/spotlights',[SlidersController::class,'indexCustomer']);
+Route::get('/about_us',[AboutUsController::class,'showCustomer']);
+Route::get('/contact_us',[ContactUsController::class,'indexCustomer']);
+Route::get('/hotel/list',[HotelController::class,'indexCustomer']);
+Route::get('/hotel/show/{id}',[HotelController::class,'showCustomer']);
+Route::get('/roomType/list',[RoomTypeController::class,'indexCustomer']);
+Route::get('/roomType/show/{id}',[RoomTypeController::class,'showCustomer']);
 
 Route::post('/login',[CustomerAuthController::class,'login']);
 Route::post('/register',[CustomerAuthController::class,'register']);

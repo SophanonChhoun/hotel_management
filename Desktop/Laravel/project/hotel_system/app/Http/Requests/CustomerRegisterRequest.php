@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\DefaultFormRequest;
 
-class CustomerRegisterRequest extends FormRequest
+class CustomerRegisterRequest extends DefaultFormRequest
 {
     public function rules()
     {

@@ -32,4 +32,9 @@
     <link href="{{ asset('plugins/css/select2.min.css') }}" rel="stylesheet" />
     <!-- END select2 -->
 
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>

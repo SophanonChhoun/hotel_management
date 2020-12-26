@@ -15,6 +15,13 @@ class AboutUsController extends Controller
         return view("admin.about_us.edit",compact("about_us"));
     }
 
+    public function showCustomer($id = 1)
+    {
+        $about_us = AboutUs::find($id);
+
+        return $this->success($about_us);
+    }
+
     public function update(Request $request,$id = 1)
     {
         try {
