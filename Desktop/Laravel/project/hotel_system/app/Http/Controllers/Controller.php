@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Core\DateLib;
+use App\Models\admin\Booking;
+use App\Models\admin\BookingHasRooms;
+use App\Models\admin\Room;
 use App\Models\customer\CustomerLoginAccess;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Contracts\Validation\Validator;
@@ -28,6 +32,15 @@ class Controller extends BaseController
                "expired_at" => $now->addDay()
             ]);
         }
+        $current_date = Carbon::today()->format("Y-m-d");
+        $booking=Booking::where("check_in_date","<=",$current_date)->where("check_out_date",">=",$current_date)->where("is_enable",true);
+        $rooms = BookingHasRooms::whereIn("booking_id",$booking->pluck("id"));
+        Room::whereIn("id",$rooms->pluck("room_id"))->update([
+           "is_enable" => 0
+        ]);
+        Room::whereNotIn("id",$rooms->pluck("room_id"))->update([
+            "is_enable" => 1
+        ]);
     }
 
     protected function formatValidationErrors(Validator $validator)

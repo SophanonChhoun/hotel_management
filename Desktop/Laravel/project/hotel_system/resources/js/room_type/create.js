@@ -1,9 +1,10 @@
 import VueCkeditor from 'vue-ckeditor2';
 import Multiselect from "vue-multiselect";
+import SingleSelect from "../components/SingleSelect";
 
 new Vue({
     el: '#createRoomType',
-    components: { VueCkeditor, Multiselect },
+    components: { VueCkeditor, Multiselect, SingleSelect },
     data: {
         data: {
             name: '',
@@ -37,6 +38,7 @@ new Vue({
                     this.error_image = 'The Image field is required'
                     save = false;
                 }
+                this.data.hotel_id = this.data.hotel.id;
                 if(result && save) {
                     axios.post('/admin/room_type/create',this.data).then(response => {
                         if(response.data.success){
