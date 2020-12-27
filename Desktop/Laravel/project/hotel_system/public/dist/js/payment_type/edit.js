@@ -1247,7 +1247,7 @@ new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/Laravel/project/hotel_system/resources/js/payment_type/edit.js */"./resources/js/payment_type/edit.js");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/payment_type/edit.js */"./resources/js/payment_type/edit.js");
 
 
 /***/ })

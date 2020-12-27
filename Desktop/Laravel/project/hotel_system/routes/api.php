@@ -9,7 +9,7 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RoomTypeController;
-
+use App\Http\Controllers\BookingController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,6 +33,9 @@ Route::post('/login',[CustomerAuthController::class,'login']);
 Route::post('/register',[CustomerAuthController::class,'register']);
 
 Route::middleware(CustomerMiddleware::class)->group(function (){
+    Route::group(['prefix' => '/bookings'],function (){
+        Route::get('',[BookingController::class,'listCustomer']);
+    });
     Route::post('/logout',[CustomerAuthController::class,'logout']);
     Route::get('/test',[CustomerAuthController::class,'test']);
 });

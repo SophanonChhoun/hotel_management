@@ -442,6 +442,96 @@
   },
   {
     "type": "get",
+    "url": "/api/bookings",
+    "title": "1. List Booking",
+    "version": "1.0.0",
+    "name": "List_Booking",
+    "group": "Booking",
+    "success": {
+      "examples": [
+        {
+          "title": "Response (example):",
+          "content": " HTTP/1.1 200 Success Request\n {\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"checkInDate\": \"2020-12-24\",\n            \"checkOutDate\": \"2020-12-31\",\n            \"hotel\": {\n                \"id\": 1,\n                \"name\": \"Siem Reap hotel\",\n                \"street_address\": \"193\",\n                \"city\": \"Siem Reap\",\n                \"country\": \"Cambodia\",\n                \"zip\": \"855\"\n            },\n            \"roomType\": []\n        },\n        {\n            \"id\": 2,\n            \"checkInDate\": \"2020-12-24\",\n            \"checkOutDate\": \"2020-12-30\",\n            \"hotel\": {\n                \"id\": 1,\n                \"name\": \"Siem Reap hotel\",\n                \"street_address\": \"193\",\n                \"city\": \"Siem Reap\",\n                \"country\": \"Cambodia\",\n                \"zip\": \"855\"\n            },\n            \"roomType\": [\n                {\n                    \"name\": \"Hello\",\n                    \"images\": [\n                        {\n                            \"imageSrc\": \"http://127.0.0.1:8000/uploads/images/87723d9333ee51f22284240da5191904.png\",\n                            \"imageAlt\": \"image\"\n                        },\n                        {\n                            \"imageSrc\": \"http://127.0.0.1:8000/uploads/images/15ef9d0e6e01ec0c99ce5e09238dd8f8.png\",\n                            \"imageAlt\": \"image\"\n                        },\n                        {\n                            \"imageSrc\": \"http://127.0.0.1:8000/uploads/images/74c8c2144d2186bed7788c9a4541767e.png\",\n                            \"imageAlt\": \"image\"\n                        }\n                    ]\n                },\n            ]\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./booking.js",
+    "groupTitle": "Booking",
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:8000//api/bookings"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Auth",
+            "description": "<p>Access token from user login.</p>"
+          },
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p><code>application/json</code></p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "4xx": [
+          {
+            "group": "4xx",
+            "type": "404",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>resource is not found</p>"
+          },
+          {
+            "group": "4xx",
+            "type": "401",
+            "optional": false,
+            "field": "AuthInvalid",
+            "description": "<p>auth token is missing, expire, or invalid.</p>"
+          }
+        ],
+        "5xx": [
+          {
+            "group": "5xx",
+            "type": "500",
+            "optional": false,
+            "field": "InternalSeverError",
+            "description": "<p>internal server error</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "404 (NotFound):",
+          "content": "HTTP/1.1 404 Not Found\n{\n   \"success\": false,\n   \"message\": \"The :attribute is not found.\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "500 (InternalSeverError):",
+          "content": "HTTP/1.1 500 Error In Server Request\n{\n   \"success\": false,\n   \"message\": \"Server Error\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "401 (AuthInvalid):",
+          "content": "HTTP/1.1 401 Unauthorized\n{\n   \"success\": false,\n   \"message\": \"user is unauthorized. The token is invalid.\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
     "url": "/api/hotel/list",
     "title": "1. List hotel",
     "version": "1.0.0",
@@ -461,6 +551,77 @@
     "sampleRequest": [
       {
         "url": "http://127.0.0.1:8000//api/hotel/list"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p><code>application/json</code></p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "4xx": [
+          {
+            "group": "4xx",
+            "type": "404",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>resource is not found</p>"
+          }
+        ],
+        "5xx": [
+          {
+            "group": "5xx",
+            "type": "500",
+            "optional": false,
+            "field": "InternalSeverError",
+            "description": "<p>internal server error</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "404 (NotFound):",
+          "content": "HTTP/1.1 404 Not Found\n{\n   \"success\": false,\n   \"message\": \"The :attribute is not found.\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "500 (InternalSeverError):",
+          "content": "HTTP/1.1 500 Error In Server Request\n{\n   \"success\": false,\n   \"message\": \"Server Error\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/hotel/show/:id",
+    "title": "2. Show hotel",
+    "version": "1.0.0",
+    "name": "show_hotel",
+    "group": "Hotel",
+    "success": {
+      "examples": [
+        {
+          "title": "Response (example):",
+          "content": " HTTP/1.1 200 Success Request\n {\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Siem Reap hotel\",\n        \"street_address\": \"193\",\n        \"city\": \"Siem Reap\",\n        \"country\": \"Cambodia\",\n        \"description\": \"<p>Hello World</p>\",\n        \"medias\": [\n            {\n                \"imageSrc\": \"http://127.0.0.1:8000/uploads/images/5df240b2530816bd2bfae92d7942609c.png\",\n                \"imageAlt\": \"image\"\n            }\n        ]\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./booking.js",
+    "groupTitle": "Hotel",
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:8000//api/hotel/show/:id"
       }
     ],
     "header": {
