@@ -2,6 +2,7 @@
     <table class="table table-responsive">
         <tr>
             <th>Name</th>
+            <th>Hotel</th>
             <th>Description</th>
             <th>Price</th>
             <th>Image</th>
@@ -11,6 +12,7 @@
         @forelse($data as $room_type)
             <tr>
                 <td>{{ $room_type->name }}</td>
+                <td>{{ $room_type->hotel->name ?? null }}</td>
                 <td><?php
                     if (strlen($room_type->description) > 30)
                         $room_type->description = substr($room_type->description, 0, 30) . '...';

@@ -96,3 +96,93 @@
  * @apiUse NotFound
  * @apiUse ServerServerError
  */
+
+/**
+ * @api {get} /api/booking/stay 3. Book a stay
+ * @apiVersion 1.0.0
+ * @apiName Book a stay
+ * @apiGroup Booking
+ *
+ * @apiUse GetHeaderWithoutAuth
+ *
+ * @apiSuccessExample  Response (example):
+ HTTP/1.1 200 Success Request
+ {
+    "success": true,
+    "data": {
+        "hotels": [
+            {
+                "id": 1,
+                "name": "Siem Reap hotel"
+            },
+            {
+                "id": 2,
+                "name": "Phnom Penh Hotel"
+            },
+            {
+                "id": 3,
+                "name": "Borey Angkor"
+            },
+            {
+                "id": 4,
+                "name": "Borey Angkor"
+            }
+        ]
+    }
+}
+ *
+ * @apiUse NotFound
+ * @apiUse ServerServerError
+ */
+
+/**
+ * @api {get} /api/booking-offers 4. Booking Offer
+ * @apiVersion 1.0.0
+ * @apiName Booking Offer
+ * @apiGroup Booking
+ *
+ * @apiUse GetHeaderWithoutAuth
+ *
+ * @apiParam {integer} hotel_id         Hotel Id
+ *
+ * @apiExample {curl} Example usage:
+{
+    "hotel_id": 3
+}
+ * @apiSuccessExample  Response (example):
+ HTTP/1.1 200 Success Request
+{
+    "success": true,
+    "data": {
+        "hotel_id": 3,
+        "roomType": [
+            {
+                "id": 16,
+                "name": "Borey Room",
+                "description": "<p>Hello World</p>",
+                "images": [
+                    {
+                        "imageSrc": "http://127.0.0.1:8000/uploads/images/02b49f33fd39cac46b540911ff8bad6c.png",
+                        "imageAlt": "image"
+                    }
+                ],
+                "rooms": [
+                    {
+                        "id": 7,
+                        "name": "7"
+                    }
+                ]
+            }
+        ],
+        "paymentType": [
+            {
+                "id": 1,
+                "name": "Visa card"
+            }
+        ]
+    }
+}
+ *
+ * @apiUse NotFound
+ * @apiUse ServerServerError
+ */

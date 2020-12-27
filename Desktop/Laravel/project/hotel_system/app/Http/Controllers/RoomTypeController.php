@@ -21,7 +21,7 @@ class RoomTypeController extends Controller
      */
     public function index(Request $request)
     {
-        $room_types = RoomType::with("medias");
+        $room_types = RoomType::with("medias","hotel");
         if(isset($request->search))
         {
             $room_types = $room_types->where("name","LIKE","%".$request->search."%");
@@ -80,8 +80,9 @@ class RoomTypeController extends Controller
     public function show($id)
     {
         try {
-            $room_type = RoomType::with("medias")->find($id);
-            return view("admin.room_type.edit",compact("room_type"));
+            $room_type = RoomType::with("medias","hotel")->find($id);
+            $hotels = Hotel::where("is_enable",1)->get();
+            return view("admin.room_type.edit",compact("room_type","hotels"));
         }catch (Exception $exception){
             return $this->fail($exception);
         }

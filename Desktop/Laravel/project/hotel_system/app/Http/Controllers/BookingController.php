@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\BookingListResource;
 use App\Http\Resources\HotelBookResource;
+use App\Http\Resources\PaymentTypeResource;
 use App\Http\Resources\RoomTypeBookResource;
 use App\Models\admin\Booking;
 use App\Models\admin\BookingHasRooms;
@@ -64,7 +65,15 @@ class BookingController extends Controller
     public function bookingOffer(Request $request)
     {
         try {
+            $payment_types = PaymentType::where("is_enable",1)->get();
+            $hotels = Hotel::with("roomTypes.rooms","roomTypes.medias")->find($request->hotel_id);
 
+
+            return $this->success([
+                "hotel_id" => $hotels->id,
+                "roomType" => RoomTypeBookResource::collection($hotels->roomTypes),
+                "paymentType" => PaymentTypeResource::collection($payment_types)
+            ]);
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());
         }

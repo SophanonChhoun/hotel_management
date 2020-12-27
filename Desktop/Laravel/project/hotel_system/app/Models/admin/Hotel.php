@@ -25,4 +25,9 @@ class Hotel extends Model
     {
         return $this->belongsToMany(MediaFile::class, HotelMediaMap::class, 'hotel_id', 'media_id');
     }
+
+    public function roomTypes()
+    {
+        return $this->hasMany(RoomType::class,"hotel_id","id");
+    }
 }

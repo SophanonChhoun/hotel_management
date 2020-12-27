@@ -1,9 +1,10 @@
 import VueCkeditor from "vue-ckeditor2";
 import Multiselect from "vue-multiselect";
+import SingleSelect from "../components/SingleSelect";
 
 new Vue({
     el: '#editRoomType',
-    components: { VueCkeditor, Multiselect },
+    components: { VueCkeditor, Multiselect, SingleSelect },
     data: {
         data: data,
         id: data.id,
@@ -27,6 +28,7 @@ new Vue({
             this.$validator.validateAll().then((result) => {
                 this.is_submit = true
                 let save = true;
+                this.data.hotel_id = this.data.hotel.id;
                 if(result && save) {
                     axios.post('/admin/room_type/update/'+this.id,this.data).then(response => {
                         if(response.data.success){
