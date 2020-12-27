@@ -1,8 +1,9 @@
 import VueCkeditor from 'vue-ckeditor2';
+import Multiselect from "vue-multiselect";
 
 new Vue({
     el: '#createRoomType',
-    components: { VueCkeditor },
+    components: { VueCkeditor, Multiselect },
     data: {
         data: {
             name: '',
@@ -12,6 +13,7 @@ new Vue({
             image: '',
             medias: []
         },
+        hotels: hotels,
         is_submit: false,
         error: '',
         error_image: '',

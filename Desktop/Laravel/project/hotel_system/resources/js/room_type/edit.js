@@ -1,14 +1,16 @@
 import VueCkeditor from "vue-ckeditor2";
+import Multiselect from "vue-multiselect";
 
 new Vue({
     el: '#editRoomType',
-    components: { VueCkeditor },
+    components: { VueCkeditor, Multiselect },
     data: {
         data: data,
         id: data.id,
         is_submit: false,
         error: '',
         error_image: '',
+        hotels: hotels,
         image: '',
         config: {
             toolbar: [
