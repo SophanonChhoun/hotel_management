@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BookingListResource;
 use App\Models\admin\Booking;
 use App\Models\admin\BookingHasRooms;
 use App\Models\admin\BookingRoomTypeMap;
@@ -32,6 +33,17 @@ class BookingController extends Controller
         }
         $data = $bookings->simplePaginate(10);
         return view('admin.booking.list',compact('data'));
+    }
+
+    public function listCustomer(Request $request)
+    {
+        try {
+            $bookings = Booking::with("hotel","room_types.medias")->where("customer_id",$request['auth_id'])->get();
+
+            return $this->success(BookingListResource::collection($bookings));
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
     }
 
     public function create()
@@ -73,6 +85,9 @@ class BookingController extends Controller
             ];
             $data = Booking::create($booking);
             BookingHasRooms::store($data->id,$request['rooms']);
+            Room::whereIn("id",$request['rooms'])->update([
+                'is_enable' => 0
+            ]);
             BookingRoomTypeMap::store($data->id,$request['room_type_id']);
             $amount = count($request['rooms']);
             Payment::store($data->id,$amount,$request['customer_id']);
@@ -134,6 +149,9 @@ class BookingController extends Controller
             ];
             $data = $data->update($booking);
             BookingHasRooms::store($id,$request['rooms']);
+            Room::whereIn("id",$request['rooms'])->update([
+                'is_enable' => 0
+            ]);
             BookingRoomTypeMap::store($id,$request['room_type_id']);
             $amount = count($request['rooms']);
             Payment::store($id,$amount,$request['customer_id']);
