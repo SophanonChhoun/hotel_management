@@ -57,17 +57,13 @@
  *
  * @apiParam {String} first_name            First name
  * @apiParam {String} last_name             Last name
- * @apiParam {date} dob                     Date of birth
  * @apiParam {String} email                 email
- * @apiParam {char} gender                  gender
  * @apiParam {String} password              password
  *
  * @apiExample {curl} Example usage:
  {
     "email": "chhounsophanon6@gmail.com",
     "password": "password",
-    "dob": "12-12-2020",
-    "gender": "m",
     "last_name": "Chhoun",
     "first_name": "Sophanon"
  }

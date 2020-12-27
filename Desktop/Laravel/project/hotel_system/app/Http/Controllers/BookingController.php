@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\BookingListResource;
+use App\Http\Resources\HotelBookResource;
+use App\Http\Resources\RoomTypeBookResource;
 use App\Models\admin\Booking;
 use App\Models\admin\BookingHasRooms;
 use App\Models\admin\BookingRoomTypeMap;
@@ -41,6 +43,28 @@ class BookingController extends Controller
             $bookings = Booking::with("hotel","room_types.medias")->where("customer_id",$request['auth_id'])->get();
 
             return $this->success(BookingListResource::collection($bookings));
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
+    }
+
+    public function bookingStay()
+    {
+        try {
+            $hotel = Hotel::where("is_enable",1)->get();
+
+            return $this->success([
+                "hotels" => HotelBookResource::collection($hotel),
+            ]);
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
+    }
+
+    public function bookingOffer(Request $request)
+    {
+        try {
+
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());
         }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Core\MediaLib;
 use App\Http\Resources\MediasResource;
 use App\Http\Resources\RoomTypeListResource;
+use App\Models\admin\Hotel;
 use App\Models\admin\RoomType;
 use App\Models\admin\RoomTypeMediaMap;
 use Illuminate\Http\Request;
@@ -46,7 +47,8 @@ class RoomTypeController extends Controller
 
     public function create()
     {
-        return view('admin.room_type.create');
+        $hotels = Hotel::where("is_enable",1)->get();
+        return view('admin.room_type.create',compact("hotels"));
 
     }
 
@@ -58,6 +60,7 @@ class RoomTypeController extends Controller
                 "name" => $request->name,
                 "description" => $request->description,
                 "price" => $request->price,
+                "hotel_id" => $request->hotel_id,
                 "is_enable" => $request->is_enable
             ];
             $data = RoomType::create($room_type);
@@ -118,6 +121,7 @@ class RoomTypeController extends Controller
                 "name" => $request->name,
                 "description" => $request->description,
                 "price" => $request->price,
+                "hotel_id" => $request->hotel_id,
                 "is_enable" => $request->is_enable
             ];
             $data = $roomType->update($room_type);

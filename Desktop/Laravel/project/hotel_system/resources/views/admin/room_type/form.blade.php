@@ -14,6 +14,25 @@
     <span class="help-block">@{{ errors.first('name') }}</span>
 </div>
 
+<div class="form-group" :class="{'has-error' : errors.first('hotel')}">
+    <label class="control-label">
+        Hotel
+        <span style="color: red">*</span>
+    </label>
+    <multiselect :name="'hotel'"
+                 v-model="data.hotel"
+                 deselect-label="Can't remove this value"
+                 track-by="name"
+                 label="name"
+                 placeholder="Select one"
+                 :options="hotels"
+                 data-vv-as="Hotel"
+                 v-validate="'required'"
+                 :allow-empty="false">
+    </multiselect>
+    <span class="help-block">@{{ errors.first('hotel') }}</span>
+</div>
+
 <div class="form-group" >
     <label class="control-label">
         Description

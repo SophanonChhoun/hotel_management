@@ -14,8 +14,6 @@ class CustomerRegisterRequest extends DefaultFormRequest
             'password' => 'required|min:5|max:8',
             'first_name' => 'required',
             'last_name' => 'required',
-            'dob' => 'required',
-            'gender' => 'required',
         ];
     }
 }

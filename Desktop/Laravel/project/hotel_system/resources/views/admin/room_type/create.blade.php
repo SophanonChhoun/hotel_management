@@ -37,6 +37,9 @@
     </div>
 @endsection
 @section("script")
+    <script>
+        const hotels = @json($hotels);
+    </script>
     <script src="{{ mix('/dist/js/app.js') }}"></script>
     <script src="{{ mix('/dist/js/room_type/create.js') }}"></script>
 
