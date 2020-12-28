@@ -73,6 +73,7 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::post("/update/{id}",[HotelController::class,"update"]);
             Route::post("/update/status/{id}",[HotelController::class,"updateStatus"]);
             Route::post("/delete/{id}",[HotelController::class,"destroy"]);
+            Route::get("roomType/{id}",[HotelController::class,"listAll"]);
         });
 
         Route::group(['prefix' => 'rooms'],function(){

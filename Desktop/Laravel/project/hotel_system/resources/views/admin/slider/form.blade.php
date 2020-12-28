@@ -57,7 +57,7 @@
             <multiselect :name="'hotel'"
                          v-model="data.hotel"
                          deselect-label="Can't remove this value"
-                         track-by="name"
+                         track-by="id"
                          label="name"
                          placeholder="Select one"
                          :options="hotels"

@@ -1193,12 +1193,18 @@ new Vue({
     Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default.a
   },
   data: {
-    data: [],
+    data: {
+      name: '',
+      hotel_id: '',
+      roomType_id: '',
+      is_enable: ''
+    },
     test: [],
     is_submit: false,
     error: '',
     hotels: hotels,
-    room_types: room_types
+    error_roomType: '',
+    room_types: []
   },
   computed: {},
   methods: {
@@ -1208,22 +1214,17 @@ new Vue({
       this.$validator.validateAll().then(function (result) {
         _this.is_submit = true;
         var save = true;
-        _this.data = _this.data.map(function (data) {
-          data = {
-            "name": data.name,
-            "hotel_id": data.hotel.id,
-            "hotel": data.hotel,
-            "is_enable": data.is_enable,
-            "roomType_id": data.roomType.id,
-            "roomType": data.roomType
-          };
-          return data;
-        });
+        _this.data.hotel_id = _this.data.hotel.id;
+
+        if (!_this.data.roomType_id) {
+          _this.error_roomType = "The Room Type field is required";
+          save = false;
+        } else {
+          _this.error_roomType = "";
+        }
 
         if (result && save) {
-          axios.post('/admin/rooms/create', {
-            "data": _this.data
-          }).then(function (response) {
+          axios.post('/admin/rooms/create', _this.data).then(function (response) {
             if (response.data.success) {
               window.location.href = '/admin/rooms/list';
             } else {
@@ -1235,24 +1236,25 @@ new Vue({
         }
       });
     },
-    addRoom: function addRoom() {
-      this.data.push({
-        name: '',
-        is_enable: '',
-        hotel: '',
-        roomType: '',
-        test: [],
-        sort: this.data.length + 1
+    getRoomType: function getRoomType(event) {
+      var _this2 = this;
+
+      var id = event.id;
+
+      if (!id) {
+        id = 0;
+      }
+
+      axios.get("/admin/hotel/roomType/".concat(id)).then(function (response) {
+        if (response) {
+          console.log(response.data.data);
+          _this2.room_types = response.data.data;
+        } else {
+          hideLoading();
+        }
+      })["catch"](function (error) {
+        hideLoading();
       });
-    },
-    removeRoom: function removeRoom(index) {
-      this.data.splice(index, 1);
-      this.data.forEach(function (item, i) {
-        item.sort = i + 1;
-      });
-    },
-    getValue: function getValue() {
-      console.log("Hello");
     }
   }
 });
