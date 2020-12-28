@@ -154,9 +154,9 @@
 
 
 /**
- * @api {get} /api/booking-offers 4. Booking Offer
+ * @api {get} /api/booking/store 4. Booking Store
  * @apiVersion 1.0.0
- * @apiName Booking Offer
+ * @apiName Booking Store
  * @apiGroup Booking
  *
  * @apiUse PostHeader
