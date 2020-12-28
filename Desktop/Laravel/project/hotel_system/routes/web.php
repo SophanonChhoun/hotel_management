@@ -15,12 +15,15 @@ use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ContactUsController;
 use \Illuminate\Support\Facades\App;
+
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\SlidersController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Report\ReportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,8 +48,10 @@ Route::get('/lang/{locale}', [LocalizationController::class,"lang"]);
 Route::post("foo/bar",[TestController::class,"index"]);
 
 Route::middleware(AdminMiddleware::class)->group(function (){
+    Route::get("/dashboard", [DashboardController::class,"index"]);
+    Route::get('/report', [ReportController::class, 'index']);
     Route::group(["prefix" => "admin"],function() {
-
+        Route::get('/report',[ReportController::class,"index"]);
         Route::get("/logout",[AdminAuthController::class,"logout"]);
 
         Route::group(['prefix' => 'about_us'],function(){
@@ -171,6 +176,8 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::post("/delete/{id}",[CustomerController::class,"destroy"]);
 
         });
+
+       
     });
 
 });
@@ -182,3 +189,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
