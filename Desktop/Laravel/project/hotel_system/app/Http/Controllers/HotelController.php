@@ -8,6 +8,7 @@ use App\Http\Resources\HotelShowResource;
 use App\Http\Resources\MediasResource;
 use App\Models\admin\Hotel;
 use App\Models\admin\HotelMediaMap;
+use App\Models\admin\RoomType;
 use Illuminate\Http\Request;
 use Exception;
 use DB;
@@ -43,6 +44,16 @@ class HotelController extends Controller
             return $this->success(HotelListResource::collection($hotels));
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());
+        }
+    }
+
+    public function listAll($id)
+    {
+        try {
+            $roomType = RoomType::where("hotel_id",$id)->where("is_enable",1)->get();
+            return $this->success($roomType);
+        }catch (Exception $exception){
+            return $this->fail("Fail");
         }
     }
 

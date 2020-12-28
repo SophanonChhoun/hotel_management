@@ -1198,10 +1198,13 @@ new Vue({
     test: [],
     is_submit: false,
     error: '',
+    error_roomType: '',
     hotels: hotels,
-    room_types: room_types
+    room_types: []
   },
-  computed: {},
+  mounted: function mounted() {
+    this.getRoomType(this.data.hotel);
+  },
   methods: {
     submit: function submit() {
       var _this = this;
@@ -1210,12 +1213,19 @@ new Vue({
         _this.is_submit = true;
         var save = true;
 
+        if (!_this.data.roomType_id) {
+          _this.error_roomType = "The Room Type field is required";
+          save = false;
+        } else {
+          _this.error_roomType = "";
+        }
+
         if (result && save) {
           axios.post('/admin/rooms/update/' + _this.id, {
             "name": _this.data.name,
             "is_enable": _this.data.is_enable,
             "hotel_id": _this.data.hotel.id,
-            "roomType_id": _this.data.room_type.id
+            "roomType_id": _this.data.roomType_id
           }).then(function (response) {
             if (response.data.success) {
               window.location.href = '/admin/rooms/list';
@@ -1228,20 +1238,24 @@ new Vue({
         }
       });
     },
-    addRoom: function addRoom() {
-      this.data.push({
-        name: '',
-        is_enable: '',
-        hotel: '',
-        roomType: '',
-        test: [],
-        sort: this.data.length + 1
-      });
-    },
-    removeRoom: function removeRoom(index) {
-      this.data.splice(index, 1);
-      this.data.forEach(function (item, i) {
-        item.sort = i + 1;
+    getRoomType: function getRoomType(event) {
+      var _this2 = this;
+
+      var id = event.id;
+
+      if (!id) {
+        id = 0;
+      }
+
+      axios.get("/admin/hotel/roomType/".concat(id)).then(function (response) {
+        if (response) {
+          console.log(response.data.data);
+          _this2.room_types = response.data.data;
+        } else {
+          hideLoading();
+        }
+      })["catch"](function (error) {
+        hideLoading();
       });
     }
   }

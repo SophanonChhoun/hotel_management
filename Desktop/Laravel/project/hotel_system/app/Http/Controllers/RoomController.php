@@ -53,12 +53,9 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         try {
-            foreach ($request->data as $room)
-            {
-                Room::create($room);
-            }
+            $data = Room::create($request->all());
 
-            return $this->success("Success");
+            return $this->success($data);
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());
         }
@@ -75,7 +72,7 @@ class RoomController extends Controller
         try {
             $room_types = RoomType::where("is_enable",1)->get();
             $hotels = Hotel::where("is_enable",1)->get();
-            $room = Room::with("hotel","roomType")->find($id);
+            $room = Room::with("hotel")->find($id);
             return view('admin.rooms.edit',compact('room','room_types','hotels'));
         }catch (Exception $exception){
             return redirect('/admin/rooms/list');
