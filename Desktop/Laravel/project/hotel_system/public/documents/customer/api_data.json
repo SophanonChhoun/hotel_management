@@ -303,24 +303,10 @@
           },
           {
             "group": "Parameter",
-            "type": "date",
-            "optional": false,
-            "field": "dob",
-            "description": "<p>Date of birth</p>"
-          },
-          {
-            "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "email",
             "description": "<p>email</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "char",
-            "optional": false,
-            "field": "gender",
-            "description": "<p>gender</p>"
           },
           {
             "group": "Parameter",
@@ -335,7 +321,7 @@
     "examples": [
       {
         "title": "Example usage:",
-        "content": "{\n   \"email\": \"chhounsophanon6@gmail.com\",\n   \"password\": \"password\",\n   \"dob\": \"12-12-2020\",\n   \"gender\": \"m\",\n   \"last_name\": \"Chhoun\",\n   \"first_name\": \"Sophanon\"\n}",
+        "content": "{\n   \"email\": \"chhounsophanon6@gmail.com\",\n   \"password\": \"password\",\n   \"last_name\": \"Chhoun\",\n   \"first_name\": \"Sophanon\"\n}",
         "type": "curl"
       }
     ],
@@ -430,6 +416,168 @@
         {
           "title": "412 (ErrorValidation):",
           "content": "HTTP/1.1 401 Unauthorized\n{\n   \"success\": false,\n   \"message\": {\n       \"field\": [\n           \"validation message\"\n       ]\n   }\n}",
+          "type": "json"
+        },
+        {
+          "title": "500 (InternalSeverError):",
+          "content": "HTTP/1.1 500 Error In Server Request\n{\n   \"success\": false,\n   \"message\": \"Server Error\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/booking/stay",
+    "title": "3. Book a stay",
+    "version": "1.0.0",
+    "name": "Book_a_stay",
+    "group": "Booking",
+    "success": {
+      "examples": [
+        {
+          "title": "Response (example):",
+          "content": " HTTP/1.1 200 Success Request\n {\n    \"success\": true,\n    \"data\": {\n        \"hotels\": [\n            {\n                \"id\": 1,\n                \"name\": \"Siem Reap hotel\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Phnom Penh Hotel\"\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Borey Angkor\"\n            },\n            {\n                \"id\": 4,\n                \"name\": \"Borey Angkor\"\n            }\n        ]\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./booking.js",
+    "groupTitle": "Booking",
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:8000//api/booking/stay"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p><code>application/json</code></p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "4xx": [
+          {
+            "group": "4xx",
+            "type": "404",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>resource is not found</p>"
+          }
+        ],
+        "5xx": [
+          {
+            "group": "5xx",
+            "type": "500",
+            "optional": false,
+            "field": "InternalSeverError",
+            "description": "<p>internal server error</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "404 (NotFound):",
+          "content": "HTTP/1.1 404 Not Found\n{\n   \"success\": false,\n   \"message\": \"The :attribute is not found.\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "500 (InternalSeverError):",
+          "content": "HTTP/1.1 500 Error In Server Request\n{\n   \"success\": false,\n   \"message\": \"Server Error\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/booking-offers",
+    "title": "4. Booking Offer",
+    "version": "1.0.0",
+    "name": "Booking_Offer",
+    "group": "Booking",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "integer",
+            "optional": false,
+            "field": "hotel_id",
+            "description": "<p>Hotel Id</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "{\n    \"hotel_id\": 3\n}",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Response (example):",
+          "content": " HTTP/1.1 200 Success Request\n{\n    \"success\": true,\n    \"data\": {\n        \"hotel_id\": 3,\n        \"roomType\": [\n            {\n                \"id\": 16,\n                \"name\": \"Borey Room\",\n                \"description\": \"<p>Hello World</p>\",\n                \"images\": [\n                    {\n                        \"imageSrc\": \"http://127.0.0.1:8000/uploads/images/02b49f33fd39cac46b540911ff8bad6c.png\",\n                        \"imageAlt\": \"image\"\n                    }\n                ],\n                \"rooms\": [\n                    {\n                        \"id\": 7,\n                        \"name\": \"7\"\n                    }\n                ]\n            }\n        ],\n        \"paymentType\": [\n            {\n                \"id\": 1,\n                \"name\": \"Visa card\"\n            }\n        ]\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./booking.js",
+    "groupTitle": "Booking",
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:8000//api/booking-offers"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p><code>application/json</code></p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "4xx": [
+          {
+            "group": "4xx",
+            "type": "404",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>resource is not found</p>"
+          }
+        ],
+        "5xx": [
+          {
+            "group": "5xx",
+            "type": "500",
+            "optional": false,
+            "field": "InternalSeverError",
+            "description": "<p>internal server error</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "404 (NotFound):",
+          "content": "HTTP/1.1 404 Not Found\n{\n   \"success\": false,\n   \"message\": \"The :attribute is not found.\"\n}",
           "type": "json"
         },
         {

@@ -69,7 +69,7 @@ class AdminAuthController extends Controller
                 );
                 Session::put('auth', $auth);
                 DB::commit();
-                return redirect('/test');
+                return redirect('/admin/dashboard');
 
             }else{
                 return view('layouts.login', [

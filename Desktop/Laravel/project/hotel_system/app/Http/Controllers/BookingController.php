@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookingOfferRequest;
+use App\Http\Requests\BookingStoreRequest;
 use App\Http\Resources\BookingListResource;
+use App\Http\Resources\BookingTypeResource;
 use App\Http\Resources\HotelBookResource;
 use App\Http\Resources\PaymentTypeResource;
 use App\Http\Resources\RoomTypeBookResource;
@@ -19,32 +22,31 @@ use App\Models\admin\RoomType;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
     public function index(Request $request)
     {
-        $bookings = Booking::with("hotel","booking_type","customer");
-        if(isset($request->search))
-        {
-            $bookings = $bookings->where("name","LIKE","%".$request->search."%");
+        $bookings = Booking::with("hotel", "booking_type", "customer");
+        if (isset($request->search)) {
+            $bookings = $bookings->where("name", "LIKE", "%" . $request->search . "%");
         }
-        if(isset($request->is_enable))
-        {
-            $bookings = $bookings->where("is_enable",$request->is_enable);
+        if (isset($request->is_enable)) {
+            $bookings = $bookings->where("is_enable", $request->is_enable);
         }
         $data = $bookings->simplePaginate(10);
-        return view('admin.booking.list',compact('data'));
+        return view('admin.booking.list', compact('data'));
     }
 
     public function listCustomer(Request $request)
     {
         try {
-            $bookings = Booking::with("hotel","room_types.medias")->where("customer_id",$request['auth_id'])->get();
+            $bookings = Booking::with("hotel", "room_types.medias")->where("customer_id", $request['auth_id'])->get();
 
             return $this->success(BookingListResource::collection($bookings));
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             return $this->fail($exception->getMessage());
         }
     }
@@ -52,28 +54,45 @@ class BookingController extends Controller
     public function bookingStay()
     {
         try {
-            $hotel = Hotel::where("is_enable",1)->get();
+            $hotel = Hotel::where("is_enable", 1)->get();
 
             return $this->success([
                 "hotels" => HotelBookResource::collection($hotel),
             ]);
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             return $this->fail($exception->getMessage());
         }
     }
 
-    public function bookingOffer(Request $request)
+    public function bookingOffer(BookingOfferRequest $request)
     {
         try {
-            $payment_types = PaymentType::where("is_enable",1)->get();
-            $hotels = Hotel::with("roomTypes.rooms","roomTypes.medias")->find($request->hotel_id);
-
+            $payment_types = PaymentType::where("is_enable", 1)->get();
+            $hotels = Hotel::with("roomTypes.rooms", "roomTypes.medias")->find($request->hotel_id);
 
             return $this->success([
                 "hotel_id" => $hotels->id,
                 "roomType" => RoomTypeBookResource::collection($hotels->roomTypes),
-                "paymentType" => PaymentTypeResource::collection($payment_types)
+                "paymentType" => PaymentTypeResource::collection($payment_types),
             ]);
+        } catch (Exception $exception) {
+            return $this->fail($exception->getMessage());
+        }
+    }
+
+    public function showPayment($id)
+    {
+        try {
+            $payment = Payment::with("booking","booking.room.roomType","customer");
+            $payment = $payment->where("booking_id",$id)->first();
+            if(!$payment)
+            {
+                return redirect("/admin/dashboard");
+            }
+            $total = Arr::pluck($payment->booking->room,"roomType");
+            $total = Arr::pluck($total,'price');
+            $payment['total'] = array_sum($total);
+            return view('admin.payment.show',compact('payment'));
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());
         }
@@ -82,17 +101,17 @@ class BookingController extends Controller
     public function create()
     {
         $current_date = date('d/m/Y');
-        $hotels = Hotel::where("is_enable",1)->get();
-        $payment_types = PaymentType::where("is_enable",1)->get();
-        $booking_types = BookingType::where("is_enable",1)->get();
-        $customers = Customer::where("is_enable",1)->get();
-        $customers = $customers->filter(function ($customer){
-            $customer['name']= $customer['last_name'] . " " . $customer['first_name'];
+        $hotels = Hotel::where("is_enable", 1)->get();
+        $payment_types = PaymentType::where("is_enable", 1)->get();
+        $booking_types = BookingType::where("is_enable", 1)->get();
+        $customers = Customer::where("is_enable", 1)->get();
+        $customers = $customers->filter(function ($customer) {
+            $customer['name'] = $customer['last_name'] . " " . $customer['first_name'];
             return $customer;
         });
-        $room_types = RoomType::where("is_enable",1)->get();
-        $rooms = Room::where("is_enable",1)->get();
-        return view("admin.booking.create",compact(
+        $room_types = RoomType::where("is_enable", 1)->get();
+        $rooms = Room::where("is_enable", 1)->get();
+        return view("admin.booking.create", compact(
             "payment_types",
             "hotels",
             "booking_types",
@@ -108,8 +127,8 @@ class BookingController extends Controller
         DB::beginTransaction();
         try {
             $booking = [
-                'check_in_date' => $request['check_in_date'],
-                'check_out_date' => $request['check_out_date'],
+                'check_in_date' => Carbon::parse($request['check_in_date'])->format('Y-m-d'),
+                'check_out_date' => Carbon::parse($request['check_out_date'])->format('Y-m-d'),
                 'booking_type_id' => $request['booking_type_id'],
                 'is_enable' => $request['is_enable'],
                 'hotel_id' => $request['hotel_id'],
@@ -117,15 +136,45 @@ class BookingController extends Controller
                 'payment_type_id' => $request['payment_type_id']
             ];
             $data = Booking::create($booking);
-            BookingHasRooms::store($data->id,$request['rooms']);
-            Room::whereIn("id",$request['rooms'])->update([
+            BookingHasRooms::store($data->id, $request['rooms']);
+            Room::whereIn("id", $request['rooms'])->update([
                 'is_enable' => 0
             ]);
-            BookingRoomTypeMap::store($data->id,$request['room_type_id']);
+            BookingRoomTypeMap::store($data->id, $request['room_type_id']);
             $amount = count($request['rooms']);
-            Payment::store($data->id,$amount,$request['customer_id']);
+            Payment::store($data->id, $amount, $request['customer_id']);
             DB::commit();
             return $this->success($data);
+        } catch (Exception $exception) {
+            DB::rollBack();
+            return $this->fail($exception->getMessage());
+        }
+    }
+
+    public function storeCustomer(BookingStoreRequest $request)
+    {
+        try {
+            $bookingType = BookingType::where("name","online")->first();
+            $booking = [
+              'check_in_date' => $request['check_in_date'],
+              'check_out_date' => $request['check_out_date'],
+              'hotel_id' => $request['hotel_id'],
+              'customer_id' => $request['auth_id'],
+              'is_enable' => 1,
+              'booking_type_id' => $bookingType->id,
+              'payment_type_id' => $request['payment_type_id']
+            ];
+            $data = Booking::create($booking);
+            BookingHasRooms::store($data->id,$request['rooms']);
+            Room::whereIn("id", $request['rooms'])->update([
+                'is_enable' => 0
+            ]);
+
+            BookingRoomTypeMap::store($data->id, $request['room_types_id']);
+            $amount = count($request['rooms']);
+            Payment::store($data->id, $amount, $request['auth_id']);
+            DB::commit();
+            return $this->success("Booking successful");
         }catch (Exception $exception){
             DB::rollBack();
             return $this->fail($exception->getMessage());

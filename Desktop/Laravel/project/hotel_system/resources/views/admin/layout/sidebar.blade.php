@@ -2,7 +2,9 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
 
-
+            <li class="{{ request()->is('admin/dashboard*') ? 'active' : '' }}">
+                <a href="/admin/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+            </li>
             <li class="{{ request()->is('admin/user*') ? 'active' : '' }}">
                 <a href="/admin/user/list"><i class="fa fa-fw fa-user"></i> @lang('user.users')</a>
             </li>
@@ -11,16 +13,8 @@
                 <a href="/admin/hotel/list"><i class="fa fa-fw fa-home"></i> @lang('hotel.hotels')</a>
             </li>
 
-            <li class="{{ request()->is('admin/customers*') ? 'active' : '' }}">
-                <a href="javascript:;" data-toggle="collapse" data-target="#customer"><i class="fa fa-fw fa-users"></i> Customers <i class="fa fa-fw fa-caret-down"></i></a>
-                <ul class="collapse" id="customer">
-                    <li {{ request()->is('admin/customers*') ? "class=active" : null }}>
-                        <a href="/admin/customer/list"><i class="fa fa-fw fa-star"></i>Customer List</a>
-                    </li>
-                    <li class="{{ request()->is('admin/customers*') ? 'active' : '' }}">
-                        <a href="/admin/customer/list"><i class="fa fa-fw fa-suitcase"></i>Add Customer</a>
-                    </li>
-                </ul>
+            <li class="{{ request()->is('admin/customer*') ? 'active' : '' }}">
+                <a href="/admin/customer/list"><i class="fa fa-fw fa-users"></i> Customers</a>
             </li>
 
             <li class="{{ request()->is('admin/identification_type*') ? 'active' : '' }}">

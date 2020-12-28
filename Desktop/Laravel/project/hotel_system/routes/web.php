@@ -21,6 +21,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,7 +49,7 @@ Route::middleware(AdminMiddleware::class)->group(function (){
     Route::group(["prefix" => "admin"],function() {
 
         Route::get("/logout",[AdminAuthController::class,"logout"]);
-
+        Route::get("/dashboard", [DashboardController::class,"index"]);
         Route::group(['prefix' => 'about_us'],function(){
             Route::get("/{id}",[AboutUsController::class,"show"]);
             Route::post("/{id}",[AboutUsController::class,"update"]);
@@ -147,6 +148,7 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::get("/create",[BookingController::class,"create"]);
             Route::post("/create",[BookingController::class,"store"]);
             Route::get("/show/{id}",[BookingController::class,"show"]);
+            Route::get("/show/payment/{id}",[BookingController::class,"showPayment"]);
             Route::post("/update/{id}",[BookingController::class,"update"]);
             Route::post("/update/status/{id}",[BookingController::class,"updateStatus"]);
             Route::post("/delete/{id}",[BookingController::class,"destroy"]);
