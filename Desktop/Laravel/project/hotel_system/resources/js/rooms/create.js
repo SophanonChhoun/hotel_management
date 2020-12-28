@@ -9,7 +9,8 @@ new Vue({
             name: '',
             hotel_id: '',
             roomType_id: '',
-            is_enable: ''
+            is_enable: '',
+            status: ''
         },
         test:[],
         is_submit: false,

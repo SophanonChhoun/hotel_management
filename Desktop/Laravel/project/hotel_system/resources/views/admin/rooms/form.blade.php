@@ -58,30 +58,33 @@
                 </div>
             </div>
 
-
-{{--            <div class="form-group" :class="{'has-error' : errors.first('room_type')}">--}}
-{{--                <label class="control-label">--}}
-{{--                    <span style="color: red">*</span>--}}
-{{--                </label>--}}
-{{--                <span>--}}
-
-{{--                </span>--}}
-{{--                <span class="help-block">@{{ errors.first('room_type') }}</span>--}}
-{{--            </div>--}}
-
             <div class="form-group" :class="{'has-error' : errors.first('is_enable')}">
                 <label class="control-label">
-                    Status
+                    Available
                     <span style="color: red">*</span>
                 </label>
                 <input type="checkbox"
                        style="margin-left: 2%"
                        :name="'is_enable'"
                        v-model="data.is_enable"
-                       data-vv-as="Status"
+                       data-vv-as="Available"
                        v-validate="'required'"
                 >
                 <span class="help-block">@{{ errors.first('is_enable') }}</span>
+            </div>
+            <div class="form-group" :class="{'has-error' : errors.first('status')}">
+                <label class="control-label">
+                    Status
+                    <span style="color: red">*</span>
+                </label>
+                <input type="checkbox"
+                       style="margin-left: 2%"
+                       :name="'status'"
+                       v-model="data.status"
+                       data-vv-as="Status"
+                       v-validate="'required'"
+                >
+                <span class="help-block">@{{ errors.first('status') }}</span>
             </div>
         </div>
     </div>

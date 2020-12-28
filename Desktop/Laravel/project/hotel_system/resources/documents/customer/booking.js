@@ -112,34 +112,31 @@
  * @apiUse GetHeaderWithoutAuth
  *
  * @apiParam {integer} hotel_id         Hotel Id
+ * @apiParam {date} checkInDate         Check in
+ * @apiParam {date} checkOutDate        Check out
+ * @apiParam {integer} people           People
  *
  * @apiExample {curl} Example usage:
 {
-    "hotel_id": 3
+    "checkOutDate": "2020-12-28",
+    "checkInDate": "2020-12-25",
+    "hotel_id": 2,
+    "people": 2
 }
  * @apiSuccessExample  Response (example):
  HTTP/1.1 200 Success Request
 {
     "success": true,
     "data": {
-        "hotel_id": 3,
-        "roomType": [
+        "hotel_id": 2,
+        "rooms": [
             {
-                "id": 16,
-                "name": "Borey Room",
-                "description": "<p>Hello World</p>",
-                "images": [
-                    {
-                        "imageSrc": "http://127.0.0.1:8000/uploads/images/02b49f33fd39cac46b540911ff8bad6c.png",
-                        "imageAlt": "image"
-                    }
-                ],
-                "rooms": [
-                    {
-                        "id": 7,
-                        "name": "7"
-                    }
-                ]
+                "id": 12,
+                "name": "14",
+                "roomType": {
+                    "id": 17,
+                    "name": "Borey Jr"
+                }
             }
         ],
         "paymentType": [

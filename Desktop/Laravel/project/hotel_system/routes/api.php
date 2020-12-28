@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BookingOfferController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,8 +33,7 @@ Route::get('/roomType/show/{id}',[RoomTypeController::class,'showCustomer']);
 Route::post('/login',[CustomerAuthController::class,'login']);
 Route::post('/register',[CustomerAuthController::class,'register']);
 Route::get("booking/stay",[BookingController::class,"bookingStay"]);
-Route::get("booking-offers",[BookingController::class,"bookingOffer"]);
-
+Route::get("booking-offers", [BookingController::class,"bookingOffer"]);
 Route::middleware(CustomerMiddleware::class)->group(function (){
     Route::group(['prefix' => '/bookings'],function (){
         Route::get('',[BookingController::class,'listCustomer']);

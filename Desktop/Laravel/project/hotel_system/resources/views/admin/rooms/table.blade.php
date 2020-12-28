@@ -4,6 +4,7 @@
             <th>Name</th>
             <th>Room Type</th>
             <th>Hotel</th>
+            <th>Occupancy</th>
             <th>Status</th>
             <th colspan="2">Action</th>
         </tr>
@@ -12,8 +13,9 @@
                 <td>{{ $room->name }}</td>
                 <td>{{ $room->roomType->name ?? null }}</td>
                 <td>{{ $room->hotel->name ?? null }}</td>
+                <td>{{ $room->is_enable ? "Available":"Unavailable" }}</td>
                 <td>
-                    <input type="checkbox" data-toggle="modal" data-target="#status{{ $room->id }}" @if($room->is_enable) checked @endif>
+                    <input type="checkbox" data-toggle="modal" data-target="#status{{ $room->id }}" @if($room->status) checked @endif>
                     @include("admin.rooms.status")
                 </td>
                 <td><a href="/admin/rooms/show/{{ $room->id }}" class="btn btn-warning">Edit</a></td>

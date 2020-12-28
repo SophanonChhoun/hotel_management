@@ -34,7 +34,8 @@ new Vue({
                         "name": this.data.name,
                         "is_enable": this.data.is_enable,
                         "hotel_id": this.data.hotel.id,
-                        "roomType_id": this.data.roomType_id
+                        "roomType_id": this.data.roomType_id,
+                        "status": this.data.status
                     }).then(response => {
                         if(response.data.success){
                             window.location.href = '/admin/rooms/list';

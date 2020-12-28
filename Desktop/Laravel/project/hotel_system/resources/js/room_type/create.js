@@ -12,7 +12,8 @@ new Vue({
             price: '',
             is_enable: '',
             image: '',
-            medias: []
+            medias: [],
+            max: '',
         },
         hotels: hotels,
         is_submit: false,

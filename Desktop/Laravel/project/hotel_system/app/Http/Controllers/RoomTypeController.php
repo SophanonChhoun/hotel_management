@@ -61,6 +61,7 @@ class RoomTypeController extends Controller
                 "description" => $request->description,
                 "price" => $request->price,
                 "hotel_id" => $request->hotel_id,
+                "max" => $request->max,
                 "is_enable" => $request->is_enable
             ];
             $data = RoomType::create($room_type);
@@ -123,7 +124,8 @@ class RoomTypeController extends Controller
                 "description" => $request->description,
                 "price" => $request->price,
                 "hotel_id" => $request->hotel_id,
-                "is_enable" => $request->is_enable
+                "is_enable" => $request->is_enable,
+                "max" => $request->max
             ];
             $data = $roomType->update($room_type);
             if(filled($request->medias))
