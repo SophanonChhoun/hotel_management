@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\admin\BookingType;
 use App\Models\admin\PaymentType;
 
+
 class Booking extends Model
 {
     use HasFactory;
