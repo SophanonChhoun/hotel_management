@@ -66,7 +66,7 @@
  */
 
 /**
- * @api {get} /api/booking/stay 3. Book a stay
+ * @api {get} /api/booking/stay 2. Book a stay
  * @apiVersion 1.0.0
  * @apiName Book a stay
  * @apiGroup Booking
@@ -104,7 +104,7 @@
  */
 
 /**
- * @api {get} /api/booking-offers 4. Booking Offer
+ * @api {get} /api/booking-offers 3. Booking Offer
  * @apiVersion 1.0.0
  * @apiName Booking Offer
  * @apiGroup Booking
