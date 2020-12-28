@@ -8,6 +8,7 @@ use App\Http\Resources\BookingListResource;
 use App\Http\Resources\BookingTypeResource;
 use App\Http\Resources\HotelBookResource;
 use App\Http\Resources\PaymentTypeResource;
+use App\Http\Resources\RoomResource;
 use App\Http\Resources\RoomTypeBookResource;
 use App\Models\admin\Booking;
 use App\Models\admin\BookingHasRooms;
@@ -67,13 +68,23 @@ class BookingController extends Controller
     public function bookingOffer(BookingOfferRequest $request)
     {
         try {
-            $payment_types = PaymentType::where("is_enable", 1)->get();
-            $hotels = Hotel::with("roomTypes.rooms", "roomTypes.medias")->find($request->hotel_id);
+            $roomType = RoomType::where("max",">=",$request->people)->where("hotel_id",$request->hotel_id)->where("is_enable",1)->get();
 
+            if(!$roomType || count($roomType) == 0)
+            {
+                return $this->fail("There are no room type for this");
+            }
+            $roomTypeIDs = $roomType->pluck("id");
+            $payment_types = PaymentType::where("is_enable",1)->get();
+            $booking = Booking::where("check_in_date","<=",$request->checkOutDate)->where("check_out_date",">=",$request->checkInDate)->where("is_enable",1)->get();
+            $bookingIDs= $booking->pluck("id");
+            $rooms = BookingHasRooms::whereIn("booking_id",$bookingIDs)->get();
+            $roomIDs = $rooms->pluck("room_id");
+            $rooms = Room::with("roomType")->where("status",1)->whereNotIn("id",$roomIDs)->where("roomType_id",$roomTypeIDs)->get();
             return $this->success([
-                "hotel_id" => $hotels->id,
-                "roomType" => RoomTypeBookResource::collection($hotels->roomTypes),
-                "paymentType" => PaymentTypeResource::collection($payment_types),
+                "hotel_id" => $request->hotel_id,
+                "rooms" => RoomResource::collection($rooms),
+                "paymentType" => PaymentTypeResource::collection($payment_types)
             ]);
         } catch (Exception $exception) {
             return $this->fail($exception->getMessage());

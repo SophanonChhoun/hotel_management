@@ -54,7 +54,6 @@ class RoomController extends Controller
     {
         try {
             $data = Room::create($request->all());
-
             return $this->success($data);
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());
@@ -100,7 +99,7 @@ class RoomController extends Controller
     {
         try {
             $room = Room::find($id)->update([
-                "is_enable" => $request->is_enable
+                "status" => $request->is_enable
             ]);
             return back();
         }catch (Exception $exception){

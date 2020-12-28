@@ -16,7 +16,7 @@
                 </div>
                 <form action="{{ url('admin/rooms/update/status/'.$room->id) }}" method="post">
                     @csrf
-                    <input type="hidden" name="is_enable" value="{{ $room->is_enable ? 0 : 1 }}">
+                    <input type="hidden" name="is_enable" value="{{ $room->status ? 0 : 1 }}">
                     <button class="btn btn-danger">Update it</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </form>

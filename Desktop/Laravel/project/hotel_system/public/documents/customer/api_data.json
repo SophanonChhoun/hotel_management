@@ -513,6 +513,27 @@
             "optional": false,
             "field": "hotel_id",
             "description": "<p>Hotel Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "date",
+            "optional": false,
+            "field": "checkInDate",
+            "description": "<p>Check in</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "date",
+            "optional": false,
+            "field": "checkOutDate",
+            "description": "<p>Check out</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "integer",
+            "optional": false,
+            "field": "people",
+            "description": "<p>People</p>"
           }
         ]
       }
@@ -520,7 +541,7 @@
     "examples": [
       {
         "title": "Example usage:",
-        "content": "{\n    \"hotel_id\": 3\n}",
+        "content": "{\n    \"checkOutDate\": \"2020-12-28\",\n    \"checkInDate\": \"2020-12-25\",\n    \"hotel_id\": 2,\n    \"people\": 2\n}",
         "type": "curl"
       }
     ],
@@ -528,7 +549,7 @@
       "examples": [
         {
           "title": "Response (example):",
-          "content": " HTTP/1.1 200 Success Request\n{\n    \"success\": true,\n    \"data\": {\n        \"hotel_id\": 3,\n        \"roomType\": [\n            {\n                \"id\": 16,\n                \"name\": \"Borey Room\",\n                \"description\": \"<p>Hello World</p>\",\n                \"images\": [\n                    {\n                        \"imageSrc\": \"http://127.0.0.1:8000/uploads/images/02b49f33fd39cac46b540911ff8bad6c.png\",\n                        \"imageAlt\": \"image\"\n                    }\n                ],\n                \"rooms\": [\n                    {\n                        \"id\": 7,\n                        \"name\": \"7\"\n                    }\n                ]\n            }\n        ],\n        \"paymentType\": [\n            {\n                \"id\": 1,\n                \"name\": \"Visa card\"\n            }\n        ]\n    }\n}",
+          "content": " HTTP/1.1 200 Success Request\n{\n    \"success\": true,\n    \"data\": {\n        \"hotel_id\": 2,\n        \"rooms\": [\n            {\n                \"id\": 12,\n                \"name\": \"14\",\n                \"roomType\": {\n                    \"id\": 17,\n                    \"name\": \"Borey Jr\"\n                }\n            }\n        ],\n        \"paymentType\": [\n            {\n                \"id\": 1,\n                \"name\": \"Visa card\"\n            }\n        ]\n    }\n}",
           "type": "json"
         }
       ]
@@ -543,6 +564,146 @@
     "header": {
       "fields": {
         "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Accept",
+            "description": "<p><code>application/json</code></p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "4xx": [
+          {
+            "group": "4xx",
+            "type": "404",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>resource is not found</p>"
+          }
+        ],
+        "5xx": [
+          {
+            "group": "5xx",
+            "type": "500",
+            "optional": false,
+            "field": "InternalSeverError",
+            "description": "<p>internal server error</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "404 (NotFound):",
+          "content": "HTTP/1.1 404 Not Found\n{\n   \"success\": false,\n   \"message\": \"The :attribute is not found.\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "500 (InternalSeverError):",
+          "content": "HTTP/1.1 500 Error In Server Request\n{\n   \"success\": false,\n   \"message\": \"Server Error\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/booking-offers",
+    "title": "4. Booking Offer",
+    "version": "1.0.0",
+    "name": "Booking_Offer",
+    "group": "Booking",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "integer",
+            "optional": false,
+            "field": "hotel_id",
+            "description": "<p>Hotel Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "integer",
+            "optional": false,
+            "field": "payment_type_id",
+            "description": "<p>Payment Type Id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "date",
+            "optional": false,
+            "field": "check_in_date",
+            "description": "<p>Check In</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "date",
+            "optional": false,
+            "field": "check_out_date",
+            "description": "<p>Check Out</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "rooms",
+            "description": "<p>Room IDs</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "room_types_id",
+            "description": "<p>Room Type IDs</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "{\n   \"rooms\" : [\n       1\n   ],\n   \"check_in_date\" : \"2020-12-30\",\n   \"check_out_date\" : \"2021-01-05\",\n   \"room_types_id\" : [\n       13\n   ],\n   \"payment_type_id\" : 1,\n   \"hotel_id\": 1\n}",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Response (example):",
+          "content": "HTTP/1.1 200 Success Request\n{\n   \"success\": true,\n   \"data\": \"Booking successful\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./booking.js",
+    "groupTitle": "Booking",
+    "sampleRequest": [
+      {
+        "url": "http://127.0.0.1:8000//api/booking-offers"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Auth",
+            "description": "<p>Access token from user login.</p>"
+          },
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p><code>application/x-www-form-urlencoded</code></p>"
+          },
           {
             "group": "Header",
             "type": "string",
@@ -699,77 +860,6 @@
     "sampleRequest": [
       {
         "url": "http://127.0.0.1:8000//api/hotel/list"
-      }
-    ],
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "string",
-            "optional": false,
-            "field": "Accept",
-            "description": "<p><code>application/json</code></p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "4xx": [
-          {
-            "group": "4xx",
-            "type": "404",
-            "optional": false,
-            "field": "NotFound",
-            "description": "<p>resource is not found</p>"
-          }
-        ],
-        "5xx": [
-          {
-            "group": "5xx",
-            "type": "500",
-            "optional": false,
-            "field": "InternalSeverError",
-            "description": "<p>internal server error</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "404 (NotFound):",
-          "content": "HTTP/1.1 404 Not Found\n{\n   \"success\": false,\n   \"message\": \"The :attribute is not found.\"\n}",
-          "type": "json"
-        },
-        {
-          "title": "500 (InternalSeverError):",
-          "content": "HTTP/1.1 500 Error In Server Request\n{\n   \"success\": false,\n   \"message\": \"Server Error\"\n}",
-          "type": "json"
-        }
-      ]
-    }
-  },
-  {
-    "type": "get",
-    "url": "/api/hotel/show/:id",
-    "title": "2. Show hotel",
-    "version": "1.0.0",
-    "name": "show_hotel",
-    "group": "Hotel",
-    "success": {
-      "examples": [
-        {
-          "title": "Response (example):",
-          "content": " HTTP/1.1 200 Success Request\n {\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Siem Reap hotel\",\n        \"street_address\": \"193\",\n        \"city\": \"Siem Reap\",\n        \"country\": \"Cambodia\",\n        \"description\": \"<p>Hello World</p>\",\n        \"medias\": [\n            {\n                \"imageSrc\": \"http://127.0.0.1:8000/uploads/images/5df240b2530816bd2bfae92d7942609c.png\",\n                \"imageAlt\": \"image\"\n            }\n        ]\n    }\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "./booking.js",
-    "groupTitle": "Hotel",
-    "sampleRequest": [
-      {
-        "url": "http://127.0.0.1:8000//api/hotel/show/:id"
       }
     ],
     "header": {

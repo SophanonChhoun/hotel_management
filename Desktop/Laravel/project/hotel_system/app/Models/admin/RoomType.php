@@ -17,7 +17,8 @@ class RoomType extends Model
         "price",
         "media_id",
         "is_enable",
-        "hotel_id"
+        "hotel_id",
+        "max"
     ];
 
     public function medias()

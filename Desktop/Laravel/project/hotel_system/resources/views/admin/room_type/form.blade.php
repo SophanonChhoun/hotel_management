@@ -33,6 +33,22 @@
     <span class="help-block">@{{ errors.first('hotel') }}</span>
 </div>
 
+<div class="form-group" :class="{'has-error' : errors.first('max')}">
+    <label class="control-label">
+        Max People
+        <span style="color: red">*</span>
+    </label>
+    <input type="text"
+           name="max"
+           v-model="data.max"
+           data-vv-as="Max"
+           v-validate="'required|numeric'"
+           class="form-control"
+           placeholder="Name">
+
+    <span class="help-block">@{{ errors.first('max') }}</span>
+</div>
+
 <div class="form-group" >
     <label class="control-label">
         Description

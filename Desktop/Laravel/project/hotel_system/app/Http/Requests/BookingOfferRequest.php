@@ -12,7 +12,10 @@ class BookingOfferRequest extends DefaultFormRequest
     public function rules()
     {
         return [
-            'hotel_id' => 'required'
+            'hotel_id' => 'required',
+            'checkInDate' => 'required',
+            'checkOutDate' => 'required',
+            'people' => 'required'
         ];
     }
 }

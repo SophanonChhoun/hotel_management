@@ -3,6 +3,7 @@
         <tr>
             <th>Name</th>
             <th>Hotel</th>
+            <th>Maximum people</th>
             <th>Description</th>
             <th>Price</th>
             <th>Image</th>
@@ -13,6 +14,7 @@
             <tr>
                 <td>{{ $room_type->name }}</td>
                 <td>{{ $room_type->hotel->name ?? null }}</td>
+                <td>{{ $room_type->max }}</td>
                 <td><?php
                     if (strlen($room_type->description) > 30)
                         $room_type->description = substr($room_type->description, 0, 30) . '...';
