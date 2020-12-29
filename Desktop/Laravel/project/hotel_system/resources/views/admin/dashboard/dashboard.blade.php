@@ -77,6 +77,25 @@
                     </div>
                 </div>
             </div>
+            <div style="margin-top: 2%;">
+                <div class="row">
+                    <form action="{{ url('/admin/report/show') }}" method="get">
+                        <div class="col-md-12">
+                            <div class="col-xs-4 m-2" >
+                                <div class="form-group">
+                                    <label>From :</label>   <input type="date" id="start_date"  name="start_date" >
+                                </div>
+                            </div>
+                            <div class="col-xs-4 m-2">
+                                <div class="form-group">
+                                    <label>To :</label>  <input type="date"  id="end_date" name="end_date">
+                                </div></div>
+                            <div class="col-xs-4">
+                                <input class="btn btn-primary" type="submit" value="show Report">
+                            </div>
+                        </div>
+                    </form>
+            </div>
             <h1 class="p-3 mb-2 text-white">Recently Booking</h1>
             <table class="table table-responsive table-bordered "  id="table_id">
                 <tr>
