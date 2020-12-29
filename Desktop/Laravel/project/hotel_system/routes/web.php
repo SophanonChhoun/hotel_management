@@ -159,7 +159,7 @@ Route::middleware(AdminMiddleware::class)->group(function (){
         Route::group(['prefix' => "profile"],function (){
             Route::get("/show",[ProfileController::class,"show"]);
             Route::get("/change/password",[ProfileController::class,"changePassword"]);
-            Route::post("/password",[ProfileController::class,"password"]);
+            Route::post("/password",[ProfileController::class,"updatePassword"]);
             Route::get("/change/avatar",[ProfileController::class,"changeAvatar"]);
             Route::post("/avatar",[ProfileController::class,"updateAvatar"]);
         });

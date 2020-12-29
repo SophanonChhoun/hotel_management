@@ -3,7 +3,7 @@
 @section("content_profile")
     <div id="password" class="row" v-cloak>
         <form action="#" @submit.prevent="submit" class="form-horizontal">
-
+            @csrf
             <div class="form-group" :class="{'has-error' : errors.first('old_password')}">
                 <label class="control-label col-md-4">
                     Old Password
