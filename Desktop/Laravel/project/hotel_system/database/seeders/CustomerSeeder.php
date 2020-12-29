@@ -16,13 +16,12 @@ class CustomerSeeder extends Seeder
     public function run()
     {
         $data = [
-            "id" => 2,
             "first_name" => "James",
             "last_name" => "Bond",
             "email" => "jamesbond@cia.com",
             "dob" => "2000-01-01",
             "gender" => "m",
-            "identification_id" => "CIA007",
+            "identification_id" => 007,
             "street_address" => "1889 Buckingham Palace",
             "city" => "London",
             "country" => "Great Britain",
