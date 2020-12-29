@@ -49,8 +49,7 @@
                             <span class="help-block">@{{ errors.first('password') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                            <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
                         </div>
                         @if(isset($errorMessageDuration))
                             <h3 class="alert alert-danger">{{ $errorMessageDuration }}</h3>
