@@ -96,10 +96,9 @@ class CustomerAuthController extends Controller
             if($name_exit){
                 return $this->fail('Email already exist');
             }
-            $request['dob'] = Carbon::parse($request['dob'])->format('Y-m-d');
 
             $customer=Customer::create(
-                $request->only('first_name','last_name',"dob","gender", 'email', 'password','is_enable'),
+                $request->only('first_name','last_name', 'email', 'password','is_enable'),
             );
 
             $credential = Auth("customer")->loginUsingId($customer->id);
@@ -111,7 +110,6 @@ class CustomerAuthController extends Controller
             return $this->success($auth);
 
         } catch (\Exception $e) {
-            dd(22);
             report($e);
             DB::rollback();
             return $this->fail($e->getMessage(), $e->getCode());

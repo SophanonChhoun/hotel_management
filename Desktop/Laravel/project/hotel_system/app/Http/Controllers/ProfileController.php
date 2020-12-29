@@ -7,6 +7,7 @@ use App\Models\admin\User;
 use Illuminate\Http\Request;
 use Exception;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -26,20 +27,6 @@ class ProfileController extends Controller
         }
     }
 
-    public function password(Request $request)
-    {
-        try {
-            dd($request->all());
-            $id = auth()->user()->id;
-            User::find($id)->update([
-               "password" => $request['new_password']
-            ]);
-            return $this->success("Success");
-        }catch (Exception $exception){
-            return $this->fail($exception->getMessage());
-        }
-    }
-
     public function updatePassword(Request $request)
     {
         DB::beginTransaction();
@@ -47,7 +34,6 @@ class ProfileController extends Controller
         try {
             $id = auth()->user()->id;
             $user = User::find($id);
-
             if(is_null($user))
             {
                 return view('admin.profile.password', [
@@ -59,11 +45,11 @@ class ProfileController extends Controller
                 return $this->fail("Wrong old password. Please input a correct one.");
             }
             $request['password'] = $request['new_password'];
-            $user->update($request->all());
 
-            User::find($id)->update([
+            $user=User::find($id)->update([
                 "password" => $request['new_password']
             ]);
+            Auth::attempt($user);
 
             DB::commit();
             return $this->success("Success");
