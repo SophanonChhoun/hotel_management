@@ -19,10 +19,19 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customer = Customer::with("identification_type")->get();
-        return view("admin.customer.list",compact("customer"));
+        $customer = Customer::with("identification_type");
+        if(isset($request->search))
+        {
+            $customer = $customer->where("email","LIKE",$request->search."%");
+        }
+        if(isset($request->is_enable))
+        {
+            $customer = $customer->where("is_enable",$request->is_enable);
+        }
+        $data = $customer->orderByDesc("id")->simplePaginate(10);
+        return view("admin.customer.list",compact("data"));
     }
 
     /**

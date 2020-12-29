@@ -44,4 +44,10 @@ class User extends Model
     {
         return $this->hasOne(MediaFile::class,"media_id","media_id");
     }
+
+    public static function getUserById($id)
+    {
+        $user = self::with('media')->find($id);
+        return $user;
+    }
 }

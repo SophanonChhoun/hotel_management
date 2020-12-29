@@ -30,7 +30,7 @@ class RoomTypeController extends Controller
         {
             $room_types = $room_types->where("is_enable",$request->is_enable);
         }
-        $data = $room_types->simplePaginate(10);
+        $data = $room_types->orderByDesc("id")->simplePaginate(10);
 
         return view('admin.room_type.list',compact('data'));
     }

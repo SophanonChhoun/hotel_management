@@ -24,7 +24,7 @@ class SlidersController extends Controller
             $sliders = $sliders->where("is_enable",$request->is_enable);
         }
 
-        $data = $sliders->paginate(10);
+        $data = $sliders->orderByDesc("id")->paginate(10);
         return view("admin.slider.list",compact('data'));
     }
 

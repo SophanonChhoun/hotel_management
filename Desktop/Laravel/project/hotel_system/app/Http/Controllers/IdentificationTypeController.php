@@ -10,7 +10,7 @@ class IdentificationTypeController extends Controller
 {
     public function index()
     {
-        $identification_type = IdentificationType::all();
+        $identification_type = IdentificationType::orderByDesc("id")->get();
         return view("admin.identification_type.edit",compact("identification_type"));
     }
 

@@ -8,11 +8,11 @@
             <th>Gender</th>
             <th>Identification ID</th>
             <th>Phone Number</th>
-    
-            <th>Status</th> 
+
+            <th>Status</th>
             <th colspan="12">Action</th>
         </tr>
-        @forelse($customer as $customer)
+        @forelse($data as $customer)
             <tr>
                 <td>{{ $customer->first_name }}</td>
                 <td>{{ $customer->last_name }}</td>

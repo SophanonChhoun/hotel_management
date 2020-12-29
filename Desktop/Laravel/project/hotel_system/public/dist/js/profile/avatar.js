@@ -81,25 +81,23 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 24);
+/******/ 	return __webpack_require__(__webpack_require__.s = 23);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/adminAuth/login.js":
-/*!*****************************************!*\
-  !*** ./resources/js/adminAuth/login.js ***!
-  \*****************************************/
+/***/ "./resources/js/profile/avatar.js":
+/*!****************************************!*\
+  !*** ./resources/js/profile/avatar.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 new Vue({
-  el: '#login-box',
+  el: '#editAvatar',
   data: {
-    data: {
-      email: '',
-      password: ''
-    },
+    data: data,
+    id: data.id,
     is_submit: false,
     error: '',
     error_image: '',
@@ -115,13 +113,12 @@ new Vue({
         var save = true;
 
         if (result && save) {
-          console.log('111');
-          axios.post('/admin/login', _this.data).then(function (response) {
+          axios.post('/admin/profile/avatar', _this.data).then(function (response) {
             if (response.data.success) {
-              window.location.href = '/admin/test';
+              window.location.href = '/admin/profile/show';
             } else {
-              console.log(response.data.message);
-              _this.error = 'Wrong email/password';
+              alert(response.data.data);
+              _this.error = response.data.message;
             }
           });
         } else {
@@ -129,20 +126,31 @@ new Vue({
           window.scrollTo(0, 0);
         }
       });
+    },
+    uploadAddingImage: function uploadAddingImage(event) {
+      var _this2 = this;
+
+      var image = event.target.files[0];
+      var reader = new FileReader();
+      reader.readAsDataURL(image);
+
+      reader.onload = function (event) {
+        Vue.set(_this2.data, 'image', event.target.result);
+      };
     }
   }
 });
 
 /***/ }),
 
-/***/ 24:
-/*!***********************************************!*\
-  !*** multi ./resources/js/adminAuth/login.js ***!
-  \***********************************************/
+/***/ 23:
+/*!**********************************************!*\
+  !*** multi ./resources/js/profile/avatar.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/adminAuth/login.js */"./resources/js/adminAuth/login.js");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/profile/avatar.js */"./resources/js/profile/avatar.js");
 
 
 /***/ })

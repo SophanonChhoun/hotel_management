@@ -9,7 +9,7 @@ class PaymentTypeController extends Controller
 {
     public function index()
     {
-        $payment_type = PaymentType::all();
+        $payment_type = PaymentType::orderByDesc("id")->get();
         return view("admin.payment_type.edit",compact("payment_type"));
     }
 

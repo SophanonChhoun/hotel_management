@@ -77,20 +77,24 @@
     <span class="help-block">@{{ errors.first('email') }}</span>
 </div>
 
-<div class="form-group" :class="{'has-error' : errors.first('password')}">
-    <label class="control-label">
-        Password
-        <span style="color: red">*</span>
-    </label>
-    <input type="password"
-           name="password"
-           v-model="data.password"
-           data-vv-as="Password"
-           v-validate="'required'"
-           class="form-control"
-           placeholder="password">
-    <span class="help-block">@{{ errors.first('password') }}</span>
-</div>
+@if(request()->is("admin/user/create"))
+    <div class="form-group" :class="{'has-error' : errors.first('password')}">
+        <label class="control-label">
+            Password
+            <span style="color: red">*</span>
+        </label>
+        <input type="password"
+               name="password"
+               v-model="data.password"
+               data-vv-as="Password"
+               v-validate="'required'"
+               class="form-control"
+               placeholder="password">
+        <span class="help-block">@{{ errors.first('password') }}</span>
+    </div>
+@endif
+
+
 
 <div class="form-group" :class="{'has-error' : error_image}">
     <label class="control-label">
