@@ -77,6 +77,7 @@ Route::middleware(AdminMiddleware::class)->group(function (){
         });
 
         Route::group(['prefix' => 'rooms'],function(){
+            Route::get('/list/{is_enable}',[RoomController::class,'indexStatus']);
             Route::get('/list',[RoomController::class,'index']);
             Route::get("/create",[RoomController::class,"create"]);
             Route::post("/create",[RoomController::class,"store"]);
@@ -157,7 +158,10 @@ Route::middleware(AdminMiddleware::class)->group(function (){
 
         Route::group(['prefix' => "profile"],function (){
             Route::get("/show",[ProfileController::class,"show"]);
-
+            Route::get("/change/password",[ProfileController::class,"changePassword"]);
+            Route::post("/password",[ProfileController::class,"password"]);
+            Route::get("/change/avatar",[ProfileController::class,"changeAvatar"]);
+            Route::post("/avatar",[ProfileController::class,"updateAvatar"]);
         });
 
         Route::group(["prefix" => "payment"],function () {
@@ -177,11 +181,3 @@ Route::middleware(AdminMiddleware::class)->group(function (){
     });
 
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

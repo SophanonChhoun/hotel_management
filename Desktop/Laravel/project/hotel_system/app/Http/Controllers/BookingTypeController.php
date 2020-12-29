@@ -11,7 +11,7 @@ class BookingTypeController extends Controller
 {
     public function index()
     {
-        $booking_type = BookingType::all();
+        $booking_type = BookingType::orderByDesc("id")->get();
         return view("admin.booking_type.edit",compact("booking_type"));
     }
 

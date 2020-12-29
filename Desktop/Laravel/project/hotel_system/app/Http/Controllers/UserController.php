@@ -23,7 +23,7 @@ class UserController extends Controller
             $users = $users->where("is_enable",$request->is_enable);
         }
 
-        $data = $users->paginate(10);
+        $data = $users->orderByDesc("id")->paginate(10);
 
         return view("admin.user.list",compact("data"));
     }

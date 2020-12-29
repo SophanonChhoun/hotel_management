@@ -32,7 +32,7 @@ class HotelController extends Controller
             $hotels = $hotels->where("is_enable",$request->is_enable);
         }
 
-        $data = $hotels->paginate(10);
+        $data = $hotels->orderByDesc("id")->paginate(10);
         return view("admin.hotel.list",compact("data"));
     }
 

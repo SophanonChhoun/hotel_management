@@ -26,9 +26,18 @@ class RoomController extends Controller
         {
             $rooms = $rooms->where("is_enable",$request->is_enable);
         }
-        $data = $rooms->paginate(10);
+        $data = $rooms->orderByDesc("id")->paginate(10);
 
         return view("admin.rooms.list",compact("data"));
+    }
+
+    public function indexStatus($is_enable)
+    {
+        $data = Room::with("hotel","roomType")
+            ->where("is_enable",$is_enable)
+            ->orderByDesc("id")
+            ->simplePaginate(10);
+        return view("admin.rooms.list",compact('data'));
     }
 
     /**

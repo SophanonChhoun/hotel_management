@@ -7,7 +7,9 @@
                 <div class="card-counter success">
                     <i class="fa fa-key"></i>
                     <span class="count-numbers">  {{$room_available }}</span>
-                    <a href="admin/booking/create" style="color:white;"><span class="count-name">Available Room</span></a>
+                    <a href="/admin/rooms/list/1" style="color:white;">
+                        <span class="count-name">Room Available</span>
+                    </a>
                 </div>
             </div>
 
@@ -32,7 +34,9 @@
                     <i class="fa fa-bookmark"></i>
                     <span class="count-numbers">
                      {{ $room_booked }}  </span>
-                    <span class="count-name">Room Booked</span>
+                    <a href="/admin/rooms/list/0">
+                        <span class="count-name">Room Booked</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -92,6 +96,7 @@
                         <td>
                             <a href="{{ url('/admin/booking/show/payment/'.$booking->id) }}">{{ $booking->customer->last_name ?? null }} {{ $booking->customer->first_name ?? null }}</a>
                         </td>
+                        <td>{{ $booking->hotel->name }}</td>
                         <td>{{ $booking->booking_type->name }}</td>
                         <td>{{ $booking->check_in_date }}</td>
                         <td>{{ $booking->check_out_date }}</td>

@@ -4,7 +4,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="964d3bbc-dd66-4f5f-8347-3c91af8e6484" name="Default Changelist" comment="" />
+    <list default="true" id="964d3bbc-dd66-4f5f-8347-3c91af8e6484" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookingTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookingTypeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HotelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HotelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IdentificationTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IdentificationTypeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentTypeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoomController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoomTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoomTypeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SlidersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SlidersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/admin/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/admin/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/adminAuth/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/adminAuth/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/booking/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/booking/create.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/booking/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/booking/edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/customer/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/customer/create.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/customer/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/customer/edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/identification_type/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/identification_type/edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/payment_type/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/payment_type/edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/room_type/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/room_type/create.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/room_type/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/room_type/edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/rooms/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/rooms/create.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/rooms/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/rooms/edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/sliders/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/sliders/create.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/sliders/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/sliders/edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/customer/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/customer/table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer/table.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/profile/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/table.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -340,6 +380,10 @@
       <workItem from="1609162855304" duration="223000" />
       <workItem from="1609164009089" duration="2022000" />
       <workItem from="1609201124665" duration="181000" />
+      <workItem from="1609201853211" duration="204000" />
+      <workItem from="1609206353535" duration="433000" />
+      <workItem from="1609210576382" duration="9804000" />
+      <workItem from="1609221538225" duration="1907000" />
     </task>
     <servers />
   </component>
@@ -371,11 +415,11 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800@0.0.1280.800" timestamp="1608643689338" />
-    <state x="2456" y="286" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609126346039">
+    <state x="2456" y="286" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609219231762">
       <screen x="1440" y="0" width="3440" height="1440" />
     </state>
     <state x="378" y="159" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1609056622806" />
-    <state x="2456" y="286" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609126346039" />
+    <state x="2456" y="286" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609219231762" />
     <state x="149" y="25" key="SettingsEditor" timestamp="1607247425920">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -385,11 +429,11 @@
     </state>
     <state x="305" y="185" key="run.anything.popup/0.0.1280.800@0.0.1280.800" timestamp="1606916395471" />
     <state x="2260" y="333" width="670" height="675" key="run.anything.popup/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609157908486" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1609201139802">
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1609223561355">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1609201139802" />
-    <state x="2260" y="223" width="1801" height="1217" key="search.everywhere.popup/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609162904133" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1609223561355" />
+    <state x="2260" y="223" width="1801" height="1217" key="search.everywhere.popup/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609220146423" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.25.1280.718@0.25.1280.718" timestamp="1608985370297" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.25.1280.719@0.25.1280.719" timestamp="1607207655610" />
   </component>

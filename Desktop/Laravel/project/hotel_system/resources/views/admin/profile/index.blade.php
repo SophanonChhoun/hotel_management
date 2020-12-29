@@ -1,8 +1,23 @@
 @extends("admin.layout.default")
 
 @section("content")
+<div class="page-content">
+    <div class="page-head">
+        <div class="page-title">
+            <h1>Profile</h1>
+        </div>
+    </div>
+    <ul class="page-breadcrumb breadcrumb">
+        <li>
+            <a href="/admin/dashboard">Dashboard</a>
 
-    <div class="row" id="profile" >
+        </li>
+        <li>
+            <span class="active">Profile</span>
+        </li>
+    </ul>
+
+    <div class="row" id="profile" vc>
         <div class="col-md-12">
             <div class="profile-sidebar col-md-4">
                 <div class="portlet light profile-sidebar-portlet bordered text-center">
@@ -15,7 +30,26 @@
                         <div class="profile-user-title-name"> <h3 class="bold">{{ $data->name }}</h3> </div>
                         <div class="profile-user-title-job"> <h4>{{ $data->email }}</h4> </div>
                     </div>
+                    <div class="profile-user-menu">
+                        <ul class="nav">
+                            <li class="{{ request()->is('admin/profile/show') ? 'active' : '' }}">
+                                <a href="/admin/profile/show" >
+                                    <i class="icon-settings"></i>Personal Information</a>
+                            </li>
+
+                            <li class="{{ request()->is('/admin/profile/avatar') ? 'active' : '' }}">
+                                <a href="/admin/profile/change/avatar" >
+                                    <i class="icon-user"></i>Change profile</a>
+                            </li>
+
+                            <li class="{{ request()->is('/admin/profile/password') ? 'active' : '' }}">
+                                <a href="/admin/profile/change/password">
+                                    <i class="icon-key"></i>Change Password</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
 
             <div class="profile-content col-md-8">
@@ -31,58 +65,7 @@
                             <div class="portlet-body">
                                 <div class="tab-content">
                                     <div class="tab-pane active">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <label class="control-label col-md-2">First Name</label>
-                                                <div class="col-md-10">
-                                                    <label><b>{{$data->first_name}}</b></label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <label class="control-label col-md-2">Last Name</label>
-                                                <div class="col-md-10">
-                                                    <label><b>{{$data->last_name}}</b></label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <label class="control-label col-md-2">Telephone</label>
-                                                <div class="col-md-10">
-                                                    <label><b>{{$data->phone_number}}</b></label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <label class="control-label col-md-2">Email</label>
-                                                <div class="col-md-10">
-                                                    <label><b>{{$data->email}}</b></label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <label class="control-label col-md-2">Status</label>
-                                                <div class="col-md-10">
-                                                    <label>
-                                                            <div class="form-group"title="Change Status for this Product">
-                                                                <label class="mt-checkbox mt-checkbox-outline">
-                                                                    <span><?php
-                                                                            echo $data->is_enable ? 'Active' : 'Deactivate';
-                                                                        ?></span>
-                                                                </label>
-                                                            </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @yield("content_profile")
                                     </div>
                                 </div>
                             </div>
@@ -92,6 +75,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
 @endsection

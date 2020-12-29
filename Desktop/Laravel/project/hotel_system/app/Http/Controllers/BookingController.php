@@ -37,7 +37,7 @@ class BookingController extends Controller
         if (isset($request->is_enable)) {
             $bookings = $bookings->where("is_enable", $request->is_enable);
         }
-        $data = $bookings->simplePaginate(10);
+        $data = $bookings->orderByDesc("id")->simplePaginate(10);
         return view('admin.booking.list', compact('data'));
     }
 

@@ -2094,6 +2094,17 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./resources/css/profile.scss":
+/*!************************************!*\
+  !*** ./resources/css/profile.scss ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/js/axios.js":
 /*!*******************************!*\
   !*** ./resources/js/axios.js ***!
@@ -2132,14 +2143,15 @@ axios.interceptors.response.use(function (response) {
 /***/ }),
 
 /***/ 0:
-/*!***************************************************************!*\
-  !*** multi ./resources/js/axios.js ./resources/sass/app.scss ***!
-  \***************************************************************/
+/*!********************************************************************************************!*\
+  !*** multi ./resources/js/axios.js ./resources/sass/app.scss ./resources/css/profile.scss ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/chhounsophanon/Desktop/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/axios.js */"./resources/js/axios.js");
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/hotel_management/Desktop/Laravel/project/hotel_system/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/chhounsophanon/Desktop/hotel_management/Desktop/Laravel/project/hotel_system/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/hotel_management/Desktop/Laravel/project/hotel_system/resources/css/profile.scss */"./resources/css/profile.scss");
 
 
 /***/ })

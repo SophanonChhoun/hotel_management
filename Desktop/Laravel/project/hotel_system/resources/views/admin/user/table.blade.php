@@ -2,8 +2,6 @@
     <table class="table table-responsive">
         <tr>
             <th>Name</th>
-            <th>First Name</th>
-            <th>Last Name</th>
             <th>Email</th>
             <th>Profile</th>
             <th>@lang('general.status')</th>
@@ -12,8 +10,6 @@
         @forelse($data as $user)
             <tr>
                 <td>{{ $user->name }}</td>
-                <td>{{ $user->first_name }}</td>
-                <td>{{ $user->last_name }}</td>
                 <td>{{ $user->email }}</td>
                 <td><img src="{{ $user->media->file_url ?? asset('image/noimage.png') }}" class="img-responsive" style="max-height: 200px;max-width: 200px"></td>
                 <td>

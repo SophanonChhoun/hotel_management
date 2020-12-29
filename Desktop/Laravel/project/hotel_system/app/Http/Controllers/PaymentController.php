@@ -16,7 +16,7 @@ class PaymentController extends Controller
         {
             $payment = $payment->where("is_enable",$request->is_enable);
         }
-        $data = $payment->paginate(10);
+        $data = $payment->orderByDesc("id")->paginate(10);
         $data->getCollection()->transform(function ($payment){
             $room_type = Arr::pluck($payment->booking->room,"roomType");
             $room_type = Arr::pluck($room_type,'price');
