@@ -611,10 +611,10 @@
   },
   {
     "type": "get",
-    "url": "/api/booking-offers",
-    "title": "4. Booking Offer",
+    "url": "/api/booking/store",
+    "title": "4. Booking Store",
     "version": "1.0.0",
-    "name": "Booking_Offer",
+    "name": "Booking_Store",
     "group": "Booking",
     "parameter": {
       "fields": {
@@ -684,7 +684,7 @@
     "groupTitle": "Booking",
     "sampleRequest": [
       {
-        "url": "http://127.0.0.1:8000//api/booking-offers"
+        "url": "http://127.0.0.1:8000//api/booking/store"
       }
     ],
     "header": {
