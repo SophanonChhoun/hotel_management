@@ -49,7 +49,6 @@ class ProfileController extends Controller
             $user=User::find($id)->update([
                 "password" => $request['new_password']
             ]);
-            Auth::attempt($user);
 
             DB::commit();
             return $this->success("Success");

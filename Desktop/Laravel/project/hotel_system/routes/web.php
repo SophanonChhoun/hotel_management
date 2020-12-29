@@ -22,6 +22,7 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +55,8 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::get("/{id}",[AboutUsController::class,"show"]);
             Route::post("/{id}",[AboutUsController::class,"update"]);
         });
+
+        Route::get("/report/show",[ReportController::class,"index"]);
 
         Route::group(['prefix' => 'user'],function(){
             Route::get("/list",[UserController::class,'index']);
