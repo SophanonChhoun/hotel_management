@@ -121,7 +121,7 @@ class BookingController extends Controller
             return $customer;
         });
         $room_types = RoomType::where("is_enable", 1)->get();
-        $rooms = Room::where("is_enable", 1)->get();
+        $rooms = Room::where("is_enable", 1)->where("status",1)->get();
         return view("admin.booking.create", compact(
             "payment_types",
             "hotels",
