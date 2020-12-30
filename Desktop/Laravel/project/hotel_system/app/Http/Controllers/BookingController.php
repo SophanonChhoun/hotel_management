@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BookingOfferRequest;
 use App\Http\Requests\BookingStoreRequest;
 use App\Http\Resources\BookingListResource;
+use App\Http\Resources\BookingShowResource;
 use App\Http\Resources\BookingTypeResource;
 use App\Http\Resources\HotelBookResource;
 use App\Http\Resources\PaymentTypeResource;
 use App\Http\Resources\RoomResource;
 use App\Http\Resources\RoomTypeBookResource;
+use App\Http\Resources\RoomTypeResource;
 use App\Models\admin\Booking;
 use App\Models\admin\BookingHasRooms;
 use App\Models\admin\BookingRoomTypeMap;
@@ -44,8 +46,7 @@ class BookingController extends Controller
     public function listCustomer(Request $request)
     {
         try {
-            $bookings = Booking::with("hotel", "room_types.medias")->where("customer_id", $request['auth_id'])->get();
-
+            $bookings = Booking::with("hotel", "room_types.medias","room_types.rooms")->where("customer_id", $request['auth_id'])->get();
             return $this->success(BookingListResource::collection($bookings));
         } catch (Exception $exception) {
             return $this->fail($exception->getMessage());
@@ -148,9 +149,6 @@ class BookingController extends Controller
             ];
             $data = Booking::create($booking);
             BookingHasRooms::store($data->id, $request['rooms']);
-            Room::whereIn("id", $request['rooms'])->update([
-                'is_enable' => 0
-            ]);
             BookingRoomTypeMap::store($data->id, $request['room_type_id']);
             $amount = count($request['rooms']);
             Payment::store($data->id, $amount, $request['customer_id']);
@@ -162,13 +160,13 @@ class BookingController extends Controller
         }
     }
 
-    public function storeCustomer(BookingStoreRequest $request)
+    public function storeCustomer(Request $request)
     {
         try {
             $bookingType = BookingType::where("name","online")->first();
             $booking = [
-              'check_in_date' => $request['check_in_date'],
-              'check_out_date' => $request['check_out_date'],
+              'check_in_date' => Carbon::parse($request['check_in_date'])->format('Y-m-d'),
+              'check_out_date' => Carbon::parse($request['check_out_date'])->format('Y-m-d'),
               'hotel_id' => $request['hotel_id'],
               'customer_id' => $request['auth_id'],
               'is_enable' => 1,
@@ -176,16 +174,44 @@ class BookingController extends Controller
               'payment_type_id' => $request['payment_type_id']
             ];
             $data = Booking::create($booking);
-            BookingHasRooms::store($data->id,$request['rooms']);
-            Room::whereIn("id", $request['rooms'])->update([
-                'is_enable' => 0
-            ]);
-
-            BookingRoomTypeMap::store($data->id, $request['room_types_id']);
-            $amount = count($request['rooms']);
+            $amount = count(Arr::pluck($request['roomTypes'],"quantity"));
+            $booking = Booking::where("check_in_date",">=",$request['check_in_date'])->where("check_out_date","<=",$request['check_out_date'])->get();
+            $booking = $booking->pluck("id");
+            $roomIDs = BookingHasRooms::whereIn("booking_id",$booking)->get();
+            $roomIDs = $roomIDs->pluck("room_id");
+            foreach ($request['roomTypes'] as $roomType)
+            {
+                $room = Room::where("roomType_id",$roomType['id'])
+                    ->where("status",1)
+                    ->where("hotel_id",$request['hotel_id'])
+                    ->whereNotIn("id",$roomIDs)
+                    ->limit($roomType['quantity'])->get();
+                if(count($room) < $roomType['quantity'])
+                {
+                    $roomType = RoomType::find($roomType['id']);
+                    return $this->fail("This room type ".$roomType->name." does not have enough room.");
+                }
+                $roomIDs = $room->pluck("id");
+                BookingHasRooms::store($data->id,$roomIDs);
+            }
+            $roomTypeIDs = Arr::pluck($request['roomTypes'],"id");
+            BookingRoomTypeMap::store($data->id, $roomTypeIDs);
             Payment::store($data->id, $amount, $request['auth_id']);
             DB::commit();
-            return $this->success("Booking successful");
+            $booking = Booking::payment($request['roomTypes'],$data->id);
+            return $this->success([
+                "total" => $booking['total'],
+                "booking" => [
+                    "check_in_date" => $booking['booking']->check_in_date ?? null,
+                    "check_out_date" => $booking['booking']->check_out_date ?? null,
+                    "booking_type" => $booking['booking']->booking_type->name ?? null,
+                    "payment_type" => $booking['booking']->payment_type->name ?? null,
+                    "hotel" => $booking['booking']->hotel->name ?? null,
+                    "customer_first_name" => $booking['booking']->customer->first_name ?? null,
+                    "customer_last_name" => $booking['booking']->customer->last_name ?? null,
+                    "roomType" => RoomTypeResource::collection($booking['booking']->room_types)
+                ]
+            ]);
         }catch (Exception $exception){
             DB::rollBack();
             return $this->fail($exception->getMessage());

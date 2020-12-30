@@ -170,16 +170,16 @@
  *
  * @apiExample {curl} Example usage:
  {
-    "rooms" : [
-        1
+    "roomTypes" : [
+        {
+            "id" :2,
+            "quantity": 1
+        }
     ],
-    "check_in_date" : "2020-12-30",
-    "check_out_date" : "2021-01-05",
-    "room_types_id" : [
-        13
-    ],
-    "payment_type_id" : 1,
-    "hotel_id": 1
+    "hotel_id": 1,
+    "check_in_date": "2020-12-07",
+    "check_out_date": "2021-01-03",
+    "payment_type_id": 1
  }
  * @apiSuccessExample  Response (example):
  HTTP/1.1 200 Success Request

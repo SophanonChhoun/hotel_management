@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Exception;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -33,14 +34,7 @@ class ProfileController extends Controller
         $data = User::with("media")->find(auth()->user()->id);
         try {
             $id = auth()->user()->id;
-            $user = User::find($id);
-            if(is_null($user))
-            {
-                return view('admin.profile.password', [
-                    'errorMessageDuration' => 'Wrong login details',
-                ],compact('data'));
-            }
-            if (!auth()->attempt(['email' => $user['email'], 'password' => $request['old_password']]))
+            if (!(Hash::check($request->old_password, Auth::user()->getAuthPassword())))
             {
                 return $this->fail("Wrong old password. Please input a correct one.");
             }

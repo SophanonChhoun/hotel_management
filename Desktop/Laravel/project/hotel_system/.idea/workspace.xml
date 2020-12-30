@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="964d3bbc-dd66-4f5f-8347-3c91af8e6484" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/report/s.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/report/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/admin/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/admin/Booking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/admin/BookingHasRooms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/admin/BookingHasRooms.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/documents/customer/booking.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/documents/customer/booking.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +38,10 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="report" />
+                    <option name="lastUsedInstant" value="1609235932" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="customer_migration" />
                     <option name="lastUsedInstant" value="1609226496" />
                   </RecentBranch>
@@ -51,10 +56,6 @@
                   <RecentBranch>
                     <option name="branchName" value="booking_offer" />
                     <option name="lastUsedInstant" value="1609162576" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="room_type_improve" />
-                    <option name="lastUsedInstant" value="1609134004" />
                   </RecentBranch>
                 </list>
               </option>
@@ -179,25 +180,25 @@
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
-      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/irazasyed/telegram-bot-sdk" />
       <path value="$PROJECT_DIR$/vendor/league/event" />
-      <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
-      <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
-      <path value="$PROJECT_DIR$/vendor/mobiledetect/mobiledetectlib" />
-      <path value="$PROJECT_DIR$/vendor/jaybizzle/crawler-detect" />
-      <path value="$PROJECT_DIR$/vendor/jenssegers/agent" />
-      <path value="$PROJECT_DIR$/vendor/pragmarx/google2fa" />
-      <path value="$PROJECT_DIR$/vendor/laravel/jetstream" />
-      <path value="$PROJECT_DIR$/vendor/laravel/fortify" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
-      <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
       <path value="$PROJECT_DIR$/vendor/inertiajs/inertia-laravel" />
       <path value="$PROJECT_DIR$/vendor/tightenco/ziggy" />
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/vendor/laravel/helpers" />
+      <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/vendor/laravel/jetstream" />
+      <path value="$PROJECT_DIR$/vendor/laravel/fortify" />
+      <path value="$PROJECT_DIR$/vendor/mobiledetect/mobiledetectlib" />
+      <path value="$PROJECT_DIR$/vendor/jaybizzle/crawler-detect" />
+      <path value="$PROJECT_DIR$/vendor/jenssegers/agent" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/vendor/pragmarx/google2fa" />
+      <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kjy086cc68W8HW2CCKHGrSi3xt" />
@@ -353,7 +354,8 @@
       <workItem from="1609201853211" duration="204000" />
       <workItem from="1609206353535" duration="433000" />
       <workItem from="1609210576382" duration="9804000" />
-      <workItem from="1609221538225" duration="12012000" />
+      <workItem from="1609221538225" duration="12263000" />
+      <workItem from="1609291006764" duration="8264000" />
     </task>
     <servers />
   </component>
@@ -390,6 +392,22 @@
     </state>
     <state x="378" y="159" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1609230177051" />
     <state x="2456" y="286" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609219231762" />
+    <state width="1672" height="520" key="GridCell.Tab.0.bottom" timestamp="1609300821009">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609300821009" />
+    <state width="1672" height="520" key="GridCell.Tab.0.center" timestamp="1609300821007">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609300821007" />
+    <state width="1672" height="520" key="GridCell.Tab.0.left" timestamp="1609300821006">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609300821006" />
+    <state width="1672" height="520" key="GridCell.Tab.0.right" timestamp="1609300821008">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609300821008" />
     <state x="149" y="25" key="SettingsEditor" timestamp="1607247425920">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -399,11 +417,11 @@
     </state>
     <state x="305" y="185" key="run.anything.popup/0.0.1280.800@0.0.1280.800" timestamp="1606916395471" />
     <state x="2260" y="333" width="670" height="675" key="run.anything.popup/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609157908486" />
-    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1609230332240">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="2260" y="223" width="1801" height="1217" key="search.everywhere.popup" timestamp="1609300767867">
+      <screen x="1440" y="0" width="3440" height="1440" />
     </state>
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1609230332240" />
-    <state x="2260" y="223" width="1801" height="1217" key="search.everywhere.popup/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609220146423" />
+    <state x="2260" y="223" width="1801" height="1217" key="search.everywhere.popup/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609300767867" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.25.1280.718@0.25.1280.718" timestamp="1608985370297" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.25.1280.719@0.25.1280.719" timestamp="1607207655610" />
   </component>

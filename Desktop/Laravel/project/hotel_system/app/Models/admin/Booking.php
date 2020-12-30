@@ -54,4 +54,22 @@ class Booking extends Model
     {
         return $this->belongsToMany(RoomType::class,BookingRoomTypeMap::class,"booking_id","room_type_id");
     }
+
+
+
+    public static function payment($roomTypes, $booking_id)
+    {
+        $total = 0;
+        foreach ($roomTypes as $roomType)
+        {
+            $price = RoomType::find($roomType['id'])->price;
+            $total += ($price * $roomType['quantity']);
+        }
+
+        $booking = Booking::with("hotel","booking_type","customer","payment_type","room_types.rooms")->find($booking_id);
+        return [
+          "total" => $total,
+          "booking" => $booking
+        ];
+    }
 }
