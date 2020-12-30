@@ -22,6 +22,9 @@ class BookingHasRooms extends Model
                 "booking_id" => $booking_id,
                 "room_id" => $roomID
             ]);
+            Room::find($roomID)->update([
+                'is_enable' => 0
+            ]);
         }
     }
 }

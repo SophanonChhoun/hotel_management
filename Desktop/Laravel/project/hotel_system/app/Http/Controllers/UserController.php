@@ -93,7 +93,6 @@ class UserController extends Controller
                 "first_name" => $request->first_name,
                 "last_name" => $request->last_name,
                 "email" => $request->email,
-                "password" => $request->password,
                 "gender" => $request->gender,
                 "phone_number" => $request->phone_number,
                 "address" => $request->address,
