@@ -45,7 +45,7 @@
                     </form>
                 </div>
                 <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
-                    <a href="/admin/user/create" class="btn btn-primary" style="margin-bottom: 30px">@lang('general.create')</a>
+                    <a href="/admin/customer/create" class="btn btn-primary" style="margin-bottom: 30px">@lang('general.create')</a>
                 </div>
 
             </div>
