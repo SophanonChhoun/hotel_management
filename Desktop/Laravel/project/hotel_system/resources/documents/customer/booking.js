@@ -185,8 +185,33 @@
  HTTP/1.1 200 Success Request
  {
     "success": true,
-    "data": "Booking successful"
- }
+    "data": {
+        "total": 247,
+        "booking": {
+            "check_in_date": "2020-12-07",
+            "check_out_date": "2021-01-03",
+            "booking_type": "Online",
+            "payment_type": "Visa",
+            "hotel": "Overlook One",
+            "customer_first_name": "James",
+            "customer_last_name": "Bond",
+            "roomType": [
+                {
+                    "name": "City View",
+                    "price_per_room": 247,
+                    "quantity": 1,
+                    "total": 247,
+                    "maximum": 2,
+                    "rooms": [
+                        {
+                            "name": "Room 2"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
  *
  * @apiUse NotFound
  * @apiUse ServerServerError
