@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="964d3bbc-dd66-4f5f-8347-3c91af8e6484" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/admin/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/admin/Booking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/admin/BookingHasRooms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/admin/BookingHasRooms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/documents/customer/booking.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/documents/customer/booking.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +29,10 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="booking_store" />
+                    <option name="lastUsedInstant" value="1609301476" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="report" />
                     <option name="lastUsedInstant" value="1609235932" />
                   </RecentBranch>
@@ -52,10 +47,6 @@
                   <RecentBranch>
                     <option name="branchName" value="booking_doc" />
                     <option name="lastUsedInstant" value="1609162994" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="booking_offer" />
-                    <option name="lastUsedInstant" value="1609162576" />
                   </RecentBranch>
                 </list>
               </option>
@@ -355,7 +346,7 @@
       <workItem from="1609206353535" duration="433000" />
       <workItem from="1609210576382" duration="9804000" />
       <workItem from="1609221538225" duration="12263000" />
-      <workItem from="1609291006764" duration="8264000" />
+      <workItem from="1609291006764" duration="8857000" />
     </task>
     <servers />
   </component>
@@ -392,22 +383,54 @@
     </state>
     <state x="378" y="159" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1609230177051" />
     <state x="2456" y="286" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609219231762" />
-    <state width="1672" height="520" key="GridCell.Tab.0.bottom" timestamp="1609300821009">
+    <state width="1672" height="520" key="GridCell.Tab.0.bottom" timestamp="1609301502095">
       <screen x="1440" y="0" width="3440" height="1440" />
     </state>
-    <state width="1672" height="520" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609300821009" />
-    <state width="1672" height="520" key="GridCell.Tab.0.center" timestamp="1609300821007">
+    <state width="1672" height="520" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502095" />
+    <state width="1672" height="520" key="GridCell.Tab.0.center" timestamp="1609301502094">
       <screen x="1440" y="0" width="3440" height="1440" />
     </state>
-    <state width="1672" height="520" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609300821007" />
-    <state width="1672" height="520" key="GridCell.Tab.0.left" timestamp="1609300821006">
+    <state width="1672" height="520" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502094" />
+    <state width="1672" height="520" key="GridCell.Tab.0.left" timestamp="1609301502093">
       <screen x="1440" y="0" width="3440" height="1440" />
     </state>
-    <state width="1672" height="520" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609300821006" />
-    <state width="1672" height="520" key="GridCell.Tab.0.right" timestamp="1609300821008">
+    <state width="1672" height="520" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502093" />
+    <state width="1672" height="520" key="GridCell.Tab.0.right" timestamp="1609301502094">
       <screen x="1440" y="0" width="3440" height="1440" />
     </state>
-    <state width="1672" height="520" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609300821008" />
+    <state width="1672" height="520" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502094" />
+    <state width="1672" height="520" key="GridCell.Tab.1.bottom" timestamp="1609301502097">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.1.bottom/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502097" />
+    <state width="1672" height="520" key="GridCell.Tab.1.center" timestamp="1609301502096">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.1.center/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502096" />
+    <state width="1672" height="520" key="GridCell.Tab.1.left" timestamp="1609301502095">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.1.left/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502095" />
+    <state width="1672" height="520" key="GridCell.Tab.1.right" timestamp="1609301502096">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.1.right/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502096" />
+    <state width="1672" height="520" key="GridCell.Tab.2.bottom" timestamp="1609301502099">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.2.bottom/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502099" />
+    <state width="1672" height="520" key="GridCell.Tab.2.center" timestamp="1609301502098">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.2.center/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502098" />
+    <state width="1672" height="520" key="GridCell.Tab.2.left" timestamp="1609301502097">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.2.left/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502097" />
+    <state width="1672" height="520" key="GridCell.Tab.2.right" timestamp="1609301502098">
+      <screen x="1440" y="0" width="3440" height="1440" />
+    </state>
+    <state width="1672" height="520" key="GridCell.Tab.2.right/0.0.1440.900/1440.0.3440.1440@1440.0.3440.1440" timestamp="1609301502098" />
     <state x="149" y="25" key="SettingsEditor" timestamp="1607247425920">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
