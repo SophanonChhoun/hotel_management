@@ -19,7 +19,7 @@ class AdminAuthController extends Controller
     {
         if(Session::get('auth'))
         {
-            return \redirect('/test');
+            return \redirect('/admin/dashboard');
         }else{
             return view('layouts.login');
 
