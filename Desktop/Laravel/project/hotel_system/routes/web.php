@@ -38,9 +38,7 @@ use App\Http\Controllers\ReportController;
 Route::get("/",[AdminAuthController::class,"signin"]);
 Route::post('/admin/login',[AdminAuthController::class,'login']);
 
-Route::get("/test", function (){
-   return view("admin.layout.default");
-})->middleware(AdminMiddleware::class);
+Route::get("/test",[AdminAuthController::class,"signin"]);
 
 Route::get('/lang/{locale}', [LocalizationController::class,"lang"]);
 

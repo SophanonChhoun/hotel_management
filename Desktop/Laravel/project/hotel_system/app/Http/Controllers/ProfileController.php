@@ -43,9 +43,18 @@ class ProfileController extends Controller
             $user=User::find($id)->update([
                 "password" => $request['new_password']
             ]);
-
-            DB::commit();
-            return $this->success("Success");
+            $user = User::find($id);
+            if (auth()->attempt([
+                "email" => $user->email,
+                "password" => $request['new_password'],
+                "is_enable" => true
+            ])){
+                DB::commit();
+                return $this->success("Success");
+            }else{
+                DB::rollback();
+                return $this->fail("Something went wrong");
+            }
         }catch (Exception $exception){
             DB::rollback();
             return $this->fail("Something went wrong");
