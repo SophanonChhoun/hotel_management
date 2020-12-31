@@ -2,21 +2,17 @@
     <table class="table table-responsive">
         <tr>
             <th>@lang('general.name')</th>
-            <th>@lang('general.street_address')</th>
             <th>@lang('general.city')</th>
             <th>@lang('general.country')</th>
-            <th>@lang('general.zip')</th>
             <th>@lang('general.image')</th>
             <th>@lang('general.status')</th>
-            <th colspan="2">@lang('general.action')</th>
+            <th colspan="2" >@lang('general.action')</th>
         </tr>
         @forelse($data as $hotel)
             <tr>
                 <td>{{ $hotel->name }}</td>
-                <td>{{ $hotel->street_address }}</td>
                 <td>{{ $hotel->city }}</td>
                 <td>{{ $hotel->country }}</td>
-                <td>{{ $hotel->zip }}</td>
                 <td><img src="{{ $hotel->medias->first()->file_url ?? asset('image/noimage.png') }}" class="img-responsive" style="max-height: 200px;max-width: 200px"></td>
                 <td>
                     <input type="checkbox" data-toggle="modal" data-target="#status{{ $hotel->id }}" @if($hotel->is_enable) checked @endif>

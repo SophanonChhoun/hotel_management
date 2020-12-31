@@ -58,11 +58,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="{{ request()->is("admin/report*") ? 'active' : '' }}">
-                <a href="/admin/report">
-                    <i class="fa fa-fw fa-paper-plane"></i> Report
-                </a>
-            </li>
 
             <li class="{{ request()->is('admin/pages*') ? 'active' : '' }}">
                 <a href="javascript:;" data-toggle="collapse" data-target="#page"><i class="fa fa-fw fa-arrows-v"></i> Pages <i class="fa fa-fw fa-caret-down"></i></a>
