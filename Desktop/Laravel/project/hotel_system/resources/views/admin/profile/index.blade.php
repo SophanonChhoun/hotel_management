@@ -1,5 +1,16 @@
 @extends("admin.layout.default")
 
+@section("style")
+    <style>
+        .nav li.active > a {
+            background-color: #fcba03;
+            color: #fff;
+        }
+        a{
+            color: #0c91e5;
+        }
+    </style>
+@endsection
 @section("content")
 <div class="page-content">
     <div class="page-head">
@@ -37,12 +48,12 @@
                                     <i class="icon-settings"></i>Personal Information</a>
                             </li>
 
-                            <li class="{{ request()->is('/admin/profile/avatar') ? 'active' : '' }}">
+                            <li class="{{ request()->is('admin/profile/change/avatar') ? 'active' : '' }}">
                                 <a href="/admin/profile/change/avatar" >
                                     <i class="icon-user"></i>Change profile</a>
                             </li>
 
-                            <li class="{{ request()->is('/admin/profile/password') ? 'active' : '' }}">
+                            <li class="{{ request()->is('admin/profile/change/password') ? 'active' : '' }}">
                                 <a href="/admin/profile/change/password">
                                     <i class="icon-key"></i>Change Password</a>
                             </li>
