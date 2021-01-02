@@ -197,13 +197,10 @@ class BookingController extends Controller
             ];
             $data = Booking::create($booking);
             $amount = count(Arr::pluck($request['roomTypes'],"quantity"));
-//            $booking = Booking::where("check_in_date",">=",$request['check_in_date'])->where("check_out_date","<=",$request['check_out_date'])
-//                ->get();
             $booking = Booking::where("check_out_date",">",$request['check_in_date'])->where("check_in_date","<",$request['check_out_date'])->get();
             $booking = $booking->pluck("id");
             $roomIDs = BookingHasRooms::whereIn("booking_id",$booking)->get();
             $roomIDs = $roomIDs->pluck("room_id");
-            $i=0;
             foreach ($request['roomTypes'] as $roomType)
             {
                 $room = Room::where("roomType_id",$roomType['id'])
