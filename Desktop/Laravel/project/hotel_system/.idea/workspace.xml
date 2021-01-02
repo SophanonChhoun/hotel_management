@@ -7,11 +7,6 @@
     <list default="true" id="964d3bbc-dd66-4f5f-8347-3c91af8e6484" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/RoomResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/RoomResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/payment/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/payment/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/report/s.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/report/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/report/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -360,7 +355,7 @@
       <workItem from="1609480819366" duration="5018000" />
       <workItem from="1609561590056" duration="8095000" />
       <workItem from="1609592592100" duration="1569000" />
-      <workItem from="1609595353778" duration="2311000" />
+      <workItem from="1609595353778" duration="5559000" />
     </task>
     <servers />
   </component>
