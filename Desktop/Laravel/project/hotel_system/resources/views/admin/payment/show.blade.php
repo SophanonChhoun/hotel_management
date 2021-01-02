@@ -71,6 +71,7 @@
                     <tr>
                         <th>Room Type</th>
                         <th>Room Number</th>
+                        <th>Amount of Days</th>
                         <th>Price</th>
                     </tr>
                     </thead>
@@ -79,6 +80,7 @@
                     <tr>
                         <td>{{ $room->roomType->name ?? null }}</td>
                         <td>{{ $room->name }}</td>
+                        <td>{{ $payment->days }}</td>
                         <td>{{ $room->roomType->price ?? null }}</td>
                     </tr>
                     @endforeach

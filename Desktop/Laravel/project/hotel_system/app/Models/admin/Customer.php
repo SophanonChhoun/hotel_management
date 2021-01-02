@@ -28,6 +28,7 @@ class Customer extends Authenticatable
         'country',
         'zip',
         'is_enable',
+        'media_id'
       ];
 
       protected $hidden = [
@@ -47,6 +48,11 @@ class Customer extends Authenticatable
     public function identification_type()
     {
         return $this->belongsTo(IdentificationType::class,"identification_type_id","id");
+    }
+
+    public function media()
+    {
+        return $this->belongsTo(MediaFile::class,"media_id");
     }
 
     // public function setPasswordAttribute($confirm_password)

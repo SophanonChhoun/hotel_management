@@ -1205,8 +1205,10 @@ new Vue({
       country: '',
       city: '',
       zip: '',
-      is_enable: ''
+      is_enable: '',
+      image: ''
     },
+    error_image: '',
     identification_type: identification_type,
     is_submit: false,
     error: ''
@@ -1225,6 +1227,13 @@ new Vue({
         var save = true;
         _this.data.identification_type_id = _this.data.identification_type.id;
 
+        if (!_this.data.image) {
+          _this.error_image = "The Image field is required";
+          save = false;
+        } else {
+          _this.error_image = "";
+        }
+
         if (result && save) {
           axios.post('/admin/customer/create', _this.data).then(function (response) {
             if (response.data.success) {
@@ -1239,6 +1248,17 @@ new Vue({
           window.scrollTo(0, 0);
         }
       });
+    },
+    uploadAddingImage: function uploadAddingImage(event) {
+      var _this2 = this;
+
+      var image = event.target.files[0];
+      var reader = new FileReader();
+      reader.readAsDataURL(image);
+
+      reader.onload = function (event) {
+        Vue.set(_this2.data, 'image', event.target.result);
+      };
     }
   }
 });
@@ -1252,7 +1272,7 @@ new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/customer/create.js */"./resources/js/customer/create.js");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/web_project/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/customer/create.js */"./resources/js/customer/create.js");
 
 
 /***/ })

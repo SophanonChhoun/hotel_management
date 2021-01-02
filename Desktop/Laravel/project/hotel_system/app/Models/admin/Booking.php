@@ -23,6 +23,15 @@ class Booking extends Model
       'payment_type_id'
     ];
 
+    public function getBookingTypeNameAttribute()
+    {
+        return $this->booking_type->name ?? '';
+    }
+
+    public function getPaymentTypeNameAttribute()
+    {
+        return $this->payment_type->name ?? null;
+    }
 
     public function hotel()
     {
@@ -53,6 +62,11 @@ class Booking extends Model
     public function room_types()
     {
         return $this->belongsToMany(RoomType::class,BookingRoomTypeMap::class,"booking_id","room_type_id");
+    }
+
+    public function payment_booking()
+    {
+        return $this->belongsTo(Payment::class,"id","booking_id");
     }
 
 

@@ -94,8 +94,6 @@
     </div>
 @endif
 
-
-
 <div class="form-group" :class="{'has-error' : error_image}">
     <label class="control-label">
         Profile

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\admin\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use DateTime;
 use Exception;
 
 class PaymentController extends Controller
@@ -18,9 +19,17 @@ class PaymentController extends Controller
         }
         $data = $payment->orderByDesc("id")->paginate(10);
         $data->getCollection()->transform(function ($payment){
-            $room_type = Arr::pluck($payment->booking->room,"roomType");
-            $room_type = Arr::pluck($room_type,'price');
-            $payment['price'] = array_sum($room_type);
+            if(!$payment->booking){
+                $payment['price'] = 0;
+            }else{
+                $room_type = Arr::pluck($payment->booking->room,"roomType");
+                $room_type = Arr::pluck($room_type,'price');
+                $date1 = new DateTime($payment->booking->check_in_date);
+                $date2 = new DateTime($payment->booking->check_out_date);
+                $int = $date1->diff($date2);
+                $days = $int->format("%a");
+                $payment['price'] = array_sum($room_type) * $days;
+            }
             return $payment;
         });
         return view('admin.payment.list',compact('data'));
@@ -33,7 +42,12 @@ class PaymentController extends Controller
             $payment = $payment->find($id);
             $total = Arr::pluck($payment->booking->room,"roomType");
             $total = Arr::pluck($total,'price');
-            $payment['total'] = array_sum($total);
+            $date1 = new DateTime($payment->booking->check_in_date);
+            $date2 = new DateTime($payment->booking->check_out_date);
+            $int = $date1->diff($date2);
+            $days = $int->format("%a");
+            $payment['days'] = $days;
+            $payment['total'] = array_sum($total) * $days;
             return view('admin.payment.show',compact('payment'));
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());

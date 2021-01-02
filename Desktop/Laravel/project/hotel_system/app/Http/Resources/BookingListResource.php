@@ -14,18 +14,15 @@ class BookingListResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-          "id" => $this->id,
-          "checkInDate" => $this->check_in_date,
-          "checkOutDate" => $this->check_out_date,
-          "hotel" => [
-              'id' => $this->hotel->id,
-              'title' => $this->hotel->name,
-              'city' => $this->hotel->city,
-              'country' => $this->hotel->country,
-              'description' => $this->hotel->description,
-          ],
-          "roomType" => RoomTypeBookingResource::collection($this->room_types)
+        return $this->only('id', 'total','check_in_date','check_out_date', 'booking_type_name','payment_type_name',
+            'customer_name') + [
+            'hotel' => [
+                "id" => $this->hotel->id ?? null,
+                "name" => $this->hotel->name ?? null,
+            ],
+            "customer_first_name" => $this->customer->first_name,
+            "customer_last_name" => $this->customer->last_name,
+            "roomType" => RoomTypeResource::collection($this->room_types)
         ];
     }
 }
