@@ -135,7 +135,7 @@ new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/profile/password.js */"./resources/js/profile/password.js");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/web_project/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/profile/password.js */"./resources/js/profile/password.js");
 
 
 /***/ })

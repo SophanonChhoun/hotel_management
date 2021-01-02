@@ -1279,7 +1279,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/booking/create.js */"./resources/js/booking/create.js");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/web_project/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/booking/create.js */"./resources/js/booking/create.js");
 
 
 /***/ })

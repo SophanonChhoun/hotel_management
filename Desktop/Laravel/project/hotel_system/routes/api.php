@@ -11,6 +11,7 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BookingOfferController;
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,6 +42,12 @@ Route::middleware(CustomerMiddleware::class)->group(function (){
     Route::post("/booking/store",[BookingController::class,"storeCustomer"]);
     Route::post('/logout',[CustomerAuthController::class,'logout']);
     Route::get('/test',[CustomerAuthController::class,'test']);
+    Route::group(['prefix' => 'profile'], function(){
+        Route::get("",[CustomerController::class,"showCustomer"]);
+        Route::post("/update",[CustomerController::class,"updateCustomer"]);
+        Route::post("/update/avatar",[CustomerController::class,"changeAvatar"]);
+        Route::post("/update/password",[CustomerController::class,"updatePassword"]);
+    });
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
