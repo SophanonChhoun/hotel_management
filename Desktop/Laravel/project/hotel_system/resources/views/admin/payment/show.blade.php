@@ -81,7 +81,7 @@
                         <td>{{ $room->roomType->name ?? null }}</td>
                         <td>{{ $room->name }}</td>
                         <td>{{ $payment->days }}</td>
-                        <td>{{ $room->roomType->price ?? null }}</td>
+                        <td>{{ ($room->roomType->price * $payment->days) ?? null }}</td>
                     </tr>
                     @endforeach
 

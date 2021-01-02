@@ -15,12 +15,12 @@ class RoomResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id" => $this->id,
-            "name" => $this->name,
-            "description" => $this->description,
-            "price" => $this->price,
-            "max" => $this->max,
-            "qtyAvailable" => $this->qtyAvailable
+            "id" => $this->id ?? null,
+            "name" => $this->name ?? null,
+            "description" => $this->description ?? null,
+            "price" => $this->price ?? null,
+            "max" => $this->max ?? null,
+            "qtyAvailable" => $this->qtyAvailable ?? null
         ];
     }
 }

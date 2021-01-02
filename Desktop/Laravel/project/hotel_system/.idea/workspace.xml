@@ -7,7 +7,11 @@
     <list default="true" id="964d3bbc-dd66-4f5f-8347-3c91af8e6484" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/admin/BookingHasRooms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/admin/BookingHasRooms.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/RoomResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/RoomResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/payment/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/payment/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/report/s.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/report/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/report/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -355,7 +359,8 @@
       <workItem from="1609396393317" duration="1165000" />
       <workItem from="1609480819366" duration="5018000" />
       <workItem from="1609561590056" duration="8095000" />
-      <workItem from="1609592592100" duration="1286000" />
+      <workItem from="1609592592100" duration="1569000" />
+      <workItem from="1609595353778" duration="2311000" />
     </task>
     <servers />
   </component>
@@ -444,6 +449,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="149" y="25" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1607247425920" />
+    <state x="342" y="351" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1609596689337">
+      <screen x="0" y="0" width="3440" height="1440" />
+    </state>
+    <state x="342" y="351" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.3440.1440@0.0.3440.1440" timestamp="1609596689337" />
     <state x="2260" y="333" width="670" height="675" key="run.anything.popup" timestamp="1609157908486">
       <screen x="1440" y="0" width="3440" height="1440" />
     </state>
