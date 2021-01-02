@@ -22,6 +22,7 @@ class BookingListResource extends JsonResource
                 "street_address" => $this->hotel->street_address ?? null,
                 "city" => $this->hotel->city ?? null,
                 "country" => $this->hotel->country ?? null,
+                "media" => MediasResource::collection($this->hotel->medias) ?? null,
                 "zip" => $this->hotel->zip ?? null,
             ],
             "customer_first_name" => $this->customer->first_name,
