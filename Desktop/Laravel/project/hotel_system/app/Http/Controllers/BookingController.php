@@ -89,7 +89,7 @@ class BookingController extends Controller
             }
 
             $roomTypes = $roomTypes->filter(function($roomType) use ($request) {
-                $booking = Booking::where("check_in_date","<=",$request->checkOutDate)->where("check_out_date",">=",$request->checkInDate)->where("is_enable",1)->get();
+                $booking = Booking::where("check_in_date","<=",$request->checkOutDate)->where("check_out_date",">",$request->checkInDate)->where("is_enable",1)->get();
                 $bookingIDs= $booking->pluck("id");
                 $rooms = BookingHasRooms::whereIn("booking_id",$bookingIDs)->get();
                 $roomIDs = $rooms->pluck("room_id");
