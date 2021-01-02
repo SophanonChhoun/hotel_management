@@ -197,6 +197,7 @@ class BookingController extends Controller
             $booking = $booking->pluck("id");
             $roomIDs = BookingHasRooms::whereIn("booking_id",$booking)->get();
             $roomIDs = $roomIDs->pluck("room_id");
+            $i=0;
             foreach ($request['roomTypes'] as $roomType)
             {
                 $room = Room::where("roomType_id",$roomType['id'])
@@ -210,7 +211,7 @@ class BookingController extends Controller
                     return $this->fail("This room type ".$roomType->name." does not have enough room.");
                 }
                 $roomIDs = $room->pluck("id");
-                BookingHasRooms::store($data->id,$roomIDs);
+                $roomSave= BookingHasRooms::storeCustomer($data->id,$roomIDs);
             }
             $roomTypeIDs = Arr::pluck($request['roomTypes'],"id");
             BookingRoomTypeMap::store($data->id, $roomTypeIDs);
