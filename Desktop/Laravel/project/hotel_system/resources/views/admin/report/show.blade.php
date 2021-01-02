@@ -43,11 +43,10 @@
             </div><!-- /.col -->
             <div class="col-sm-4 invoice-col">
                 To
+                <strong>
+                    Date
+                </strong>
                 <address>
-                    <strong>
-                        Date
-                    </strong>
-                    <br>
                     Check In:
                     {{ $start_date }}                                    <br>
                     Check Out:
@@ -66,7 +65,7 @@
                         <th >Customer name</th>
                         <th >Check in</th>
                         <th >Check out</th>
-                        <th >Quantity</th>
+                        <th >Room Amount</th>
                         <th >Total</th>
                     </tr>
                     </thead>

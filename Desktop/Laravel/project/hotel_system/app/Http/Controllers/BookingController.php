@@ -88,14 +88,17 @@ class BookingController extends Controller
                 return $this->fail("There are no room type for this hotel.");
             }
 
-            $roomTypes = $roomTypes->map(function($roomType) use ($request) {
+            $roomTypes = $roomTypes->filter(function($roomType) use ($request) {
                 $booking = Booking::where("check_in_date","<=",$request->checkOutDate)->where("check_out_date",">=",$request->checkInDate)->where("is_enable",1)->get();
                 $bookingIDs= $booking->pluck("id");
                 $rooms = BookingHasRooms::whereIn("booking_id",$bookingIDs)->get();
                 $roomIDs = $rooms->pluck("room_id");
                 $rooms = Room::with("roomType")->where("status",1)->whereNotIn("id",$roomIDs)->where("roomType_id",$roomType['id'])->get();
                 $roomType['qtyAvailable'] = $rooms->count();
-                return $roomType;
+                if($rooms->count() > 0)
+                {
+                    return $roomType;
+                }
             });
 
             $payment_types = PaymentType::where("is_enable",1)->get();
