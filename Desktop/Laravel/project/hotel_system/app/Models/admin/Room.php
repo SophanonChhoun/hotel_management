@@ -16,12 +16,24 @@ class Room extends Model
         "status"
     ];
 
+    public function bookings()
+    {
+        return $this->belongsToMany(
+            Booking::class,
+            'booking_has_rooms');
+    }
+
     public function hotel()
     {
         return $this->belongsTo(Hotel::class,"hotel_id","id");
     }
 
     public function roomType()
+    {
+        return $this->belongsTo(RoomType::class,"roomType_id","id");
+    }
+
+    public function room_type()
     {
         return $this->belongsTo(RoomType::class,"roomType_id","id");
     }

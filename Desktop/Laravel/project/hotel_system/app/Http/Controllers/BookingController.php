@@ -27,6 +27,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use DateTime;
 
 class BookingController extends Controller
 {
@@ -46,7 +47,9 @@ class BookingController extends Controller
     public function listCustomer(Request $request)
     {
         try {
-            $bookings = Booking::with("hotel", "room_types.medias","room_types.rooms")->where("customer_id", $request['auth_id'])->get();
+
+            $bookings = Booking::with("hotel","room", "customer", "room_types.medias","room_types.rooms","payment_type","booking_type")->where("customer_id", $request['auth_id'])->orderByDesc("id")->get();
+            $bookings = Booking::list($bookings);
             return $this->success(BookingListResource::collection($bookings));
         } catch (Exception $exception) {
             return $this->fail($exception->getMessage());
@@ -69,22 +72,31 @@ class BookingController extends Controller
     public function bookingOffer(BookingOfferRequest $request)
     {
         try {
-            $roomType = RoomType::where("max",">=",$request->people)->where("hotel_id",$request->hotel_id)->where("is_enable",1)->get();
+            $roomTypes = RoomType::where("hotel_id",$request->hotel_id)->where("is_enable",1)->get();
 
-            if(!$roomType || count($roomType) == 0)
+            if(!$roomTypes || count($roomTypes) == 0)
             {
-                return $this->fail("There are no room type for this");
+                return $this->fail("There are no room type for this hotel.");
             }
-            $roomTypeIDs = $roomType->pluck("id");
+
+            $roomTypes = $roomTypes->filter(function($roomType) use ($request) {
+                $booking = Booking::where("check_in_date","<=",$request->checkOutDate)
+                    ->where("check_out_date",">",$request->checkInDate)->where("is_enable",1)->get();
+                $bookingIDs= $booking->pluck("id");
+                $rooms = BookingHasRooms::whereIn("booking_id",$bookingIDs)->get();
+                $roomIDs = $rooms->pluck("room_id");
+                $rooms = Room::with("roomType")->where("status",1)->whereNotIn("id",$roomIDs)->where("roomType_id",$roomType['id'])->get();
+                $roomType['qtyAvailable'] = $rooms->count();
+                if($rooms->count() > 0)
+                {
+                    return $roomType;
+                }
+            });
+
             $payment_types = PaymentType::where("is_enable",1)->get();
-            $booking = Booking::where("check_in_date","<=",$request->checkOutDate)->where("check_out_date",">=",$request->checkInDate)->where("is_enable",1)->get();
-            $bookingIDs= $booking->pluck("id");
-            $rooms = BookingHasRooms::whereIn("booking_id",$bookingIDs)->get();
-            $roomIDs = $rooms->pluck("room_id");
-            $rooms = Room::with("roomType")->where("status",1)->whereNotIn("id",$roomIDs)->where("roomType_id",$roomTypeIDs)->get();
             return $this->success([
                 "hotel_id" => $request->hotel_id,
-                "rooms" => RoomResource::collection($rooms),
+                "roomTypes" => RoomResource::collection($roomTypes),
                 "paymentType" => PaymentTypeResource::collection($payment_types)
             ]);
         } catch (Exception $exception) {
@@ -162,20 +174,21 @@ class BookingController extends Controller
 
     public function storeCustomer(Request $request)
     {
+        DB::beginTransaction();
         try {
             $bookingType = BookingType::where("name","online")->first();
             $booking = [
-              'check_in_date' => Carbon::parse($request['check_in_date'])->format('Y-m-d'),
-              'check_out_date' => Carbon::parse($request['check_out_date'])->format('Y-m-d'),
-              'hotel_id' => $request['hotel_id'],
-              'customer_id' => $request['auth_id'],
-              'is_enable' => 1,
-              'booking_type_id' => $bookingType->id,
-              'payment_type_id' => $request['payment_type_id']
+                'check_in_date' => Carbon::parse($request['check_in_date'])->format('Y-m-d'),
+                'check_out_date' => Carbon::parse($request['check_out_date'])->format('Y-m-d'),
+                'hotel_id' => $request['hotel_id'],
+                'customer_id' => $request['auth_id'],
+                'is_enable' => 1,
+                'booking_type_id' => $bookingType->id,
+                'payment_type_id' => $request['payment_type_id']
             ];
             $data = Booking::create($booking);
             $amount = count(Arr::pluck($request['roomTypes'],"quantity"));
-            $booking = Booking::where("check_in_date",">=",$request['check_in_date'])->where("check_out_date","<=",$request['check_out_date'])->get();
+            $booking = Booking::where("check_out_date",">",$request['check_in_date'])->where("check_in_date","<",$request['check_out_date'])->get();
             $booking = $booking->pluck("id");
             $roomIDs = BookingHasRooms::whereIn("booking_id",$booking)->get();
             $roomIDs = $roomIDs->pluck("room_id");
@@ -192,15 +205,19 @@ class BookingController extends Controller
                     return $this->fail("This room type ".$roomType->name." does not have enough room.");
                 }
                 $roomIDs = $room->pluck("id");
-                BookingHasRooms::store($data->id,$roomIDs);
+                $roomSave= BookingHasRooms::storeCustomer($data->id,$roomIDs);
             }
             $roomTypeIDs = Arr::pluck($request['roomTypes'],"id");
             BookingRoomTypeMap::store($data->id, $roomTypeIDs);
             Payment::store($data->id, $amount, $request['auth_id']);
-            DB::commit();
             $booking = Booking::payment($request['roomTypes'],$data->id);
+            $date1 = new DateTime($request->check_in_date);
+            $date2 = new DateTime($request->check_out_date);
+            $int = $date1->diff($date2);
+            $days = $int->format("%a");
+            DB::commit();
             return $this->success([
-                "total" => $booking['total'],
+                "total" => $booking['total'] * $days,
                 "booking" => [
                     "check_in_date" => $booking['booking']->check_in_date ?? null,
                     "check_out_date" => $booking['booking']->check_out_date ?? null,
@@ -297,11 +314,19 @@ class BookingController extends Controller
 
     public function destroy($id)
     {
+        DB::beginTransaction();
         try {
-            Booking::findOrFail($id)->delete();
-            Payment::status($id);
+            $booking = Booking::find($id);
+            $payment=Payment::find($booking->id);
+            if($payment)
+            {
+                $payment->delete();
+            }
+            $booking->delete();
+            DB::commit();
             return back();
         }catch (Exception $e){
+            DB::rollBack();
             return $this->fail($e->getMessage());
         }
     }

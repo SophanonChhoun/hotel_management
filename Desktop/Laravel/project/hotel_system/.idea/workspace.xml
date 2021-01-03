@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="964d3bbc-dd66-4f5f-8347-3c91af8e6484" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminAuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/admin/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/admin/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/BookingListResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/BookingListResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/RoomTypeResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/RoomTypeResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/admin/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/admin/Booking.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,24 +32,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="booking_store" />
-                    <option name="lastUsedInstant" value="1609301476" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="report" />
-                    <option name="lastUsedInstant" value="1609235932" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="customer_migration" />
-                    <option name="lastUsedInstant" value="1609226496" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1609224739" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="booking_doc" />
-                    <option name="lastUsedInstant" value="1609162994" />
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1609683732" />
                   </RecentBranch>
                 </list>
               </option>

@@ -9,52 +9,46 @@
  * @apiSuccessExample  Response (example):
  HTTP/1.1 200 Success Request
  {
-    "success": true,
-    "data": [
+   "success": true,
+   "data": [
         {
-            "id": 1,
-            "checkInDate": "2020-12-24",
-            "checkOutDate": "2020-12-31",
+            "id": 61,
+            "total": 1221,
+            "check_in_date": "2021-01-15",
+            "check_out_date": "2021-01-18",
+            "booking_type_name": "online",
+            "customer_first_name": "Sophanon",
+            "customer_last_name": "Chhoun",
             "hotel": {
-                "id": 1,
-                "name": "Siem Reap hotel",
-                "street_address": "193",
-                "city": "Siem Reap",
-                "country": "Cambodia",
-                "zip": "855"
-            },
-            "roomType": []
-        },
-        {
-            "id": 2,
-            "checkInDate": "2020-12-24",
-            "checkOutDate": "2020-12-30",
-            "hotel": {
-                "id": 1,
-                "name": "Siem Reap hotel",
-                "street_address": "193",
-                "city": "Siem Reap",
-                "country": "Cambodia",
-                "zip": "855"
+                "id": 2,
+                "name": "The Grand Overlook",
+                "media": []
             },
             "roomType": [
                 {
-                    "name": "Hello",
-                    "images": [
+                    "name": "Borey Angkor",
+                    "price_per_room": 200,
+                    "quantity": 1,
+                    "total": 200,
+                    "maximum": 3,
+                    "rooms": [
                         {
-                            "imageSrc": "http://127.0.0.1:8000/uploads/images/87723d9333ee51f22284240da5191904.png",
-                            "imageAlt": "image"
-                        },
-                        {
-                            "imageSrc": "http://127.0.0.1:8000/uploads/images/15ef9d0e6e01ec0c99ce5e09238dd8f8.png",
-                            "imageAlt": "image"
-                        },
-                        {
-                            "imageSrc": "http://127.0.0.1:8000/uploads/images/74c8c2144d2186bed7788c9a4541767e.png",
-                            "imageAlt": "image"
+                            "name": "Room 5"
                         }
                     ]
                 },
+                {
+                    "name": "Suite Sojourn",
+                    "price_per_room": 207,
+                    "quantity": 1,
+                    "total": 207,
+                    "maximum": 2,
+                    "rooms": [
+                        {
+                            "name": "Room 1"
+                        }
+                    ]
+                }
             ]
         }
     ]
@@ -117,7 +111,7 @@
  * @apiParam {integer} people           People
  *
  * @apiExample {curl} Example usage:
-{
+ {
     "checkOutDate": "2020-12-28",
     "checkInDate": "2020-12-25",
     "hotel_id": 2,
@@ -125,28 +119,7 @@
 }
  * @apiSuccessExample  Response (example):
  HTTP/1.1 200 Success Request
-{
-    "success": true,
-    "data": {
-        "hotel_id": 2,
-        "rooms": [
-            {
-                "id": 12,
-                "name": "14",
-                "roomType": {
-                    "id": 17,
-                    "name": "Borey Jr"
-                }
-            }
-        ],
-        "paymentType": [
-            {
-                "id": 1,
-                "name": "Visa card"
-            }
-        ]
-    }
-}
+
  *
  * @apiUse NotFound
  * @apiUse ServerServerError
@@ -185,32 +158,40 @@
  HTTP/1.1 200 Success Request
  {
     "success": true,
-    "data": {
-        "total": 247,
-        "booking": {
+    "data": [
+        {
+            "id": 82,
+            "total": 3726,
             "check_in_date": "2020-12-07",
             "check_out_date": "2021-01-03",
-            "booking_type": "Online",
-            "payment_type": "Visa",
-            "hotel": "Overlook One",
-            "customer_first_name": "James",
-            "customer_last_name": "Bond",
+            "booking_type_name": "Online",
+            "payment_type_name": "Visa",
+            "customer_name": null,
+            "hotel": {
+                "id": 1,
+                "name": "Overlook One"
+            },
+            "customer_first_name": "Sophanon",
+            "customer_last_name": "Chhoun",
             "roomType": [
                 {
-                    "name": "City View",
-                    "price_per_room": 247,
-                    "quantity": 1,
-                    "total": 247,
-                    "maximum": 2,
+                    "name": "King's Court",
+                    "price_per_room": 138,
+                    "quantity": 2,
+                    "total": 276,
+                    "maximum": 4,
                     "rooms": [
                         {
-                            "name": "Room 2"
+                            "name": "Room 1"
+                        },
+                        {
+                            "name": "Tranditional"
                         }
                     ]
                 }
             ]
-        }
-    }
+        },
+    ]
 }
  *
  * @apiUse NotFound

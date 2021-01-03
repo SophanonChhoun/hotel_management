@@ -15,12 +15,13 @@ class RoomTypeResource extends JsonResource
     public function toArray($request)
     {
         return [
-          "name" => $this->name,
-          "price_per_room" => $this->price,
-          "quantity" => count($this->rooms),
-          "total" => count($this->rooms) * $this->price,
-          "maximum" => $this->max,
-          "rooms" => RoomBookingResource::collection($this->rooms)
+            "id" => $this->id,
+            "name" => $this->name,
+            "price_per_room" => $this->price,
+            "quantity" => count($this->room),
+            "total" => count($this->room) * $this->price,
+            "maximum" => $this->max,
+            "rooms" => RoomBookingResource::collection($this->room)
         ];
     }
 }

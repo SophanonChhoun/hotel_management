@@ -541,7 +541,7 @@
     "examples": [
       {
         "title": "Example usage:",
-        "content": "{\n    \"checkOutDate\": \"2020-12-28\",\n    \"checkInDate\": \"2020-12-25\",\n    \"hotel_id\": 2,\n    \"people\": 2\n}",
+        "content": " {\n    \"checkOutDate\": \"2020-12-28\",\n    \"checkInDate\": \"2020-12-25\",\n    \"hotel_id\": 2,\n    \"people\": 2\n}",
         "type": "curl"
       }
     ],
@@ -549,7 +549,7 @@
       "examples": [
         {
           "title": "Response (example):",
-          "content": " HTTP/1.1 200 Success Request\n{\n    \"success\": true,\n    \"data\": {\n        \"hotel_id\": 2,\n        \"rooms\": [\n            {\n                \"id\": 12,\n                \"name\": \"14\",\n                \"roomType\": {\n                    \"id\": 17,\n                    \"name\": \"Borey Jr\"\n                }\n            }\n        ],\n        \"paymentType\": [\n            {\n                \"id\": 1,\n                \"name\": \"Visa card\"\n            }\n        ]\n    }\n}",
+          "content": "HTTP/1.1 200 Success Request",
           "type": "json"
         }
       ]
@@ -675,7 +675,7 @@
       "examples": [
         {
           "title": "Response (example):",
-          "content": " HTTP/1.1 200 Success Request\n {\n    \"success\": true,\n    \"data\": {\n        \"total\": 247,\n        \"booking\": {\n            \"check_in_date\": \"2020-12-07\",\n            \"check_out_date\": \"2021-01-03\",\n            \"booking_type\": \"Online\",\n            \"payment_type\": \"Visa\",\n            \"hotel\": \"Overlook One\",\n            \"customer_first_name\": \"James\",\n            \"customer_last_name\": \"Bond\",\n            \"roomType\": [\n                {\n                    \"name\": \"City View\",\n                    \"price_per_room\": 247,\n                    \"quantity\": 1,\n                    \"total\": 247,\n                    \"maximum\": 2,\n                    \"rooms\": [\n                        {\n                            \"name\": \"Room 2\"\n                        }\n                    ]\n                }\n            ]\n        }\n    }\n}",
+          "content": " HTTP/1.1 200 Success Request\n {\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 82,\n            \"total\": 3726,\n            \"check_in_date\": \"2020-12-07\",\n            \"check_out_date\": \"2021-01-03\",\n            \"booking_type_name\": \"Online\",\n            \"payment_type_name\": \"Visa\",\n            \"customer_name\": null,\n            \"hotel\": {\n                \"id\": 1,\n                \"name\": \"Overlook One\"\n            },\n            \"customer_first_name\": \"Sophanon\",\n            \"customer_last_name\": \"Chhoun\",\n            \"roomType\": [\n                {\n                    \"name\": \"King's Court\",\n                    \"price_per_room\": 138,\n                    \"quantity\": 2,\n                    \"total\": 276,\n                    \"maximum\": 4,\n                    \"rooms\": [\n                        {\n                            \"name\": \"Room 1\"\n                        },\n                        {\n                            \"name\": \"Tranditional\"\n                        }\n                    ]\n                }\n            ]\n        },\n    ]\n}",
           "type": "json"
         }
       ]
@@ -760,7 +760,7 @@
       "examples": [
         {
           "title": "Response (example):",
-          "content": " HTTP/1.1 200 Success Request\n {\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"checkInDate\": \"2020-12-24\",\n            \"checkOutDate\": \"2020-12-31\",\n            \"hotel\": {\n                \"id\": 1,\n                \"name\": \"Siem Reap hotel\",\n                \"street_address\": \"193\",\n                \"city\": \"Siem Reap\",\n                \"country\": \"Cambodia\",\n                \"zip\": \"855\"\n            },\n            \"roomType\": []\n        },\n        {\n            \"id\": 2,\n            \"checkInDate\": \"2020-12-24\",\n            \"checkOutDate\": \"2020-12-30\",\n            \"hotel\": {\n                \"id\": 1,\n                \"name\": \"Siem Reap hotel\",\n                \"street_address\": \"193\",\n                \"city\": \"Siem Reap\",\n                \"country\": \"Cambodia\",\n                \"zip\": \"855\"\n            },\n            \"roomType\": [\n                {\n                    \"name\": \"Hello\",\n                    \"images\": [\n                        {\n                            \"imageSrc\": \"http://127.0.0.1:8000/uploads/images/87723d9333ee51f22284240da5191904.png\",\n                            \"imageAlt\": \"image\"\n                        },\n                        {\n                            \"imageSrc\": \"http://127.0.0.1:8000/uploads/images/15ef9d0e6e01ec0c99ce5e09238dd8f8.png\",\n                            \"imageAlt\": \"image\"\n                        },\n                        {\n                            \"imageSrc\": \"http://127.0.0.1:8000/uploads/images/74c8c2144d2186bed7788c9a4541767e.png\",\n                            \"imageAlt\": \"image\"\n                        }\n                    ]\n                },\n            ]\n        }\n    ]\n}",
+          "content": " HTTP/1.1 200 Success Request\n {\n   \"success\": true,\n   \"data\": [\n        {\n            \"id\": 61,\n            \"total\": 1221,\n            \"check_in_date\": \"2021-01-15\",\n            \"check_out_date\": \"2021-01-18\",\n            \"booking_type_name\": \"online\",\n            \"customer_first_name\": \"Sophanon\",\n            \"customer_last_name\": \"Chhoun\",\n            \"hotel\": {\n                \"id\": 2,\n                \"name\": \"The Grand Overlook\",\n                \"media\": []\n            },\n            \"roomType\": [\n                {\n                    \"name\": \"Borey Angkor\",\n                    \"price_per_room\": 200,\n                    \"quantity\": 1,\n                    \"total\": 200,\n                    \"maximum\": 3,\n                    \"rooms\": [\n                        {\n                            \"name\": \"Room 5\"\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"Suite Sojourn\",\n                    \"price_per_room\": 207,\n                    \"quantity\": 1,\n                    \"total\": 207,\n                    \"maximum\": 2,\n                    \"rooms\": [\n                        {\n                            \"name\": \"Room 1\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
           "type": "json"
         }
       ]
