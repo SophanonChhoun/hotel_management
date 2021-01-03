@@ -9,52 +9,46 @@
  * @apiSuccessExample  Response (example):
  HTTP/1.1 200 Success Request
  {
-    "success": true,
-    "data": [
+   "success": true,
+   "data": [
         {
-            "id": 1,
-            "checkInDate": "2020-12-24",
-            "checkOutDate": "2020-12-31",
+            "id": 61,
+            "total": 1221,
+            "check_in_date": "2021-01-15",
+            "check_out_date": "2021-01-18",
+            "booking_type_name": "online",
+            "customer_first_name": "Sophanon",
+            "customer_last_name": "Chhoun",
             "hotel": {
-                "id": 1,
-                "name": "Siem Reap hotel",
-                "street_address": "193",
-                "city": "Siem Reap",
-                "country": "Cambodia",
-                "zip": "855"
-            },
-            "roomType": []
-        },
-        {
-            "id": 2,
-            "checkInDate": "2020-12-24",
-            "checkOutDate": "2020-12-30",
-            "hotel": {
-                "id": 1,
-                "name": "Siem Reap hotel",
-                "street_address": "193",
-                "city": "Siem Reap",
-                "country": "Cambodia",
-                "zip": "855"
+                "id": 2,
+                "name": "The Grand Overlook",
+                "media": []
             },
             "roomType": [
                 {
-                    "name": "Hello",
-                    "images": [
+                    "name": "Borey Angkor",
+                    "price_per_room": 200,
+                    "quantity": 1,
+                    "total": 200,
+                    "maximum": 3,
+                    "rooms": [
                         {
-                            "imageSrc": "http://127.0.0.1:8000/uploads/images/87723d9333ee51f22284240da5191904.png",
-                            "imageAlt": "image"
-                        },
-                        {
-                            "imageSrc": "http://127.0.0.1:8000/uploads/images/15ef9d0e6e01ec0c99ce5e09238dd8f8.png",
-                            "imageAlt": "image"
-                        },
-                        {
-                            "imageSrc": "http://127.0.0.1:8000/uploads/images/74c8c2144d2186bed7788c9a4541767e.png",
-                            "imageAlt": "image"
+                            "name": "Room 5"
                         }
                     ]
                 },
+                {
+                    "name": "Suite Sojourn",
+                    "price_per_room": 207,
+                    "quantity": 1,
+                    "total": 207,
+                    "maximum": 2,
+                    "rooms": [
+                        {
+                            "name": "Room 1"
+                        }
+                    ]
+                }
             ]
         }
     ]
