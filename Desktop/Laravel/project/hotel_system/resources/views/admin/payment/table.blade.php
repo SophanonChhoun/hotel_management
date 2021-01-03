@@ -2,6 +2,8 @@
     <table class="table table-responsive">
         <tr>
             <th>Customer</th>
+            <th>Check In</th>
+            <th>Check Out</th>
             <th>Room Amount</th>
             <th>Total</th>
             <th>Status</th>
@@ -10,6 +12,8 @@
         @forelse($data as $payment)
             <tr>
                 <td>{{ $payment->customer->last_name ?? null }} {{ $payment->customer->first_name ?? null }}</td>
+                <td>{{ $payment->booking->check_in_date ?? null }}</td>
+                <td>{{ $payment->booking->check_out_date ?? null }}</td>
                 <td>{{ $payment->amount }}</td>
                 <td>{{ $payment->price }}</td>
                 <?php

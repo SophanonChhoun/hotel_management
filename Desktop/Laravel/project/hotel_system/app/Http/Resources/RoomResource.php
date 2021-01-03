@@ -9,18 +9,18 @@ class RoomResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
     {
         return [
-          "id" => $this->id,
-          "name" => $this->name,
-          "roomType" => [
-              "id" => $this->roomType->id,
-              "name" => $this->roomType->name,
-          ]
+            "id" => $this->id ?? null,
+            "name" => $this->name ?? null,
+            "description" => $this->description ?? null,
+            "price" => $this->price ?? null,
+            "max" => $this->max ?? null,
+            "qtyAvailable" => $this->qtyAvailable ?? null
         ];
     }
 }

@@ -2,9 +2,7 @@
     <table class="table table-responsive">
         <tr>
             <th>Title</th>
-            <th>Address</th>
             <th>Phone Number</th>
-            <th>Fax</th>
             <th>Email</th>
             <th>Status</th>
             <th colspan="2">Action</th>
@@ -12,9 +10,7 @@
         @forelse($data as $contact_us)
             <tr>
                 <td>{{ $contact_us->title }}</td>
-                <td>{{ $contact_us->address }}</td>
                 <td>{{ $contact_us->phone_number }}</td>
-                <td>{{ $contact_us->fax }}</td>
                 <td>{{ $contact_us->email }}</td>
                 <td>
                     <input type="checkbox" data-toggle="modal" data-target="#status{{ $contact_us->id }}" @if($contact_us->is_enable) checked @endif>

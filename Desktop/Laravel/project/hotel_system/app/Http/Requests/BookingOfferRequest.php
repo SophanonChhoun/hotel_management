@@ -15,7 +15,6 @@ class BookingOfferRequest extends DefaultFormRequest
             'hotel_id' => 'required',
             'checkInDate' => 'required',
             'checkOutDate' => 'required',
-            'people' => 'required'
         ];
     }
 }

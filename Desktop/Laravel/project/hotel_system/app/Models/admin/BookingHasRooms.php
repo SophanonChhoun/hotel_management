@@ -27,4 +27,18 @@ class BookingHasRooms extends Model
             ]);
         }
     }
+
+    public static function storeCustomer($booking_id,$roomIDs)
+    {
+        foreach ($roomIDs as $roomID)
+        {
+            self::create([
+                "booking_id" => $booking_id,
+                "room_id" => $roomID
+            ]);
+            Room::find($roomID)->update([
+                'is_enable' => 0
+            ]);
+        }
+    }
 }

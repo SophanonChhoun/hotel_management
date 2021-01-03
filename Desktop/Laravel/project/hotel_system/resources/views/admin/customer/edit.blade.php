@@ -1,45 +1,126 @@
-@extends('admin.layout.default')
+@extends("admin.layout.default")
+
+@section("style")
+    <style>
+        .nav li.active > a {
+            background-color: #fcba03;
+            color: #fff;
+        }
+        a{
+            color: #0c91e5;
+        }
+    </style>
+@endsection
 @section("content")
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                Customers
-            </h1>
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-dashboard"></i>  <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <i class="fa fa-file"></i> <a href="/admin/customer/list">Customers</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-edit"></i> Update Customer
-                </li>
-            </ol>
+    <div class="page-content">
+        <div class="page-head">
+            <div class="page-title">
+                <h1>Profile</h1>
+            </div>
         </div>
-        <div id="CreateCustomer" v-cloak>
-            <form action="#" @submit.prevent="submit">
-                <div class="portlet-body m-20">
-                    @include('admin.customer.form')
-                    <div class="breadcrumb bg-danger" v-if="error">
-                        <p>@{{ error }}</p>
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <a href="/admin/dashboard">Dashboard</a>
+
+            </li>
+            <li>
+                <span class="active">Profile</span>
+            </li>
+        </ul>
+
+        <div class="row" id="profile" vc>
+            <div class="col-md-12">
+                <div class="profile-sidebar col-md-4">
+                    <div class="portlet light profile-sidebar-portlet bordered text-center">
+                        <div class="profile-userpic">
+                            <img src="{{  $data->media ? $data->media->file_url ? $data->media->file_url : 'https://tracker.moodle.org/secure/attachment/30912/f3.png' : 'https://tracker.moodle.org/secure/attachment/30912/f3.png'  }}"
+                                 class="img-responsive img-circle center-block"
+                                 style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="profile-user-title " >
+                            <div class="profile-user-title-name"> <h3 class="bold">{{ $data->name }}</h3> </div>
+                            <div class="profile-user-title-job"> <h4>{{ $data->email }}</h4> </div>
+                        </div>
+                        <div class="profile-user-menu">
+                        </div>
                     </div>
-                    <div class="text-right">
-                        <button type="submit" id="submit"
-                                class="btn btn-success save-cancel">Save</button>
-                        <a href="{{ url('admin/customer/list') }}"
-                           class="btn btn-default save-cancel">Cancel</a>
+
+                </div>
+
+                <div class="profile-content col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="portlet light bordered">
+                                <div class="portlet-title tabbable-line">
+                                    <div class="caption caption-md">
+                                        <i class="icon-globe theme-font hide"></i>
+                                        <span class="caption-subject font-blue-madison bold uppercase"> Customer Information </span>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-2">First Name</label>
+                                                    <div class="col-md-10">
+                                                        <label><b>{{$data->first_name}}</b></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-2">Last Name</label>
+                                                    <div class="col-md-10">
+                                                        <label><b>{{$data->last_name}}</b></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-2">Telephone</label>
+                                                    <div class="col-md-10">
+                                                        <label><b>{{$data->phone_number}}</b></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-2">Email</label>
+                                                    <div class="col-md-10">
+                                                        <label><b>{{$data->email}}</b></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label class="control-label col-md-2">Status</label>
+                                                    <div class="col-md-10">
+                                                        <label>
+                                                            <div class="form-group"title="Change Status for this Product">
+                                                                <label class="mt-checkbox mt-checkbox-outline">
+                                                                    <span><?php
+                                                                        echo $data->is_enable ? 'Active' : 'Deactivate';
+                                                                        ?></span>
+                                                                </label>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-@endsection
-@section("script")
-    <script>
-        const data = @json($customer);
-        const identification_type = @json($identification_type);
-    </script>
-    <script src="{{ mix('/dist/js/app.js') }}"></script>
-    <script src="{{ mix('/dist/js/customer/edit.js') }}"></script>
 @endsection

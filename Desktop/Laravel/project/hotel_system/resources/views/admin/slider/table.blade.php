@@ -2,8 +2,6 @@
     <table class="table table-responsive">
         <tr>
             <th>Caption</th>
-            <th>Title</th>
-            <th>Description</th>
             <th>Hotel</th>
             <th>Image</th>
             <th colspan="2">Action</th>
@@ -11,12 +9,6 @@
         @forelse($data as $slider)
             <tr>
                 <td>{{ $slider->caption }}</td>
-                <td>{{ $slider->title }}</td>
-                <td><?php
-                    if (strlen($slider->description) > 30)
-                        $slider->description = substr($slider->description, 0, 30) . '...';
-                    echo $slider->description;
-                    ?></td>
                 <td>{{ $slider->hotel->name ?? null }}</td>
                 <td><img src="{{ $slider->media->file_url ?? asset('image/noimage.png') }}" class="img-responsive" style="max-height: 200px;max-width: 200px"></td>
                 <td>

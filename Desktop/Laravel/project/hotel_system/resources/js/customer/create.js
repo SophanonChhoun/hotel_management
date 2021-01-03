@@ -22,7 +22,9 @@ new Vue({
             city: '',
             zip: '',
             is_enable: '',
+            image: ''
         },
+        error_image: '',
         identification_type: identification_type,
         is_submit: false,
         error: '',
@@ -37,7 +39,13 @@ new Vue({
                 this.is_submit = true
                 let save = true;
                 this.data.identification_type_id = this.data.identification_type.id;
-
+                if(!this.data.image)
+                {
+                    this.error_image = "The Image field is required";
+                    save = false;
+                }else{
+                    this.error_image = "";
+                }
                 if(result && save) {
                     axios.post('/admin/customer/create',this.data).then(response => {
                        if(response.data.success){
@@ -54,7 +62,13 @@ new Vue({
             })
         },
 
-
-
+        uploadAddingImage(event) {
+            let image = event.target.files[0];
+            let reader = new FileReader();
+            reader.readAsDataURL(image);
+            reader.onload = event => {
+                Vue.set(this.data, 'image', event.target.result)
+            }
+        }
     }
 });
