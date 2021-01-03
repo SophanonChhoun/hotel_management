@@ -27,7 +27,7 @@ class BookingListResource extends JsonResource
             ],
             "customer_first_name" => $this->customer->first_name,
             "customer_last_name" => $this->customer->last_name,
-            "roomType" => RoomTypeResource::collection($this->room_types)
+            "roomTypes" => RoomTypeResource::collection($this->room_types)
         ];
     }
 }
