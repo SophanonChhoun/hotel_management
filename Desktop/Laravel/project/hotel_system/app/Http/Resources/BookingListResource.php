@@ -41,5 +41,6 @@ class BookingListResource extends JsonResource
           ],
         "roomType" => RoomTypeResource::collection($this->room_types),
         ];
+
     }
 }
