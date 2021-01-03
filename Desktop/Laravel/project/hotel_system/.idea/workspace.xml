@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="964d3bbc-dd66-4f5f-8347-3c91af8e6484" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/BookingListResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/BookingListResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/RoomTypeResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/RoomTypeResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/admin/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/admin/Booking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/admin/Room.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/admin/Room.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/customer/api_data.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/documents/customer/api_data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/customer/api_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/documents/customer/api_data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/customer/api_project.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/documents/customer/api_project.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/documents/customer/api_project.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/documents/customer/api_project.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/documents/customer/booking.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/documents/customer/booking.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run-doc" beforeDir="false" afterPath="$PROJECT_DIR$/run-doc" afterDir="false" />
-    </list>
+    <list default="true" id="964d3bbc-dd66-4f5f-8347-3c91af8e6484" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +27,10 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="booking_list" />
+                    <option name="lastUsedInstant" value="1609681593" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="booking_2nd" />
                     <option name="lastUsedInstant" value="1609601366" />
                   </RecentBranch>
@@ -54,10 +45,6 @@
                   <RecentBranch>
                     <option name="branchName" value="improvement" />
                     <option name="lastUsedInstant" value="1609385284" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="password" />
-                    <option name="lastUsedInstant" value="1609376829" />
                   </RecentBranch>
                 </list>
               </option>
@@ -370,7 +357,7 @@
       <workItem from="1609561590056" duration="8095000" />
       <workItem from="1609592592100" duration="1569000" />
       <workItem from="1609595353778" duration="5987000" />
-      <workItem from="1609672450357" duration="5205000" />
+      <workItem from="1609672450357" duration="5498000" />
     </task>
     <servers />
   </component>
