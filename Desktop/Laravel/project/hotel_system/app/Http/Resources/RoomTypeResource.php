@@ -18,7 +18,8 @@ class RoomTypeResource extends JsonResource
             "id" => $this->id,
             "name" => $this->name,
             "price_per_room" => $this->price,
-            "quantity" => count($this->room),
+            "quantity" => $this->room,
+            "quantity" => count($this->room) ,
             "total" => count($this->room) * $this->price,
             "maximum" => $this->max,
             "rooms" => RoomBookingResource::collection($this->room)

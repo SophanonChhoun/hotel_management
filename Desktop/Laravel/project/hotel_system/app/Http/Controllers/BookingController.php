@@ -49,25 +49,7 @@ class BookingController extends Controller
         try {
 
             $bookings = Booking::with("hotel","room", "customer", "room_types.medias","room_types.rooms","payment_type","booking_type")->where("customer_id", $request['auth_id'])->orderByDesc("id")->get();
-            $bookings = $bookings->map(function ($booking) {
-                $date1 = new DateTime($booking->check_in_date);
-                $date2 = new DateTime($booking->check_out_date);
-                $int = $date1->diff($date2);
-                $days = $int->format("%a");
-                $booking['days'] = $days;
-                $total = Arr::pluck($booking->room_types,'price');
-                $booking['total'] = array_sum($total) * $days;
-                $roomIds = Arr::pluck($booking->room,"id");
-                $booking->room_types = $booking->room_types->map(function ($room_type) use ($roomIds){
-                    $room_type->room = $room_type->rooms->filter(function ($room) use($roomIds){
-                        if(in_array($room->id,$roomIds)){
-                            return $room;
-                        }
-                    });
-                    return $room_type;
-                });
-                return $booking;
-            });
+            $bookings = Booking::list($bookings);
             return $this->success(BookingListResource::collection($bookings));
         } catch (Exception $exception) {
             return $this->fail($exception->getMessage());
@@ -194,7 +176,7 @@ class BookingController extends Controller
     {
         DB::beginTransaction();
         try {
-            $bookingType = BookingType::where("name","online")->first();
+            $bookingType = BookingType::where("name","online")->OrWhere("name","Online")->first();
             $booking = [
                 'check_in_date' => Carbon::parse($request['check_in_date'])->format('Y-m-d'),
                 'check_out_date' => Carbon::parse($request['check_out_date'])->format('Y-m-d'),
@@ -244,7 +226,6 @@ class BookingController extends Controller
                     "hotel" => $booking['booking']->hotel->name ?? null,
                     "customer_first_name" => $booking['booking']->customer->first_name ?? null,
                     "customer_last_name" => $booking['booking']->customer->last_name ?? null,
-                    "roomType" => RoomTypeResource::collection($booking['booking']->room_types)
                 ]
             ]);
         }catch (Exception $exception){
