@@ -25,10 +25,12 @@ class BookingListResource extends JsonResource
             "hotel" => [
                 "id" => $this->hotel->id ?? null,
                 "name" => $this->hotel->name ?? null,
+                "street_address" => $this->hotel->street_address ?? null,
+                "city" => $this->hotel->city ?? null,
+                "country" => $this->hotel->country ?? null,
                 "media" => MediasResource::collection($this->hotel->medias) ?? null,
             ],
-            "roomType" => RoomTypeResource::collection($this->room_types),
+            "roomTypes" => RoomTypeResource::collection($this->room_types),
         ];
-
     }
 }
