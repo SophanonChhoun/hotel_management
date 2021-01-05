@@ -1,10 +1,15 @@
 import SingleImageUploader from "../components/SingleImageUploader";
 import {error} from "vue-infinite-loading/src/utils";
+import Multiselect from "vue-multiselect";
+import SingleSelect from "../components/SingleSelect";
 new Vue({
     el: '#createUser',
     components: {
-        SingleImageUploader
+        SingleImageUploader,
+        Multiselect,
+        SingleSelect
     },
+
     data: {
         data: {
             name: '',
@@ -16,12 +21,15 @@ new Vue({
             address: '',
             is_enable: '',
             password: '',
-            image: ''
+            image: '',
+            role_id: '',
+            role: '',
         },
         is_submit: false,
         error: '',
         error_image: '',
         image: '',
+        roles: roles,
     },
     mounted() {
     },
@@ -37,7 +45,7 @@ new Vue({
                 }else{
                     this.error_image = "";
                 }
-
+                this.data.role_id = this.data.role.id;
                 if(result && save) {
                     axios.post('/admin/user/create',this.data).then(response => {
                        if(response.data.success){

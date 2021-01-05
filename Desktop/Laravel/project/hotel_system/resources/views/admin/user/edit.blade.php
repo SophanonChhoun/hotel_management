@@ -37,6 +37,7 @@
 @endsection
 @section("script")
     <script>
+        const roles = @json($roles);
         const data = @json($user);
     </script>
     <script src="{{ mix('/dist/js/app.js') }}"></script>

@@ -5,13 +5,16 @@
             <li class="{{ request()->is('admin/dashboard*') ? 'active' : '' }}">
                 <a href="/admin/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
-            <li class="{{ request()->is('admin/user*') ? 'active' : '' }}">
-                <a href="/admin/user/list"><i class="fa fa-fw fa-user"></i> @lang('user.users')</a>
-            </li>
 
-            <li class="{{ request()->is('admin/hotel*') ? 'active' : '' }}">
-                <a href="/admin/hotel/list"><i class="fa fa-fw fa-home"></i> @lang('hotel.hotels')</a>
-            </li>
+            @if(auth()->user()->role_id == 2)
+                <li class="{{ request()->is('admin/user*') ? 'active' : '' }}">
+                    <a href="/admin/user/list"><i class="fa fa-fw fa-user"></i> @lang('user.users')</a>
+                </li>
+
+                <li class="{{ request()->is('admin/hotel*') ? 'active' : '' }}">
+                    <a href="/admin/hotel/list"><i class="fa fa-fw fa-home"></i> @lang('hotel.hotels')</a>
+                </li>
+            @endif
 
             <li class="{{ request()->is('admin/customer*') ? 'active' : '' }}">
                 <a href="/admin/customer/list"><i class="fa fa-fw fa-users"></i> Customers</a>
