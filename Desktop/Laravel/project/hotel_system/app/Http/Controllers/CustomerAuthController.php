@@ -29,6 +29,7 @@ class CustomerAuthController extends Controller
             $auth['expired_at'] = $now->timestamp;
             DB::commit();
             $user = Customer::where('id', $credential_id)->first();
+            $user["image"] = $user->media->file_url ?? null;
             $result = [
                 'access_token' => $auth['access_token'],
                 'expired_at' => $auth['expired_at'],
