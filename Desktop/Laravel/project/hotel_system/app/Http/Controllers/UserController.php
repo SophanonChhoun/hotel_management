@@ -7,7 +7,7 @@ use App\Models\admin\User;
 use Illuminate\Http\Request;
 use DB;
 use Exception;
-
+use App\Models\admin\Role;
 class UserController extends Controller
 {
     public function index(Request $request)
@@ -30,7 +30,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view("admin.user.create");
+        $roles = Role::all();
+        return view("admin.user.create",compact("roles"));
     }
 
     public function store(Request $request)
@@ -53,6 +54,7 @@ class UserController extends Controller
                 "phone_number" => $request->phone_number,
                 "address" => $request->address,
                 "is_enable" => $request->is_enable,
+                "role_id" => $request->role_id
             ];
             if(isset($request['image']))
             {
@@ -71,9 +73,10 @@ class UserController extends Controller
     public function show($id)
     {
         try {
-            $user = User::with("media")->find($id);
+            $user = User::with('role',"media")->find($id);
+            $roles = Role::all();
 
-            return view("admin.user.edit",compact("user"));
+            return view("admin.user.edit",compact("user","roles"));
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());
         }
@@ -97,6 +100,7 @@ class UserController extends Controller
                 "phone_number" => $request->phone_number,
                 "address" => $request->address,
                 "is_enable" => $request->is_enable,
+                "role_id" => $request->role_id
             ];
             if(isset($request['image']))
             {

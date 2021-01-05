@@ -22,7 +22,8 @@ class User extends Authenticatable
         'phone_number',
         'address',
         'is_enable',
-        'media_id'
+        'media_id',
+        'role_id'
     ];
 
     protected $hidden = [
@@ -45,6 +46,11 @@ class User extends Authenticatable
     public function media()
     {
         return $this->hasOne(MediaFile::class,"media_id","media_id");
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class,"role_id","id");
     }
 
     public static function getUserById($id)

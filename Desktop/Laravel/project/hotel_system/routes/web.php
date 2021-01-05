@@ -23,6 +23,7 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReportController;
+use App\Http\Middleware\AdminRoleMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,29 +54,30 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::get("/{id}",[AboutUsController::class,"show"]);
             Route::post("/{id}",[AboutUsController::class,"update"]);
         });
+        Route::middleware(AdminRoleMiddleware::class)->group(function(){
+            Route::group(['prefix' => 'user'],function(){
+                Route::get("/list",[UserController::class,'index']);
+                Route::get("/create",[UserController::class,"create"]);
+                Route::post("/create",[UserController::class,"store"]);
+                Route::get("/show/{id}",[UserController::class,"show"]);
+                Route::post("/update/{id}",[UserController::class,"update"]);
+                Route::post("/update/status/{id}",[UserController::class,"updateStatus"]);
+                Route::post("/delete/{id}",[UserController::class,"destroy"]);
+            });
+
+            Route::group(["prefix" => "hotel"],function () {
+                Route::get("/list",[HotelController::class,'index']);
+                Route::get("/create",[HotelController::class,"create"]);
+                Route::post("/create",[HotelController::class,"store"]);
+                Route::get("/show/{id}",[HotelController::class,"show"]);
+                Route::post("/update/{id}",[HotelController::class,"update"]);
+                Route::post("/update/status/{id}",[HotelController::class,"updateStatus"]);
+                Route::post("/delete/{id}",[HotelController::class,"destroy"]);
+                Route::get("roomType/{id}",[HotelController::class,"listAll"]);
+            });
+        });
 
         Route::get("/report/show",[ReportController::class,"index"]);
-
-        Route::group(['prefix' => 'user'],function(){
-            Route::get("/list",[UserController::class,'index']);
-            Route::get("/create",[UserController::class,"create"]);
-            Route::post("/create",[UserController::class,"store"]);
-            Route::get("/show/{id}",[UserController::class,"show"]);
-            Route::post("/update/{id}",[UserController::class,"update"]);
-            Route::post("/update/status/{id}",[UserController::class,"updateStatus"]);
-            Route::post("/delete/{id}",[UserController::class,"destroy"]);
-        });
-
-        Route::group(["prefix" => "hotel"],function () {
-            Route::get("/list",[HotelController::class,'index']);
-            Route::get("/create",[HotelController::class,"create"]);
-            Route::post("/create",[HotelController::class,"store"]);
-            Route::get("/show/{id}",[HotelController::class,"show"]);
-            Route::post("/update/{id}",[HotelController::class,"update"]);
-            Route::post("/update/status/{id}",[HotelController::class,"updateStatus"]);
-            Route::post("/delete/{id}",[HotelController::class,"destroy"]);
-            Route::get("roomType/{id}",[HotelController::class,"listAll"]);
-        });
 
         Route::group(['prefix' => 'rooms'],function(){
             Route::get('/list/{is_enable}',[RoomController::class,'indexStatus']);
