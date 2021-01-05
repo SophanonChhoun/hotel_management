@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Core\DateLib;
 use App\Http\Requests\CustomerRegisterRequest;
 use App\Models\admin\Customer;
+use App\Models\admin\User;
 use App\Models\customer\CustomerLoginAccess;
 use Illuminate\Http\Request;
 use DB;
