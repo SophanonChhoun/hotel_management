@@ -6,7 +6,7 @@
         <span class="icon-bar"> </span>
     </button>
     <a class="navbar-brand" href="index.html">SSB</a>
-  
+
 </div>
 <!-- Top Menu Items -->
 <ul class="nav navbar-right top-nav">
@@ -90,21 +90,21 @@
 {{--            </li>--}}
 {{--            <li class="divider"></li>--}}
            <li>
-               <a href="#" style="color:white;"></span> 
+               <a href="#" style="color:white;"></span>
                 <span id="day"></span></a>
    </li>
    <li><a href="#" style="color:white;"><span id="time"></a></li>
 {{--        </ul>--}}
 {{--    </li>--}}
 
-    <li class="dropdown">  
-       
+    <li class="dropdown">
+
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ auth()->user()->name }} <b class="caret"></b></a>
         <ul class="dropdown-menu">
             <li>
                 <a href="{{ url('admin/profile/show') }}"><i class="fa fa-fw fa-user"></i> Profile</a>
             </li>
-            
+
 {{--            <li>--}}
 {{--                <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>--}}
 {{--            </li>--}}
@@ -120,11 +120,11 @@
 </ul>
 
 
-     
+
 
 <script>
   function time(){
-    var date = new Date();    
+    var date = new Date();
     var time = date.toLocaleTimeString();
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     var day = date.toLocaleDateString('en-US',options);

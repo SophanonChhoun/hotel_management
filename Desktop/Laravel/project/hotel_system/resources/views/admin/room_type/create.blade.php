@@ -1,5 +1,6 @@
 @extends('admin.layout.default')
 @section("content")
+
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
@@ -35,6 +36,7 @@
             </form>
         </div>
     </div>
+
 @endsection
 @section("script")
     <script src="{{ mix('/dist/js/app.js') }}"></script>

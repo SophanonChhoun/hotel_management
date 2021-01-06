@@ -1,3 +1,4 @@
+<div class="col-md-12">
 <div class="row">
 
     <div class="form-group col-lg-12" :class="{'has-error' : errors.first('check_in')}">
@@ -156,3 +157,4 @@
 </div>
 
 <br>
+</div>

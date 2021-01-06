@@ -1,4 +1,4 @@
-<div style="margin-top: 20%"></div>
+<div class="col-md-12">
 <div v-for="(room,index) in data">
     <div class="portlet blue box" >
         <div class="portlet-title">
@@ -87,3 +87,4 @@
 </div>
 
 <br>
+</div>

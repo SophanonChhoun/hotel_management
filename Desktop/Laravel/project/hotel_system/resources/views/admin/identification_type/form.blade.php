@@ -1,6 +1,8 @@
+
+
 <div style="margin-top: 20%"></div>
 <div v-for="(identification_type,index) in data">
-    <div class="portlet blue box" >
+    <div class="portlet blue box"  style="max-width:500px;">
         <div class="portlet-title">
             <div class="caption"><i class="icon-picture"></i>Identification Type</div>
 
@@ -50,3 +52,8 @@
 
 <br>
 
+<style>
+    .box {
+        max-width:500px;
+    }
+</style>

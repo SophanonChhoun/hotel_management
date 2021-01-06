@@ -16,7 +16,9 @@ body {
         margin-top: 50px;
     }
 }
-
+.box {
+    max-width:500px;
+}
 #wrapper {
     padding-left: 0;
 }

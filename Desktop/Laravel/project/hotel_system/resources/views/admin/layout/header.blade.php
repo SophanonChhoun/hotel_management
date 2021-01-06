@@ -31,7 +31,7 @@
     <link href="{{ asset('plugins/css/select2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/css/select2.min.css') }}" rel="stylesheet" />
     <!-- END select2 -->
-  
+
 </head>
 
 

@@ -1,3 +1,4 @@
+<div class="col-md-12">
 <div class="form-group" :class="{'has-error' : errors.first('name')}">
     <label class="control-label">
         Name
@@ -98,3 +99,4 @@
 </div>
 
 <br>
+</div>

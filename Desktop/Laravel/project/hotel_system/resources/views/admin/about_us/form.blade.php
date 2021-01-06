@@ -1,3 +1,4 @@
+<div class="col-md-12">
 <div class="form-group" >
     <label class="control-label">
         Description
@@ -9,3 +10,4 @@
         data-vv-as="Description"
         :config="config"/>
 </div>
+    <div class="col-md-12">

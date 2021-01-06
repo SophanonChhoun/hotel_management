@@ -1,4 +1,5 @@
-<div style="margin-top: 15%"></div>
+<div class="col-md-12">
+
 <div class="portlet blue box" >
     <div class="portlet-title">
         <div class="caption"><i class="icon-picture"></i>Slider</div>
@@ -104,4 +105,4 @@
 </div>
 
 <br>
-
+</div>
