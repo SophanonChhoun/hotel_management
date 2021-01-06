@@ -20,7 +20,7 @@
     </div>
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="/admin/dashboard">Dashboard</a>
+            <a href="{{ url('admin/dashboard') }}">Dashboard</a>
 
         </li>
         <li>

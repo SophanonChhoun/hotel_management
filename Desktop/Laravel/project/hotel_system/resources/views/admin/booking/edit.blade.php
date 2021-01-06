@@ -7,7 +7,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li>
-                    <i class="fa fa-dashboard"></i>  <a href="#">Dashboard</a>
+                    <i class="fa fa-dashboard"></i>  <a href="{{ url('admin/dashboard') }}">Dashboard</a>
                 </li>
                 <li>
                     <i class="fa fa-file"></i> <a href="/admin/booking/list">Booking</a>

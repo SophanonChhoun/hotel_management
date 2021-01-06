@@ -1,4 +1,4 @@
-<div style="margin-top: 15%"></div>
+<div style="margin-top: 200px"></div>
 <div class="portlet blue box" >
     <div class="portlet-title">
         <div class="caption"><i class="icon-picture"></i>Slider</div>
