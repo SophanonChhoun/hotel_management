@@ -7,7 +7,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li>
-                    <i class="fa fa-dashboard"></i>  <a href="#">Dashboard</a>
+                    <i class="fa fa-dashboard"></i>  <a href="{{ url('admin/dashboard') }}">Dashboard</a>
                 </li>
                 <li class="active">
                     <i class="fa fa-users"></i> <a href="/admin/customer/list">Customer</a>

@@ -7,7 +7,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li>
-                    <i class="fa fa-dashboard"></i>  <a href="#">@lang('dashboard.dashboard')</a>
+                    <i class="fa fa-dashboard"></i>  <a href="{{ url('admin/dashboard') }}">@lang('dashboard.dashboard')</a>
                 </li>
                 <li>
                     <i class="fa fa-file"></i> <a href="/admin/hotel/list">@lang('user.users')</a>

@@ -95,23 +95,23 @@
         </div>
     @endif
 
-    <div class="form-group col-lg-12" :class="{'has-error' : errors.first('hotel')}">
+    <div class="form-group col-lg-12" :class="{'has-error' : errors.first('role')}">
         <label class="control-label">
             Role
             <span style="color: red">*</span>
         </label>
-        <multiselect :name="'hotel'"
+        <multiselect :name="'role'"
                      v-model="data.role"
                      deselect-label="Can't remove this value"
                      track-by="id"
                      label="name"
                      placeholder="Select one"
                      :options="roles"
-                     data-vv-as="roles"
+                     data-vv-as="Roles"
                      v-validate="'required'"
                      :allow-empty="true">
         </multiselect>
-        <span class="help-block">@{{ errors.first('hotel') }}</span>
+        <span class="help-block">@{{ errors.first('role') }}</span>
     </div>
 
 
