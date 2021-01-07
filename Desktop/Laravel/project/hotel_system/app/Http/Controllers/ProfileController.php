@@ -18,6 +18,37 @@ class ProfileController extends Controller
         return view('admin.profile.information',compact('data'));
     }
 
+    public function update(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $user = User::find(auth()->user()->id);
+            if(!$user)
+            {
+                return $this->fail("Cannot find this user");
+            }
+            $data = [
+                "name" => $request->name,
+                "first_name" => $request->first_name,
+                "last_name" => $request->last_name,
+                "email" => $request->email,
+                "phone_number" => $request->phone_number,
+            ];
+            $user = $user->update($data);
+
+            if(!$user)
+            {
+                return $this->fail("Fail cannot update");
+            }
+
+            DB::commit();
+            return $this->success($user);
+        }catch (Exception $exception){
+            DB::rollBack();
+            return $this->fail($exception);
+        }
+    }
+
     public function changePassword()
     {
         try {

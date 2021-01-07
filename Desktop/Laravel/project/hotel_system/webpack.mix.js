@@ -34,6 +34,7 @@ mix.js('resources/js/axios.js', 'public/dist/js')
     .js('resources/js/user/edit.js','public/dist/js/user')
     .js('resources/js/profile/password.js','public/dist/js/profile')
     .js('resources/js/profile/avatar.js','public/dist/js/profile')
+    .js('resources/js/profile/info.js','public/dist/js/profile')
     .js('resources/js/adminAuth/login.js','public/dist/js/adminAuth')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/css/profile.scss', 'public/css');
