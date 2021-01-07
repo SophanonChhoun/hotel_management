@@ -10,7 +10,7 @@
                     <i class="fa fa-dashboard"></i>  <a href="{{ url('admin/dashboard') }}">@lang('dashboard.dashboard')</a>
                 </li>
                 <li>
-                    <i class="fa fa-file"></i> <a href="/admin/hotel/list">@lang('user.users')</a>
+                    <i class="fa fa-file"></i> <a href="/admin/user/list">@lang('user.users')</a>
                 </li>
                 <li class="active">
                     <i class="fa fa-edit"></i>@lang('user.update')

@@ -1,5 +1,4 @@
-<div style="margin-top: 200px"></div>
-
+<div class="col-lg-12">
     <div class="portlet blue box" >
         <div class="portlet-title">
             <div class="caption"><i class="icon-picture"></i>Room</div>
@@ -88,3 +87,5 @@
             </div>
         </div>
     </div>
+
+</div>

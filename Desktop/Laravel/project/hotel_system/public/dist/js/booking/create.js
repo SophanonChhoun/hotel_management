@@ -1128,7 +1128,8 @@ new Vue({
     room_types: room_types,
     payment_types: payment_types,
     booking_types: booking_types,
-    currentDate: currentDate
+    currentDate: currentDate,
+    error_room: ''
   },
   mounted: function mounted() {},
   methods: {
@@ -1144,7 +1145,11 @@ new Vue({
         _this.data.room_type_id = _this.data.room_types.map(function (roomType) {
           return roomType.id;
         });
-        console.log(_this.data.room_type_id);
+
+        if (_this.data.room_id.length == 0) {
+          _this.error_room = "Please input room";
+          save = false;
+        }
 
         if (result && save) {
           axios.post('/admin/booking/create', {
