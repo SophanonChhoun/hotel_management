@@ -252,7 +252,22 @@ class BookingController extends Controller
                 return $customer;
             });
             $room_types = RoomType::where("is_enable",1)->get();
-            $rooms = Room::where("is_enable",1)->get();
+            $rooms = Room::where("status",1)->get();
+            $bookingRoomID = $booking->room_id;
+            $rooms = $rooms->filter(function($room) use($bookingRoomID){
+               if(!$room->is_enable)
+               {
+                  foreach ($bookingRoomID as $item)
+                  {
+                      if($item == $room->id)
+                      {
+                          return $room;
+                      }
+                  }
+               }else{
+                   return $room;
+               }
+            });
             return view("admin.booking.edit",compact(
                 "booking",
                 "payment_types",

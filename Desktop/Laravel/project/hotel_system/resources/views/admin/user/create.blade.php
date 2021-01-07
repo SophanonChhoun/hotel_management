@@ -10,7 +10,10 @@
                     <i class="fa fa-dashboard"></i>  <a href="{{ url('admin/dashboard') }}">@lang('dashboard.dashboard')</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-file"></i> <a href="/admin/hotel/list">@lang('user.create')</a>
+                    <i class="fa fa-file"></i> <a href="/admin/user/list">Users</a>
+                </li>
+                <li>
+                    <i class="fa fa-user"></i> Create a user
                 </li>
             </ol>
         </div>

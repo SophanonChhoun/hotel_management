@@ -12,20 +12,24 @@
    "success": true,
    "data": [
         {
-            "id": 61,
-            "total": 1221,
-            "check_in_date": "2021-01-15",
-            "check_out_date": "2021-01-18",
+            "id": 74,
+            "total": 407,
+            "check_in_date": "2021-01-30",
+            "check_out_date": "2021-01-31",
             "booking_type_name": "online",
             "customer_first_name": "Sophanon",
             "customer_last_name": "Chhoun",
             "hotel": {
                 "id": 2,
                 "name": "The Grand Overlook",
+                "street_address": "1889 Angkor Boulevard",
+                "city": "Siem Reap",
+                "country": "Cambodia",
                 "media": []
             },
-            "roomType": [
+            "roomTypes": [
                 {
+                    "id": 4,
                     "name": "Borey Angkor",
                     "price_per_room": 200,
                     "quantity": 1,
@@ -38,6 +42,7 @@
                     ]
                 },
                 {
+                    "id": 3,
                     "name": "Suite Sojourn",
                     "price_per_room": 207,
                     "quantity": 1,
@@ -118,7 +123,45 @@
     "people": 2
 }
  * @apiSuccessExample  Response (example):
- HTTP/1.1 200 Success Request
+ *  HTTP/1.1 200 Success Request
+ {
+    "success": true,
+    "data": {
+        "hotel_id": 2,
+        "roomTypes": [
+            {
+                "id": 3,
+                "name": "Suite Sojourn",
+                "description": "Wherever you find yourself this festive season, Rosewood seeks to inspire your most memorable moments.",
+                "price": 207,
+                "max": 2,
+                "qtyAvailable": 2
+            },
+            {
+                "id": 4,
+                "name": "Borey Angkor",
+                "description": "<p>Testing</p>",
+                "price": 200,
+                "max": 3,
+                "qtyAvailable": 1
+            }
+        ],
+        "paymentType": [
+            {
+                "id": 1,
+                "name": "Visa"
+            },
+            {
+                "id": 2,
+                "name": "Mastercard"
+            },
+            {
+                "id": 3,
+                "name": "Cash"
+            }
+        ]
+    }
+}
  *
  * @apiUse NotFound
  * @apiUse ServerServerError
@@ -155,42 +198,20 @@
  }
  * @apiSuccessExample  Response (example):
  HTTP/1.1 200 Success Request
- {
+{
     "success": true,
-    "data": [
-        {
-            "id": 82,
-            "total": 3726,
-            "check_in_date": "2020-12-07",
-            "check_out_date": "2021-01-03",
-            "booking_type_name": "Online",
-            "payment_type_name": "Visa",
-            "customer_name": null,
-            "hotel": {
-                "id": 1,
-                "name": "Overlook One"
-            },
+    "data": {
+        "total": 407,
+        "booking": {
+            "check_in_date": "2021-02-01",
+            "check_out_date": "2021-02-02",
+            "booking_type": "online",
+            "payment_type": "Visa",
+            "hotel": "The Grand Overlook",
             "customer_first_name": "Sophanon",
-            "customer_last_name": "Chhoun",
-            "roomType": [
-                {
-                    "name": "King's Court",
-                    "price_per_room": 138,
-                    "quantity": 2,
-                    "total": 276,
-                    "maximum": 4,
-                    "rooms": [
-                        {
-                            "name": "Room 1"
-                        },
-                        {
-                            "name": "Tranditional"
-                        }
-                    ]
-                }
-            ]
-        },
-    ]
+            "customer_last_name": "Chhoun"
+        }
+    }
 }
  *
  * @apiUse NotFound
