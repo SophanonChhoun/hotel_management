@@ -81,29 +81,23 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 24);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/adminAuth/login.js":
-/*!*****************************************!*\
-  !*** ./resources/js/adminAuth/login.js ***!
-  \*****************************************/
+/***/ "./resources/js/profile/info.js":
+/*!**************************************!*\
+  !*** ./resources/js/profile/info.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 new Vue({
-  el: '#login-box',
+  el: '#editInfo',
   data: {
-    data: {
-      email: '',
-      password: ''
-    },
-    is_submit: false,
-    error: '',
-    error_image: '',
-    image: ''
+    data: data,
+    is_submit: false
   },
   mounted: function mounted() {},
   methods: {
@@ -115,13 +109,12 @@ new Vue({
         var save = true;
 
         if (result && save) {
-          console.log('111');
-          axios.post('/admin/login', _this.data).then(function (response) {
+          axios.post('/admin/profile/update', _this.data).then(function (response) {
             if (response.data.success) {
-              window.location.href = '/admin/test';
+              window.location.href = '/admin/profile/show';
             } else {
-              console.log(response.data.message);
-              _this.error = 'Wrong email/password';
+              alert(response.data.data);
+              _this.error = response.data.message;
             }
           });
         } else {
@@ -135,14 +128,14 @@ new Vue({
 
 /***/ }),
 
-/***/ 25:
-/*!***********************************************!*\
-  !*** multi ./resources/js/adminAuth/login.js ***!
-  \***********************************************/
+/***/ 24:
+/*!********************************************!*\
+  !*** multi ./resources/js/profile/info.js ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/web_project/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/adminAuth/login.js */"./resources/js/adminAuth/login.js");
+module.exports = __webpack_require__(/*! /Users/chhounsophanon/Desktop/web_project/hotel_management/Desktop/Laravel/project/hotel_system/resources/js/profile/info.js */"./resources/js/profile/info.js");
 
 
 /***/ })
