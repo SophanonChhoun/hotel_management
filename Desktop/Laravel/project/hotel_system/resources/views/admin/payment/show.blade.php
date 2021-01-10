@@ -57,7 +57,7 @@
             <div class="col-sm-4 invoice-col">
                 <b>Invoice #{{ $payment->id }}</b><br>
                 <br>
-                <b>Order ID:</b> {{ $payment->booking->id }}<br>
+                <b>Order ID:</b> {{ $payment->booking->id ?? null }}<br>
                 <b>Payment:</b> {{ $payment->booking->payment_type->name ?? null }}<br>
                 <b>Hotel:</b> {{ $payment->booking->hotel->name ?? null }}
             </div><!-- /.col -->

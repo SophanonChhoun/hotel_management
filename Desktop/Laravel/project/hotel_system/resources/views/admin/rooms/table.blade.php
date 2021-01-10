@@ -1,5 +1,5 @@
 
-    <table class="table table-responsive">
+    <table class="table table-bordered">
         <tr>
             <th>Name</th>
             <th>Room Type</th>
@@ -15,12 +15,12 @@
                 <td>{{ $room->hotel->name ?? null }}</td>
                 <td>{{ $room->is_enable ? "Available":"Unavailable" }}</td>
                 <td>
-                    <input type="checkbox" data-toggle="modal" data-target="#status{{ $room->id }}" @if($room->status) checked @endif>
+                    <input type="checkbox" id="itemStatus{{ $room->id }}" @if($room->status) checked @endif>
                     @include("admin.rooms.status")
                 </td>
                 <td><a href="/admin/rooms/show/{{ $room->id }}" class="btn btn-warning">Edit</a></td>
                 <td>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ $room->id }}">Delete</button>
+                    <button type="button" class="btn btn-danger" id="myBtn{{ $room->id }}">Delete</button>
                     @include('admin.rooms.delete')
                 </td>
                 @empty

@@ -1,15 +1,15 @@
 @extends("admin.profile.index")
 
 @section("content_profile")
-    <div id="password" class="row" v-cloak>
+    <div id="password" v-cloak>
         <form action="#" @submit.prevent="submit" class="form-horizontal">
             @csrf
-            <div class="form-group" :class="{'has-error' : errors.first('old_password')}">
-                <label class="control-label col-md-4">
-                    Old Password
-                    <span style="color: red">*</span>
-                </label>
-                <div class="col-md-8">
+            <div class="row">
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('old_password')}">
+                    <label class="control-label">
+                        Old Password
+                        <span style="color: red">*</span>
+                    </label>
                     <input type="password"
                            name="old_password"
                            v-model="data.old_password"
@@ -19,14 +19,11 @@
                            placeholder="Old Password">
                     <span class="help-block">@{{ errors.first('old_password') }}</span>
                 </div>
-            </div>
-
-            <div class="form-group" :class="{'has-error' : errors.first('new_password')}">
-                <label class="control-label col-md-4">
-                    New Password
-                    <span style="color: red">*</span>
-                </label>
-                <div class="col-md-8">
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('new_password')}">
+                    <label class="control-label">
+                        New Password
+                        <span style="color: red">*</span>
+                    </label>
                     <input type="password"
                            name="new_password"
                            v-model="data.new_password"
@@ -38,14 +35,11 @@
                     >
                     <span class="help-block">@{{ errors.first('new_password') }}</span>
                 </div>
-            </div>
-
-            <div class="form-group" :class="{'has-error' : errors.first('confirm_password')}">
-                <label class="control-label col-md-4">
-                    Confirm Password
-                    <span style="color: red">*</span>
-                </label>
-                <div class="col-md-8">
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('confirm_password')}">
+                    <label class="control-label">
+                        Confirm Password
+                        <span style="color: red">*</span>
+                    </label>
                     <input type="password"
                            name="confirm_password"
                            v-model="data.confirm_password"
@@ -56,6 +50,7 @@
                     <span class="help-block">@{{ errors.first('confirm_password') }}</span>
                 </div>
             </div>
+
             <h3 class="ml-2 mr-2 alert alert-danger" v-if="error">@{{ error }}</h3>
             <div class="form-actions">
                 <div class="btn-set text-right">

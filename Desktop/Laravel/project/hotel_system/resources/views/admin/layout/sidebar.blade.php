@@ -1,75 +1,75 @@
-<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav side-nav">
 
-            <li class="{{ request()->is('admin/dashboard*') ? 'active' : '' }}">
-                <a href="/admin/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-            </li>
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading">Core</div>
+                <a class="nav-link {{ request()->is('admin/dashboard*' ? 'active' : '') }}" href="{{ url('admin/dashboard') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Dashboard
+                </a>
+                @if(auth()->user()->role_id == 2)
+                        <a href="/admin/user/list" class="nav-link {{ request()->is('admin/user*') ? 'active' : '' }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                             @lang('user.users')</a>
 
-            @if(auth()->user()->role_id == 2)
-                <li class="{{ request()->is('admin/user*') ? 'active' : '' }}">
-                    <a href="/admin/user/list"><i class="fa fa-fw fa-user"></i> @lang('user.users')</a>
-                </li>
+                        <a href="/admin/hotel/list" class="nav-link {{ request()->is('admin/hotel*') ? 'active' : '' }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-hotel"></i></div>
+                             @lang('hotel.hotels')</a>
+                @endif
+                <a href="/admin/customer/list" class="nav-link {{ request()->is('admin/customer*') ? 'active' : '' }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                    Customers</a>
 
-                <li class="{{ request()->is('admin/hotel*') ? 'active' : '' }}">
-                    <a href="/admin/hotel/list"><i class="fa fa-fw fa-home"></i> @lang('hotel.hotels')</a>
-                </li>
-            @endif
-
-            <li class="{{ request()->is('admin/customer*') ? 'active' : '' }}">
-                <a href="/admin/customer/list"><i class="fa fa-fw fa-users"></i> Customers</a>
-            </li>
-
-            <li class="{{ request()->is('admin/identification_type*') ? 'active' : '' }}">
-                <a href="/admin/identification_type/list"><i class="fa fa-fw fa-info"></i> Identification Type</a>
-            </li>
-
-            <li class="{{ request()->is('admin/booking*') ? 'active' : '' }}">
-                <a href="javascript:;" data-toggle="collapse" data-target="#booking"><i class="fa fa-fw fa-arrows-v"></i> Booking <i class="fa fa-fw fa-caret-down"></i></a>
-                <ul class="collapse" id="booking">
-                    <li {{ request()->is('admin/booking_type*') ? "class=active" : null }}>
-                        <a href="/admin/booking_type/list"><i class="fa fa-fw fa-star"></i> Booking Type</a>
-                    </li>
-                    <li class="{{ request()->is('admin/booking*') ? 'active' : '' }}">
-                        <a href="/admin/booking/list"><i class="fa fa-fw fa-suitcase"></i> Booking</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="{{ request()->is('admin/payment*') ? 'active' : '' }}">
-                <a href="javascript:;" data-toggle="collapse" data-target="#payment"><i class="fa fa-fw fa-arrows-v"></i> Payment <i class="fa fa-fw fa-caret-down"></i></a>
-                <ul class="collapse" id="payment">
-
-                    <li class="{{ request()->is('admin/payment_type*') ? 'active' : '' }}">
-                        <a href="/admin/payment_type/list"><i class="fa fa-fw fa-paypal"></i> Payment Type</a>
-                    </li>
-                    <li class="{{ request()->is('admin/payment*') ? 'active' : '' }}">
-                        <a href="/admin/payment/list"><i class="fa fa-fw fa-money"></i> Payment</a>
-                    </li>
-                </ul>
-            </li>
+                <a href="/admin/identification_type/list" class="nav-link {{ request()->is('admin/identification_type*') ? 'active' : '' }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-id-card"></i></div>
+                    Identification Type</a>
 
 
-            <li class="{{ request()->is('admin/room*') ? 'active' : '' }}">
-                <a href="javascript:;" data-toggle="collapse" data-target="#room"><i class="fa fa-fw fa-arrows-v"></i> Rooms <i class="fa fa-fw fa-caret-down"></i></a>
-                <ul class="collapse" id="room">
-                    <li {{ request()->is('admin/room_type*') ? "class=active" : null }}>
-                        <a href="/admin/room_type/list"><i class="fa fa-fw fa-star"></i> Room Type</a>
-                    </li>
-                    <li class="{{ request()->is('admin/rooms*') ? 'active' : '' }}">
-                        <a href="/admin/rooms/list"><i class="fa fa-fw fa-suitcase"></i> Room</a>
-                    </li>
-                </ul>
-            </li>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="fas fa-bookmark"></i></div>
+                    Bookings
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link {{ request()->is("admin/booking*") ? 'active' : '' }}" href="{{ url('admin/booking/list') }}">Booking</a>
+                        <a class="nav-link {{ request()->is("admin/bookings_type*") ? 'active' : '' }}" href="{{ url('admin/bookings_type/list') }}">Booking Type</a>
+                    </nav>
+                </div>
 
-            <li class="{{ request()->is('admin/contact_us*') ? 'active' : '' }}">
-                <a href="/admin/contact_us/list"><i class="fa fa-fw fa-phone"></i>Contact Us</a>
-            </li>
 
-            <li class="{{ request()->is('admin/slider*') ? 'active' : '' }}">
-                <a href="/admin/slider/list"><i class="fa fa-fw fa-sliders"></i> Slider</a>
-            </li>
-        </ul>
-    </div>
-    <!-- /.navbar-collapse -->
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#payment" aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="fas fa-money"></i></div>
+                    Payments
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="payment" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link {{ request()->is("admin/payment*") ? 'active' : '' }}" href="{{ url('admin/payment/list') }}">Payment</a>
+                        <a class="nav-link {{ request()->is("admin/payment_type*") ? 'active' : '' }}" href="{{ url('admin/payment_type/list') }}">Payment Type</a>
+                    </nav>
+                </div>
 
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#rooms" aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="fas fa-bed"></i></div>
+                    Rooms
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="rooms" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link {{ request()->is("admin/rooms*") ? 'active' : '' }}" href="{{ url('admin/rooms/list') }}">Room</a>
+                        <a class="nav-link {{ request()->is("admin/room_type*") ? 'active' : '' }}" href="{{ url('admin/room_type/list') }}">Room Type</a>
+                    </nav>
+                </div>
+
+                <a href="/admin/contact_us/list" class="nav-link {{ request()->is('admin/contact_us*') ? 'active' : '' }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-phone"></i></div>
+                    Contact Us</a>
+
+                <a href="/admin/slider/list" class="nav-link {{ request()->is('admin/slider*') ? 'active' : '' }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chevron-up"></i></div>
+                    Sliders</a>
+
+    </nav>
+</div>

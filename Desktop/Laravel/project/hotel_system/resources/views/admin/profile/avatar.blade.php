@@ -9,12 +9,15 @@
                     Profile
                     <span style="color: red">*</span>
                 </label>
+                <br>
                 <img :src="data.image ? data.image : (data.media ? data.media.file_url : '{{asset('image/noimage.png')}}' )"
                      style='width: 300px;height: 300px;' class="img-responsive img-circle center-block">
+                <br>
                 <input type="file" :value="null"  name="adding_image" id="adding_image"
                        v-model="data.image"
                        placeholder="Image" data-vv-as="Image"
                        @change="uploadAddingImage" accept=".png, .jpg">
+                <br>
             </div>
 
             <div class="margiv-top-10 text-right">

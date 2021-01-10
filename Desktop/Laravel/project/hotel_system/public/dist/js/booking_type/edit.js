@@ -111,11 +111,11 @@ new Vue({
         var save = true;
 
         if (result && save) {
-          axios.post('/admin/booking_type/update', {
+          axios.post('/admin/bookings_type/update', {
             "data": _this.data
           }).then(function (response) {
             if (response.data.success) {
-              window.location.href = '/admin/booking_type/list';
+              window.location.href = '/admin/bookings_type/list';
             } else {
               _this.error = response.data.message;
             }

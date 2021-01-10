@@ -1,23 +1,19 @@
 @extends("admin.layout.default")
 
 @section("content")
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
+    <div class="container-fluid">
+        <h1 class="mt-4">Booking</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">
+                <a href="{{ url('admin/dashboard') }}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">
                 Booking
-            </h1>
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-dashboard"></i>  <a href="{{ url('admin/dashboard') }}">Dashboard</a>
-                </li>
-                <li >
-                    <i class="fa fa-file"></i>Booking
-                </li>
-            </ol>
-        </div>
+            </li>
+        </ol>
 
-        <div class="col-lg-12">
-                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
                     <form action="/admin/booking/list" method="get">
                         <label for="">Status: </label>
                         <div class="columns columns-left btn-group">
@@ -33,16 +29,40 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
                     <a href="/admin/booking/create" class="btn btn-primary" style="margin-bottom: 30px">Create a new booking</a>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-12">
-            @include("admin.booking.table")
-            @include("admin.layout.pagination")
-        </div>
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="table-responsive">
+                    @include("admin.booking.table")
+                    @include("admin.layout.pagination")
+                </div>
+            </div>
         </div>
     </div>
 @endsection
+@section("script")
+    <script>
+        const data = @json($data);
+
+    </script>
+    <script>
+        function status(item)
+        {
+            $(document).ready(function(){
+                $("#myBtn"+item.id).click(function(){
+                    $("#myModal"+item.id).modal();
+                });
+                $("#itemStatus"+item.id).click(function(){
+                    $("#status"+item.id).modal();
+                });
+            });
+        }
+        data.data.forEach(status);
+
+    </script>
+@endsection
+

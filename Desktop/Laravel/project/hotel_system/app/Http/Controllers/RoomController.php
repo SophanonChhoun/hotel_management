@@ -110,6 +110,7 @@ class RoomController extends Controller
             $room = Room::find($id)->update([
                 "status" => $request->is_enable
             ]);
+
             return back();
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());

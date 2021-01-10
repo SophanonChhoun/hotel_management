@@ -13,7 +13,7 @@
                         <span style="color: red">*</span>
                     </label>
                     <input type="text"
-                           name="first_name"
+                           name="fname"
                            v-model="data.first_name"
                            data-vv-as="First Name"
                            v-validate="'required|alpha'"
@@ -30,7 +30,7 @@
                         <span style="color: red">*</span>
                     </label>
                     <input type="text"
-                           name="last_name"
+                           name="lname"
                            v-model="data.last_name"
                            data-vv-as="Last Name"
                            v-validate="'required|alpha'"
@@ -113,32 +113,33 @@
                     <span class="help-block">@{{ errors.first('dob') }}</span>
                 </div>
 
-                <div class="form-group form-check col-lg-12">
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('gender')}">
                     <label class="control-label">
                         Gender
                         <span style="color: red">*</span>
                     </label>
-                    <label class="form-check-label" for="male">Male</label>
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="gender"
-                        v-model="data.gender"
-                        id="male"
-                        value="m"
-                        required
-                    />
-                    <label class="form-check-label" for="femlae">Female</label>
-                    <input
-                        class="form-check-input"
-                        type="radio"
-                        name="gender"
-                        v-model="data.gender"
-                        id="female"
-                        value="f"
-                        required
-                    />
+                    <label class="radio-inline">
+                        <input
+                            type="radio"
+                            name="gender"
+                            v-model="data.gender"
+                            id="male"
+                            value="m"
+                            v-validate="'required'"
+                            data-vv-as="Gender"
+                        /> Male
+                    </label>
+                    <label class="radio-inline">
+                        <input
+                            type="radio"
+                            name="gender"
+                            v-model="data.gender"
+                            id="female"
+                            value="f"
+                        /> Female
+                    </label>
                     <br>
+                    <span class="help-block">@{{ errors.first('gender') }}</span>
                 </div>
 
             </div>
@@ -260,12 +261,15 @@
                         Profile
                         <span style="color: red">*</span>
                     </label>
+                    <br>
                     <img :src="data.image ? data.image : (data.media ? data.media.file_url : '{{asset('image/noimage.png')}}' )"
                          style='width: 300px;height: 300px;' class="img-responsive">
+                    <br>
                     <input type="file" :value="null"  name="adding_image" id="adding_image"
                            v-model="data.image"
                            placeholder="Image" data-vv-as="Image"
                            @change="uploadAddingImage" accept=".png, .jpg">
+                    <br>
                     <span class="help-block">@{{ error_image }}</span>
 
                 </div>
@@ -284,6 +288,7 @@
                        data-vv-as="Status"
                        v-validate="'required'"
                 >
+                <br>
                 <span class="help-block">@{{ errors.first('is_enable') }}</span>
             </div>
 
