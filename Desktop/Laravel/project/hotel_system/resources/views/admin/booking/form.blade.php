@@ -18,6 +18,7 @@
                            data-vv-as="Check in"
                            v-validate="'required'"
                            class="form-control"
+                           :min="today"
                     >
                     <span class="help-block">@{{ errors.first('check_in') }}</span>
                 </div>
@@ -34,29 +35,13 @@
                            data-vv-as="Check out"
                            v-validate="'required'"
                            class="form-control"
+                           :min="minCheckOutDate"
                     >
 
                     <span class="help-block">@{{ errors.first('check_out') }}</span>
                 </div>
 
-                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('hotel')}">
-                    <label class="control-label">
-                        Hotel
-                        <span style="color: red">*</span>
-                    </label>
-                    <multiselect :name="'hotel'"
-                                 v-model="data.hotel"
-                                 deselect-label="Can't remove this value"
-                                 track-by="id"
-                                 label="name"
-                                 placeholder="Select one"
-                                 :options="hotels"
-                                 data-vv-as="Hotel"
-                                 v-validate="'required'"
-                                 :allow-empty="false">
-                    </multiselect>
-                    <span class="help-block">@{{ errors.first('hotel') }}</span>
-                </div>
+
                 <div class="form-group col-lg-12" :class="{'has-error' : errors.first('customer')}">
                     <label class="control-label">
                         Customer
@@ -114,8 +99,30 @@
                     </multiselect>
                     <span class="help-block">@{{ errors.first('payment_type') }}</span>
                 </div>
+                <div v-if="data.check_in_date && data.check_out_date">
+                    @{{ getRoom() }}
+                </div>
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('hotel')}" v-if="data.check_in_date && data.check_out_date">
+                    <label class="control-label">
+                        Hotel
+                        <span style="color: red">*</span>
+                    </label>
+                    <multiselect :name="'hotel'"
+                                 v-model="data.hotel"
+                                 deselect-label="Can't remove this value"
+                                 track-by="id"
+                                 label="name"
+                                 placeholder="Select one"
+                                 :options="hotels"
+                                 data-vv-as="Hotel"
+                                 v-validate="'required'"
+                                 @select="getRoomType"
+                                 :allow-empty="false">
+                    </multiselect>
+                    <span class="help-block">@{{ errors.first('hotel') }}</span>
+                </div>
 
-                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('room_type')}">
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('room_type')}" v-if="data.check_in_date && data.check_out_date">
                     <label class="control-label">
                         Room Type
                         <span style="color: red">*</span>
@@ -126,7 +133,7 @@
                                  track-by="id"
                                  label="name"
                                  placeholder="Select one"
-                                 :options="room_types"
+                                 :options="room_types_hotel"
                                  data-vv-as="Room Type"
                                  v-validate="'required'"
                                  multiple

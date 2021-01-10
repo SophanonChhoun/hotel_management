@@ -157,6 +157,7 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::post("/update/{id}",[BookingController::class,"update"]);
             Route::post("/update/status/{id}",[BookingController::class,"updateStatus"]);
             Route::post("/delete/{id}",[BookingController::class,"destroy"]);
+            Route::post("/getRoom",[BookingController::class,"getRoom"]);
         });
 
         Route::group(['prefix' => "profile"],function (){
