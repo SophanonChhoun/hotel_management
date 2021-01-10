@@ -104,6 +104,32 @@ class BookingController extends Controller
         }
     }
 
+    public function getRoom(Request $request)
+    {
+        try {
+            $booking = Booking::where("check_in_date","<=",$request->check_out_date)
+                ->where("check_out_date",">",$request->check_in_date)->where("is_enable",1)->get();
+            $bookingIDs= $booking->pluck("id");
+            $rooms = BookingHasRooms::whereIn("booking_id",$bookingIDs)->get();
+            $roomIDs = $rooms->pluck("room_id");
+            if(isset($request->id))
+            {
+                $idS = $request->room_id;
+                $roomIDs = $roomIDs->filter(function($room) use($idS){
+                    if (!in_array($room,$idS))
+                    {
+                        return $room;
+                    }
+                });
+            }
+            $rooms = Room::where("status",1)->whereNotIn("id",$roomIDs)->get();
+
+            return $this->success($rooms);
+        }catch (Exception $exception){
+            return $this->fail($exception->getMessage());
+        }
+    }
+
     public function showPayment($id)
     {
         try {

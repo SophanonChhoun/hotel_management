@@ -1128,8 +1128,9 @@ new Vue({
     room_types: room_types,
     payment_types: payment_types,
     booking_types: booking_types,
-    currentDate: currentDate,
-    error_room: ''
+    room_types_hotel: [],
+    error_room: '',
+    today: new Date().toISOString().slice(0, 10)
   },
   mounted: function mounted() {},
   methods: {
@@ -1182,6 +1183,31 @@ new Vue({
       var room = _.filter(this.rooms, ['roomType_id', id]);
 
       return _.filter(room, ['hotel_id', this.data.hotel.id]);
+    },
+    getRoom: function getRoom() {
+      var _this2 = this;
+
+      axios.post("/admin/booking/getRoom", this.data).then(function (response) {
+        if (response) {
+          _this2.rooms = response.data.data;
+        } else {
+          alert(response.data.data);
+          hideLoading();
+        }
+      })["catch"](function (error) {
+        hideLoading();
+      });
+    },
+    getRoomType: function getRoomType(event) {
+      console.log(event.id);
+      var id = event.id;
+      this.room_types_hotel = _.filter(this.room_types, ['hotel_id', id]);
+    },
+    minCheckOutDate: function minCheckOutDate() {
+      if (typeof this.data.check_in_date == 'string' && this.data.check_in_date !== '') {
+        var checkInDate = Date.parse(this.data.check_in_date);
+        return new Date(checkInDate + 1 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+      }
     }
   }
 });
