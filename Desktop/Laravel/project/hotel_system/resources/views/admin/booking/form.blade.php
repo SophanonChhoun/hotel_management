@@ -3,11 +3,6 @@
         <div class="portlet-title">
             <div class="caption"><i class="icon-picture"></i>Booking</div>
 
-            <div class="tools">
-                <a href="javascript:;" @click="removeRoom(index)">
-                    <i class="fa fa-remove fa-lg" style="color: #ffff"></i>
-                </a>
-            </div>
         </div>
         <div class="portlet-body">
             <div class="row">

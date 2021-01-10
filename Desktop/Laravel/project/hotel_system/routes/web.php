@@ -132,7 +132,7 @@ Route::middleware(AdminMiddleware::class)->group(function (){
         });
 
 
-        Route::group(["prefix" => "booking_type"],function () {
+        Route::group(["prefix" => "bookings_type"],function () {
             Route::get("/list",[BookingTypeController::class,"index"]);
             Route::post("/update",[BookingTypeController::class,"update"]);
         });
@@ -179,6 +179,7 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::post("/create",[CustomerController::class,"store"]);
             Route::get("/show/{id}",[CustomerController::class,"show"]);
             Route::post("/update/{id}",[CustomerController::class,"update"]);
+            Route::post("/update/status/{id}",[CustomerController::class,"updateStatus"]);
             Route::post("/delete/{id}",[CustomerController::class,"destroy"]);
 
         });

@@ -1,5 +1,5 @@
 
-    <table class="table table-responsive">
+    <table class="table table-bordered">
         <tr>
             <th>Customer</th>
             <th>Check In</th>

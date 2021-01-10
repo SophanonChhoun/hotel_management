@@ -1,27 +1,27 @@
+
 <div class="modal fade" id="status{{ $room_type->id }}" role="dialog">
     <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Are you sure?</h4>
-            </div>
-            <div class="modal-body">
-                <p>Do you want to update this room type status?</p>
-            </div>
-            <div class="modal-footer">
-                <div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">@lang('general.sure')</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to update status?</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="{{ url('admin/room_type/update/status/'.$room_type->id) }}" method="post">
+                        @csrf
+                        <input type="hidden" name="is_enable" value="{{ $room_type->is_enable ? 0 : 1 }}">
+                        <button type="submit" class="btn btn-warning">Update</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('general.close')</button>
+                    </form>
 
                 </div>
-                <form action="{{ url('admin/room_type/update/status/'.$room_type->id) }}" method="post">
-                    @csrf
-                    <input type="hidden" name="is_enable" value="{{ $room_type->is_enable ? 0 : 1 }}">
-                    <button class="btn btn-danger">Update it</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </form>
             </div>
         </div>
-
     </div>
 </div>

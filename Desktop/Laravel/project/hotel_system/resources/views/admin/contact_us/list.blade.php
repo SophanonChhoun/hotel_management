@@ -1,60 +1,78 @@
 @extends("admin.layout.default")
 
 @section("content")
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
+    <div class="container-fluid">
+        <h1 class="mt-4">Contact Us</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">
+                <a href="{{ url('admin/dashboard') }}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">
                 Contact Us
-            </h1>
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-dashboard"></i>  <a href="{{ url('admin/dashboard') }}">Dashboard</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i>Contact Us
-                </li>
-            </ol>
-        </div>
+            </li>
+        </ol>
 
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
-                    <div class="form-group has-search">
-                        <form action="/admin/contact_us/list" method="get">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search.." value="{{ request()->get("search") }}" name="search">
-                                <button type="submit" class="btn-success"><i class="fa fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+        <div class="row">
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+                <div class="form-group has-search">
                     <form action="/admin/contact_us/list" method="get">
-                        <label for="">Status: </label>
-                        <div class="columns columns-left btn-group">
-                            <select name="is_enable" class="form-control" onchange="this.form.submit()">
-                                <option value="">All</option>
-                                <option value="1" {{ request()->get('is_enable') == '1' ? 'selected' : '' }}>
-                                    Active
-                                </option>
-                                <option value="0" {{ request()->get('is_enable') == '0' ? 'selected' : '' }}>
-                                    Deactive
-                                </option>
-                            </select>
+                        <div class="input-group">
+                            <input type="text" placeholder="Search.." value="{{ request()->get("search") }}" name="search">
+                            <button type="submit" class="btn-success"><i class="fa fa-search"></i></button>
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
-                    <a href="/admin/contact_us/create" class="btn btn-primary" style="margin-bottom: 30px">Create a Contact Us</a>
-                </div>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+                <form action="/admin/contact_us/list" method="get">
+                    <label for="">Status: </label>
+                    <div class="columns columns-left btn-group">
+                        <select name="is_enable" class="form-control" onchange="this.form.submit()">
+                            <option value="">All</option>
+                            <option value="1" {{ request()->get('is_enable') == '1' ? 'selected' : '' }}>
+                                Active
+                            </option>
+                            <option value="0" {{ request()->get('is_enable') == '0' ? 'selected' : '' }}>
+                                Deactive
+                            </option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+                <a href="/admin/contact_us/create" class="btn btn-primary" style="margin-bottom: 30px">Create a new contact us</a>
             </div>
         </div>
 
-        <div class="col-lg-12">
-            @include("admin.contact_us.table")
-            @include("admin.layout.pagination")
-
-        </div>
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="table-responsive">
+                    @include("admin.contact_us.table")
+                    @include("admin.layout.pagination")
+                </div>
+            </div>
         </div>
     </div>
+
+@endsection
+@section("script")
+    <script>
+        const data = @json($data);
+
+    </script>
+    <script>
+        function status(item)
+        {
+            $(document).ready(function(){
+                $("#myBtn"+item.id).click(function(){
+                    $("#myModal"+item.id).modal();
+                });
+                $("#itemStatus"+item.id).click(function(){
+                    $("#status"+item.id).modal();
+                });
+            });
+        }
+        data.data.forEach(status);
+
+    </script>
 @endsection

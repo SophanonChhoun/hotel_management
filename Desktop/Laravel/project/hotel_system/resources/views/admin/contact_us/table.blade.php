@@ -1,5 +1,5 @@
 
-    <table class="table table-responsive">
+    <table class="table table-bordered">
         <tr>
             <th>Title</th>
             <th>Phone Number</th>
@@ -13,12 +13,12 @@
                 <td>{{ $contact_us->phone_number }}</td>
                 <td>{{ $contact_us->email }}</td>
                 <td>
-                    <input type="checkbox" data-toggle="modal" data-target="#status{{ $contact_us->id }}" @if($contact_us->is_enable) checked @endif>
+                    <input type="checkbox" id="itemStatus{{ $contact_us->id }}" @if($contact_us->is_enable) checked @endif>
                     @include("admin.contact_us.status")
                 </td>
                 <td><a href="/admin/contact_us/show/{{ $contact_us->id }}" class="btn btn-warning">Edit</a></td>
                 <td>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $contact_us->id }}">Delete</button>
+                    <button type="button" class="btn btn-danger" id="myBtn{{ $contact_us->id }}">Delete</button>
                     @include('admin.contact_us.delete')
                 </td>
                 @empty

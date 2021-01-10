@@ -19,6 +19,10 @@
 <script src="{{ mix('dist/js/axios.js') }}"></script>
 <script src="{{ asset('/plugins/custom.js') }}"></script>
 <script src="{{ url('https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js') }}"></script>
+<script src="{{ url('https://code.jquery.com/jquery-3.5.1.slim.min.js') }}" crossorigin="anonymous"></script>
+<script src="{{ url('https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
+
+<script src="{{ asset('js/script.js') }}"></script>
 @yield('script')
 </html>
 

@@ -6,7 +6,7 @@
 
                 <div class="tools">
                     <a href="javascript:;" @click="removeRoom(index)">
-                        <i class="fa fa-remove fa-lg" style="color: #ffff"></i>
+                        <i class="fa fa-close fa-lg" style="color: #ffff"></i>
                     </a>
                 </div>
             </div>

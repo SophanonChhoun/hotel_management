@@ -1,28 +1,20 @@
 @include("admin.layout.header")
-<body>
+<body class="sb-nav-fixed" id="app" >
+@include("admin.layout.head")
 
-<div id="wrapper">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        @include("admin.layout.head")
-        <!-- Navigation -->
-        @include("admin.layout.sidebar")
-    </nav>
+<div id="layoutSidenav">
+    @include("admin.layout.sidebar")
 
-    <div id="page-wrapper">
-
-        <div class="container-fluid">
-            <!-- Page Heading -->
-            <div id="app" style="margin-left: 10px;">
+    <div id="layoutSidenav_content">
+        <!-- Page Heading -->
+            <main>
                 @yield("content")
-
-            </div>
-            <!-- /.row -->
-
-        </div>
-        <!-- /.container-fluid -->
+            </main>
+        <!-- /.row -->
 
     </div>
+        <!-- /.container-fluid -->
+
     <!-- /#page-wrapper -->
 
 </div>

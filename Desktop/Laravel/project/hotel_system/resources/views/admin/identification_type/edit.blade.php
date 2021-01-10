@@ -1,32 +1,33 @@
 @extends('admin.layout.default')
 @section("content")
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                Identification Type
-            </h1>
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-dashboard"></i>  <a href="{{ url('admin/dashboard') }}">Dashboard</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-edit"></i>Identification Type
-                </li>
-            </ol>
-        </div>
-        <div id="editIdentificationType" v-cloak>
-            <form action="#" @submit.prevent="submit">
-                <div class="portlet-body m-20">
-                    @include('admin.identification_type.form')
-                    <div class="breadcrumb bg-danger" v-if="error">
-                        <p>@{{ error }}</p>
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" id="submit"
-                                class="btn btn-success save-cancel">Save</button>
-                    </div>
+    <div class="container-fluid">
+        <h1 class="mt-4">Identification Type</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">
+                <a href="{{ url('admin/dashboard') }}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">
+                Update Identification type
+            </li>
+        </ol>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <div id="editIdentificationType" v-cloak>
+                    <form action="#" @submit.prevent="submit">
+                        @include('admin.identification_type.form')
+                        <div class="breadcrumb bg-danger" v-if="error">
+                            <p>@{{ error }}</p>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" id="submit"
+                                    class="btn btn-success save-cancel">Save</button>
+                            <a href="{{ url('admin/identification_type/list') }}"
+                               class="btn btn-default save-cancel">Cancel</a>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 @endsection

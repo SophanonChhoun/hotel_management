@@ -17,11 +17,11 @@ new Vue({
                 let save = true;
 
                 if(result && save) {
-                    axios.post('/admin/booking_type/update',{
+                    axios.post('/admin/bookings_type/update',{
                         "data": this.data
                     }).then(response => {
                         if(response.data.success){
-                            window.location.href = '/admin/booking_type/list';
+                            window.location.href = '/admin/bookings_type/list';
                         }else{
                             this.error = response.data.message;
                         }

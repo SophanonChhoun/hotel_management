@@ -4,7 +4,7 @@
             <div class="caption"><i class="icon-picture"></i>Contact Us</div>
         </div>
         <div class="portlet-body">
-            <div class="form-group" :class="{'has-error' : errors.first('title')}">
+            <div class="form-group" :class="{'has-error' : errors.first('name')}">
                 <label class="control-label">
                     Title
                     <span style="color: red">*</span>
@@ -17,7 +17,7 @@
                        class="form-control"
                        placeholder="Title">
 
-                <span class="help-block">@{{ errors.first('title') }}</span>
+                <span class="help-block">@{{ errors.first('name') }}</span>
             </div>
 
             <div class="form-group" :class="{'has-error' : errors.first('address')}">
@@ -92,6 +92,7 @@
                        data-vv-as="Status"
                        v-validate="'required'"
                 >
+                <br>
                 <span class="help-block">@{{ errors.first('is_enable') }}</span>
             </div>
 
