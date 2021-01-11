@@ -41,7 +41,6 @@ Route::middleware(CustomerMiddleware::class)->group(function (){
     });
     Route::post("/booking/store",[BookingController::class,"storeCustomer"]);
     Route::post('/logout',[CustomerAuthController::class,'logout']);
-    Route::get('/test',[CustomerAuthController::class,'test']);
     Route::group(['prefix' => 'profile'], function(){
         Route::get("",[CustomerController::class,"showCustomer"]);
         Route::post("/update",[CustomerController::class,"updateCustomer"]);
