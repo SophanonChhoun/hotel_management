@@ -12,6 +12,7 @@ use App\Http\Resources\PaymentTypeResource;
 use App\Http\Resources\RoomResource;
 use App\Http\Resources\RoomTypeBookResource;
 use App\Http\Resources\RoomTypeResource;
+use App\Mail\PaymentMail;
 use App\Models\admin\Booking;
 use App\Models\admin\BookingHasRooms;
 use App\Models\admin\BookingRoomTypeMap;
@@ -28,6 +29,7 @@ use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use DateTime;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
