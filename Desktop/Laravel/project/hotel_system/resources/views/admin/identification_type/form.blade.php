@@ -35,8 +35,6 @@
                            style="margin-left: 2%"
                            :name="'is_enable'+index"
                            v-model="identification_type.is_enable"
-                           data-vv-as="Status"
-                           v-validate="'required'"
                     >
                     <span class="help-block">@{{ errors.first('is_enable'+index) }}</span>
                 </div>

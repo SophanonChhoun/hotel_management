@@ -37,7 +37,7 @@ class BookingController extends Controller
     {
         $bookings = Booking::with("hotel", "booking_type", "customer");
         if (isset($request->search)) {
-            $bookings = $bookings->where("name", "LIKE", "%" . $request->search . "%");
+            $bookings = $bookings->where("id", "LIKE", $request->search . "%");
         }
         if (isset($request->is_enable)) {
             $bookings = $bookings->where("is_enable", $request->is_enable);
@@ -116,16 +116,16 @@ class BookingController extends Controller
             $roomIDs = $rooms->pluck("room_id");
             if(isset($request->id))
             {
-                $idS = $request->room_id;
-                $roomIDs = $roomIDs->filter(function($room) use($idS){
-                    if (!in_array($room,$idS))
+                $booking_has_rooms = BookingHasRooms::where("booking_id",$request->id);
+                $getRoomIDs = $booking_has_rooms->pluck("room_id");
+                $roomIDs = $roomIDs->filter(function($room) use($getRoomIDs){
+                    if (!in_array($room,$getRoomIDs))
                     {
                         return $room;
                     }
                 });
             }
             $rooms = Room::where("status",1)->whereNotIn("id",$roomIDs)->get();
-
             return $this->success($rooms);
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());

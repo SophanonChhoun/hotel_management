@@ -13,8 +13,18 @@
         </ol>
 
         <div class="row">
-            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                    <form action="/admin/booking/list" method="get">
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+                <div class="form-group has-search">
+                    <form action="/admin/bookings/list" method="get">
+                        <div class="input-group">
+                            <input type="text" placeholder="@lang('general.search')" name="search" value="{{ request()->get('search') }}">
+                            <button type="submit" class="btn-success"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+                    <form action="/admin/bookings/list" method="get">
                         <label for="">Status: </label>
                         <div class="columns columns-left btn-group">
                             <select name="is_enable" class="form-control" onchange="this.form.submit()">
@@ -29,8 +39,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                    <a href="/admin/booking/create" class="btn btn-primary" style="margin-bottom: 30px">Create a new booking</a>
+                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
+                    <a href="/admin/bookings/create" class="btn btn-primary" style="margin-bottom: 30px">Create a new booking</a>
                 </div>
             </div>
 

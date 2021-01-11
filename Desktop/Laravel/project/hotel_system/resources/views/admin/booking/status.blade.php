@@ -13,7 +13,7 @@
                     <p>Are you sure you want to update status?</p>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ url('admin/booking/update/status/'.$booking->id) }}" method="post">
+                    <form action="{{ url('admin/bookings/update/status/'.$booking->id) }}" method="post">
                         @csrf
                         <input type="hidden" name="is_enable" value="{{ $booking->is_enable ? 0 : 1 }}">
                         <button type="submit" class="btn btn-warning">Update</button>

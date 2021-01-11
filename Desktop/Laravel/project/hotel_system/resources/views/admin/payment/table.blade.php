@@ -1,16 +1,18 @@
 
     <table class="table table-bordered">
         <tr>
+            <th>Payment No</th>
             <th>Customer</th>
             <th>Check In</th>
             <th>Check Out</th>
             <th>Room Amount</th>
             <th>Total</th>
             <th>Status</th>
-            <th colspan="2">Action</th>
+            <th>Action</th>
         </tr>
         @forelse($data as $payment)
             <tr>
+                <td>{{ $payment->id }}</td>
                 <td>{{ $payment->customer->last_name ?? null }} {{ $payment->customer->first_name ?? null }}</td>
                 <td>{{ $payment->booking->check_in_date ?? null }}</td>
                 <td>{{ $payment->booking->check_out_date ?? null }}</td>
@@ -29,10 +31,10 @@
                 }
                 ?>
                 <td>
-                    <a href="{{ url('admin/payment/show/'.$payment->id) }}" class="btn btn-success">Show</a>
+                    <a href="{{ url('admin/payments/show/'.$payment->id) }}" class="btn btn-success">Show</a>
                 </td>
                 @empty
-                    <td colspan="5" class="text-center">There is no value</td>
+                    <td colspan="7" class="text-center">There is no value</td>
             </tr>
         @endforelse
     </table>

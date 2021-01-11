@@ -13,6 +13,9 @@ class PaymentController extends Controller
     public function index(Request $request)
     {
         $payment = Payment::with("booking.room.roomType","customer");
+        if (isset($request->search)) {
+            $payment = $payment->where("id", "LIKE", $request->search . "%");
+        }
         if(isset($request->is_enable))
         {
             $payment = $payment->where("is_enable",$request->is_enable);

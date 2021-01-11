@@ -33,7 +33,7 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link {{ request()->is("admin/booking*") ? 'active' : '' }}" href="{{ url('admin/booking/list') }}">Booking</a>
+                        <a class="nav-link {{ request()->is("admin/bookings*") ? 'active' : '' }}" href="{{ url('admin/bookings/list') }}">Booking</a>
                         <a class="nav-link {{ request()->is("admin/bookings_type*") ? 'active' : '' }}" href="{{ url('admin/bookings_type/list') }}">Booking Type</a>
                     </nav>
                 </div>
@@ -46,8 +46,8 @@
                 </a>
                 <div class="collapse" id="payment" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link {{ request()->is("admin/payment*") ? 'active' : '' }}" href="{{ url('admin/payment/list') }}">Payment</a>
-                        <a class="nav-link {{ request()->is("admin/payment_type*") ? 'active' : '' }}" href="{{ url('admin/payment_type/list') }}">Payment Type</a>
+                        <a class="nav-link {{ request()->is("admin/payments*") ? 'active' : '' }}" href="{{ url('admin/payments/list') }}">Payment</a>
+                        <a class="nav-link {{ request()->is("admin/payments_type*") ? 'active' : '' }}" href="{{ url('admin/payments_type/list') }}">Payment Type</a>
                     </nav>
                 </div>
 
@@ -68,7 +68,7 @@
                     Contact Us</a>
 
                 <a href="/admin/slider/list" class="nav-link {{ request()->is('admin/slider*') ? 'active' : '' }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-chevron-up"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fas fa-ambulance"></i></div>
                     Sliders</a>
 
     </nav>

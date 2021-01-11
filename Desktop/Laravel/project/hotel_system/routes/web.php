@@ -126,7 +126,7 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::post("/update",[IdentificationTypeController::class,"update"]);
         });
 
-        Route::group(["prefix" => "payment_type"],function () {
+        Route::group(["prefix" => "payments_type"],function () {
             Route::get("/list",[PaymentTypeController::class,"index"]);
             Route::post("/update",[PaymentTypeController::class,"update"]);
         });
@@ -148,7 +148,7 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::post("/delete/{id}",[SlidersController::class,"destroy"]);
         });
 
-        Route::group(["prefix" => "booking"],function () {
+        Route::group(["prefix" => "bookings"],function () {
             Route::get("/list",[BookingController::class,"index"]);
             Route::get("/create",[BookingController::class,"create"]);
             Route::post("/create",[BookingController::class,"store"]);
@@ -169,7 +169,7 @@ Route::middleware(AdminMiddleware::class)->group(function (){
             Route::post("/avatar",[ProfileController::class,"updateAvatar"]);
         });
 
-        Route::group(["prefix" => "payment"],function () {
+        Route::group(["prefix" => "payments"],function () {
             Route::get("/show/{id}",[PaymentController::class,"show"]);
             Route::get("/list",[PaymentController::class,"index"]);
         });

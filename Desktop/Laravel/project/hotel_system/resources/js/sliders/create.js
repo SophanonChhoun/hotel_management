@@ -1,10 +1,10 @@
 import SingleSelect from "../components/SingleSelect";
 import Multiselect from "vue-multiselect";
 import VueCkeditor from "vue-ckeditor2";
-
+import SingleImageUploader from "../components/SingleImageUploader";
 new Vue({
     el: '#createSlider',
-    components: { SingleSelect, Multiselect, VueCkeditor },
+    components: { SingleSelect, Multiselect, VueCkeditor,SingleImageUploader },
     data: {
         data: {
             "title": "",

@@ -1,3 +1,5 @@
+import SingleImageUploader from "../components/SingleImageUploader";
+
 new Vue({
     el: '#editAvatar',
     data: {
@@ -8,6 +10,7 @@ new Vue({
         error_image: '',
         image: '',
     },
+    components: {SingleImageUploader},
     mounted() {
     },
     methods: {
