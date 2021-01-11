@@ -243,9 +243,6 @@ class BookingController extends Controller
             $date2 = new DateTime($request->check_out_date);
             $int = $date1->diff($date2);
             $days = $int->format("%a");
-            $email = Customer::find($request['auth_id']);
-            $email = $email->email;
-            Mail::to($email)->send(new PaymentMail($data->id));
             DB::commit();
             return $this->success([
                 "total" => $booking['total'] * $days,
