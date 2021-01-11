@@ -7,7 +7,7 @@
                 <a href="{{ url('admin/dashboard') }}">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="{{ url('admin/booking/list') }}">Booking</a>
+                <a href="{{ url('admin/bookings/list') }}">Booking</a>
             </li>
             <li class="breadcrumb-item active">
                 Make a booking

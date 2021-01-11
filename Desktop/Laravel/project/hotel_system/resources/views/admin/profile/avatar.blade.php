@@ -9,15 +9,18 @@
                     Profile
                     <span style="color: red">*</span>
                 </label>
-                <br>
-                <img :src="data.image ? data.image : (data.media ? data.media.file_url : '{{asset('image/noimage.png')}}' )"
-                     style='width: 300px;height: 300px;' class="img-responsive img-circle center-block">
-                <br>
-                <input type="file" :value="null"  name="adding_image" id="adding_image"
-                       v-model="data.image"
-                       placeholder="Image" data-vv-as="Image"
-                       @change="uploadAddingImage" accept=".png, .jpg">
-                <br>
+                <single-image-uploader
+                    :error="data.error_image"
+                    label="Image"
+                    ph="300"
+                    pw="300"
+                    default-image="{{ asset('https://tracker.moodle.org/secure/attachment/30912/f3.png') }}"
+                    :image="data.image ? data.image : (data.media ? data.media.file_url : '{{asset('https://tracker.moodle.org/secure/attachment/30912/f3.png')}}')"
+                    v-model="data.image"
+                    :name="'profile'"
+                    v-validate="{required: data.image ? true : false}"
+                    data-vv-as="Profile"
+                ></single-image-uploader>
             </div>
 
             <div class="margiv-top-10 text-right">

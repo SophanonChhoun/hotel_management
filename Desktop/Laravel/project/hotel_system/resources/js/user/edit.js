@@ -5,7 +5,8 @@ new Vue({
     el: '#editUser',
     components: {
         Multiselect,
-        SingleSelect
+        SingleSelect,
+        SingleImageUploader
     },
     data: {
         data: data,

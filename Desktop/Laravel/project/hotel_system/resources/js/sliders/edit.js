@@ -1,7 +1,7 @@
 import Multiselect from "vue-multiselect";
 import SingleSelect from "../components/SingleSelect";
 import VueCkeditor from "vue-ckeditor2";
-
+import SingleImageUploader from "../components/SingleImageUploader";
 new Vue({
     el: '#editSliders',
     data: {
@@ -21,7 +21,7 @@ new Vue({
             height: 300
         },
     },
-    components: { Multiselect,VueCkeditor },
+    components: { Multiselect,VueCkeditor,SingleImageUploader },
     computed: {
 
     },

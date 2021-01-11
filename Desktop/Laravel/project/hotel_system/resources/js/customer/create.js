@@ -1,6 +1,6 @@
 import Multiselect from "vue-multiselect";
 import SingleSelect from "../components/SingleSelect";
-
+import SingleImageUploader from "../components/SingleImageUploader";
 new Vue({
     el: '#CreateCustomer',
 
@@ -30,7 +30,7 @@ new Vue({
         error: '',
 
     },
-    components: {SingleSelect,Multiselect},
+    components: {SingleSelect,Multiselect,SingleImageUploader},
     mounted() {
     },
     methods: {

@@ -1153,7 +1153,7 @@ new Vue({
         }
 
         if (result && save) {
-          axios.post('/admin/booking/create', {
+          axios.post('/admin/bookings/create', {
             "check_in_date": _this.data.check_in_date,
             "check_out_date": _this.data.check_out_date,
             "customer_id": _this.data.customer.id,
@@ -1165,7 +1165,7 @@ new Vue({
             "room_type_id": _this.data.room_type_id
           }).then(function (response) {
             if (response.data.success) {
-              window.location.href = '/admin/booking/list';
+              window.location.href = '/admin/bookings/list';
             } else {
               console.log(response.data.message);
               _this.error = response.data.message;
@@ -1187,7 +1187,7 @@ new Vue({
     getRoom: function getRoom() {
       var _this2 = this;
 
-      axios.post("/admin/booking/getRoom", this.data).then(function (response) {
+      axios.post("/admin/bookings/getRoom", this.data).then(function (response) {
         if (response) {
           _this2.rooms = response.data.data;
         } else {

@@ -117,7 +117,7 @@
                                  data-vv-as="Hotel"
                                  v-validate="'required'"
                                  @select="getRoomType"
-                                 :allow-empty="false">
+                                 >
                     </multiselect>
                     <span class="help-block">@{{ errors.first('hotel') }}</span>
                 </div>
@@ -137,7 +137,7 @@
                                  data-vv-as="Room Type"
                                  v-validate="'required'"
                                  multiple
-                                 :allow-empty="false">
+                                 :allow-empty="true">
                     </multiselect>
                     <span class="help-block">@{{ errors.first('room_type') }}</span>
                     <span class="help-block">@{{ error_room }}</span>

@@ -1208,11 +1208,11 @@ new Vue({
         var save = true;
 
         if (result && save) {
-          axios.post('/admin/payment_type/update', {
+          axios.post('/admin/payments_type/update', {
             "data": _this.data
           }).then(function (response) {
             if (response.data.success) {
-              window.location.href = '/admin/payment_type/list';
+              window.location.href = '/admin/payments_type/list';
             } else {
               _this.error = response.data.message;
             }

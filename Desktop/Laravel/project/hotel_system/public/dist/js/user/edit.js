@@ -114,14 +114,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SingleImageUploader",
   data: function data() {
@@ -141,42 +133,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     uploadImage: function uploadImage(event) {
-      var defaultSize = $(event.target).data('size');
       var that = this;
       var input = event.target;
-      var width = $(input).data('width');
-      var height = $(input).data('height');
 
       if (input.files && input.files[0]) {
-        var size = input.files[0].size / 1024 / 1024;
+        var img = new Image();
 
-        if (size < defaultSize) {
-          var img = new Image();
+        img.onload = function (e) {
+          var reader = new FileReader();
 
-          img.onload = function (e) {
-            if (this.width != width || this.height != height) {
-              $.dialog({
-                title: 'Image Size',
-                content: 'Image size must be ' + width + 'x' + height
-              });
-            } else {
-              var reader = new FileReader();
-
-              reader.onload = function (e) {
-                that.$emit('input', e.target.result);
-              };
-
-              reader.readAsDataURL(input.files[0]);
-            }
+          reader.onload = function (e) {
+            that.$emit('input', e.target.result);
           };
 
-          img.src = URL.createObjectURL(input.files[0]);
-        } else {
-          $.dialog({
-            title: this.label + ' Size',
-            content: "".concat(this.label, " size must be less than  ").concat(defaultSize, "  MB")
-          });
-        }
+          reader.readAsDataURL(input.files[0]);
+        };
+
+        img.src = URL.createObjectURL(input.files[0]);
       }
     }
   }
@@ -1021,37 +994,14 @@ var render = function() {
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _c("label", { staticClass: "mediasize" }, [
-      _vm._v(
-        "\n        " +
-          _vm._s(_vm.$t("general.maximum_size", { size: _vm.size })) +
-          "\n        "
-      ),
-      _c("br"),
-      _vm._v(
-        "\n        " +
-          _vm._s(
-            _vm.$t("general.dimensions_size", { width: _vm.pw, height: _vm.ph })
-          ) +
-          "\n    "
-      )
-    ]),
-    _vm._v(" "),
-    !_vm.isDisable ? _c("br") : _vm._e(),
-    _vm._v(" "),
     !_vm.isDisable
       ? _c("div", { staticClass: "btn default btn-file" }, [
-          _c("span", [
-            _vm._v(" " + _vm._s(_vm.$t("general.click_to_choose")) + " ")
-          ]),
-          _vm._v(" "),
           _c("input", {
             attrs: {
               type: "file",
               name: "image",
-              "data-size": _vm.size,
-              "data-width": _vm.pw,
-              "data-height": _vm.ph,
+              "data-width": 150,
+              "data-height": 150,
               accept: ".jpg,.png"
             },
             on: { change: _vm.uploadImage }
@@ -1433,7 +1383,8 @@ new Vue({
   el: '#editUser',
   components: {
     Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a,
-    SingleSelect: _components_SingleSelect__WEBPACK_IMPORTED_MODULE_1__["default"]
+    SingleSelect: _components_SingleSelect__WEBPACK_IMPORTED_MODULE_1__["default"],
+    SingleImageUploader: _components_SingleImageUploader__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: {
     data: data,

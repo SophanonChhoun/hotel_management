@@ -24,6 +24,7 @@ new Vue({
     },
 
     mounted() {
+        this.getRoomTypeDefault();
     },
     methods: {
         submit() {
@@ -36,7 +37,7 @@ new Vue({
                 this.data.room_type_id = this.data.room_types.map(roomType => roomType.id);
 
                 if(result && save) {
-                    axios.post('/admin/booking/update/'+this.data.id, {
+                    axios.post('/admin/bookings/update/'+this.data.id, {
                         "check_in_date": this.data.check_in_date,
                         "check_out_date": this.data.check_out_date,
                         "customer_id": this.data.customer.id,
@@ -48,7 +49,7 @@ new Vue({
                         "room_type_id": this.data.room_type_id
                     }).then(response => {
                         if(response.data.success){
-                            window.location.href = '/admin/booking/list';
+                            window.location.href = '/admin/bookings/list';
                         }else{
                             console.log(response.data.message);
                             this.error = response.data.message;
@@ -66,7 +67,7 @@ new Vue({
             return _.filter(room, ['hotel_id',this.data.hotel.id]);
         },
         getRoom() {
-            axios.post(`/admin/booking/getRoom`,this.data).then(response => {
+            axios.post(`/admin/bookings/getRoom`,this.data).then(response => {
                 if (response) {
                     this.rooms = response.data.data;
                 } else {
@@ -79,8 +80,11 @@ new Vue({
             });
         },
         getRoomType(event) {
-            console.log(event.id)
             const id = event.id;
+            this.room_types_hotel = _.filter(this.room_types,['hotel_id',id]);
+        },
+        getRoomTypeDefault() {
+            const id = this.data.hotel_id;
             this.room_types_hotel = _.filter(this.room_types,['hotel_id',id]);
         },
         minCheckOutDate() {

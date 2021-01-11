@@ -3,8 +3,6 @@
         <tr>
             <th>Name</th>
             <th>Hotel</th>
-            <th>Maximum people</th>
-            <th>Description</th>
             <th>Price</th>
             <th>Image</th>
             <th>Status</th>
@@ -14,13 +12,6 @@
             <tr>
                 <td>{{ $room_type->name }}</td>
                 <td>{{ $room_type->hotel->name ?? null }}</td>
-                <td>{{ $room_type->max }}</td>
-                <td><?php
-                    if (strlen($room_type->description) > 30)
-                        $room_type->description = substr($room_type->description, 0, 30) . '...';
-                    echo $room_type->description;
-                    ?>
-                </td>
                 <td>{{ $room_type->price }}</td>
                 <td><img src="{{ $room_type->medias->first()->file_url ?? asset('image/noimage.png') }}" class="img-responsive" style="max-height: 200px;max-width: 200px"></td>
                 <td>

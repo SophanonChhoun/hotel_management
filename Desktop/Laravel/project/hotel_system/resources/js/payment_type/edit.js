@@ -20,11 +20,11 @@ new Vue({
                 let save = true;
 
                 if(result && save) {
-                    axios.post('/admin/payment_type/update',{
+                    axios.post('/admin/payments_type/update',{
                         "data": this.data
                     }).then(response => {
                         if(response.data.success){
-                            window.location.href = '/admin/payment_type/list';
+                            window.location.href = '/admin/payments_type/list';
                         }else{
                             this.error = response.data.message;
                         }

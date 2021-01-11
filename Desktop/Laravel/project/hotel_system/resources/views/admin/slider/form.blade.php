@@ -75,17 +75,19 @@
                     <span style="color: red">*</span>
                 </label>
                 <br>
-                <img :src="data.image ? data.image : (data.media ? data.media.file_url : '{{asset('image/noimage.png')}}' )"
-                     style='width: 300px;height: 300px;' class="img-responsive">
-                <br>
-                <input type="file" :value="null"  name="adding_image" id="adding_image"
-                       v-model="data.image"
-                       placeholder="Image" data-vv-as="Image"
-                       accept=".png, .jpg"
-                       v-on:change="uploadAddingImage"
-                >
+                <single-image-uploader
+                    :error="data.error_image"
+                    label="Image"
+                    ph="400"
+                    pw="300"
+                    default-image="{{ asset('image/noimage.png') }}"
+                    :image="data.image ? data.image : (data.media ? data.media.file_url : '{{asset('image/noimage.png')}}')"
+                    v-model="data.image"
+                    :name="'profile'"
+                    v-validate="{required: data.image ? true : false}"
+                    data-vv-as="Profile"
+                ></single-image-uploader>
                 <span class="help-block" v-if="error_image">@{{ error_image }}</span>
-
             </div>
 
             <div class="form-group" :class="{'has-error' : errors.first('is_enable')}">
