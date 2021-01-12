@@ -35,7 +35,7 @@
                            data-vv-as="Check out"
                            v-validate="'required'"
                            class="form-control"
-                           :min="minCheckOutDate"
+                           :min="minCheckOutDate()"
                     >
 
                     <span class="help-block">@{{ errors.first('check_out') }}</span>
