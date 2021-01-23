@@ -79,7 +79,7 @@
                             <i class="fa fa-money"></i>
                             <span class="count-numbers">
                         {{$payment_today }}</span>
-                            <a href="/admin/payment/list" style="color:white"><span class="count-name">Payment</span></a>
+                            <a href="/admin/payments/list" style="color:white"><span class="count-name">Payment</span></a>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                             <tr>
                                 <td>{{ $booking->id }}</td>
                                 <td>
-                                    <a href="{{ url('/admin/booking/show/payment/'.$booking->id) }}">{{ $booking->customer->last_name ?? null }} {{ $booking->customer->first_name ?? null }}</a>
+                                    <a href="{{ url('/admin/bookings/show/payment/'.$booking->id) }}">{{ $booking->customer->last_name ?? null }} {{ $booking->customer->first_name ?? null }}</a>
                                 </td>
                                 <td>{{ $booking->hotel->name }}</td>
                                 <td>{{ $booking->booking_type->name }}</td>
@@ -128,7 +128,7 @@
                                     <input type="checkbox" data-toggle="modal" data-target="#status{{ $booking->id }}" @if($booking->is_enable) checked @endif>
                                     @include("admin.booking.status")
                                 </td>
-                                <td><a href="/admin/booking/show/{{ $booking->id }}" class="btn btn-warning">Edit</a></td>
+                                <td><a href="/admin/bookings/show/{{ $booking->id }}" class="btn btn-warning">Edit</a></td>
                                 <td>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ $booking->id }}">Delete</button>
                                     @include('admin.booking.delete')
