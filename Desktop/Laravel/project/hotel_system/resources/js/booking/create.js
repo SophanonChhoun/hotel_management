@@ -23,9 +23,14 @@ new Vue({
             payment_type_id: '',
             booking_type: '',
             booking_type_id: '',
+            customer_type_id: '',
+            customer_type: '',
+            customer_first_name: '',
+            customer_last_name: ''
         },
         is_submit: false,
         error: '',
+        totalDate: 0,
         rooms: rooms,
         hotels: hotels,
         customers: customers,
@@ -35,9 +40,37 @@ new Vue({
         room_types_hotel: [],
         error_room: '',
         today : new Date().toISOString().slice(0, 10),
+        total: 0,
+        customer_type: [
+            {
+                "id":1,
+                "name":"New Customer"
+            },
+            {
+                "id":2,
+                "name":"Old Customer"
+            }
+        ]
     },
-
+    computed: {
+        totalAmount() {
+            if(this.data.room_id.length > 0)
+            {
+                var total=0;
+                for(var i=0;i<this.data.room_id.length;i++)
+                {
+                    var price = 0;
+                    var room_type_id=_.find(this.rooms, ['id', this.data.room_id[i]]);
+                    var room_type =_.find(this.room_types, ['id',room_type_id.roomType_id]);
+                    price = room_type.price * this.totalDate;
+                    total += price;
+                }
+                return total;
+            }
+        }
+    },
     mounted() {
+
     },
     methods: {
         submit() {
@@ -63,7 +96,10 @@ new Vue({
                         "payment_type_id": this.data.payment_type.id,
                         "rooms": this.data.room_id,
                         "is_enable": this.data.is_enable,
-                        "room_type_id": this.data.room_type_id
+                        "room_type_id": this.data.room_type_id,
+                        "customer_type_id": this.data.customer_type_id,
+                        "customer_first_name": this.data.customer_first_name,
+                        "customer_last_name": this.data.customer_last_name
                     }).then(response => {
                         if(response.data.success){
                             window.location.href = '/admin/bookings/list';
@@ -90,15 +126,12 @@ new Vue({
                     this.rooms = response.data.data;
                 } else {
                     alert(response.data.data);
-                    hideLoading();
                 }
             }).catch(error => {
 
-                hideLoading();
             });
         },
         getRoomType(event) {
-            console.log(event.id)
             const id = event.id;
             this.room_types_hotel = _.filter(this.room_types,['hotel_id',id]);
         },
@@ -110,6 +143,18 @@ new Vue({
                     .toISOString()
                     .slice(0, 10);
             }
+        },
+        datediff() {
+            var date1 = new Date(this.data.check_in_date);
+            var date2 = new Date(this.data.check_out_date);
+            var Difference_In_Time = date2.getTime() - date1.getTime();
+
+            var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+            this.totalDate = Difference_In_Days;
+
+        },
+        getTypeCustomer(event) {
+            this.data.customer_type_id = event.id;
         }
     }
 });

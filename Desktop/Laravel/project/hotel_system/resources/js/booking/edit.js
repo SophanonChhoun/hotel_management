@@ -21,8 +21,24 @@ new Vue({
         room_types_hotel: [],
         currentDate: currentDate,
         today : new Date().toISOString().slice(0, 10),
+        totalAmount: 0,
+        totalDate: 0,
     },
-
+    watch: {
+        totalAmount() {
+            var total=0;
+            for(var i=0;i<this.data.room_id.length;i++)
+            {
+                var price = 0;
+                var room_type_id=_.find(this.rooms, ['id', this.data.room_id[i]]);
+                console.log(room_type_id.roomType_id)
+                var room_type =_.find(this.room_types, ['id',room_type_id.roomType_id]);
+                price = room_type.price * this.totalDate;
+                total += price;
+            }
+            return total;
+        }
+    },
     mounted() {
         this.getRoomTypeDefault();
     },
@@ -95,6 +111,15 @@ new Vue({
                     .toISOString()
                     .slice(0, 10);
             }
+        },
+        datediff() {
+            var date1 = new Date(this.data.check_in_date);
+            var date2 = new Date(this.data.check_out_date);
+            var Difference_In_Time = date2.getTime() - date1.getTime();
+
+            var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+            this.totalDate = Difference_In_Days;
+
         },
     }
 });

@@ -4,6 +4,8 @@ namespace App\Models\admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use DateTime;
 
 class Payment extends Model
 {
@@ -41,5 +43,22 @@ class Payment extends Model
         self::where("booking_id",$booking_id)->update([
            "is_enable" => $value
         ]);
+    }
+
+    public static function showPayment($id)
+    {
+        $payment = self::with("booking","booking.room.roomType","customer");
+
+        $payment = $payment->find($id);
+        $total = Arr::pluck($payment->booking->room,"roomType");
+        $total = Arr::pluck($total,'price');
+        $date1 = new DateTime($payment->booking->check_in_date);
+        $date2 = new DateTime($payment->booking->check_out_date);
+        $int = $date1->diff($date2);
+        $days = $int->format("%a");
+        $payment['days'] = $days;
+        $payment['total'] = array_sum($total) * $days;
+
+        return $payment;
     }
 }

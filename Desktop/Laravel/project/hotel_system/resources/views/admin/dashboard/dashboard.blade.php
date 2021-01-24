@@ -100,7 +100,7 @@
                             </div>
                     </div>
                 </form>
-
+                <div id="top_x_div" class="p-3 mb-2" style="height: 600px; width: 100%"></div>
                 <h1 class="p-3 mb-2">Recently Booking</h1>
                     <table class="table table-bordered "  id="table_id">
                         <tr>
@@ -139,5 +139,41 @@
                         @endforelse
                     </table>
     </div>
+
+@endsection
+
+@section("script")
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+                    google.charts.load('current', {'packages':['bar']});
+                    google.charts.setOnLoadCallback(drawStuff);
+
+                    function drawStuff() {
+                        var data = new google.visualization.arrayToDataTable([
+                            ['Room Type', 'Money'],
+                            @foreach($roomTypes as $roomType)
+                                ['{{$roomType->name}}',{{$roomType->total}}],
+                            @endforeach
+                        ]);
+
+                        var options = {
+                            width: 800,
+                            legend: { position: 'none' },
+                            chart: {
+                                title: 'Room type',
+                                subtitle: 'money get by each room type' },
+                            axes: {
+                                x: {
+                                    0: { side: 'top', label: 'Currency dollar'} // Top x-axis.
+                                }
+                            },
+                            bar: { groupWidth: "90%" }
+                        };
+
+                        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+                        // Convert the Classic options to Material options.
+                        chart.draw(data, google.charts.Bar.convertOptions(options));
+                    };
+                </script>
 
 @endsection

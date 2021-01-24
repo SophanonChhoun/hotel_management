@@ -40,17 +40,7 @@ class PaymentController extends Controller
     public function show($id)
     {
         try {
-            $payment = Payment::with("booking","booking.room.roomType","customer");
-
-            $payment = $payment->find($id);
-            $total = Arr::pluck($payment->booking->room,"roomType");
-            $total = Arr::pluck($total,'price');
-            $date1 = new DateTime($payment->booking->check_in_date);
-            $date2 = new DateTime($payment->booking->check_out_date);
-            $int = $date1->diff($date2);
-            $days = $int->format("%a");
-            $payment['days'] = $days;
-            $payment['total'] = array_sum($total) * $days;
+            $payment = Payment::showPayment($id);
             return view('admin.payment.show',compact('payment'));
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());

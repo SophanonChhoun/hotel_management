@@ -1421,13 +1421,6 @@ new Vue({
         var save = true;
         _this.data.identification_type_id = _this.data.identification_type.id;
 
-        if (!_this.data.image) {
-          _this.error_image = "The Image field is required";
-          save = false;
-        } else {
-          _this.error_image = "";
-        }
-
         if (result && save) {
           axios.post('/admin/customer/create', _this.data).then(function (response) {
             if (response.data.success) {

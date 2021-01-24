@@ -39,13 +39,7 @@ new Vue({
                 this.is_submit = true
                 let save = true;
                 this.data.identification_type_id = this.data.identification_type.id;
-                if(!this.data.image)
-                {
-                    this.error_image = "The Image field is required";
-                    save = false;
-                }else{
-                    this.error_image = "";
-                }
+
                 if(result && save) {
                     axios.post('/admin/customer/create',this.data).then(response => {
                        if(response.data.success){

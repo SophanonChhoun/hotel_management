@@ -7,7 +7,7 @@
             <th>Check in</th>
             <th>Check out</th>
             <th>Status</th>
-            <th colspan="2" class="text-center">Action</th>
+            <th>Action</th>
         </tr>
         @forelse($data as $booking)
             <tr>
@@ -20,11 +20,11 @@
                     <input type="checkbox" id="itemStatus{{$booking->id}}" @if($booking->is_enable) checked @endif>
                     @include("admin.booking.status")
                 </td>
-                <td><a href="/admin/bookings/show/{{ $booking->id }}" class="btn btn-warning">Edit</a></td>
-                <td>
-                    <button type="button" class="btn btn-danger" id="myBtn{{ $booking->id }}">Delete</button>
-                    @include('admin.booking.delete')
-                </td>
+                <td><a href="/admin/bookings/show/{{ $booking->id }}" class="btn btn-success">Show</a></td>
+{{--                <td>--}}
+{{--                    <button type="button" class="btn btn-danger" id="myBtn{{ $booking->id }}">Delete</button>--}}
+{{--                    @include('admin.booking.delete')--}}
+{{--                </td>--}}
                 @empty
                     <td colspan="5" class="text-center">There is no value</td>
             </tr>
