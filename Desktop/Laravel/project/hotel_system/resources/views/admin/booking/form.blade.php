@@ -41,8 +41,63 @@
                     <span class="help-block">@{{ errors.first('check_out') }}</span>
                 </div>
 
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('customer_type')}">
+                    <label class="control-label">
+                        Customer Type
+                        <span style="color: red">*</span>
+                    </label>
+                    <multiselect :name="'customer_type'"
+                                 v-model="data.customer_type"
+                                 deselect-label="Can't remove this value"
+                                 track-by="name"
+                                 label="name"
+                                 placeholder="Select one"
+                                 :options="customer_type"
+                                 data-vv-as="Customer Type"
+                                 v-validate="'required'"
+                                 :allow-empty="false"
+                                 @select="getTypeCustomer"
+                    >
+                    </multiselect>
 
-                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('customer')}">
+                    <span class="help-block">@{{ errors.first('customer_type') }}</span>
+                </div>
+
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('fname')}" v-if="data.customer_type_id == 1">
+                    <label class="control-label">
+                        Customer First Name
+                        <span style="color: red">*</span>
+                    </label>
+                    <input type="text"
+                           name="fname"
+                           v-model="data.customer_first_name"
+                           data-vv-as="Customer First Name"
+                           v-validate="'required|alpha'"
+                           class="form-control"
+                           placeholder="First Name">
+
+                    <span class="help-block">@{{ errors.first('fname') }}</span>
+
+                </div>
+
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('lname')}" v-if="data.customer_type_id == 1">
+                    <label class="control-label">
+                        Customer Last Name
+                        <span style="color: red">*</span>
+                    </label>
+                    <input type="text"
+                           name="lname"
+                           v-model="data.customer_last_name"
+                           data-vv-as="Customer Last Name"
+                           v-validate="'required|alpha'"
+                           class="form-control"
+                           placeholder="Last Name">
+
+                    <span class="help-block">@{{ errors.first('lname') }}</span>
+                </div>
+
+
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('customer')}" v-if="data.customer_type_id == 2">
                     <label class="control-label">
                         Customer
                         <span style="color: red">*</span>
@@ -101,6 +156,7 @@
                 </div>
                 <div v-if="data.check_in_date && data.check_out_date">
                     @{{ getRoom() }}
+                    @{{ datediff() }}
                 </div>
                 <div class="form-group col-lg-12" :class="{'has-error' : errors.first('hotel')}" v-if="data.check_in_date && data.check_out_date">
                     <label class="control-label">
@@ -143,14 +199,22 @@
                     <span class="help-block">@{{ error_room }}</span>
                 </div>
                 <div v-for="id in data.room_types" class="col-lg-12">
-                    <h4>Room @{{ id.name }}:</h4>
+                    <h4>Room @{{ id.name }}  Price: $@{{ id.price }}</h4>
                     <span v-for="room in getRoomById(id)">
-                <label class="mt-checkbox" style="margin-right: 40px">
-                    <input type="checkbox" v-model="data.room_id" :value="room.id"> @{{ room.name }}
-                    <span></span>
-                </label>
-        </span>
+                        <label class="mt-checkbox" style="margin-right: 40px">
+                            <input type="checkbox" v-model="data.room_id" :value="room.id"> @{{ room.name }}
+                            <span></span>
+                        </label>
+                    </span>
                     <br>
+                </div>
+                <div class="form-group col-lg-12">
+                    <h2 class="control-label" v-if="totalDate">
+                        Day amounts: @{{ totalDate }}
+                    </h2>
+                    <h2 class="control-label" v-if="totalAmount">
+                        Total: $ @{{ totalAmount }}
+                    </h2>
                 </div>
 
                 <div class="form-group col-lg-12" :class="{'has-error' : errors.first('is_enable')}">

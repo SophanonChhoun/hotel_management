@@ -49,7 +49,6 @@ class BookingController extends Controller
     public function listCustomer(Request $request)
     {
         try {
-
             $bookings = Booking::with("hotel","room", "customer", "room_types.medias","room_types.rooms","payment_type","booking_type")->where("customer_id", $request['auth_id'])->orderByDesc("id")->get();
             $bookings = Booking::list($bookings);
             return $this->success(BookingListResource::collection($bookings));
@@ -178,6 +177,14 @@ class BookingController extends Controller
     {
         DB::beginTransaction();
         try {
+            if($request['customer_type_id'] === 1)
+            {
+                $customer = Customer::create([
+                   "first_name" => $request['customer_first_name'],
+                   "last_name" => $request['customer_last_name'],
+                ]);
+                $request['customer_id'] = $customer->id;
+            }
             $booking = [
                 'check_in_date' => Carbon::parse($request['check_in_date'])->format('Y-m-d'),
                 'check_out_date' => Carbon::parse($request['check_out_date'])->format('Y-m-d'),
@@ -265,47 +272,9 @@ class BookingController extends Controller
     public function show($id)
     {
         try {
-            $booking = Booking::with("hotel","booking_type","customer","room","payment_type","room_types")->find($id);
-            $booking->room_id = $booking->room->map(function($room){
-                return $room->id;
-            });
-            $booking->customer->name = $booking->customer->last_name . " " . $booking->customer->first_name;
-            $current_date = date('d/m/Y');
-            $hotels = Hotel::where("is_enable",1)->get();
-            $payment_types = PaymentType::where("is_enable",1)->get();
-            $booking_types = BookingType::where("is_enable",1)->get();
-            $customers = Customer::where("is_enable",1)->get();
-            $customers = $customers->filter(function ($customer){
-                $customer['name']= $customer['last_name'] . " " . $customer['first_name'];
-                return $customer;
-            });
-            $room_types = RoomType::where("is_enable",1)->get();
-            $rooms = Room::where("status",1)->get();
-            $bookingRoomID = $booking->room_id;
-            $rooms = $rooms->filter(function($room) use($bookingRoomID){
-               if(!$room->is_enable)
-               {
-                  foreach ($bookingRoomID as $item)
-                  {
-                      if($item == $room->id)
-                      {
-                          return $room;
-                      }
-                  }
-               }else{
-                   return $room;
-               }
-            });
-            return view("admin.booking.edit",compact(
-                "booking",
-                "payment_types",
-                "hotels",
-                "booking_types",
-                "customers",
-                "room_types",
-                "rooms",
-                "current_date"
-            ));
+            $paymentID = Payment::where("booking_id",$id)->first()->id;
+            $payment = Payment::showPayment($paymentID);
+            return view('admin.payment.show',compact('payment'));
         }catch (Exception $exception){
             return $this->fail($exception->getMessage());
         }
