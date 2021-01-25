@@ -28,7 +28,9 @@ class DashboardController extends Controller
         $room_booked = Room::where('is_enable',DB::raw('0'))->count('is_enable');
         $room_available = Room::where('is_enable',DB::raw('1'))->count('is_enable');
         $customer = Customer::with("identification_type")->take(5)->get();
-        $room_booking_id = BookingHasRooms::all();
+        $booking_id = Booking::where("is_enable",1)->get();
+        $booking_id = $booking_id->pluck("id");
+        $room_booking_id = BookingHasRooms::whereIn("booking_id",$booking_id);
         $room_booking_id = $room_booking_id->pluck("room_id");
         $room_type_id = Room::whereIn("id",$room_booking_id)->get();
         $room_type_id = $room_type_id->pluck("roomType_id");

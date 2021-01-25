@@ -3,7 +3,7 @@
 <div class="col-md-12">
     <div class="portlet blue box" >
         <div class="portlet-title">
-            <div class="caption"><i class="icon-picture"></i>Hotel</div>
+            <div class="caption"><i class="icon-picture"></i>Customer</div>
         </div>
         <div class="portlet-body">
             <div class="row">
