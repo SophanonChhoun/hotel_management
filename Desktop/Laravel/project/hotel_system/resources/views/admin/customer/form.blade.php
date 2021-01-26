@@ -145,20 +145,6 @@
             </div>
 
             <div class="row">
-                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('identification_id')}">
-                    <label class="control-label">
-                        Identification ID
-                        <span style="color: red">*</span>
-                    </label>
-                    <input type="number"
-                           name="identification_id"
-                           v-model="data.identification_id"
-                           data-vv-as="identification id"
-                           v-validate="'required|min:1'"
-                           class="form-control"
-                           placeholder="Identification ID">
-                    <span class="help-block">@{{ errors.first('identification_id') }}</span>
-                </div>
                 <div class="form-group col-lg-12" :class="{'has-error' : errors.first('identification_type')}">
                     <label class="control-label">
                         Identification Type
@@ -176,6 +162,21 @@
                                  :allow-empty="false">
                     </multiselect>
                     <span class="help-block">@{{ errors.first('identification_type') }}</span>
+                </div>
+
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('identification_id')}">
+                    <label class="control-label">
+                        Identification ID
+                        <span style="color: red">*</span>
+                    </label>
+                    <input type="number"
+                           name="identification_id"
+                           v-model="data.identification_id"
+                           data-vv-as="identification id"
+                           v-validate="'required|min:1'"
+                           class="form-control"
+                           placeholder="Identification ID">
+                    <span class="help-block">@{{ errors.first('identification_id') }}</span>
                 </div>
 
                 <div class="form-group col-lg-12" :class="{'has-error' : errors.first('phone_number')}">

@@ -45,6 +45,7 @@
         const room_types = @json($room_types);
         const rooms = @json($rooms);
         const currentDate = @json($current_date);
+        const identification_type = @json($identification_type)
     </script>
     <script src="{{ mix('/dist/js/app.js') }}"></script>
     <script src="{{ mix('/dist/js/booking/create.js') }}"></script>

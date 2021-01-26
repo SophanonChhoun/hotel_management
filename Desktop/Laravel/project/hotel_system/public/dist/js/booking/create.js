@@ -1122,7 +1122,10 @@ new Vue({
       customer_type_id: '',
       customer_type: '',
       customer_first_name: '',
-      customer_last_name: ''
+      customer_last_name: '',
+      customer_identification_type: '',
+      customer_identification_type_id: '',
+      customer_identification_id: ''
     },
     is_submit: false,
     error: '',
@@ -1135,6 +1138,7 @@ new Vue({
     booking_types: booking_types,
     room_types_hotel: [],
     error_room: '',
+    identification_type: identification_type,
     today: new Date().toISOString().slice(0, 10),
     total: 0,
     customer_type: [{
@@ -1176,6 +1180,8 @@ new Vue({
         _this.data.customer_id = _this.data.customer.id;
         _this.data.booking_type_id = _this.data.booking_type.id;
         _this.data.hotel_id = _this.data.hotel.id;
+        _this.data.customer_type_id = _this.data.customer_type.id;
+        _this.data.customer_identification_type_id = _this.data.customer_identification_type.id;
         _this.data.room_type_id = _this.data.room_types.map(function (roomType) {
           return roomType.id;
         });
@@ -1184,6 +1190,8 @@ new Vue({
           _this.error_room = "Please input room";
           save = false;
         }
+
+        console.log(_this.data.customer_identification_id);
 
         if (result && save) {
           axios.post('/admin/bookings/create', {
@@ -1198,7 +1206,9 @@ new Vue({
             "room_type_id": _this.data.room_type_id,
             "customer_type_id": _this.data.customer_type_id,
             "customer_first_name": _this.data.customer_first_name,
-            "customer_last_name": _this.data.customer_last_name
+            "customer_last_name": _this.data.customer_last_name,
+            "customer_identification_id": _this.data.customer_identification_id,
+            "customer_identification_type_id": _this.data.customer_identification_type_id
           }).then(function (response) {
             if (response.data.success) {
               window.location.href = '/admin/bookings/list';

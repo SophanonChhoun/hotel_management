@@ -19,6 +19,7 @@ use App\Models\admin\BookingRoomTypeMap;
 use App\Models\admin\BookingType;
 use App\Models\admin\Customer;
 use App\Models\admin\Hotel;
+use App\Models\admin\IdentificationType;
 use App\Models\admin\Payment;
 use App\Models\admin\PaymentType;
 use App\Models\admin\Room;
@@ -160,6 +161,7 @@ class BookingController extends Controller
             $customer['name'] = $customer['last_name'] . " " . $customer['first_name'];
             return $customer;
         });
+        $identification_type = IdentificationType::where("is_enable",1)->get();
         $room_types = RoomType::where("is_enable", 1)->get();
         $rooms = Room::where("is_enable", 1)->where("status",1)->get();
         return view("admin.booking.create", compact(
@@ -169,7 +171,8 @@ class BookingController extends Controller
             "customers",
             "room_types",
             "rooms",
-            "current_date"
+            "current_date",
+            "identification_type"
         ));
     }
 
@@ -182,6 +185,8 @@ class BookingController extends Controller
                 $customer = Customer::create([
                    "first_name" => $request['customer_first_name'],
                    "last_name" => $request['customer_last_name'],
+                   "identification_id" => $request['customer_identification_id'],
+                   "identification_type_id" => $request['customer_identification_type_id']
                 ]);
                 $request['customer_id'] = $customer->id;
             }
