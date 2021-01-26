@@ -96,6 +96,39 @@
                     <span class="help-block">@{{ errors.first('lname') }}</span>
                 </div>
 
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('identification_type')}" v-if="data.customer_type_id == 1">
+                    <label class="control-label">
+                        Identification Type
+                        <span style="color: red">*</span>
+                    </label>
+                    <multiselect :name="'identification_type'"
+                                 v-model="data.customer_identification_type"
+                                 deselect-label="Can't remove this value"
+                                 track-by="name"
+                                 label="name"
+                                 placeholder="Select one"
+                                 :options="identification_type"
+                                 data-vv-as="Identification Type"
+                                 v-validate="'required'"
+                                 :allow-empty="false">
+                    </multiselect>
+                    <span class="help-block">@{{ errors.first('identification_type') }}</span>
+                </div>
+
+                <div class="form-group col-lg-12" :class="{'has-error' : errors.first('identification_id')}" v-if="data.customer_type_id == 1">
+                    <label class="control-label">
+                        Identification ID
+                        <span style="color: red">*</span>
+                    </label>
+                    <input type="number"
+                           name="identification_id"
+                           v-model="data.customer_identification_id"
+                           data-vv-as="identification id"
+                           v-validate="'required|min:1'"
+                           class="form-control"
+                           placeholder="Identification ID">
+                    <span class="help-block">@{{ errors.first('identification_id') }}</span>
+                </div>
 
                 <div class="form-group col-lg-12" :class="{'has-error' : errors.first('customer')}" v-if="data.customer_type_id == 2">
                     <label class="control-label">

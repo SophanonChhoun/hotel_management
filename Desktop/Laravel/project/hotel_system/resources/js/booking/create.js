@@ -26,7 +26,11 @@ new Vue({
             customer_type_id: '',
             customer_type: '',
             customer_first_name: '',
-            customer_last_name: ''
+            customer_last_name: '',
+            customer_identification_type: '',
+            customer_identification_type_id: '',
+            customer_identification_id: ''
+
         },
         is_submit: false,
         error: '',
@@ -39,6 +43,7 @@ new Vue({
         booking_types: booking_types,
         room_types_hotel: [],
         error_room: '',
+        identification_type: identification_type,
         today : new Date().toISOString().slice(0, 10),
         total: 0,
         customer_type: [
@@ -80,12 +85,15 @@ new Vue({
                 this.data.customer_id = this.data.customer.id;
                 this.data.booking_type_id = this.data.booking_type.id;
                 this.data.hotel_id = this.data.hotel.id;
+                this.data.customer_type_id = this.data.customer_type.id
+                this.data.customer_identification_type_id = this.data.customer_identification_type.id
                 this.data.room_type_id = this.data.room_types.map(roomType => roomType.id);
                 if(this.data.room_id.length == 0)
                 {
                     this.error_room = "Please input room";
                     save = false;
                 }
+                console.log(this.data.customer_identification_id)
                 if(result && save) {
                     axios.post('/admin/bookings/create', {
                         "check_in_date": this.data.check_in_date,
@@ -99,7 +107,9 @@ new Vue({
                         "room_type_id": this.data.room_type_id,
                         "customer_type_id": this.data.customer_type_id,
                         "customer_first_name": this.data.customer_first_name,
-                        "customer_last_name": this.data.customer_last_name
+                        "customer_last_name": this.data.customer_last_name,
+                        "customer_identification_id": this.data.customer_identification_id,
+                        "customer_identification_type_id": this.data.customer_identification_type_id
                     }).then(response => {
                         if(response.data.success){
                             window.location.href = '/admin/bookings/list';
