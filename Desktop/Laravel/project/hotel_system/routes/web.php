@@ -39,6 +39,9 @@ use App\Http\Middleware\AdminRoleMiddleware;
 Route::get("/",[AdminAuthController::class,"signin"]);
 Route::post('/admin/login',[AdminAuthController::class,'login']);
 
+Route::get("/auth/google/login",[AdminAuthController::class,"redirectToProvider"]);
+Route::get("/auth/google/callback",[AdminAuthController::class,"handleProviderCallback"]);
+
 Route::get("/test",[AdminAuthController::class,"signin"]);
 
 Route::get('/lang/{locale}', [LocalizationController::class,"lang"]);

@@ -7,10 +7,16 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
     <style>
         [v-cloak] {
             display: none;
         }
+        .google {
+            background-color: #dd4b39;
+            color: white;
+        }
+
     </style>
 </head>
 
@@ -58,6 +64,11 @@
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="text-center">
+            <a href="{{ url('/auth/google/login') }}" class="google btn"><i class="fa fa-google fa-fw">
+                </i> Login with Google+
+            </a>
         </div>
     </div>
 </div>
